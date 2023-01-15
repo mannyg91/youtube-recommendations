@@ -1,9 +1,9 @@
 import React from 'react'
 
 
-const Video = () => {
+const Video = ({ data }) => {
   return (
-    <div>Video Here</div>
+    <li>{data.snippet.description}</li>
   )
 }
 
