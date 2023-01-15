@@ -14,7 +14,7 @@ const VideoFeed = () => {
       }
     };
     
-    fetch('https://youtube-v31.p.rapidapi.com/captions?part=snippet&videoId=M7FIvfx5J10', options)
+    fetch('https://youtube138.p.rapidapi.com/search?part=snippet&q=music&regionCode=US&maxResults=10', options)
       .then(response => response.json())
       .then(response => {
         console.log(response)
