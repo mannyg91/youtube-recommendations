@@ -1,8 +1,13 @@
 import React from 'react'
+import VideoFeed from './VideoFeed'
+import Navbar from './Navbar'
 
 const App = () => {
   return (
-    <div>Hello React</div>
+    <>
+      <Navbar />
+      <VideoFeed />
+    </>
   )
 }
 
