@@ -13,10 +13,11 @@ const VideoFeed = () => {
         'X-RapidAPI-Host': 'youtube-v31.p.rapidapi.com'
       },
     };
-    fetch('https://youtube138.p.rapidapi.com/search?part=snippet&q=music&regionCode=US&maxResults=50', options)
+    fetch('https://youtube138.p.rapidapi.com/search?part=snippet&q=music&regionCode=US&maxResults=10', options)
       .then(response => response.json())
       .then(data => { 
         setVideos(data.items)
+        console.log(data);
       })
       .catch(err => console.error(err));
   }, []);
