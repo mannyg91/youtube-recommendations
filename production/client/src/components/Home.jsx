@@ -12,25 +12,16 @@ const Home = ({ user }) => {
     window.location.reload();
   };
   return (
-      <div className="app">
-
+    <div className="app">
       <h1>Hi {user?.email}</h1>
-      
-      <p>
-        You are viewing this page because you are logged in or you just signed
-        up
-      </p>
-
+      <p>You are logged in.</p>
       <div>
         <button onClick={logout}>Logout</button>
       </div>
-
-
       <Sidebar />
       <Navbar />
       <VideoFeed />
     </div>
-
   );
 };
 
