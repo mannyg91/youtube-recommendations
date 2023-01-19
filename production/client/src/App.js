@@ -1,6 +1,6 @@
 import React from 'react'
-import VideoFeed from './VideoFeed'
-import Navbar from './Navbar'
+import VideoFeed from './components/VideoFeed'
+import Navbar from './components/Navbar'
 
 const App = () => {
   return (
