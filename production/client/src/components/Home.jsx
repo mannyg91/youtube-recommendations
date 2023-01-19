@@ -1,5 +1,10 @@
 import React from "react";
 
+import VideoFeed from './VideoFeed'
+import Navbar from './Navbar'
+import Sidebar from './Sidebar'
+
+
 // Pass User
 const Home = ({ user }) => {
   const logout = () => {
@@ -7,29 +12,25 @@ const Home = ({ user }) => {
     window.location.reload();
   };
   return (
-    <div style={{ textAlign: "center", margin: "3rem" }}>
-      <h1>Dear {user?.email}</h1>
+      <div className="app">
 
+      <h1>Hi {user?.email}</h1>
+      
       <p>
         You are viewing this page because you are logged in or you just signed
         up
       </p>
 
       <div>
-        <button
-          onClick={logout}
-          style={{
-            color: "red",
-            border: "1px solid gray",
-            backgroundColor: "white",
-            padding: "0.5rem 1rem",
-            cursor: "pointer",
-          }}
-        >
-          Logout
-        </button>
+        <button onClick={logout}>Logout</button>
       </div>
+
+
+      <Sidebar />
+      <Navbar />
+      <VideoFeed />
     </div>
+
   );
 };
 
