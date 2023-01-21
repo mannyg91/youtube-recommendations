@@ -1,16 +1,20 @@
 import React from 'react'
 
 
-const Video = ({ data }) => {
+const Video = ({ video }) => {
 
-  const videoId = data.id.videoId
-  const videoTitle = data.snippet.title
-  const videoDescription = data.snippet.description
-  const thumbnailURL = data.snippet.thumbnails.medium.url
-  const thumbnailWidth = data.snippet.thumbnails.medium.width
-  const thumbnailHeight = data.snippet.thumbnails.medium.height
-  const channelTitle = data.snippet.channelTitle
-  const publishTime = data.snippet.publishTime
+  const videoId = video.videoId
+  const videoTitle = video.title
+  const videoDescription = video.description
+
+  const thumbnailURL = video.thumbnail[video.thumbnail.length - 1].url;
+  // const thumbnailWidth = video.thumbnail[video.thumbnail.length - 1].width;
+  // const thumbnailHeight = video.thumbnail[video.thumbnail.length - 1].height;
+  const thumbnailWidth = 360
+  const thumbnailHeight = 202
+
+  const channelTitle = video.channelTitle;
+  const publishTime = video.publishedText;
 
   return (
     <div>
@@ -19,12 +23,9 @@ const Video = ({ data }) => {
       </a>
       <div>
         <div>
-          Thumbnail here
-        </div>
-        <div>
-          {videoTitle}
+          <div><strong>{videoTitle}</strong></div>
           {channelTitle}
-          {publishTime}
+          {/* {publishTime} */}
         </div>
       </div>
     </div>

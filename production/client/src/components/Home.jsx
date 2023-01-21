@@ -13,11 +13,11 @@ const Home = ({ user }) => {
   };
   return (
     <div className="app">
-      <h1>Hi {user?.email}</h1>
+      {/* <h1>Hi {user?.email}</h1>
       <p>You are logged in.</p>
       <div>
         <button onClick={logout}>Logout</button>
-      </div>
+      </div> */}
       <Sidebar />
       <Navbar />
       <VideoFeed />

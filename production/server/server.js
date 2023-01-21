@@ -11,7 +11,7 @@ const app = express();
 app.use(helmet()); 
 app.use(morgan('tiny')) // 'tiny' condenses logged HTTP requests
 
-
+// enables CORS
 app.use(
     cors({
       origin: ["http://localhost:3000"],
@@ -36,6 +36,7 @@ async function verifyGoogleToken(token) {
       idToken: token,
       audience: GOOGLE_CLIENT_ID,
     });
+    console.log(token);
     return { payload: ticket.getPayload() };
   } catch (error) {
     return { error: "Invalid user detected. Please try again" };
