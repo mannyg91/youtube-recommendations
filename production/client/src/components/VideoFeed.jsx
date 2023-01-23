@@ -4,10 +4,9 @@ import randomWords from 'random-words';
 
 const VideoFeed = () => {
   const [videos, setVideos] = React.useState([]);
-  const [randomPhrase, setRandomPhrase] = React.useState("trending");
+  const [randomPhrase, setRandomPhrase] = React.useState("music");
 
   React.useEffect(() => {
-    console.log("Effect ran");
     console.log(randomPhrase);
     const options = {
       method: 'GET',
@@ -28,7 +27,6 @@ const VideoFeed = () => {
   
   function getRandomPhrase() {
     setRandomPhrase(randomWords({min: 1, max: 2, join: ' ' }));
-    console.log(randomPhrase);
   }
 
 
@@ -39,11 +37,13 @@ const VideoFeed = () => {
 
   return (
     <>
+      <div style={{marginLeft: '500px', marginBottom: '20px'}}>
         Search: <strong style={{display: 'block', fontSize: '32px'}}>{randomPhrase}</strong>
-        <button style={{display: 'block', marginTop: '10px'}} onClick={getRandomPhrase} >Random Search</button>
-        <div className='videoFeed'>
+        <button style={{display: 'block', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
+      </div>
+      <div className='videoFeed'>
           {videoElements}
-        </div>
+      </div>
     </>
   )
 }
