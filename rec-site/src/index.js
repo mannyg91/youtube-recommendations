@@ -3,14 +3,10 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import { App, About, Contact } from './App';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { createRoot } from 'react-dom/client';
 
-ReactDOM.render(
-  <BrowserRouter>
-    <Routes>
-      <Route path="/" element={<App />} />
-      <Route path="/about" element={<About />}/>
-      <Route path="/contact" element={<Contact />} />
-    </Routes>
-  </BrowserRouter>,
-  document.getElementById("root")
+const root = createRoot(document.getElementById('root'));
+
+root.render(
+  <App />
 );
