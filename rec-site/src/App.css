@@ -11,6 +11,21 @@ li {
   display: inline;
   padding: 5%;
 }
+
+#MenuAppBar {
+  /* background-color:rgb(14, 16, 14); */
+  background-image:linear-gradient(rgb(29, 33, 29),rgb(0,0,0));
+  color: white;
+}
+
+#logo {
+  color: rgb(66, 209, 253);
+  font-size: 4vh;
+  font-family: 'Pacifico', cursive;
+  font-weight:bold;
+  text-shadow:2px 1px aliceblue;
+}
+
 .logobar {
   background-color: #0D0D0D;
   /* margin-top:-2%; */

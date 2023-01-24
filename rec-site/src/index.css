@@ -6,7 +6,12 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color:aliceblue;
-  background-color:rgb(39, 39, 39);
+  background: rgb(24,24,24);
+background: radial-gradient(circle, rgba(49,159,193,1) 0%, rgba(24,24,24,1) 100%);
+}
+
+article{
+  margin:5%;
 }
 
 a:link {
