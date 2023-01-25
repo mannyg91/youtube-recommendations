@@ -3,18 +3,18 @@ import React from 'react'
 
 const Video = ({ video }) => {
 
-  const videoId = video.videoId
-  const videoTitle = video.title
-  const videoDescription = video.description
+  const videoId = video.id.videoId
+  const videoTitle = video.snippet.title
+  const videoDescription = video.snippet.description
 
-  const thumbnailURL = video.thumbnail[video.thumbnail.length - 1].url;
+  const thumbnailURL = video.snippet.thumbnails.medium.url;
   // const thumbnailWidth = video.thumbnail[video.thumbnail.length - 1].width;
   // const thumbnailHeight = video.thumbnail[video.thumbnail.length - 1].height;
-  const thumbnailWidth = 360
-  const thumbnailHeight = 202
+  const thumbnailWidth = video.snippet.thumbnails.medium.width
+  const thumbnailHeight = video.snippet.thumbnails.medium.height
 
-  const channelTitle = video.channelTitle;
-  const publishTime = video.publishedText;
+  const channelTitle = video.snippet.channelTitle;
+  const publishTime = video.snippet.publishTime;
 
   return (
     <div>
