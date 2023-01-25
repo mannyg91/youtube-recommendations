@@ -5,24 +5,34 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import WavesIcon from '@mui/icons-material/Waves';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { useTheme } from '@mui/material/styles';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { green, orange } from '@mui/material/colors';
+import { createTheme } from '@mui/material/styles';
+
+
+
 
 export default function MenuAppBar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
-  const theme = useTheme();
-  const outerTheme = createTheme({
-    palette: {
-      secondary: {
-        main: orange[500],
-      },
+  const theme = createTheme({
+  palette: {
+    primary: {
+      light: '#757ce8',
+      main: '#000000',
+      dark: '#002884',
+      contrastText: '#fff',
     },
-  });
+    secondary: {
+      light: '#ff7961',
+      main: '#f44336',
+      dark: '#ba000d',
+      contrastText: '#000',
+    },
+  },
+});
 
   const handleChange = (event) => {
     setAuth(event.target.checked);
@@ -39,17 +49,18 @@ export default function MenuAppBar() {
   return (
     <Box sx={{ flexGrow: 1 }}>
       <AppBar position="static">
-        <Toolbar>
+        <Toolbar id="MenuAppBar">
           <IconButton
+            id="burger"
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <WavesIcon />
           </IconButton>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            Get Rec'd
+          <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+            ZepBox
           </Typography>
           {auth && (
             <div>
