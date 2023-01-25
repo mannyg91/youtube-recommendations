@@ -8,11 +8,11 @@
   padding: 5%;
 } */
 
-#MenuAppBar {
-  /* background-color:rgb(14, 16, 14); */
+/* #MenuAppBar {
   background-image:linear-gradient(rgb(29, 33, 29),rgb(0,0,0));
   color: white;
-}
+  margin-bottom: 15px;
+} */
 
 #logo {
   color: rgb(66, 209, 253);
@@ -29,9 +29,9 @@
   top: 0px;
 } */
 
-.mdc-top-app-bar{
+/* .mdc-top-app-bar{
   background-color:black;
-}
+} */
 
 .random-search {
   display: flex;
@@ -41,9 +41,16 @@
 
 .videoFeed {
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
   text-align: center;
-  gap: 5px;
+  row-gap: 60px;
+  column-gap: 40px;
+}
+
+.video-card {
+  width: 350px;
+
 }
 
 
@@ -53,7 +60,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color:aliceblue;
+  color :aliceblue;
   /* background: rgb(24,24,24); */
   background: radial-gradient(circle, rgba(49,159,193,1) 0%, rgba(24,24,24,1) 100%);
 }

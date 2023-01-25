@@ -23,7 +23,7 @@ const Video = ({ video }) => {
           style={{borderRadius: '15px'}} />
       </a>
       <div>
-        <div>
+        <div className='video-card'>
           <div><strong>{videoTitle}</strong></div>
           {channelTitle}
           {/* {publishTime} */}

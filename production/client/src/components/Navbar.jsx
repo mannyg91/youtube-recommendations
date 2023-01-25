@@ -47,7 +47,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static">
+      <AppBar position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}}>
         <Toolbar id="MenuAppBar">
           <IconButton
             id="burger"
