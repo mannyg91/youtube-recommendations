@@ -41,7 +41,7 @@ const VideoFeed = () => {
         Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
         <button style={{width: '150px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
       </div>
-      <div className='videoFeed'>
+      <div className='video-feed'>
           {videoElements}
       </div>
     </>

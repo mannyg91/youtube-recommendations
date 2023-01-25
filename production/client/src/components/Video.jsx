@@ -17,19 +17,17 @@ const Video = ({ video }) => {
   const publishTime = video.snippet.publishTime;
 
   return (
-    <div>
-      <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer">
-        <img width={thumbnailWidth} height={thumbnailHeight} src={thumbnailURL} alt={videoTitle} 
-          style={{borderRadius: '15px'}} />
-      </a>
-      <div>
         <div className='video-card'>
-          <div><strong>{videoTitle}</strong></div>
-          {channelTitle}
+          <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer">
+            <img width={thumbnailWidth} height={thumbnailHeight} src={thumbnailURL} alt={videoTitle} 
+              style={{borderRadius: '20px'}} />
+          </a>
+          <div className='video-details'>
+            <div className='video-title'>{videoTitle}</div>
+            <div className='channel-title'>{channelTitle}</div>
+          </div>
           {/* {publishTime} */}
         </div>
-      </div>
-    </div>
   )
 }
 
