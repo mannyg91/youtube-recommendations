@@ -19,7 +19,8 @@ const Video = ({ video }) => {
   return (
     <div>
       <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer">
-        <img width={thumbnailWidth} height={thumbnailHeight} src={thumbnailURL} alt={videoTitle} />
+        <img width={thumbnailWidth} height={thumbnailHeight} src={thumbnailURL} alt={videoTitle} 
+          style={{borderRadius: '15px'}} />
       </a>
       <div>
         <div>

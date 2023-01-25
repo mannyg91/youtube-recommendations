@@ -37,9 +37,9 @@ const VideoFeed = () => {
 
   return (
     <>
-      <div style={{marginLeft: '500px', marginBottom: '20px'}}>
-        Search: <strong style={{display: 'block', fontSize: '32px'}}>{randomPhrase}</strong>
-        <button style={{display: 'block', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
+      <div className='random-search'>
+        Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
+        <button style={{width: '150px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
       </div>
       <div className='videoFeed'>
           {videoElements}

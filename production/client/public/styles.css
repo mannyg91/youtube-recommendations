@@ -2,15 +2,11 @@
   text-align: center;
   color: aliceblue;
 }
-.header {
-  background-color: black;
-  height: 50px;
-}
 
-li {
+/* li {
   display: inline;
   padding: 5%;
-}
+} */
 
 #MenuAppBar {
   /* background-color:rgb(14, 16, 14); */
@@ -22,21 +18,26 @@ li {
   color: rgb(66, 209, 253);
   font-size: 4vh;
   font-family: 'Pacifico', cursive;
-  font-weight:bold;
+  font-weight: bold;
   text-shadow:2px 1px aliceblue;
 }
 
-.logobar {
+/* .logobar {
   background-color: #0D0D0D;
-  /* margin-top:-2%; */
+  margin-top:-2%;
   border-bottom:1px #777777 solid;
   top: 0px;
-}
+} */
 
 .mdc-top-app-bar{
   background-color:black;
 }
 
+.random-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .videoFeed {
   display: flex;
@@ -44,6 +45,37 @@ li {
   text-align: center;
   gap: 5px;
 }
+
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color:aliceblue;
+  /* background: rgb(24,24,24); */
+  background: radial-gradient(circle, rgba(49,159,193,1) 0%, rgba(24,24,24,1) 100%);
+}
+
+article{
+  margin:5%;
+}
+
+a:link {
+  color: lightgoldenrodyellow;
+}
+
+a:visited {
+  color: lightblue;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
 
 
 
