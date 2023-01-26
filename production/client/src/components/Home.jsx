@@ -19,7 +19,7 @@ const Home = ({ user }) => {
         <button onClick={logout}>Logout</button>
       </div> */}
       <Sidebar />
-      <Navbar />
+      <Navbar id='logobar' />
       <VideoFeed />
     </div>
   );
