@@ -1,28 +1,28 @@
 import React from 'react'
 import Video from './Video'
 import randomWords from 'random-words';
+import { youtubeSearch } from '../utils/youtubeSearch'
+import data from './data/testData'
 
 const VideoFeed = () => {
-  const [videos, setVideos] = React.useState([]);
+
+  const usingTestData = true;
+
+  const [videos, setVideos] = React.useState(data.items);
   const [randomPhrase, setRandomPhrase] = React.useState("music");
 
+
   React.useEffect(() => {
-    console.log(randomPhrase);
-    const options = {
-      method: 'GET',
-      headers: {
-        'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_KEY,
-        'X-RapidAPI-Host': 'youtube-v3-alternative.p.rapidapi.com'
-      },
-    };
-    fetch(`https://youtube-v3-alternative.p.rapidapi.com/search?query=${randomPhrase}&geo=US&lang=en&type=video&sort_by=relevance&features=HD`, options)
-      .then(response => response.json())
-      .then(data => { 
-        setVideos(data.data)
-        console.log(data);
-      })
-      .catch(err => console.error(err));
-  }, [randomPhrase]);
+        if (!usingTestData) { 
+          const getVideos = async () => {
+            const data = await youtubeSearch(randomPhrase);
+            setVideos(data.items);
+            console.log(data.items)
+          }
+          getVideos();
+      }
+      }, [randomPhrase]);
+
 
   
   function getRandomPhrase() {
@@ -37,11 +37,11 @@ const VideoFeed = () => {
 
   return (
     <>
-      <div style={{marginLeft: '500px', marginBottom: '20px'}}>
-        Search: <strong style={{display: 'block', fontSize: '32px'}}>{randomPhrase}</strong>
-        <button style={{display: 'block', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
+      <div className='random-search'>
+        Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
+        <button style={{width: '150px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
       </div>
-      <div className='videoFeed'>
+      <div className='video-feed'>
           {videoElements}
       </div>
     </>

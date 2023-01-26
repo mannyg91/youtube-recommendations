@@ -22,17 +22,17 @@ const App = () => {
   return (
     <BrowserRouter>
 
-      {/* <div className="app">
-        <Sidebar />
+      <div className="app">
+        {/* <Sidebar /> */}
         <Navbar />
         <VideoFeed />
-      </div> */}
+      </div>
 
     <Routes>
-      <Route
+      {/* <Route
       path="/"
       element={user?.email ? <Navigate to="/home" /> : <Landing />}
-      />
+      /> */}
       <Route
         path="/signup"
         element={user?.email ? <Navigate to="/home" /> : <Signup />}
@@ -47,8 +47,6 @@ const App = () => {
         />
     </Routes>
   </BrowserRouter>
-
-
 
   )
 }
