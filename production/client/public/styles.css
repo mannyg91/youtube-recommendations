@@ -1,3 +1,6 @@
+
+/* Mobile styles */
+
 .App {
   text-align: center;
   color: aliceblue;
@@ -8,32 +11,69 @@
   padding: 5%;
 } */
 
-/* #MenuAppBar {
-  background-image:linear-gradient(rgb(29, 33, 29),rgb(0,0,0));
-  color: white;
-  margin-bottom: 15px;
-} */
 
-#logo {
-  color: rgb(66, 209, 253);
-  font-size: 3.5vh;
-  font-family: 'Pacifico', cursive;
-  font-weight: bold;
-  text-shadow: 2px -1px aliceblue;
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color :aliceblue;
+  /* background: rgb(24,24,24); */
+  background: radial-gradient(at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
 }
 
-/* .logobar {
-  background-color: #0D0D0D;
-  margin-top:-2%;
-  border-bottom:1px #777777 solid;
-  top: 0px;
-} */
+article{
+  margin:5%;
+}
 
-/* .mdc-top-app-bar{
-  background-color:black;
-} */
+a:link {
+  color: lightgoldenrodyellow;
+}
+
+a:visited {
+  color: lightblue;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+#logo {
+  color: rgba(49,159,193,1);
+  text-align: center;
+  font-size: 5vh;
+  /* original font choice */
+  /* font-family: 'Pacifico', cursive; */ 
+  font-family: 'Arizonia', cursive;
+  font-weight: bold;
+  text-shadow: 2px 1px aliceblue;
+  margin-top:-5%;
+}
+
+
+#appbar {
+  /* background-color:rgb(14, 16, 14); */
+  background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
+  top: 0px;
+  position: fixed;
+  height:8vh;
+}
+
+#burgerbtn {
+  margin-top: -50%;
+  font-size:5vh;
+}
+
+#acctbtn {
+  margin-top: -50%;
+  font-size: 5vh;
+  margin-right:-75%;
+}
 
 .random-search {
+  margin-top:70px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -77,75 +117,4 @@
 .channel-title {
   color: lightblue;
   font-size: 14px;
-}
-
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color :aliceblue;
-  /* background: rgb(24,24,24); */
-  background: radial-gradient(circle, rgba(49,159,193,1) 0%, rgba(24,24,24,1) 100%);
-}
-
-article{
-  margin:5%;
-}
-
-a:link {
-  color: lightgoldenrodyellow;
-}
-
-a:visited {
-  color: lightblue;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-
-
-
-
-
-
-/* Default when project was created: */
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
 }

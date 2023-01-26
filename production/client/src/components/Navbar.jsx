@@ -46,16 +46,16 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}}>
+
+      <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}}>
         <Toolbar id="MenuAppBar">
           <IconButton
-            id="burger"
             size="large"
             edge="start"
             color="inherit"
             aria-label="menu"
           >
-            <WavesIcon />
+            <WavesIcon id="burgerbtn" />
           </IconButton>
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ZepBox
@@ -70,7 +70,7 @@ export default function Navbar() {
                 onClick={handleMenu}
                 color="inherit"
               >
-                <AccountCircle />
+                <AccountCircle id="acctbtn"/>
               </IconButton>
               <Menu
                 id="menu-appbar"
@@ -97,3 +97,4 @@ export default function Navbar() {
     </Box>
   );
 }
+
