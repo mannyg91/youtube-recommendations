@@ -8,32 +8,15 @@ import WavesIcon from '@mui/icons-material/Waves';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { createTheme } from '@mui/material/styles';
 
 
 export default function Navbar() {
+  // I suppose to will be used when we have actual login
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
-  const theme = createTheme({
-  palette: {
-    primary: {
-      light: '#757ce8',
-      main: '#000000',
-      dark: '#002884',
-      contrastText: '#fff',
-    },
-    secondary: {
-      light: '#ff7961',
-      main: '#f44336',
-      dark: '#ba000d',
-      contrastText: '#000',
-    },
-  },
-});
-
-  const handleChange = (event) => {
-    setAuth(event.target.checked);
+  const handleLogin = (event) => {
+    setAuth(auth ? false : true);
   };
 
   const handleMenu = (event) => {
@@ -43,10 +26,9 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-
+console.log(auth);
   return (
     <Box sx={{ flexGrow: 1 }}>
-
       <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}}>
         <Toolbar id="MenuAppBar">
           <IconButton
@@ -60,38 +42,36 @@ export default function Navbar() {
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ZepBox
           </Typography>
-          {auth && (
-            <div>
-              <IconButton
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
-                <AccountCircle id="acctbtn"/>
-              </IconButton>
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={handleClose}
-              >
-                <MenuItem onClick={handleClose}>Profile</MenuItem>
-                <MenuItem onClick={handleClose}>Log Out</MenuItem>
-              </Menu>
-            </div>
-          )}
+          <div>
+            <IconButton
+              size="large"
+              aria-label="account of current user"
+              aria-controls="menu-appbar"
+              aria-haspopup="true"
+              onClick={handleMenu}
+              color="inherit"
+            >
+              <AccountCircle id="acctbtn"/>
+            </IconButton>
+            <Menu
+              id="menu-appbar"
+              anchorEl={anchorEl}
+              anchorOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              keepMounted
+              transformOrigin={{
+                vertical: 'top',
+                horizontal: 'right',
+              }}
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              {auth && (<MenuItem onClick={handleClose}>Profile</MenuItem>)}
+              <MenuItem onClick={handleLogin}>{auth ? 'Logout' : 'Login'}</MenuItem>
+            </Menu>
+          </div>
         </Toolbar>
       </AppBar>
     </Box>
