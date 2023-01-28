@@ -1,4 +1,6 @@
 import * as React from 'react';
+import Toggle from './Toggle'
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -143,6 +145,7 @@ export default function Navbar() {
         </DrawerHeader>
         <Divider color="aliceblue" />
         <List>
+          <Toggle />
           {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
             <ListItem className="drawerlist" key={text} disablePadding>
               <ListItemButton>
