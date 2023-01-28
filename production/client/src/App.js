@@ -3,7 +3,6 @@ import { useState } from "react";
 
 import VideoFeed from './components/VideoFeed'
 import Navbar from './components/Navbar'
-import Sidebar from './components/Sidebar'
 import { Home, Landing, Login, Signup } from "./components";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -23,7 +22,6 @@ const App = () => {
     <BrowserRouter>
 
       <div className="app">
-        {/* <Sidebar /> */}
         <Navbar />
         <VideoFeed />
       </div>

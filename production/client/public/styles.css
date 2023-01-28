@@ -1,5 +1,7 @@
 
-/* Mobile styles */
+/*~~~~~~~~~~~~~~~~/
+/ Mobile styles  /
+/~~~~~~~~~~~~~~~~*/
 
 .App {
   text-align: center;
@@ -11,7 +13,6 @@
   padding: 5%;
 } */
 
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -20,8 +21,10 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color :aliceblue;
   /* background: rgb(24,24,24); */
-  background: radial-gradient(at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-}
+  background: 
+    radial-gradient(circle at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
+  display:flex;
+  }
 
 article{
   margin:5%;
@@ -40,6 +43,31 @@ code {
     monospace;
 }
 
+/*Styles for the sidebar*/
+.sidebarClass {
+  background-color: rgb(24,24,24);
+}
+
+.listitemicon {
+  color:aliceblue;
+}
+
+.drawerlist:before {
+  content: "";
+  position: absolute;
+  left:40px;
+  bottom:0;
+  height:1px;
+  width: 70%;
+  border-bottom:1px solid black;
+}
+
+#menuclosearrow {
+  color:aliceblue;
+  font-size:5.5vh;
+}
+
+/* styles for the logo bar*/
 #logo {
   color: rgba(49,159,193,1);
   text-align: center;
@@ -52,7 +80,7 @@ code {
 }
 
 
-.appbar {
+#appbar {
   /* background-color:rgb(14, 16, 14); */
   background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
   top: 0px;
@@ -68,6 +96,7 @@ code {
   font-size: 5vh;
 }
 
+/*styles for the search */
 .random-search {
   margin-top: 25px;
   display: flex;
@@ -75,6 +104,7 @@ code {
   align-items: center;
 }
 
+/*styles for the video display*/
 .video-feed {
   display: flex;
   flex-wrap: wrap;
@@ -113,4 +143,47 @@ code {
 .channel-title {
   color: lightblue;
   font-size: 14px;
+}
+
+/*~~~~~~~~~~~~~~~~/
+/ Desktop styles  /
+/~~~~~~~~~~~~~~~~*/
+@media screen and (min-width:700px){
+  
+  /*Styles for the main body*/
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    color :aliceblue;
+    /* background: rgb(24,24,24); */
+    background: 
+    radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
+  }
+  
+  /*Styles for the logobar*/
+  #logo {
+    margin-top:-1%;
+  }
+  
+  #appbar {
+    /* background-color:rgb(14, 16, 14); */
+    background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
+    top: 0px;
+    position: fixed;
+    height:7vh;
+  }
+  
+  #burgerbtn {
+    margin-top: -20%;
+    font-size:5vh;
+  }
+  
+  #acctbtn {
+    margin-top: -20%;
+    font-size: 5vh;
+    margin-right:-75%;
+  }
 }
