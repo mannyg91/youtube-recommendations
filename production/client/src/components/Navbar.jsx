@@ -8,12 +8,33 @@ import WavesIcon from '@mui/icons-material/Waves';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import { styled } from "@mui/material/styles";
+import Drawer from "@mui/material/Drawer";
+import List from "@mui/material/List";
+import Divider from "@mui/material/Divider";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ListItem from "@mui/material/ListItem";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemText from "@mui/material/ListItemText";
 
+const drawerWidth = 240;
+
+const DrawerHeader = styled("div")(({ theme }) => ({
+  display: "flex",
+  alignItems: "center",
+  padding: theme.spacing(0, 1),
+  // necessary for content to be below app bar
+  ...theme.mixins.toolbar,
+  justifyContent: "flex-end"
+}));
 
 export default function Navbar() {
   // I suppose to will be used when we have actual login
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [open, setOpen] = React.useState(false);
 
   const handleLogin = (event) => {
     setAuth(auth ? false : true);
@@ -26,10 +47,37 @@ export default function Navbar() {
   const handleClose = () => {
     setAnchorEl(null);
   };
-console.log(auth);
+
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
+
+  const handleDrawerClose = () => {
+    setOpen(false);
+  };
+
+  const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+    ({ theme, open }) => ({
+      flexGrow: 1,
+      padding: theme.spacing(3),
+      transition: theme.transitions.create("margin", {
+        easing: theme.transitions.easing.sharp,
+        duration: theme.transitions.duration.leavingScreen
+      }),
+      marginLeft: `-${drawerWidth}px`,
+      ...(open && {
+        transition: theme.transitions.create("margin", {
+          easing: theme.transitions.easing.easeOut,
+          duration: theme.transitions.duration.enteringScreen
+        }),
+        marginLeft: 0
+      })
+    })
+  );
+
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}}>
+      <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
         <Toolbar id="MenuAppBar">
           <IconButton
             size="large"
@@ -37,7 +85,7 @@ console.log(auth);
             color="inherit"
             aria-label="menu"
           >
-            <WavesIcon id="burgerbtn" />
+            <WavesIcon id="burgerbtn" onClick={handleDrawerOpen}/>
           </IconButton>
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ZepBox
@@ -74,6 +122,40 @@ console.log(auth);
           </div>
         </Toolbar>
       </AppBar>
+      <Drawer
+        PaperProps={{sx: {backgroundColor:"rgb(24,24,24)", color:"aliceblue"}}}
+        sx={{
+          width: drawerWidth,
+          flexShrink: 0,
+          "& .MuiDrawer-paper": {
+            width: drawerWidth,
+            boxSizing: "border-box"
+          }
+        }}
+        variant="persistent"
+        anchor="left"
+        open={open}
+      >
+        <DrawerHeader>
+          <IconButton onClick={handleDrawerClose}>
+            <ChevronLeftIcon id="menuclosearrow" />
+          </IconButton>
+        </DrawerHeader>
+        <Divider color="aliceblue" />
+        <List>
+          {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
+            <ListItem className="drawerlist" key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon"/>
+                </ListItemIcon>
+                <ListItemText primary={text} />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+          ))}
+        </List>
+      </Drawer>
     </Box>
   );
 }

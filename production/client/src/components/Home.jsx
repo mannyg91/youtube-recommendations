@@ -2,7 +2,6 @@ import React from "react";
 
 import VideoFeed from './VideoFeed'
 import Navbar from './Navbar'
-import Sidebar from './Sidebar'
 
 
 // Pass User
@@ -18,7 +17,6 @@ const Home = ({ user }) => {
       <div>
         <button onClick={logout}>Logout</button>
       </div> */}
-      <Sidebar />
       <Navbar id='logobar' />
       <VideoFeed />
     </div>

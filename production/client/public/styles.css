@@ -23,7 +23,8 @@ body {
   /* background: rgb(24,24,24); */
   background: 
     radial-gradient(circle at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-}
+  display:flex;
+  }
 
 article{
   margin:5%;
@@ -40,6 +41,30 @@ a:visited {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+/*Styles for the sidebar*/
+.sidebarClass {
+  background-color: rgb(24,24,24);
+}
+
+.listitemicon {
+  color:aliceblue;
+}
+
+.drawerlist:before {
+  content: "";
+  position: absolute;
+  left:40px;
+  bottom:0;
+  height:1px;
+  width: 70%;
+  border-bottom:1px solid black;
+}
+
+#menuclosearrow {
+  color:aliceblue;
+  font-size:5.5vh;
 }
 
 /* styles for the logo bar*/
