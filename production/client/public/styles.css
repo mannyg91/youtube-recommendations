@@ -77,31 +77,28 @@ code {
   font-family: 'Arizonia', cursive;
   font-weight: bold;
   text-shadow: 2px 1px aliceblue;
-  margin-top:-5%;
 }
+
 
 #appbar {
   /* background-color:rgb(14, 16, 14); */
   background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
   top: 0px;
   position: fixed;
-  height:8vh;
+  height: 8vh;
 }
 
 #burgerbtn {
-  margin-top: -50%;
   font-size:5vh;
 }
 
 #acctbtn {
-  margin-top: -50%;
   font-size: 5vh;
-  margin-right:-75%;
 }
 
 /*styles for the search */
 .random-search {
-  margin-top:70px;
+  margin-top: 25px;
   display: flex;
   flex-direction: column;
   align-items: center;
