@@ -11,6 +11,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { styled } from "@mui/material/styles";
+import Toggle from './Toggle'
 
 
 const drawerWidth = 240;
@@ -85,6 +86,9 @@ export default function Navbar() {
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             WatchWise
           </Typography>
+          <div className="dayNightTog">
+            <Toggle />
+          </div>
           <div>
             <IconButton
               size="large"
