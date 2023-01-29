@@ -71,7 +71,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
+      <AppBar id="logobar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
         <Toolbar id="MenuAppBar">
           <IconButton
             size="large"

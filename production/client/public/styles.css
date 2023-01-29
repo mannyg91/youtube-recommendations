@@ -21,8 +21,8 @@ body {
   display:flex;
   }
 
-article{
-  margin:5%;
+h1 {
+  font-size:25pt;
 }
 
 a:link {
@@ -65,7 +65,7 @@ code {
 /* styles for the logo bar*/
 #logo {
   color: rgba(49,159,193,1);
-  text-align: center;
+  text-align: left;
   font-size: 5vh;
   /* original font choice */
   /* font-family: 'Pacifico', cursive; */ 
@@ -75,11 +75,11 @@ code {
 }
 
 
-#appbar {
+#logobar {
   /* background-color:rgb(14, 16, 14); */
   background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
   top: 0px;
-  position: fixed;
+  position: sticky;
   height: 8vh;
 }
 
@@ -156,29 +156,44 @@ code {
     /* background: rgb(24,24,24); */
     background: 
     radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
+    background-repeat:no-repeat;
+    background-attachment:fixed;
   }
+
   
   /*Styles for the logobar*/
   #logo {
     margin: 0;
+    margin-top:-1vh;
+    font-size:4vh;
   }
   
-  #appbar {
+  #logobar {
     /* background-color:rgb(14, 16, 14); */
     background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
     top: 0px;
     position: fixed;
-    height: 8vh;
+    height: 6vh;    
   }
   
   #burgerbtn {
-    margin-top: -10%;
+    margin-top: -1vh;
     font-size: 4vh;
+  }
+
+  .dayNightTog {
+    margin-top:-3.5vh;
   }
   
   #acctbtn {
-    margin-top: -20%;
+    margin-top: -1vh;
     font-size: 4vh;
     margin-right:-75%;
+  }
+
+  .loginPage {
+    margin-top:30%;
+    margin-left:10%;
+    width:max-content;
   }
 }
