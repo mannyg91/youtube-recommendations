@@ -52,7 +52,11 @@ const SideBar = ({ handleDrawerClose, open}) => {
       </DrawerHeader>
       <Divider color="aliceblue" />
       <List>
-        <Toggle />
+        {/*Unable to presently place here -- need fix for functionality*/}
+        {/* <div>
+          <Toggle />
+        </div> */}
+        
         {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
           <ListItem className="drawerlist" key={text} disablePadding>
             <ListItemButton>

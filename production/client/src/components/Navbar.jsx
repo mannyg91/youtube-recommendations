@@ -11,6 +11,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { styled } from "@mui/material/styles";
+import Toggle from './Toggle'
 
 
 const drawerWidth = 240;
@@ -71,7 +72,7 @@ export default function Navbar() {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="appbar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
+      <AppBar id="logobar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
         <Toolbar id="MenuAppBar">
           <IconButton
             size="large"
@@ -83,8 +84,11 @@ export default function Navbar() {
             <WavesIcon id="burgerbtn" />
           </IconButton>
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            ZepBox
+            WatchWise
           </Typography>
+          <div className="dayNightTog">
+            <Toggle />
+          </div>
           <div>
             <IconButton
               size="large"

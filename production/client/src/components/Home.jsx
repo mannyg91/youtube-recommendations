@@ -17,7 +17,6 @@ const Home = ({ user }) => {
       <div>
         <button onClick={logout}>Logout</button>
       </div> */}
-      <Navbar id='logobar' />
       <VideoFeed />
     </div>
   );
