@@ -83,7 +83,7 @@ export default function Navbar() {
             <WavesIcon id="burgerbtn" />
           </IconButton>
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            ZepBox
+            WatchWise
           </Typography>
           <div>
             <IconButton
