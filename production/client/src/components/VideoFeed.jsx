@@ -17,7 +17,6 @@ const VideoFeed = () => {
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase);
             setVideos(data.items);
-            console.log(data.items)
           }
           getVideos();
       }

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import SideBar from './SideBar'
+
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -9,15 +11,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { styled } from "@mui/material/styles";
-import Drawer from "@mui/material/Drawer";
-import List from "@mui/material/List";
-import Divider from "@mui/material/Divider";
-import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
+
 
 const drawerWidth = 240;
 
@@ -84,8 +78,9 @@ export default function Navbar() {
             edge="start"
             color="inherit"
             aria-label="menu"
+            onClick={handleDrawerOpen}
           >
-            <WavesIcon id="burgerbtn" onClick={handleDrawerOpen}/>
+            <WavesIcon id="burgerbtn" />
           </IconButton>
           <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
             ZepBox
@@ -122,40 +117,13 @@ export default function Navbar() {
           </div>
         </Toolbar>
       </AppBar>
-      <Drawer
-        PaperProps={{sx: {backgroundColor:"rgb(24,24,24)", color:"aliceblue"}}}
-        sx={{
-          width: drawerWidth,
-          flexShrink: 0,
-          "& .MuiDrawer-paper": {
-            width: drawerWidth,
-            boxSizing: "border-box"
-          }
-        }}
-        variant="persistent"
-        anchor="left"
+    
+      <SideBar 
+        handleDrawerOpen={handleDrawerOpen}
+        handleDrawerClose={handleDrawerClose}
         open={open}
-      >
-        <DrawerHeader>
-          <IconButton onClick={handleDrawerClose}>
-            <ChevronLeftIcon id="menuclosearrow" />
-          </IconButton>
-        </DrawerHeader>
-        <Divider color="aliceblue" />
-        <List>
-          {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
-            <ListItem className="drawerlist" key={text} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <ChevronRightIcon className="listitemicon"/>
-                </ListItemIcon>
-                <ListItemText primary={text} />
-                <Divider color="aliceblue" />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
+        setOpen={setOpen}  
+      />
     </Box>
   );
 }

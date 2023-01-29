@@ -14,37 +14,34 @@ const App = () => {
     const theUser = localStorage.getItem("user");
 
     if (theUser && !theUser.includes("undefined")) {
-        setUser(JSON.parse(theUser));
-      }
-    }, []);
+      setUser(JSON.parse(theUser));
+    }
+  }, []);
 
   return (
     <BrowserRouter>
-
-      <div className="app">
         <Navbar />
-        <VideoFeed />
-      </div>
+        <Routes>
+          <Route
+            path="/"
+            element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
+          />
+          <Route
+            path="/signup"
+            element={user?.email ? <Navigate to="/home" /> : <Signup />}
+          />
+          <Route
+            path="/login"
+            element={user?.email ? <Navigate to="/home" /> : <Login />}
+          />
+          <Route
+            path="/home"
+            element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
+          />
+        </Routes>
+ 
+    </BrowserRouter>
 
-    <Routes>
-      {/* <Route
-      path="/"
-      element={user?.email ? <Navigate to="/home" /> : <Landing />}
-      /> */}
-      <Route
-        path="/signup"
-        element={user?.email ? <Navigate to="/home" /> : <Signup />}
-      />
-      <Route
-        path="/login"
-        element={user?.email ? <Navigate to="/home" /> : <Login />}
-      />
-      <Route
-          path="/home"
-          element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
-        />
-    </Routes>
-  </BrowserRouter>
 
   )
 }
