@@ -1,6 +1,8 @@
 /* eslint-disable no-undef */
 
-export const youtubeSearch = async (query) => {
+import { ViewColumnTwoTone } from "@mui/icons-material";
+
+export const youtubeSearch = async (query, topic) => {
 
   function loadClient() {
     gapi.client.setApiKey(process.env.REACT_APP_YOUTUBE_API_KEY);
@@ -20,7 +22,8 @@ export const youtubeSearch = async (query) => {
       "safeSearch": "moderate",
       "videoDefinition": "high",
       "maxResults":"50",
-      "topicId": "/m/01k8wb"
+      "videoCategoryId": "27",
+      "topicId": topic,
     })
         .then(function(response) {
                 console.log("fetched data")
