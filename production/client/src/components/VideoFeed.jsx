@@ -6,6 +6,9 @@ import randomWords from 'random-words';
 import { youtubeSearch } from '../utils/youtubeSearch'
 import data from './data/testData'
 
+
+import WatchVideo from './WatchVideo'
+
 const VideoFeed = () => {
 
   const [videos, setVideos] = React.useState(data.items);
@@ -54,7 +57,7 @@ const VideoFeed = () => {
 
         <ContentSlider />
       </div>
-
+      {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
           {videoElements}
       </div>

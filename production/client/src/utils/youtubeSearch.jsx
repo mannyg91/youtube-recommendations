@@ -1,7 +1,5 @@
 /* eslint-disable no-undef */
 
-import { ViewColumnTwoTone } from "@mui/icons-material";
-
 export const youtubeSearch = async (query, topic) => {
 
   function loadClient() {
