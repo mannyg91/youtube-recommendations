@@ -1,56 +1,60 @@
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
-// https://developers.google.com/identity/gsi/web/reference/js-reference
-
-const Login = () => {
-  const { handleGoogle, loading, error } = useFetch(
-    "http://localhost:5152/login"
-  );
-
-  useEffect(() => {
-    /* global google */
-    if (window.google) {
-      google.accounts.id.initialize({
-        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        callback: handleGoogle,
-      });
-
-      google.accounts.id.renderButton(document.getElementById("loginDiv"), {
-        // type: "standard",
-        theme: "filled_black",
-        // size: "small",
-        text: "signin_with",
-        shape: "pill",
-      });
-
-      // google.accounts.id.prompt()
-    }
-  }, [handleGoogle]);
-
-  return (
-    <>
-      <nav style={{ padding: "2rem" }}>
-        <Link to="/">Go Back</Link>
-      </nav>
-      <header style={{ textAlign: "center" }}>
-        <h1>Login to continue</h1>
-      </header>
-      <main
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {loading ? <div>Loading....</div> : <div id="loginDiv"></div>}
-      </main>
-      <footer></footer>
-    </>
-  );
-};
+export const Login = () => {
+    return (
+        <div id="wrapper">
+            <Navbar />
+            <div id="loginDiv">
+                <h1>Welcome back!</h1>
+                <h2>Please login below.</h2>
+                <Box
+                    id="login_form"
+                    component="form"
+                    sx={{
+                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <div>
+                        <TextField
+                            required
+                            className="loginText"
+                            id="username"
+                            label="Username"
+                            helperText="Please enter your username"
+                            type="text"
+                        /><br/>
+                        <TextField
+                            required
+                            className="loginText"
+                            id="password"
+                            label="Password"
+                            helperText="Please enter your password"
+                            type="password"
+                        />
+                    </div>
+                </Box>
+                <Button
+                    id="loginbutton"
+                    variant="outlined"
+                    onClick={()=>{
+                        console.log("Button clicked, congratulations.");
+                    }}>
+                        Submit
+                    </Button>
+                <p>
+                    Psst... don't have an account yet?<br/>
+                    Sign up <Link to="../Signup">here!</Link>
+                </p>
+            </div>
+        </div>
+    )
+}
 
 export default Login;

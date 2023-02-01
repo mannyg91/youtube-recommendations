@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { useState } from "react";
+import Link from 'react';
 
 import VideoFeed from './components/VideoFeed'
 import Navbar from './components/Navbar'
@@ -24,19 +25,23 @@ const App = () => {
         <Routes>
           <Route
             path="/"
-            element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
-          />
+            // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
+            element={<Home/>}
+         />
           <Route
             path="/signup"
-            element={user?.email ? <Navigate to="/home" /> : <Signup />}
+            // element={user?.email ? <Navigate to="/home" /> : <Signup />}
+            element={<Signup/>}
           />
           <Route
             path="/login"
-            element={user?.email ? <Navigate to="/home" /> : <Login />}
+            // element={user?.email ? <Navigate to="/home" /> : <Login />}
+            element={<Login/>}
           />
           <Route
             path="/home"
-            element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
+            // element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
+            element={<Home/>}
           />
         </Routes>
  
