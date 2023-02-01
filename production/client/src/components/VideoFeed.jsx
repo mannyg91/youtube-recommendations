@@ -3,11 +3,9 @@ import Video from './Video'
 import TopicDropdown from './TopicDropdown'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
-import { youtubeSearch } from '../utils/youtubeSearch'
+import { youtubeSearch } from '../utils/getVideoResults'
 import data from './data/testData'
 
-
-import WatchVideo from './WatchVideo'
 
 const VideoFeed = () => {
 
@@ -17,7 +15,7 @@ const VideoFeed = () => {
 
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase, selectedTopic);

@@ -175,6 +175,13 @@ code {
   font-size: 14px;
 }
 
+/*Styles for WatchVideo */
+.video-player {
+  display: flex;
+
+}
+
+
 /*Styles for login*/
 .loginPage {
   margin-top:30%;
@@ -254,7 +261,7 @@ code {
   }
 
   .video-feed {
-    margin: 25px 200px;
+    margin: 25px 10%;
     column-gap: 48px;
   }
   

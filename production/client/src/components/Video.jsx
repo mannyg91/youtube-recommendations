@@ -1,5 +1,5 @@
 import React from 'react'
-
+import { Link } from "react-router-dom"; 
 
 const Video = ({ video }) => {
 
@@ -19,10 +19,11 @@ const Video = ({ video }) => {
   return (
         <div className='video-card' style={{width: thumbnailWidth}}>
           <div className='thumbnail' style= {{height: "calc(100% - px)"}}>
-            <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer">
+            {/* <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer"></a> */}
+            <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` }>
               <img width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle} 
                 style={{clipPath: "inset(34px 0px 34px 0px round 20px)", marginTop: "-26px"}} />
-            </a>
+            </Link>
           </div>
           <div className='video-details'>
             <div className='video-title'>{videoTitle}</div>
