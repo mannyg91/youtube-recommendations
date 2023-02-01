@@ -1,31 +1,36 @@
 import React from 'react'
 import Video from './Video'
+import TopicDropdown from './TopicDropdown'
+import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
 import { youtubeSearch } from '../utils/youtubeSearch'
 import data from './data/testData'
 
+
+import WatchVideo from './WatchVideo'
+
 const VideoFeed = () => {
 
-  const usingTestData = true;
-
   const [videos, setVideos] = React.useState(data.items);
-  const [randomPhrase, setRandomPhrase] = React.useState("music");
+  const [randomPhrase, setRandomPhrase] = React.useState("history");
+  const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");//music topic
 
 
   React.useEffect(() => {
+    const usingTestData = false;
         if (!usingTestData) { 
           const getVideos = async () => {
-            const data = await youtubeSearch(randomPhrase);
+            const data = await youtubeSearch(randomPhrase, selectedTopic);
             setVideos(data.items);
           }
           getVideos();
       }
-      }, [randomPhrase]);
+      }, [randomPhrase, selectedTopic]);
 
 
   
   function getRandomPhrase() {
-    setRandomPhrase(randomWords({min: 1, max: 2, join: ' ' }));
+    setRandomPhrase(randomWords({min: 1, max: 1, join: ' ' }));
   }
 
 
@@ -36,13 +41,27 @@ const VideoFeed = () => {
 
   return (
     <>
-      <div className='random-search'>
-        Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
-        <button style={{width: '150px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase} >Random Search</button>
+      <div className='controls'>
+
+        <div className='top-section'>
+
+          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
+
+          <div className='random-search'>
+            Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
+            <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase}>Spin</button>
+          </div>
+
+
+        </div>
+
+        <ContentSlider />
       </div>
+      {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
           {videoElements}
       </div>
+
     </>
   )
 }
