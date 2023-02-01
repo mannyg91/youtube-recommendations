@@ -2,11 +2,13 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Navbar from './Navbar'
+import Navbar from './Navbar';
+import { Link } from 'react-router-dom';
 
 export const Login = () => {
     return (
         <div id="wrapper">
+            <Navbar />
             <div id="loginDiv">
                 <h1>Welcome back!</h1>
                 <h2>Please login below.</h2>
@@ -48,7 +50,7 @@ export const Login = () => {
                     </Button>
                 <p>
                     Psst... don't have an account yet?<br/>
-                    Sign up here!
+                    Sign up <Link to="../Signup">here!</Link>
                 </p>
             </div>
         </div>
