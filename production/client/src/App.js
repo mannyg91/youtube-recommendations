@@ -4,7 +4,7 @@ import Link from 'react';
 
 import VideoFeed from './components/VideoFeed'
 import Navbar from './components/Navbar'
-import { Home, Landing, Login, Signup } from "./components";
+import { Home, Login, Signup } from "./components";
 
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
