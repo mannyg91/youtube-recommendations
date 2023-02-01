@@ -4,9 +4,11 @@ const port = process.env.PORT
 
 const app = express()
 
-app.get('/api/blockedChannels', (req, res) => {
-  res.send('Get blocked channel IDs')
-})
+
+
+app.use('/api/blockedChannels', require('./routes/blockedChannelRoutes'))
+
+
 
 app.listen(port, () => {
   console.log(`server started on port ${port}`)
