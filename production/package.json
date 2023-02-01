@@ -1,0 +1,21 @@
+{
+  "name": "production",
+  "version": "1.0.0",
+  "description": "YouTube clone for educational content recommendations",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server/server.js",
+    "server":"nodemon server/server.js"
+  },
+  "author": "Get Rec'd",
+  "license": "ISC",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
