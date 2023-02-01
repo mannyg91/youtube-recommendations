@@ -1,61 +1,76 @@
-// Signup.jsx
-import React, { useEffect } from "react";
-import { Link } from "react-router-dom";
-import useFetch from "../hooks/useFetch";
+import React from "react";
+import TextField from "@mui/material/TextField";
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Navbar from './Navbar';
+import Toggle from './Toggle';
+import { Link } from 'react-router-dom';
 
-// https://developers.google.com/identity/gsi/web/reference/js-reference
+export const Login = () => {
+    return (
+        <div id="wrapper">
+            <Navbar />
+            <div id="signupDiv">
+                <h1>Welcome to WatchWise!</h1>
+                <h2>We're glad to have you.</h2>
+                <Box
+                    id="signup_form"
+                    component="form"
+                    sx={{
+                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                    }}
+                    noValidate
+                    autoComplete="off"
+                >
+                    <div>
+                        <TextField
+                            required
+                            className="signupText"
+                            id="newusername"
+                            label="Username"
+                            helperText="Enter a username"
+                            type="text"
+                        />
+                        <TextField
+                            required
+                            className="signupText"
+                            id="email"
+                            label="Email"
+                            helperText="Enter your email address"
+                            type="email"
+                        /><br/>
+                        <TextField
+                            required
+                            className="signupText"
+                            id="newpassword"
+                            label="Password"
+                            helperText="Enter a password"
+                            type="password"
+                        />
+                        <TextField
+                            required
+                            className="signupText"
+                            id="verifypassword"
+                            label="Verify Password"
+                            helperText="Enter the same password"
+                            type="password"
+                        />
+                    </div>
+                </Box>
+                <Button
+                    id="loginbutton"
+                    variant="outlined"
+                    onClick={()=>{
+                        console.log("Button clicked, congratulations.");
+                    }}>
+                        Sign me up!
+                    </Button>
+                <p>
+                    Psst... Already a member? Log in <Link to="../Login">here!</Link>
+                </p>
+            </div>
+        </div>
+    )
+}
 
-const Signup = () => {
-  const { handleGoogle, loading, error } = useFetch(
-    "http://localhost:5152/signup"
-  );
-
-  useEffect(() => {
-    /* global google */
-    if (window.google) {
-      google.accounts.id.initialize({
-        client_id: process.env.REACT_APP_GOOGLE_CLIENT_ID,
-        callback: handleGoogle,
-      });
-
-      google.accounts.id.renderButton(document.getElementById("signUpDiv"), {
-        // type: "standard",
-        theme: "filled_black",
-        // size: "small",
-        text: "continue_with",
-        shape: "pill",
-      });
-
-      // google.accounts.id.prompt()
-    }
-  }, [handleGoogle]);
-
-  return (
-    <>
-      <nav style={{ padding: "2rem" }}>
-        <Link to="/">Go Back</Link>
-      </nav>
-      <header style={{ textAlign: "center" }}>
-        <h1>Register to continue</h1>
-      </header>
-      <main
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          flexDirection: "column",
-          alignItems: "center",
-        }}
-      >
-        {error && <p style={{ color: "red" }}>{error}</p>}
-        {loading ? (
-          <div>Loading....</div>
-        ) : (
-          <div id="signUpDiv" data-text="signup_with"></div>
-        )}
-      </main>
-      <footer></footer>
-    </>
-  );
-};
-
-export default Signup;
+export default Login;
