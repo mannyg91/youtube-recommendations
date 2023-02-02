@@ -31,12 +31,9 @@ h2 {
   margin-bottom:3%;
 }
 
-a:link {
-  color: lightgoldenrodyellow;
-}
-
-a:visited {
-  color: lightblue;
+a {
+  color: inherit;
+  text-decoration: inherit;
 }
 
 code {
