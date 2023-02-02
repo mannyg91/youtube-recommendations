@@ -175,26 +175,45 @@ code {
   font-size: 14px;
 }
 
-/*Styles for WatchVideo */
 
+/*Styles for WatchVideo */
 .player-container {
   /* background: rgba(0,0,0, 0.3); */
   background: black;
   /* border-radius: 25px; */
   width: 1920px;
-  margin-top: 80px;
   display: flex;
   justify-content: center;
+  /* border: 1px red solid; */
 }
 
 .player-details {
   background: rgba(0,0,0, 0.3);
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  /* border: 1px green solid; */
+  padding: 25px;
+  height: 300px;
+}
+
+.player-video-title {
+  /* border: 1px yellow solid; */
+  padding: 25px;
+  height: auto;
+  border-bottom: 1px rgb(39, 110, 40) solid;
+}
+
+.player-video-description {
+  color: lightgray;
+  line-height: 1.25;
+
 }
 
 
 .video-player {
-  width: 1204px;
-  height: 677px;
+  margin-top: 80px;
+  width: 960px;
+  height: 540px;
 }
 
 /*Styles for login*/

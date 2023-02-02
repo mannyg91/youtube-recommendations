@@ -7,7 +7,7 @@ import { getVideoDetails } from '../utils/getVideoDetails'
 //need to run new API fetch for video details
 const WatchVideo = () => {
   const { id } = useParams();
-  const [videoDetails, setVideoDetails] = React.useState({})
+  const [videoDetails, setVideoDetails] = React.useState(null)
 
   React.useEffect(() => {
     console.log("effect ran")
@@ -28,10 +28,14 @@ const WatchVideo = () => {
       <div className='video-player'>
         <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
   
-        {/* <div className='player-details'>
-              <div className='video-title'>{videoDetails.snippet.title}</div>
-              <div className='channel-title'>{videoDetails.snippet.description}</div>
-        </div> */}
+        <div className='player-details'>
+              <div className='player-video-title'><h2>{videoDetails?.snippet.title}</h2></div>
+              <div>{videoDetails?.snippet.publishedAt}</div>
+              <div>{videoDetails?.statistics.viewCount} Views {videoDetails?.statistics.likeCount} Likes</div>
+              <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
+              <div className='player-video-description'>{videoDetails?.snippet.description}</div>
+        </div>
+
       </div>
     </div>
   )
