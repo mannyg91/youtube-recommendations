@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
 import SideBar from './SideBar'
 
 import AppBar from '@mui/material/AppBar';
@@ -56,9 +57,11 @@ export default function Navbar() {
           >
             <WavesIcon id="burgerbtn" />
           </IconButton>
-          <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            WatchWise
-          </Typography>
+          {/* <Link to="/"> */}
+            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              WatchWise
+            </Typography>
+          {/* </Link> */}
           <div className="dayNightTog">
             <Toggle />
           </div>

@@ -19,7 +19,7 @@ body {
   background: 
     radial-gradient(circle at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
   display:flex;
-  }
+}
 
 h1 {
   font-size:25pt;
@@ -65,19 +65,20 @@ code {
 
 #menuclosearrow {
   color:aliceblue;
-  font-size:5.5vh;
+  font-size:4vh;
 }
 
 /* styles for the logo bar*/
 #logo {
   color: rgba(49,159,193,1);
   text-align: left;
-  font-size: 5vh;
+  font-size: 4vh;
   /* original font choice */
   /* font-family: 'Pacifico', cursive; */ 
   font-family: 'Arizonia', cursive;
   font-weight: bold;
   text-shadow: 2px 1px aliceblue;
+  padding: 0px 5px;
 }
 
 
@@ -87,15 +88,17 @@ code {
   top: 0px;
   position: sticky;
   height: 8vh;
-  width: 98%;
+  padding: 0px 25px;
+  width: 99%;
 }
 
 #burgerbtn {
-  font-size:5vh;
+  font-size:4vh;
 }
 
 #acctbtn {
-  font-size: 5vh;
+  font-size: 4vh;
+  padding-right: 30px;
 }
 
 /*styles for the search */
@@ -173,20 +176,32 @@ code {
 }
 
 /*Styles for WatchVideo */
-.video-player {
-  border: 5px red solid;
-  height: 700px;
-  background: rgba(0,0,0, 0.3);
-  border-radius: 25px;
-  padding: 0px;
 
+.player-container {
+  /* background: rgba(0,0,0, 0.3); */
+  background: black;
+  /* border-radius: 25px; */
+  width: 1920px;
+  margin-top: 80px;
+  display: flex;
+  justify-content: center;
+}
+
+.player-details {
+  background: rgba(0,0,0, 0.3);
+}
+
+
+.video-player {
+  width: 1204px;
+  height: 677px;
 }
 
 /*Styles for login*/
 .loginPage {
   margin-top:30%;
   margin-left:10%;
-  width:max-content;
+  width: max-content;
 }
 
 #login_form {

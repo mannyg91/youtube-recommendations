@@ -24,13 +24,15 @@ const WatchVideo = () => {
 
 
   return (
-    <div className='video-player'>
-      <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
-{/* 
-      <div className='video-details'>
-            <div className='video-title'>{videoDetails.snippet.title}</div>
-            <div className='channel-title'>{videoDetails.snippet.description}</div>
-      </div> */}
+    <div className='player-container'>
+      <div className='video-player'>
+        <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
+  
+        {/* <div className='player-details'>
+              <div className='video-title'>{videoDetails.snippet.title}</div>
+              <div className='channel-title'>{videoDetails.snippet.description}</div>
+        </div> */}
+      </div>
     </div>
   )
 }
