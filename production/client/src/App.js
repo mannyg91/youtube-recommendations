@@ -2,10 +2,7 @@ import React, { useEffect } from 'react'
 import { useState } from "react";
 import Link from 'react';
 
-import VideoFeed from './components/VideoFeed'
-import Navbar from './components/Navbar'
-import { Home, Landing, Login, Signup } from "./components";
-
+import { Home, Login, Signup, Navbar, WatchVideo } from "./components";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
@@ -42,6 +39,10 @@ const App = () => {
             path="/home"
             // element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
             element={<Home/>}
+          />
+          <Route
+            path='/video/:id' 
+            element={<WatchVideo />} 
           />
         </Routes>
  

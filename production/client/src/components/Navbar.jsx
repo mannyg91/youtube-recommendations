@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from "react-router-dom";
 import SideBar from './SideBar'
 
 import AppBar from '@mui/material/AppBar';
@@ -6,7 +7,7 @@ import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
-import WavesIcon from '@mui/icons-material/Waves';
+import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
@@ -15,15 +16,6 @@ import Toggle from './Toggle'
 
 
 const drawerWidth = 240;
-
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end"
-}));
 
 export default function Navbar() {
   // I suppose to will be used when we have actual login
@@ -51,29 +43,11 @@ export default function Navbar() {
     setOpen(false);
   };
 
-  const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-    ({ theme, open }) => ({
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-      }),
-      marginLeft: `-${drawerWidth}px`,
-      ...(open && {
-        transition: theme.transitions.create("margin", {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen
-        }),
-        marginLeft: 0
-      })
-    })
-  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="logobar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
-        <Toolbar id="MenuAppBar">
+      <AppBar>
+        <Toolbar id="logobar" sx={{background: '#000000'}} open={open}>
           <IconButton
             size="large"
             edge="start"
@@ -81,11 +55,15 @@ export default function Navbar() {
             aria-label="menu"
             onClick={handleDrawerOpen}
           >
-            <WavesIcon id="burgerbtn" />
+            <MenuIcon id="burgerbtn" />
           </IconButton>
-          <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            WatchWise
-          </Typography>
+          
+            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Link to="/">
+                WatchWise
+              </Link>
+            </Typography>
+          
           <div className="dayNightTog">
             <Toggle />
           </div>
