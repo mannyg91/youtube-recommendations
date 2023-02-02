@@ -87,6 +87,7 @@ code {
   top: 0px;
   position: sticky;
   height: 8vh;
+  width: 98%;
 }
 
 #burgerbtn {
@@ -116,7 +117,6 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 36px;
 }
 
 .topic-dropdown > select {
@@ -131,10 +131,7 @@ code {
   text-align: center;
   row-gap: 25px;
   column-gap: 0px;
-  margin: 0px 0px;
 }
-
-
 
 .video-card {
   background: rgba(0,0,0, 0.3);
@@ -177,10 +174,13 @@ code {
 
 /*Styles for WatchVideo */
 .video-player {
-  display: flex;
+  border: 5px red solid;
+  height: 700px;
+  background: rgba(0,0,0, 0.3);
+  border-radius: 25px;
+  padding: 0px;
 
 }
-
 
 /*Styles for login*/
 .loginPage {
@@ -189,11 +189,11 @@ code {
   width:max-content;
 }
 
-/* #login_form {
+#login_form {
   margin-left: 50%;
   margin-right: 50%;
   margin-top: 20%;
-} */
+}
 
 #loginDiv {
   width:max-content;
@@ -267,33 +267,25 @@ code {
   
   /*Styles for the logobar*/
   #logo {
-    margin: 0;
-    margin-top:-1vh;
     font-size:4vh;
   }
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
     background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
-    top: 0px;
-    position: fixed;
     height: 8vh;
     z-index: 1;
   }
   
   #burgerbtn {
-    margin-top: -1vh;
     font-size: 4vh;
   }
 
   .dayNightTog {
-    margin-top:-3.5vh;
   }
   
   #acctbtn {
-    margin-top: -1vh;
     font-size: 4vh;
-    margin-right:-75%;
   }
 
 }

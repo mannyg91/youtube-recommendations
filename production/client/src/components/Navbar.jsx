@@ -16,15 +16,6 @@ import Toggle from './Toggle'
 
 const drawerWidth = 240;
 
-const DrawerHeader = styled("div")(({ theme }) => ({
-  display: "flex",
-  alignItems: "center",
-  padding: theme.spacing(0, 1),
-  // necessary for content to be below app bar
-  ...theme.mixins.toolbar,
-  justifyContent: "flex-end"
-}));
-
 export default function Navbar() {
   // I suppose to will be used when we have actual login
   const [auth, setAuth] = React.useState(true);
@@ -51,29 +42,11 @@ export default function Navbar() {
     setOpen(false);
   };
 
-  const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
-    ({ theme, open }) => ({
-      flexGrow: 1,
-      padding: theme.spacing(3),
-      transition: theme.transitions.create("margin", {
-        easing: theme.transitions.easing.sharp,
-        duration: theme.transitions.duration.leavingScreen
-      }),
-      marginLeft: `-${drawerWidth}px`,
-      ...(open && {
-        transition: theme.transitions.create("margin", {
-          easing: theme.transitions.easing.easeOut,
-          duration: theme.transitions.duration.enteringScreen
-        }),
-        marginLeft: 0
-      })
-    })
-  );
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar id="logobar" position="static" sx={{background: '#000000', padding: '5px', marginBottom: '15px'}} open={open}>
-        <Toolbar id="MenuAppBar">
+      <AppBar>
+        <Toolbar id="logobar" sx={{background: '#000000'}} open={open}>
           <IconButton
             size="large"
             edge="start"
