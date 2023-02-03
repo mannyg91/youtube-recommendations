@@ -5,6 +5,28 @@ import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 
 export const Login = () => {
+
+    const [email, setEmail] = React.useState('')
+    const [password, setPassword] = React.useState('')
+
+    async function loginUser(event) {
+        event.preventDefault() //prevents refresh to localhost
+
+        const response = await fetch(`http://localhost:5000/api/user/login`, {
+            //directions
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', //sends as JSON
+            },
+            //payload
+            body: JSON.stringify({
+                // username,
+                // email,
+                // password,
+            }),
+        })
+    }
+
     return (
             <div id="loginDiv">
                 <h1>Welcome back!</h1>
@@ -18,33 +40,33 @@ export const Login = () => {
                     noValidate
                     autoComplete="off"
                 >
-                    <div>
-                        <TextField
-                            required
-                            className="loginText"
-                            id="username"
-                            label="Username"
-                            helperText="Please enter your username"
-                            type="text"
-                        /><br/>
-                        <TextField
-                            required
-                            className="loginText"
-                            id="password"
-                            label="Password"
-                            helperText="Please enter your password"
-                            type="password"
-                        />
-                    </div>
-                </Box>
-                <Button
-                    id="loginbutton"
-                    variant="outlined"
-                    onClick={()=>{
-                        console.log("Button clicked, congratulations.");
-                    }}>
-                        Submit
+           
+                    <TextField
+                        required
+                        id="username"
+                        label="Username"
+                        helperText="Please enter your username"
+                        type="text"
+                    /><br/>
+                    <TextField
+                        required
+                        id="password"
+                        label="Password"
+                        helperText="Please enter your password"
+                        type="password"
+                    />
+                    <Button
+                        type="submit"
+                        id="loginbutton"
+                        variant="outlined"
+                        onClick={()=>{
+                            console.log("Button clicked, congratulations.");
+                        }}>
+                         Submit
                     </Button>
+     
+                </Box>
+
                 <p>
                     Psst... don't have an account yet?<br/>
                     Sign up <Link to="../Signup">here!</Link>
