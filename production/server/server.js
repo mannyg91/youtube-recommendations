@@ -12,14 +12,31 @@ const app = express()
 app.use(cors())
 app.use(express.json())
 
-//mongodb URL here
-// mongoose.connect(process.env.DATABASE_URI)
+
+const connectDB = async () => {
+  try {
+    //mongodb uri here
+    await mongoose.connect(process.env.DATABASE_URI, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true
+    });
+  } catch (err) {
+    console.error(err);
+  }
+}
+
+connectDB();
+
+
 
 app.use('/api/blockedChannels', require('./routes/blockedChannelRoutes'))
 app.use('/api/user', require('./routes/userRoutes'))
 
 
+mongoose.connection.once('open', () => {
+  console.log('Connected to MongoDB')
 
-app.listen(port, () => {
-  console.log(`server started on port ${port}`)
+  app.listen(port, () => {
+    console.log(`server started on port ${port}`)
+  })
 })

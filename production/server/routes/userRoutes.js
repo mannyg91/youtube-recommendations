@@ -30,6 +30,27 @@ router.post('/register/', async (req, res) => {
 })
 
 
+router.post('/login/', async (req, res) => {
+    const user = await User.findOne({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
+
+    if (user) {
+      return res.json({ status: 'ok', user: true})
+    } else {
+      return res.json({ status: 'error', user: false})
+    }
+
+})
+
+
+
+
+
+
+
 
 router.put('/:username', async (req, res) => {
   res.status(200).json({
