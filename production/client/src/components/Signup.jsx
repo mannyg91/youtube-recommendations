@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 
 export const Login = () => {
 
-    const [name, setName] = React.useState('')
+    const [username, setUsername] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
@@ -23,7 +23,7 @@ export const Login = () => {
             },
             //payload
             body: JSON.stringify({
-                name,
+                username,
                 email,
                 password,
             }),
@@ -55,7 +55,7 @@ export const Login = () => {
                         label="Username"
                         helperText="Enter a username"
                         type="text"
-                        onChange={(e) => setName(e.target.value)}
+                        onChange={(e) => setUsername(e.target.value)}
                     />
                     <TextField
                         required

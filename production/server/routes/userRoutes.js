@@ -1,5 +1,8 @@
 const express = require('express');
+const User = require('../models/user.model')
 const router = express.Router();
+
+
 
 
 router.get('/', async (req, res) => {
@@ -21,12 +24,9 @@ router.post('/register/', async (req, res) => {
     })
     res.send(user)
   } catch (err) {
+    console.log(err)
     res.json({ status: 'error', error: 'duplicate data'})
   }
-
-  res.status(200).json({
-    message: 'Registering user'
-  })
 })
 
 
