@@ -2,7 +2,7 @@ import React from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
 
-const ContentSlider = () => {
+const ContentSlider = (props) => {
 
   const marks = [
     {
@@ -17,14 +17,15 @@ const ContentSlider = () => {
 
   return (
     <Box sx={{ width: 200 }}>
-      <Slider sx={{color: 'aliceblue', zIndex: -1 }}
+      <Slider sx={{color: 'aliceblue', zIndex: 0 }}
         size="medium"
-        defaultValue={1}
+        defaultValue={props.sliderState}
         aria-label="Small"
         min={1}
         step={1}
         max={3}
         marks={marks}
+        onChange={props.handleSlider}
       />
     </Box>
 

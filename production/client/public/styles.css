@@ -261,15 +261,15 @@ code {
   border:1px aliceblue solid;
   padding:1% 9% 1% 9%;
   text-align:center;
-  background-image:radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
+  background: radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
 }
 
-#wrapper{
+/* #wrapper{
   height:100%;
   width:100%;
   position:absolute;
   justify-content: center;
-}
+} */
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
