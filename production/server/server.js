@@ -13,7 +13,7 @@ app.use(cors())
 app.use(express.json())
 
 //mongodb URL here
-mongoose.connect(process.env.DATABASE_URI)
+// mongoose.connect(process.env.DATABASE_URI)
 
 app.use('/api/blockedChannels', require('./routes/blockedChannelRoutes'))
 app.use('/api/user', require('./routes/userRoutes'))
