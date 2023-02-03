@@ -12,20 +12,29 @@ export const Login = () => {
     async function loginUser(event) {
         event.preventDefault() //prevents refresh to localhost
 
+        console.log("login user function in login.jsx")
         const response = await fetch(`http://localhost:5000/api/user/login`, {
-            //directions
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json', //sends as JSON
+                'Content-Type': 'application/json',
             },
             //payload
             body: JSON.stringify({
-                // username,
-                // email,
-                // password,
+               email,
+               password,
             }),
         })
-    }
+        const data = await response.json()
+
+		if (data.user) {
+			localStorage.setItem('token', data.user)
+			alert('You have been logged in')
+			// window.location.href = '/dashboard'
+		} else {
+			alert('Please check your credentials')
+		}
+	}
+
 
     return (
             <div id="loginDiv">
@@ -39,21 +48,22 @@ export const Login = () => {
                     }}
                     noValidate
                     autoComplete="off"
+                    onSubmit={loginUser}
                 >
            
                     <TextField
                         required
-                        id="username"
-                        label="Username"
-                        helperText="Please enter your username"
-                        type="text"
+                        label="Email"
+                        helperText="Please enter your email"
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
                     /><br/>
                     <TextField
                         required
-                        id="password"
                         label="Password"
                         helperText="Please enter your password"
                         type="password"
+                        onChange={(e) => setPassword(e.target.value)}
                     />
                     <Button
                         type="submit"

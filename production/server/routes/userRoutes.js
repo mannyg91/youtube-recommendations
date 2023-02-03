@@ -25,24 +25,51 @@ router.post('/register/', async (req, res) => {
     res.send(user)
   } catch (err) {
     console.log(err)
-    res.json({ status: 'error', error: 'duplicate data'})
+    res.json({ status: 'error', error: 'duplicate data' })
   }
 })
 
 
 router.post('/login/', async (req, res) => {
-    const user = await User.findOne({
-      username: req.body.username,
-      email: req.body.email,
-      password: req.body.password,
-    })
 
-    if (user) {
-      return res.json({ status: 'ok', user: true})
-    } else {
-      return res.json({ status: 'error', user: false})
-    }
+  console.log('login in express reached')
 
+  const user = await User.findOne({
+    email: req.body.email,
+    password: req.body.password,
+  })
+
+  // if (!user) {
+  //   return { status: 'error', error: 'Invalid login' }
+  // } else {
+  //   return { message: 'user found' }
+  // }
+
+  if (user) {
+    return res.json({status: 'ok', user: true})
+  } else {
+    return res.json({status: 'error', user: false})
+  }
+  
+  console.log("trying to log in")
+  // const isPasswordValid = await bcrypt.compare(
+  //   req.body.password,
+  //   user.password
+  // )
+
+  // if (isPasswordValid) {
+  //   const token = jwt.sign(
+  //     {
+  //       name: user.name,
+  //       email: user.email,
+  //     },
+  //     'secret123'
+  //   )
+
+  //   return res.json({ status: 'ok', user: token })
+  // } else {
+  //   return res.json({ status: 'error', user: false })
+  // }
 })
 
 
@@ -67,4 +94,4 @@ router.delete('/:username', async (req, res) => {
 })
 
 
-module.exports =  router
+module.exports = router
