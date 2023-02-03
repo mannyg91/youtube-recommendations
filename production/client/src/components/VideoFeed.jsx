@@ -40,20 +40,16 @@ const VideoFeed = () => {
   return (
     <>
       <div className='controls'>
-
         <div className='top-section'>
-
           <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
-
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
-            <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase}>Spin</button>
+            <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={getRandomPhrase}>New search!</button>
           </div>
-
-
+          <ContentSlider />
         </div>
 
-        <ContentSlider />
+        
       </div>
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
