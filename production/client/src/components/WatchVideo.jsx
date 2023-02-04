@@ -24,11 +24,11 @@ const WatchVideo = () => {
 
 
   return (
-    <div className='player-container'>
-      <div className='video-player'>
+    <div className='watch_player-container'>
+      <div className='watch_video-player'>
         <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
   
-        <div className='player-details'>
+        <div className='watch_player-details'>
               <div className='player-video-title'><h2>{videoDetails?.snippet.title}</h2></div>
               <div>{videoDetails?.snippet.publishedAt}</div>
               <div>{videoDetails?.statistics.viewCount} Views {videoDetails?.statistics.likeCount} Likes</div>
