@@ -15,7 +15,7 @@ export const Login = () => {
         console.log("user registering")
         event.preventDefault() //prevents refresh to localhost
         //something like this
-        const response = await fetch(`http://localhost:5000/api/user/register`, {
+        const response = await fetch(`http://localhost:5000/api/user/signup`, {
             //directions
             method: 'POST',
             headers: {
