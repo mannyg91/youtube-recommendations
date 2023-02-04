@@ -6,9 +6,13 @@ import { Link } from 'react-router-dom';
 
 export const Login = () => {
 
+    //what the user enters
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
+
+
+    //sends login data
     async function loginUser(event) {
         event.preventDefault() //prevents refresh to localhost
 
@@ -26,7 +30,9 @@ export const Login = () => {
         })
         const data = await response.json()
 
+        //confirms user exists
 		if (data.user) {
+            console.log(data.user)
 			localStorage.setItem('token', data.user)
 			alert('You have been logged in')
             window.location.href = '/'
@@ -34,6 +40,8 @@ export const Login = () => {
 			alert('Please check your credentials')
 		}
 	}
+
+
 
 
     return (
@@ -48,7 +56,7 @@ export const Login = () => {
                     }}
                     noValidate
                     autoComplete="off"
-                    onSubmit={loginUser}
+                    onSubmit={loginUser} //login called here
                 >
            
                     <TextField

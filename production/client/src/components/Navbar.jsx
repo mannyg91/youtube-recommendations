@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import SideBar from './SideBar'
+
+import { Login, Signup, SideBar, Toggle } from "../components";
+import { LoginContext } from '../hooks/LoginContext';
+
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,8 +15,6 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { styled } from "@mui/material/styles";
-import Toggle from './Toggle'
-
 
 const drawerWidth = 240;
 
@@ -22,6 +23,11 @@ export default function Navbar() {
   const [auth, setAuth] = React.useState(true);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+
+  const { isLoggedIn, user } = React.useContext(LoginContext);
+
+
+  //need function here to display name, will check token, display name
 
 
   // Pass User
@@ -84,6 +90,12 @@ export default function Navbar() {
               onClick={handleMenu}
               color="inherit"
             >
+
+
+            {isLoggedIn ?
+            <p>YOU ARE LOGGED IN</p>
+           : <p>you are not logged in</p>}
+
               <AccountCircle id="acctbtn"/>
             </IconButton>
             <Menu
@@ -105,6 +117,10 @@ export default function Navbar() {
               <MenuItem onClick={handleLogin}>{auth ? 'Logout' : 'Login'}</MenuItem>
             </Menu>
           </div>
+
+    
+
+
         </Toolbar>
       </AppBar>
     

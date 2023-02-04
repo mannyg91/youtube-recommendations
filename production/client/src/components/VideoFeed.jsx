@@ -12,7 +12,10 @@ const VideoFeed = () => {
   const [videos, setVideos] = React.useState(null);
   const [randomPhrase, setRandomPhrase] = React.useState("history");
   const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");//music topic
-  const [sliderState, setSliderState] = React.useState(2);
+  const [sliderState, setSliderState] = React.useState(1);
+
+
+  //need functions here for user to saved videos, will check they are authorized, POST request to db
 
 
   React.useEffect(() => {
@@ -26,29 +29,24 @@ const VideoFeed = () => {
       }
       }, [randomPhrase, selectedTopic]);
 
-
   
   function getRandomPhrase() {
     setRandomPhrase(randomWords({min: 1, max: 1, join: ' ' }));
   }
 
   function handleSpin() {
+    console.log(sliderState)
     if (sliderState === 1 ) {
       getRandomPhrase()
     } else if (sliderState === 3) {
-
+      //specific topic function here
     }
-
-    console.log("spinned")
   }
-
 
   const handleSlider = (event, newValue) => {
     console.log("slider moved")
-    console.log(event)
-    console.log(newValue)
+    setSliderState(newValue)
   }
-
 
   let videoElements = videos?.map((video, index) =>
   //can put own logic here (filter out certain types of videos, etc.)
@@ -66,7 +64,6 @@ const VideoFeed = () => {
             <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={handleSpin}>Spin</button>
 
           </div>
-          <ContentSlider />
         </div>
 
         <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
