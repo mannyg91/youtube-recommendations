@@ -58,17 +58,15 @@ const VideoFeed = () => {
   return (
     <>
       <div className='controls'>
-
         <div className='top-section'>
-
           <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
-
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
+            
             <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={handleSpin}>Spin</button>
+
           </div>
-
-
+          <ContentSlider />
         </div>
 
         <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
