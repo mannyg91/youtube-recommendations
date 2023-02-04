@@ -17,7 +17,22 @@ const ContentSlider = (props) => {
 
   return (
     <Box sx={{ width: 200 }}>
-      <Slider sx={{color: 'aliceblue', zIndex: 0 }}
+      <Slider sx={{
+        color: 'aliceblue', 
+        zIndex: 0,
+        "& .MuiSlider-thumb": {
+          backgroundColor: "#fff"
+        },
+        "& .MuiSlider-rail": {
+          backgroundColor: "aliceblue"
+        },
+        "& .MuiSlider-mark": {
+          height: 0
+        },
+        "& .MuiSlider-markLabel": {
+          color: "aliceblue"
+        }
+       }}
         size="medium"
         defaultValue={props.sliderState}
         aria-label="Small"
