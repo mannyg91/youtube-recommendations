@@ -1,7 +1,7 @@
 const express = require('express');
-const User = require('../models/user.model')
+const User = require('../models/user.model');
 const router = express.Router();
-
+const jwt = require('jsonwebtoken');
 
 
 
@@ -30,6 +30,11 @@ router.post('/register/', async (req, res) => {
 })
 
 
+
+
+
+
+
 router.post('/login/', async (req, res) => {
 
   console.log('login in express reached')
@@ -39,14 +44,23 @@ router.post('/login/', async (req, res) => {
     password: req.body.password,
   })
 
+
+  if (user) {
+    const token = jwt.sign(
+      {
+        username: user.username,
+        email: user.email,
+      }, 'gLcAdi3ubu3awruQ9th'
+    )
+
+
   // if (!user) {
   //   return { status: 'error', error: 'Invalid login' }
   // } else {
   //   return { message: 'user found' }
   // }
 
-  if (user) {
-    return res.json({status: 'ok', user: true})
+    return res.json({status: 'ok', user: token})
   } else {
     return res.json({status: 'error', user: false})
   }

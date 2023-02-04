@@ -29,7 +29,7 @@ export const Login = () => {
 		if (data.user) {
 			localStorage.setItem('token', data.user)
 			alert('You have been logged in')
-			// window.location.href = '/dashboard'
+            window.location.href = '/'
 		} else {
 			alert('Please check your credentials')
 		}

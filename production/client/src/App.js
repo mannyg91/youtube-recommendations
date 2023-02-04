@@ -2,28 +2,29 @@ import React, { useEffect } from 'react'
 import { useState } from "react";
 import Link from 'react';
 
-import { Home, Login, Signup, Navbar, WatchVideo } from "./components";
+import { Login, Signup, Navbar, VideoFeed, WatchVideo } from "./components";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 
 const App = () => {
-  const [user, setUser] = useState({})
+  // const [user, setUser] = useState({})
 
-  useEffect(() => {
-    const theUser = localStorage.getItem("user");
+  // useEffect(() => {
+  //   const theUser = localStorage.getItem("user");
 
-    if (theUser && !theUser.includes("undefined")) {
-      setUser(JSON.parse(theUser));
-    }
-  }, []);
+  //   if (theUser && !theUser.includes("undefined")) {
+  //     setUser(JSON.parse(theUser));
+  //   }
+  // }, []);
 
   return (
+    
     <BrowserRouter>
         <Navbar />
         <Routes>
           <Route
             path="/"
             // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
-            element={<Home/>}
+            element={<VideoFeed/>}
          />
           <Route
             path="/signup"
@@ -34,11 +35,6 @@ const App = () => {
             path="/login"
             // element={user?.email ? <Navigate to="/home" /> : <Login />}
             element={<Login/>}
-          />
-          <Route
-            path="/home"
-            // element={user?.email ? <Home user={user} /> : <Navigate to="/" />}
-            element={<Home/>}
           />
           <Route
             path='/video/:id' 
