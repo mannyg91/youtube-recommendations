@@ -20,11 +20,11 @@ const drawerWidth = 240;
 
 export default function Navbar() {
   // I suppose to will be used when we have actual login
-  const [auth, setAuth] = React.useState(true);
+  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
-  const { isLoggedIn, user } = React.useContext(LoginContext);
+  const { user, isLoggedIn, setIsLoggedIn } = React.useContext(LoginContext);
 
 
   //need function here to display name, will check token, display name
@@ -37,9 +37,9 @@ export default function Navbar() {
   // };
 
 
-  const handleLogin = (event) => {
-    setAuth(auth ? false : true);
-  };
+  // function handleLogin() {
+  //   setIsLoggedIn(!isLoggedIn)
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -92,9 +92,9 @@ export default function Navbar() {
             >
 
 
-            {isLoggedIn ?
+            {/* {isLoggedIn ?
             <p>YOU ARE LOGGED IN</p>
-           : <p>you are not logged in</p>}
+           : <p>you are not logged in</p>} */}
 
               <AccountCircle id="acctbtn"/>
             </IconButton>
@@ -114,7 +114,12 @@ export default function Navbar() {
               onClose={handleClose}
             >
               {auth && (<MenuItem onClick={handleClose}>Profile</MenuItem>)}
-              <MenuItem onClick={handleLogin}>{auth ? 'Logout' : 'Login'}</MenuItem>
+              <MenuItem>
+              { console.log(isLoggedIn)}
+                {
+                  isLoggedIn ? 'Logout' : <Link to="/login">Login</Link>
+                }
+              </MenuItem>
             </Menu>
           </div>
 

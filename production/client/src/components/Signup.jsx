@@ -1,5 +1,6 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
+import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
@@ -34,58 +35,57 @@ export const Login = () => {
     }
 
     return (
-            <div id="signupDiv">
-                <h1>Welcome to WatchWise!</h1>
-                <h2>We're glad to have you.</h2>
+
+        <div className='account-container'>
+            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Link to="/">
+                WatchWise
+                </Link>
+            </Typography>
+
+            <div id="accountDiv">
+            <h1>Welcome!</h1>
+                <h2>Create a new account</h2>
                 <Box
-                    id="signup_form"
+                    className="account-fields"
                     component="form"
                     sx={{
-                        '& .MuiTextField-root': { m: 1, width: '25ch' },
+                        '& .MuiTextField-root': { m: 1 },
                     }}
                     noValidate
                     autoComplete="off"
                     onSubmit={registerUser}
                 >
-
                     <TextField
+                        sx={{ display: 'block' }}
                         required
-                        className="signupText"
-                        id="newusername"
                         label="Username"
-                        helperText="Enter a username"
+
                         type="text"
                         onChange={(e) => setUsername(e.target.value)}
                     />
                     <TextField
+                        sx={{ display: 'block' }}
                         required
-                        className="signupText"
-                        id="email"
                         label="Email"
-                        helperText="Enter your email address"
+
                         type="email"
                         onChange={(e) => setEmail(e.target.value)}
-                    /><br/>
+                    />
                     <TextField
+                        sx={{ display: 'block' }}
                         required
-                        className="signupText"
-                        id="newpassword"
                         label="Password"
-                        helperText="Enter Password"
                         type="password"
                         onChange={(e) => setPassword(e.target.value)}
                     />
-                    {/* <TextField
-                        required
-                        className="signupText"
-                        id="verifypassword"
-                        label="Verify Password"
-                        helperText="Confirm Password"
-                        type="password"
-                    /> */}
                     <Button
+                                    sx={{ 
+                                        display: 'block',
+                                        background: '#F0F8FF',
+                                        m: '25px 0px 30px',
+                                     }}
                         type="submit"
-                        id="loginbutton"
                         variant="outlined"
                         onClick={()=>{
                             console.log("Button clicked, congratulations.");
@@ -96,9 +96,14 @@ export const Login = () => {
                 </Box>
 
                 <p>
-                    Psst... Already a member? Log in <Link to="../Login">here!</Link>
+                    Psst... Already a member? Log in&nbsp;
+                    <span style={{fontWeight: 500, textDecoration: 'underline'}}>
+                        <Link to="../login">here!</Link>
+                    </span>
                 </p>
+                </div>
             </div>
+
     )
 }
 

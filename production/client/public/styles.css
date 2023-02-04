@@ -16,9 +16,9 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color :aliceblue;
   /* background: rgb(24,24,24); */
-  background: 
-    radial-gradient(circle at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-  display:flex;
+  background: radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
 }
 
 h1 {
@@ -213,28 +213,40 @@ code {
   height: 540px;
 }
 
-/*Styles for login*/
-.loginPage {
-  margin-top:30%;
-  margin-left:10%;
-  width: max-content;
-}
 
-#login_form {
+
+/*Styles for login and sign-up*/
+.account-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  height: 35%;
+  margin-top: 10%;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+
 }
 
-#loginDiv {
-  width:max-content;
-  margin-left:40%;
-  margin-right:50%;
-  margin-top: 20vh;
-  border:1px aliceblue solid;
-  padding: 40px 80px;
-  text-align:center;
-  background-image:radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
+#accountDiv {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 350px;
+  padding: 50px;
+  background: rgba(0,0,0, 0.25);
+  border-radius: 35px;
 }
+
+.account-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 
 .MuiTextField-root > .MuiFormLabel-root.Mui-focused{
   color:rgb(3, 84, 189);
@@ -248,27 +260,8 @@ code {
   color:rgb(219, 225, 231);
 }
 
-#loginbutton{
-  background-color:rgba(240,248,255,1);
-  margin-bottom:10%;
-}
 
-#signupDiv {
-  width:max-content;
-  margin-left:33vw;
-  margin-top: 20vh;
-  border:1px aliceblue solid;
-  padding:1% 9% 1% 9%;
-  text-align:center;
-  background: radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
-}
 
-/* #wrapper{
-  height:100%;
-  width:100%;
-  position:absolute;
-  justify-content: center;
-} */
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
@@ -276,20 +269,6 @@ code {
 @media screen and (min-width:700px){
   
   /*Styles for the main body*/
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color :aliceblue;
-    /* background: rgb(24,24,24); */
-    background: 
-    radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-  }
-
   .video-feed {
     margin: 25px 10%;
     column-gap: 48px;

@@ -1,8 +1,8 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { LoginContextProvider } from './hooks/LoginContext';
 
 import { Login, Signup, Navbar, VideoFeed, WatchVideo } from "./components";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
   // const [user, setUser] = useState({})
@@ -18,12 +18,11 @@ const App = () => {
   return (
     <LoginContextProvider>
       <BrowserRouter>
-          <Navbar />
           <Routes>
             <Route
               path="/"
               // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
-              element={<VideoFeed/>}
+              element={<><Navbar /><VideoFeed/></>}
           />
             <Route
               path="/signup"
@@ -37,7 +36,7 @@ const App = () => {
             />
             <Route
               path='/video/:id' 
-              element={<WatchVideo />} 
+              element={<><Navbar /><WatchVideo /></>} 
             />
           </Routes>
   
