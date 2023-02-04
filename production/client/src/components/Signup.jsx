@@ -2,14 +2,38 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import Navbar from './Navbar';
-import Toggle from './Toggle';
 import { Link } from 'react-router-dom';
 
 export const Login = () => {
+
+    const [username, setUsername] = React.useState('')
+    const [email, setEmail] = React.useState('')
+    const [password, setPassword] = React.useState('')
+
+
+    async function registerUser(event) {
+        console.log("user registering")
+        event.preventDefault() //prevents refresh to localhost
+        //something like this
+        const response = await fetch(`http://localhost:5000/api/user/register`, {
+            //directions
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json', //sends as JSON
+            },
+            //payload
+            body: JSON.stringify({
+                username,
+                email,
+                password,
+            }),
+        })
+
+        const data = await response.json()
+        console.log(data)
+    }
+
     return (
-        <div id="wrapper">
-            <Navbar />
             <div id="signupDiv">
                 <h1>Welcome to WatchWise!</h1>
                 <h2>We're glad to have you.</h2>
@@ -21,55 +45,60 @@ export const Login = () => {
                     }}
                     noValidate
                     autoComplete="off"
+                    onSubmit={registerUser}
                 >
-                    <div>
-                        <TextField
-                            required
-                            className="signupText"
-                            id="newusername"
-                            label="Username"
-                            helperText="Enter a username"
-                            type="text"
-                        />
-                        <TextField
-                            required
-                            className="signupText"
-                            id="email"
-                            label="Email"
-                            helperText="Enter your email address"
-                            type="email"
-                        /><br/>
-                        <TextField
-                            required
-                            className="signupText"
-                            id="newpassword"
-                            label="Password"
-                            helperText="Enter a password"
-                            type="password"
-                        />
-                        <TextField
-                            required
-                            className="signupText"
-                            id="verifypassword"
-                            label="Verify Password"
-                            helperText="Enter the same password"
-                            type="password"
-                        />
-                    </div>
-                </Box>
-                <Button
-                    id="loginbutton"
-                    variant="outlined"
-                    onClick={()=>{
-                        console.log("Button clicked, congratulations.");
-                    }}>
-                        Sign me up!
+
+                    <TextField
+                        required
+                        className="signupText"
+                        id="newusername"
+                        label="Username"
+                        helperText="Enter a username"
+                        type="text"
+                        onChange={(e) => setUsername(e.target.value)}
+                    />
+                    <TextField
+                        required
+                        className="signupText"
+                        id="email"
+                        label="Email"
+                        helperText="Enter your email address"
+                        type="email"
+                        onChange={(e) => setEmail(e.target.value)}
+                    /><br/>
+                    <TextField
+                        required
+                        className="signupText"
+                        id="newpassword"
+                        label="Password"
+                        helperText="Enter Password"
+                        type="password"
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+                    {/* <TextField
+                        required
+                        className="signupText"
+                        id="verifypassword"
+                        label="Verify Password"
+                        helperText="Confirm Password"
+                        type="password"
+                    /> */}
+                    <Button
+                        type="submit"
+                        id="loginbutton"
+                        variant="outlined"
+                        onClick={()=>{
+                            console.log("Button clicked, congratulations.");
+                        }}>
+                            Sign me up!
                     </Button>
+                
+                </Box>
+
                 <p>
                     Psst... Already a member? Log in <Link to="../Login">here!</Link>
                 </p>
             </div>
-        </div>
     )
 }
 

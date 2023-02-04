@@ -23,6 +23,14 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
+
+  // Pass User
+  // const logout = () => {
+  //   localStorage.removeItem("user");
+  //   window.location.reload();
+  // };
+
+
   const handleLogin = (event) => {
     setAuth(auth ? false : true);
   };
