@@ -20,6 +20,15 @@ body {
   display:flex;
 }
 
+.wrapper{
+  /*This will keep everything where it belongs,*/
+  /* even if not everything renders correctly*/
+  height:100%;
+  width:100%;
+  position:absolute;
+  justify-content: center;
+}
+
 h1 {
   font-size:25pt;
   margin-bottom:5%;
@@ -107,9 +116,9 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 120px;
+  margin-top: 10vh;
   align-items: center;
-  gap: 36px;
+  gap: 8vw;
 }
 
 .random-search {
@@ -284,13 +293,6 @@ code {
   text-align:center;
   background: radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
 }
-
-/* #wrapper{
-  height:100%;
-  width:100%;
-  position:absolute;
-  justify-content: center;
-} */
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
