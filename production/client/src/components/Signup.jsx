@@ -84,7 +84,9 @@ export const Login = () => {
                                         display: 'block',
                                         background: '#F0F8FF',
                                         m: '25px 0px 30px',
+                                        width: '130px'
                                      }}
+                        id="submit-btn"
                         type="submit"
                         variant="outlined"
                         onClick={()=>{
@@ -97,7 +99,7 @@ export const Login = () => {
 
                 <p>
                     Psst... Already a member? Log in&nbsp;
-                    <span style={{fontWeight: 500, textDecoration: 'underline'}}>
+                    <span style={{color: '#67ffd9'}}>
                         <Link to="../login">here!</Link>
                     </span>
                 </p>

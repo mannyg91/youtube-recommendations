@@ -54,7 +54,7 @@ const VideoFeed = () => {
   );
 
   return (
-    <>
+    <div className='wrapper'>
       <div className='controls'>
         <div className='top-section'>
           <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
@@ -64,16 +64,16 @@ const VideoFeed = () => {
             <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={handleSpin}>Spin</button>
 
           </div>
+          <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
         </div>
 
-        <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
+        
       </div>
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
           {videoElements}
       </div>
-
-    </>
+    </div>
   )
 }
 

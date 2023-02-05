@@ -21,6 +21,16 @@ body {
   background-attachment:fixed;
 }
 
+.wrapper{
+  /*This will keep everything where it belongs,*/
+  /* even if not everything renders correctly*/
+  height:100%;
+  width:100%;
+  position:absolute;
+  justify-content: center;
+}
+
+
 h1 {
   font-size:25pt;
   margin-bottom:5%;
@@ -108,9 +118,9 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 120px;
+  margin-top: 10vh;
   align-items: center;
-  gap: 36px;
+  gap: 8vw;
 }
 
 .random-search {
@@ -175,20 +185,17 @@ code {
 
 /*Styles for WatchVideo */
 .player-container {
-  /* background: rgba(0,0,0, 0.3); */
   background: black;
-  /* border-radius: 25px; */
-  width: 1920px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  /* border: 1px red solid; */
 }
 
 .player-details {
   background: rgba(0,0,0, 0.3);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
-  /* border: 1px green solid; */
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
   padding: 25px;
   height: 300px;
 }
@@ -197,7 +204,7 @@ code {
   /* border: 1px yellow solid; */
   padding: 25px;
   height: auto;
-  border-bottom: 1px rgb(39, 110, 40) solid;
+  border-bottom: 1px rgba(49,159,193,1) solid;
 }
 
 .player-video-description {
@@ -208,9 +215,9 @@ code {
 
 
 .video-player {
-  margin-top: 80px;
-  width: 960px;
-  height: 540px;
+  margin-top: 8vh;
+  width: 54vw;    /*     This creates a   */
+  height: 30vw;   /*  flexible 16:9 ratio */
 }
 
 
@@ -258,6 +265,11 @@ code {
 
 .MuiTextField-root p{
   color:rgb(219, 225, 231);
+}
+
+#submit-btn {
+  background-color:rgba(240,248,255,1);
+  margin-bottom:10%;
 }
 
 
