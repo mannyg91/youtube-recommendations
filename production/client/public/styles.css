@@ -89,7 +89,7 @@ code {
 
 #logobar {
   /* background-color:rgb(14, 16, 14); */
-  background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
+  background-image:linear-gradient(rgb(35, 35, 35),rgb(0,0,0));
   top: 0px;
   position: sticky;
   height: 8vh;
@@ -291,8 +291,22 @@ code {
 }
 
 
+/* these will need to be simplified and targeted via user-defined classes */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:invalid {
+  color: aliceblue;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue !important;
+}
+
+
 .MuiTextField-root > .MuiFormLabel-root.Mui-focused{
-  color:rgb(3, 84, 189);
+  color:aliceblue; 
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue;
 }
 
 .MuiTextField-root label{
@@ -302,6 +316,8 @@ code {
 .MuiTextField-root p{
   color:rgb(219, 225, 231);
 }
+
+
 
 #submit-btn {
   background-color:rgba(240,248,255,1);
@@ -329,7 +345,6 @@ code {
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
-    background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
     height: 8vh;
     z-index: 1;
   }

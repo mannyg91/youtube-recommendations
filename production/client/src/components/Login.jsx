@@ -4,20 +4,27 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
+import { LoginContext } from '../hooks/LoginContext';
+import { useNavigate } from 'react-router-dom';
+
 
 export const Login = () => {
 
+
+    const navigate = useNavigate();
     //what the user enters
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
 
 
+    const { handleLogin, user, isLoggedIn, setIsLoggedIn } = React.useContext(LoginContext);
 
     //sends login data
     async function loginUser(event) {
         event.preventDefault() //prevents refresh to localhost
 
         console.log("login user function in login.jsx")
+
         const response = await fetch(`http://localhost:5000/api/user/login`, {
             method: 'POST',
             headers: {
@@ -35,8 +42,10 @@ export const Login = () => {
 		if (data.user) {
             console.log(data.user)
 			localStorage.setItem('token', data.user)
+            handleLogin()
 			alert('You have been logged in')
-            window.location.href = '/'
+
+            navigate('/');
 		} else {
 			alert('Please check your credentials')
 		}
@@ -65,14 +74,14 @@ export const Login = () => {
                     >
             
                         <TextField
-                            sx={{ display: 'block' }}
+                            className="account-textfield"
                             required
                             label="Email"
                             type="email"
                             onChange={(e) => setEmail(e.target.value)}
                         />
                         <TextField
-                            sx={{ display: 'block' }}
+                            className="account-textfield"
                             required
                             label="Password"
                             type="password"
@@ -88,10 +97,7 @@ export const Login = () => {
                              }}
                             id="submit-btn"
                             type="submit"
-                            variant="outlined"
-                            onClick={()=>{
-                                console.log("Button clicked, congratulations.");
-                            }}>
+                            variant="outlined">
                             Sign In
                         </Button>
         

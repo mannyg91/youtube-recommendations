@@ -20,7 +20,7 @@ const VideoFeed = () => {
 
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase, selectedTopic);
@@ -65,8 +65,10 @@ const VideoFeed = () => {
             <Button
                             sx={{ 
                                 background: '#F0F8FF',
-                                m: '10px 0px 30px',
-                                width: '130px',
+                                m: '15px 0px 30px',
+                                width: '136px',
+                                fontSize: '14px',
+                                borderRadius: '8px'
                              }}
                             id="submit-btn"
                             type="submit"
