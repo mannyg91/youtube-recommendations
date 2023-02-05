@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import SideBar from './SideBar'
+
+import { Login, Signup, SideBar, Toggle } from "../components";
+import { LoginContext } from '../hooks/LoginContext';
+
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -12,16 +15,19 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import { styled } from "@mui/material/styles";
-import Toggle from './Toggle'
-
 
 const drawerWidth = 240;
 
 export default function Navbar() {
   // I suppose to will be used when we have actual login
-  const [auth, setAuth] = React.useState(true);
+  const [auth, setAuth] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
+
+  const { user, isLoggedIn, setIsLoggedIn } = React.useContext(LoginContext);
+
+
+  //need function here to display name, will check token, display name
 
 
   // Pass User
@@ -31,9 +37,9 @@ export default function Navbar() {
   // };
 
 
-  const handleLogin = (event) => {
-    setAuth(auth ? false : true);
-  };
+  // function handleLogin() {
+  //   setIsLoggedIn(!isLoggedIn)
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
@@ -84,6 +90,12 @@ export default function Navbar() {
               onClick={handleMenu}
               color="inherit"
             >
+
+
+            {/* {isLoggedIn ?
+            <p>YOU ARE LOGGED IN</p>
+           : <p>you are not logged in</p>} */}
+
               <AccountCircle id="acctbtn"/>
             </IconButton>
             <Menu
@@ -102,9 +114,18 @@ export default function Navbar() {
               onClose={handleClose}
             >
               {auth && (<MenuItem onClick={handleClose}>Profile</MenuItem>)}
-              <MenuItem onClick={handleLogin} component={Link} to={auth ? "/":"/login"}>{auth ? 'Logout' : 'Login'}</MenuItem>
+
+              <MenuItem>
+              { console.log(isLoggedIn)}
+                {
+                  isLoggedIn ? 'Logout' : <Link to="/login">Login</Link>
+                }
+              </MenuItem>
             </Menu>
           </div>
+
+    
+
         </Toolbar>
       </AppBar>
     
