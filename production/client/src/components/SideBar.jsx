@@ -1,6 +1,6 @@
 import React from 'react'
 import Toggle from './Toggle'
-
+import {Link} from 'react-router-dom';
 
 import IconButton from '@mui/material/IconButton';
 import { styled } from "@mui/material/styles";
@@ -14,11 +14,19 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
-
-
 const SideBar = ({ handleDrawerClose, open}) => {
 
   const drawerWidth = 240;
+  const [auth, setAuth] = React.useState(true);
+  
+  const handleLogin = (event) => {
+    setAuth(auth ? false : true);
+  };
+
+  /*TODO build actual logout functionality*/
+  const handleLogout = (event) => {
+    setAuth(auth ? false : true);
+  };
 
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
@@ -57,17 +65,59 @@ const SideBar = ({ handleDrawerClose, open}) => {
           <Toggle />
         </div> */}
         
-        {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
+        {["Home"].map((text, index) => (
           <ListItem className="drawerlist" key={text} disablePadding>
-            <ListItemButton>
+            <ListItemButton LinkComponent={Link} to="/">
               <ListItemIcon>
                 <ChevronRightIcon className="listitemicon" />
               </ListItemIcon>
               <ListItemText primary={text} />
               <Divider color="aliceblue" />
             </ListItemButton>
-          </ListItem>
+            <ListItemButton>
+              <listItemText primary="Logout"/>
+            </ListItemButton>
+          </ListItem> 
         ))}
+        {!auth && (
+          <ListItem className="drawerlist" key="Logout" disablePadding>
+            <ListItemButton component={Link} to="/login" onClick={handleLogin}>
+              <ListItemIcon>
+                <ChevronRightIcon className="listitemicon" />
+              </ListItemIcon>
+              <ListItemText primary="Login" />
+              <Divider color="aliceblue" />
+            </ListItemButton>
+          </ListItem>
+        )}
+          {auth && (
+            <List>
+              <ListItem className="drawerlist" key="User Settings" disablePadding>
+                <ListItemButton component={Link} to="/settings" onClick={handleLogout}>
+                  <ListItemIcon>
+                    <ChevronRightIcon className="listitemicon" />
+                  </ListItemIcon>
+                  <ListItemText primary="User Settings" />
+                  <Divider color="aliceblue" />
+                </ListItemButton>
+                <ListItemButton>
+                  <listItemText primary="Logout"/>
+                </ListItemButton>
+              </ListItem>
+              <ListItem className="drawerlist" key="Logout" disablePadding>
+                <ListItemButton component={Link} to="/" onClick={handleLogout}>
+                  <ListItemIcon>
+                    <ChevronRightIcon className="listitemicon" />
+                  </ListItemIcon>
+                  <ListItemText primary="Logout" />
+                  <Divider color="aliceblue" />
+                </ListItemButton>
+                <ListItemButton>
+                  <listItemText primary="Logout"/>
+                </ListItemButton>
+              </ListItem>
+            </List>
+        )}  
       </List>
     </Drawer>
   )

@@ -102,7 +102,7 @@ export default function Navbar() {
               onClose={handleClose}
             >
               {auth && (<MenuItem onClick={handleClose}>Profile</MenuItem>)}
-              <MenuItem onClick={handleLogin}>{auth ? 'Logout' : 'Login'}</MenuItem>
+              <MenuItem onClick={handleLogin} component={Link} to={auth ? "/":"/login"}>{auth ? 'Logout' : 'Login'}</MenuItem>
             </Menu>
           </div>
         </Toolbar>
