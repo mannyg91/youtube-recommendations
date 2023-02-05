@@ -146,7 +146,7 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  row-gap: 25px;
+  row-gap: 36px;
   column-gap: 0px;
 }
 
@@ -160,9 +160,18 @@ code {
 }
 
 .thumbnail {
-
+  position: relative;
   /* display: flex;
   justify-content: center; */
+}
+
+.favorite {
+  color: aliceblue;
+  font-size: 1.2rem;
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 260px;
 }
 
 

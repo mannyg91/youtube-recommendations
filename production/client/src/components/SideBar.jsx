@@ -57,7 +57,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
           <Toggle />
         </div> */}
         
-        {["Liked Keywords", "No-Go List", "User Settings", "Logout"].map((text, index) => (
+        {["Saved Videos", "No-Go List", "User Settings", "Logout"].map((text, index) => (
           <ListItem className="drawerlist" key={text} disablePadding>
             <ListItemButton>
               <ListItemIcon>

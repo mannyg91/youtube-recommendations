@@ -44,8 +44,6 @@ export const Login = () => {
 			localStorage.setItem('token', data.user)
             getUsername()
             handleLogin()
-			alert('You have been logged in')
-
             navigate('/');
 		} else {
 			alert('Please check your credentials')

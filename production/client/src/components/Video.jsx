@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from "react-router-dom"; 
+import { useHover } from '../hooks/useHover';
 
 const Video = ({ video }) => {
+  const [hovered, ref] = useHover()
 
   const videoId = video.id.videoId
   const videoTitle = video.snippet.title
@@ -16,14 +18,33 @@ const Video = ({ video }) => {
   const channelTitle = video.snippet.channelTitle;
   const publishTime = video.snippet.publishTime;
 
+
+  let alreadySaved = false;
+
+  function saveIcon() {
+    //will be used to check if the id is saved:
+    // const alreadySaved = savedItems.some(item => item.id === video.id) 
+
+    if(alreadySaved) {
+        //will have an on click function
+        return <i className="ri-bookmark-fill favorite"></i>
+      } else if (hovered) {
+        //will have an on click function
+        return <i className="ri-bookmark-line favorite"></i>
+      }
+  }
+
+
   return (
-        <div className='video-card' style={{width: thumbnailWidth}}>
+        <div className='video-card' style={{width: thumbnailWidth}} ref={ref}>
           <div className='thumbnail' style= {{height: "calc(100% - px)"}}>
             {/* <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer"></a> */}
             <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY` }>
               <img width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle} 
-                style={{clipPath: "inset(31px 0px 31px 0px round 20px)", marginTop: "-24px"}} />
+                style={{clipPath: "inset(31px 0px 31px 0px round 20px)", marginTop: "-24px"}} 
+              />
             </Link>
+            {saveIcon()}
           </div>
           <div className='video-details'>
             <div className='video-title'>{videoTitle}</div>
