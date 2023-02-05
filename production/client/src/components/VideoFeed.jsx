@@ -4,6 +4,7 @@ import TopicDropdown from './TopicDropdown'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
 import { youtubeSearch } from '../utils/getVideoResults'
+import Button from "@mui/material/Button";
 import data from './data/testData'
 
 
@@ -19,7 +20,7 @@ const VideoFeed = () => {
 
 
   React.useEffect(() => {
-    const usingTestData = true;
+    const usingTestData = false;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase, selectedTopic);
@@ -57,13 +58,28 @@ const VideoFeed = () => {
     <div className='wrapper'>
       <div className='controls'>
         <div className='top-section'>
-          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
+          
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
-            
-            <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={handleSpin}>Spin</button>
+          
+            <Button
+                            sx={{ 
+                                background: '#F0F8FF',
+                                m: '10px 0px 30px',
+                                width: '130px',
+                             }}
+                            id="submit-btn"
+                            type="submit"
+                            variant="outlined"
+                            onClick={handleSpin}>
+                            Spin
+            </Button>
 
           </div>
+        </div>
+
+        <div className='bottom-section'>
+          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
           <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
         </div>
 

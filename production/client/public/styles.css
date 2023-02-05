@@ -116,10 +116,19 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 10vh;
+  margin-top: 12vh;
+  margin-bottom: 1vh;
   align-items: center;
   gap: 8vw;
 }
+
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  display: none; /* hiding until next presentation, will be worked on more */
+}
+
 
 .random-search {
   display: flex;

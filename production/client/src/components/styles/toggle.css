@@ -54,6 +54,7 @@
     display: flex;
     align-items: center;
     grid-area: toggle;
+    margin: 0px 10px;
 }
 
 /*bg*/

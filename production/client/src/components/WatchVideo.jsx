@@ -34,7 +34,7 @@ const WatchVideo = () => {
 
               <div className='player-video-description-container'>
                 <div style={{marginBottom: '15px', fontSize: '15px', color: 'lightblue'}}>
-                  {getElapsedTime(videoDetails?.snippet.publishedAt)} · {videoDetails?.statistics.viewCount} Views
+                  {getElapsedTime(videoDetails?.snippet.publishedAt)} · {Number(videoDetails?.statistics.viewCount).toLocaleString()} Views
                 </div>
                 <div className='player-video-description'>{videoDetails?.snippet.description}</div>
               </div>
