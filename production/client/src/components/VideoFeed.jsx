@@ -9,7 +9,7 @@ import data from './data/testData'
 
 const VideoFeed = () => {
 
-  const [videos, setVideos] = React.useState(null);
+  const [videos, setVideos] = React.useState(data.items);
   const [randomPhrase, setRandomPhrase] = React.useState("history");
   const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");//music topic
   const [sliderState, setSliderState] = React.useState(1);
@@ -19,7 +19,7 @@ const VideoFeed = () => {
 
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase, selectedTopic);

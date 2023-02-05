@@ -192,24 +192,41 @@ code {
 }
 
 .player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   background: rgba(0,0,0, 0.3);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
   padding: 25px;
   height: 300px;
+  
 }
 
 .player-video-title {
   /* border: 1px yellow solid; */
-  padding: 25px;
+  padding: 0px 25px;
   height: auto;
   border-bottom: 1px rgba(49,159,193,1) solid;
+}
+
+.player-video-channel {
+  color: lightblue;
+  font-size: 14px;
 }
 
 .player-video-description {
   color: lightgray;
   line-height: 1.25;
+
+  line-height: 1.25;
+  font-size: 15px;
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 
 }
 
