@@ -28,14 +28,16 @@ const WatchVideo = () => {
   
         <div className='player-details'>
               <div className='player-video-title'>
-                <h2>{videoDetails?.snippet.title}</h2>
-                <div>{getElapsedTime(videoDetails?.snippet.publishedAt)}</div>
+                <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
                 <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
               </div>
-              <div>{videoDetails?.snippet.publishedAt}</div>
-              <div>{videoDetails?.statistics.viewCount} Views {videoDetails?.statistics.likeCount} Likes</div>
-              <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
-              <div className='player-video-description'>{videoDetails?.snippet.description}</div>
+
+              <div className='player-video-description-container'>
+                <div style={{marginBottom: '15px', fontSize: '15px', color: 'lightblue'}}>
+                  {getElapsedTime(videoDetails?.snippet.publishedAt)} · {videoDetails?.statistics.viewCount} Views
+                </div>
+                <div className='player-video-description'>{videoDetails?.snippet.description}</div>
+              </div>
         </div>
 
       </div>

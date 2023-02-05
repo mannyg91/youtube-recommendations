@@ -33,12 +33,10 @@ body {
 
 h1 {
   font-size:25pt;
-  margin-bottom:5%;
 }
 
 h2 {
   font-size:18pt;
-  margin-bottom:3%;
 }
 
 a {
@@ -183,6 +181,8 @@ code {
 }
 
 
+
+
 /*Styles for WatchVideo */
 .player-container {
   background: black;
@@ -191,16 +191,27 @@ code {
   justify-content: center;
 }
 
+.video-player {
+  width: 100%;
+  margin-top: 0px;
+}
+
+/* .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+} */
+
 .player-details {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 20px;
   background: rgba(0,0,0, 0.3);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
   box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
-  padding: 25px;
-  height: 300px;
+  padding: 30px;
+  height: auto;
   
 }
 
@@ -208,20 +219,24 @@ code {
   /* border: 1px yellow solid; */
   padding: 0px 25px;
   height: auto;
-  border-bottom: 1px rgba(49,159,193,1) solid;
+  border-bottom: 1px rgb(106, 139, 150) solid;
 }
 
 .player-video-channel {
   color: lightblue;
   font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.player-video-description-container {
+  padding: 0px 80px;
 }
 
 .player-video-description {
+  margin-bottom: 32px;
   color: lightgray;
-  line-height: 1.25;
-
-  line-height: 1.25;
-  font-size: 15px;
+  line-height: 1.5;
+  font-size: 14px;
   text-overflow: ellipsis;
     display: -webkit-box;
     -webkit-line-clamp: 3;
@@ -231,11 +246,6 @@ code {
 }
 
 
-.video-player {
-  margin-top: 8vh;
-  width: 54vw;    /*     This creates a   */
-  height: 30vw;   /*  flexible 16:9 ratio */
-}
 
 
 
@@ -319,11 +329,15 @@ code {
     font-size: 4vh;
   }
 
-  .dayNightTog {
-  }
   
   #acctbtn {
     font-size: 4vh;
   }
+
+  .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+}
 
 }

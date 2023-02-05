@@ -44,8 +44,8 @@ export const Login = () => {
             </Typography>
 
             <div id="accountDiv">
-            <h1>Welcome!</h1>
-                <h2>Create a new account</h2>
+            <h1 style={{marginBottom: '10px'}}>Welcome!</h1>
+                <h2 style={{marginBottom: '25px'}}>Create a new account</h2>
                 <Box
                     className="account-fields"
                     component="form"

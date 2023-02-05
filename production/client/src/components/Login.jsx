@@ -51,8 +51,8 @@ export const Login = () => {
                 </Link>
             </Typography>
                 <div id="accountDiv">
-                    <h1>Welcome back!</h1>
-                    <h2>Please login below</h2>
+                    <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>
+                    <h2 style={{marginBottom: '25px'}}>Please login below</h2>
                     <Box
                         className="account-fields"
                         component="form"
