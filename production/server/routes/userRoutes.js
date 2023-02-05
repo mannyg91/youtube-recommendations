@@ -42,7 +42,6 @@ router.post('/login/', async (req, res) => {
 
 	console.log(req.body)
 
-	console.log('43')
 
   if (!user) {
 		return { status: 'error', error: 'No user found' }

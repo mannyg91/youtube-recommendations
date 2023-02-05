@@ -17,7 +17,7 @@ export const Login = () => {
     const [password, setPassword] = React.useState('')
 
 
-    const { handleLogin, user, isLoggedIn, setIsLoggedIn } = React.useContext(LoginContext);
+    const { handleLogin, username, isLoggedIn, setIsLoggedIn, getUsername } = React.useContext(LoginContext);
 
     //sends login data
     async function loginUser(event) {
@@ -42,6 +42,7 @@ export const Login = () => {
 		if (data.user) {
             console.log(data.user)
 			localStorage.setItem('token', data.user)
+            getUsername()
             handleLogin()
 			alert('You have been logged in')
 

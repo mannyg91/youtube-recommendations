@@ -22,24 +22,26 @@ const WatchVideo = () => {
 
   
   return (
-    <div className='player-container'>
-      <div className='video-player'>
-        <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
-  
-        <div className='player-details'>
-              <div className='player-video-title'>
-                <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
-                <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
-              </div>
-
-              <div className='player-video-description-container'>
-                <div style={{marginBottom: '15px', fontSize: '15px', color: 'lightblue'}}>
-                  {getElapsedTime(videoDetails?.snippet.publishedAt)} · {Number(videoDetails?.statistics.viewCount).toLocaleString()} Views
+    <div style={{minHeight: '105vh'}}>
+      <div className='player-container'>
+        <div className='video-player'>
+          <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
+    
+          <div className='player-details'>
+                <div className='player-video-title'>
+                  <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
+                  <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
                 </div>
-                <div className='player-video-description'>{videoDetails?.snippet.description}</div>
-              </div>
-        </div>
 
+                <div className='player-video-description-container'>
+                  <div style={{marginBottom: '15px', fontSize: '15px', color: 'lightblue'}}>
+                    {getElapsedTime(videoDetails?.snippet.publishedAt)} · {Number(videoDetails?.statistics.viewCount).toLocaleString()} Views
+                  </div>
+                  <div className='player-video-description'>{videoDetails?.snippet.description}</div>
+                </div>
+          </div>
+
+        </div>
       </div>
     </div>
   )

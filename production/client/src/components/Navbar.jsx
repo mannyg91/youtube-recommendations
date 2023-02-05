@@ -24,7 +24,7 @@ export default function Navbar() {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
-  const { user, isLoggedIn, handleLogout } = React.useContext(LoginContext);
+  const { username, isLoggedIn, handleLogout } = React.useContext(LoginContext);
 
 
   //need function here to display name, will check token, display name
@@ -92,9 +92,7 @@ export default function Navbar() {
             >
 
 
-            {isLoggedIn ?
-            <p>YOU ARE LOGGED IN</p>
-           : <p>you are not logged in</p>}
+            {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>Hi, {username}!</span>}
 
               <AccountCircle id="acctbtn"/>
             </IconButton>
