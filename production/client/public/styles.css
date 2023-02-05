@@ -40,8 +40,20 @@ h2 {
 }
 
 a {
-  color: inherit;
+  color: rgb(103, 255, 217);
   text-decoration: inherit;
+}
+
+a:visited{
+  color:rgb(15, 65, 46);
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+#logolink{
+  color:rgba(49,159,193,1);
 }
 
 code {
