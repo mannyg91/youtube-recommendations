@@ -46,11 +46,14 @@ export const Login = (props) => {
 			localStorage.setItem('token', data.user)
             getUsername()
             handleLogin()
-            navigate('/');
+            // navigate('/');
+            props.handleLoginClose()
 		} else {
 			alert('Please check your credentials')
 		}
 	}
+
+
 
 
     return (
@@ -59,7 +62,7 @@ export const Login = (props) => {
             <div className='account-container'>
                     <div id="accountDiv">
                         <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>
-                        <h2 style={{marginBottom: '25px'}}>Please login below</h2>
+                        <h3 style={{marginBottom: '25px', color: '#11cde5'}}>Please login below</h3>
                         <Box
                             className="account-fields"
                             component="form"
@@ -101,10 +104,10 @@ export const Login = (props) => {
             
                         </Box>
 
-                        <p style={{lineHeight: 1.5, textAlign: 'center'}}>
+                        <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
                             Psst... don't have an account yet?<br/>
                             Sign up&nbsp;
-                            <span style={{color: '#67ffd9'}}>
+                            <span style={{color: '#11cde5'}}>
                                 <Link to="../signup">here!</Link>
                             </span>
                         </p>

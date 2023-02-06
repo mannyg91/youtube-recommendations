@@ -33,14 +33,23 @@ export const Signup = (props) => {
 
         const data = await response.json()
         console.log(data)
+        alert('Account successfully created!');
     }
+
+    // function signupConfirmation() {
+    //     return (
+    //         <div>
+    //             You have signed up!
+    //         </div>
+    //     )
+    // }
 
     return (
         <Dialog open={props.signupOpen} disableBackdropClick={false} onClose={props.handleSignupClose}>
             <div className='account-container'>
                 <div id="accountDiv">
                 <h1 style={{marginBottom: '10px'}}>Welcome!</h1>
-                    <h2 style={{marginBottom: '25px'}}>Create a new account</h2>
+                    <h3 style={{marginBottom: '25px', color: '#11cde5'}}>Create a new account</h3>
                     <Box
                         className="account-fields"
                         component="form"
@@ -86,15 +95,16 @@ export const Signup = (props) => {
                             variant="outlined"
                             onClick={()=>{
                                 console.log("Button clicked, congratulations.");
+                                props.handleSignupClose();
                             }}>
                                 Sign me up!
                         </Button>
                     
                     </Box>
 
-                    <p>
-                        Psst... Already a member? Log in&nbsp;
-                        <span style={{color: '#67ffd9'}}>
+                    <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
+                        Psst... Already a member?<br/> Log in&nbsp;
+                        <span style={{color: '#11cde5'}}>
                             <Link to="../login">here!</Link>
                         </span>
                     </p>
