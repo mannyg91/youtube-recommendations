@@ -6,10 +6,11 @@ import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../hooks/LoginContext';
 import { useNavigate } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
 
 
-export const Login = () => {
 
+export const Login = (props) => {
 
     const navigate = useNavigate();
     //what the user enters
@@ -21,6 +22,7 @@ export const Login = () => {
 
     //sends login data
     async function loginUser(event) {
+
         event.preventDefault() //prevents refresh to localhost
 
         console.log("login user function in login.jsx")
@@ -52,65 +54,67 @@ export const Login = () => {
 
 
     return (
-        <div className='account-container'>
-            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">
-                WatchWise
-                </Link>
-            </Typography>
-                <div id="accountDiv">
-                    <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>
-                    <h2 style={{marginBottom: '25px'}}>Please login below</h2>
-                    <Box
-                        className="account-fields"
-                        component="form"
-                        sx={{
-                            '& .MuiTextField-root': { m: 1 },
-                        }}
-                        noValidate
-                        autoComplete="off"
-                        onSubmit={loginUser} //login called here
-                    >
+
+        <Dialog open={props.loginOpen} disableBackdropClick={false} onClose={props.handleLoginClose}>
+            <div className='account-container'>
+                    <div id="accountDiv">
+                        <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>
+                        <h2 style={{marginBottom: '25px'}}>Please login below</h2>
+                        <Box
+                            className="account-fields"
+                            component="form"
+                            sx={{
+                                '& .MuiTextField-root': { m: 1 },
+                            }}
+                            noValidate
+                            autoComplete="off"
+                            onSubmit={loginUser} //login called here
+                        >
+                
+                            <TextField
+                                className="account-textfield"
+                                required
+                                label="Email"
+                                type="email"
+                                onChange={(e) => setEmail(e.target.value)}
+                            />
+                            <TextField
+                                className="account-textfield"
+                                required
+                                label="Password"
+                                type="password"
+                                onChange={(e) => setPassword(e.target.value)}
+                            />
+
+                            <Button
+                                sx={{ 
+                                    display: 'block',
+                                    background: '#F0F8FF',
+                                    m: '25px 0px 30px',
+                                    width: '130px'
+                                }}
+                                id="submit-btn"
+                                type="submit"
+                                variant="outlined">
+                                Sign In
+                            </Button>
             
-                        <TextField
-                            className="account-textfield"
-                            required
-                            label="Email"
-                            type="email"
-                            onChange={(e) => setEmail(e.target.value)}
-                        />
-                        <TextField
-                            className="account-textfield"
-                            required
-                            label="Password"
-                            type="password"
-                            onChange={(e) => setPassword(e.target.value)}
-                        />
+                        </Box>
 
-                        <Button
-                            sx={{ 
-                                display: 'block',
-                                background: '#F0F8FF',
-                                m: '25px 0px 30px',
-                                width: '130px'
-                             }}
-                            id="submit-btn"
-                            type="submit"
-                            variant="outlined">
-                            Sign In
-                        </Button>
-        
-                    </Box>
-
-                    <p style={{lineHeight: 1.5, textAlign: 'center'}}>
-                        Psst... don't have an account yet?<br/>
-                        Sign up&nbsp;
-                        <span style={{color: '#67ffd9'}}>
-                            <Link to="../signup">here!</Link>
-                        </span>
-                    </p>
+                        <p style={{lineHeight: 1.5, textAlign: 'center'}}>
+                            Psst... don't have an account yet?<br/>
+                            Sign up&nbsp;
+                            <span style={{color: '#67ffd9'}}>
+                                <Link to="../signup">here!</Link>
+                            </span>
+                        </p>
+                    </div>
                 </div>
-            </div>
+            </Dialog>
+
+
+
+
     )
 }
 

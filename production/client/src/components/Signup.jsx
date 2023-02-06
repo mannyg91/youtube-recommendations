@@ -4,8 +4,9 @@ import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
+import Dialog from '@mui/material/Dialog';
 
-export const Login = () => {
+export const Signup = (props) => {
 
     const [username, setUsername] = React.useState('')
     const [email, setEmail] = React.useState('')
@@ -35,78 +36,73 @@ export const Login = () => {
     }
 
     return (
+        <Dialog open={props.signupOpen} disableBackdropClick={false} onClose={props.handleSignupClose}>
+            <div className='account-container'>
+                <div id="accountDiv">
+                <h1 style={{marginBottom: '10px'}}>Welcome!</h1>
+                    <h2 style={{marginBottom: '25px'}}>Create a new account</h2>
+                    <Box
+                        className="account-fields"
+                        component="form"
+                        sx={{
+                            '& .MuiTextField-root': { m: 1 },
+                        }}
+                        noValidate
+                        autoComplete="off"
+                        onSubmit={registerUser}
+                    >
+                        <TextField
+                            sx={{ display: 'block' }}
+                            required
+                            label="Username"
 
-        <div className='account-container'>
-            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">
-                WatchWise
-                </Link>
-            </Typography>
+                            type="text"
+                            onChange={(e) => setUsername(e.target.value)}
+                        />
+                        <TextField
+                            sx={{ display: 'block' }}
+                            required
+                            label="Email"
 
-            <div id="accountDiv">
-            <h1 style={{marginBottom: '10px'}}>Welcome!</h1>
-                <h2 style={{marginBottom: '25px'}}>Create a new account</h2>
-                <Box
-                    className="account-fields"
-                    component="form"
-                    sx={{
-                        '& .MuiTextField-root': { m: 1 },
-                    }}
-                    noValidate
-                    autoComplete="off"
-                    onSubmit={registerUser}
-                >
-                    <TextField
-                        sx={{ display: 'block' }}
-                        required
-                        label="Username"
+                            type="email"
+                            onChange={(e) => setEmail(e.target.value)}
+                        />
+                        <TextField
+                            sx={{ display: 'block' }}
+                            required
+                            label="Password"
+                            type="password"
+                            onChange={(e) => setPassword(e.target.value)}
+                        />
+                        <Button
+                                        sx={{ 
+                                            display: 'block',
+                                            background: '#F0F8FF',
+                                            m: '25px 0px 30px',
+                                            width: '130px'
+                                        }}
+                            id="submit-btn"
+                            type="submit"
+                            variant="outlined"
+                            onClick={()=>{
+                                console.log("Button clicked, congratulations.");
+                            }}>
+                                Sign me up!
+                        </Button>
+                    
+                    </Box>
 
-                        type="text"
-                        onChange={(e) => setUsername(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ display: 'block' }}
-                        required
-                        label="Email"
-
-                        type="email"
-                        onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <TextField
-                        sx={{ display: 'block' }}
-                        required
-                        label="Password"
-                        type="password"
-                        onChange={(e) => setPassword(e.target.value)}
-                    />
-                    <Button
-                                    sx={{ 
-                                        display: 'block',
-                                        background: '#F0F8FF',
-                                        m: '25px 0px 30px',
-                                        width: '130px'
-                                     }}
-                        id="submit-btn"
-                        type="submit"
-                        variant="outlined"
-                        onClick={()=>{
-                            console.log("Button clicked, congratulations.");
-                        }}>
-                            Sign me up!
-                    </Button>
-                
-                </Box>
-
-                <p>
-                    Psst... Already a member? Log in&nbsp;
-                    <span style={{color: '#67ffd9'}}>
-                        <Link to="../login">here!</Link>
-                    </span>
-                </p>
+                    <p>
+                        Psst... Already a member? Log in&nbsp;
+                        <span style={{color: '#67ffd9'}}>
+                            <Link to="../login">here!</Link>
+                        </span>
+                    </p>
+                    </div>
                 </div>
-            </div>
+            </Dialog>
 
     )
 }
 
-export default Login;
+export default Signup;
