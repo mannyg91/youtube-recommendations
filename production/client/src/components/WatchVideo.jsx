@@ -4,6 +4,8 @@ import ReactPlayer from "react-player";
 import { getVideoDetails } from '../utils/getVideoDetails'
 import { getElapsedTime } from '../utils/getElapsedTime'
 
+import Skeleton from '@mui/material/Skeleton';
+
 
 //need to run new API fetch for video details
 const WatchVideo = () => {
@@ -29,18 +31,39 @@ const WatchVideo = () => {
     
           <div className='player-details'>
                 <div className='player-video-title'>
-                  <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
-                  <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
+                  {videoDetails ? (
+                    <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
+                  ) : (
+                    <Skeleton variant="text" width='100%' height={60} />
+                  )}
+                  {videoDetails ? (
+                    <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
+                  ) : (
+                    <Skeleton variant="text" width='15%' height={30} />
+                  )}
                 </div>
-
+    
                 <div className='player-video-description-container'>
                   <div style={{marginBottom: '15px', fontSize: '15px', color: 'lightblue'}}>
-                    {getElapsedTime(videoDetails?.snippet.publishedAt)} · {Number(videoDetails?.statistics.viewCount).toLocaleString()} Views
+                    {videoDetails ? (
+                      <div>
+                        {getElapsedTime(videoDetails?.snippet.publishedAt)}&nbsp; · &nbsp;
+                        {Number(videoDetails?.statistics.viewCount).toLocaleString()} Views
+                      </div>
+                    ) : (
+                      <Skeleton variant="text" width={210} height={30} />
+                    )}
                   </div>
-                  <div className='player-video-description'>{videoDetails?.snippet.description}</div>
+                  {videoDetails ? (
+                    <div className='player-video-description'>
+                      {videoDetails?.snippet.description}
+                    </div>
+                  ) : (
+                    <Skeleton variant="rect" width='100%' height={60} />
+                  )}
                 </div>
           </div>
-
+    
         </div>
       </div>
     </div>
