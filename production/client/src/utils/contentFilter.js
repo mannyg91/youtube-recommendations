@@ -23,13 +23,19 @@ export const isRestricted = (video) => {
 
 // needs work, filters out more content than it should
 function isNotEnglish(str) {
-  const pattern = /^[A-Za-z0-9\s.,!?&*#;]+$/;
-  return pattern.test(str);
+  const pattern = /^[\x00-\x7F]+$/; //defines allowed characters
+  const diacritics = /[\u00C0-\u00C5\u00C7-\u00CF\u00D1-\u00D6\u00D9-\u00DD\u00E0-\u00E5\u00E7-\u00EF\u00F1-\u00F6\u00F9-\u00FD\u00FF-\u017F]+/g;
+  // return pattern.test(str) || diacritics.test(str);
+  // return diacritics.test(str)
+  return !pattern.test(str) 
 }
 
 function isKidsContent(str) {
   const strWords = str.split(' ');
-  const kidsContentKeywords = ['kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'' ,'youkids', 'sing-along']
+  const kidsContentKeywords = [
+    'kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'' ,'youkids', 'sing-along',
+    '#nurseryrhymes',
+  ]
   return strWords.some(word => kidsContentKeywords.includes(word));
 }
 
