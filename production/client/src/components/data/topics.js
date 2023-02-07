@@ -1,6 +1,6 @@
-import Business  from './Business'
+import business  from './business'
 
-console.log(Business)
+console.log(business)
 
 const defaultTopics = [
   { id: "/m/04rlf", name: "Music", parent: true },
@@ -59,7 +59,7 @@ const defaultTopics = [
   { id: "/m/07bxq", name: "Tourism" },
   { id: "/m/07yv9", name: "Vehicles" },
   { id: "/m/098wr", name: "Society", parent: true },
-  { id: "/m/09s1f", name: "Business", keywords: Business },
+  { id: "/m/09s1f", name: "Business", keywords: business },
   { id: "/m/0kt51", name: "Health" },
   { id: "/m/01h6rj", name: "Military" },
   { id: "/m/05qt0", name: "Politics" },
@@ -85,7 +85,7 @@ const appTopics = [
   { id: "/m/07bxq", name: "Tourism" },
   { id: "/m/07yv9", name: "Vehicles" },
   { id: "/m/098wr", name: "Society" },
-  { id: "/m/09s1f", name: "Business", keywords: Business },
+  { id: "/m/09s1f", name: "Business", keywords: business },
   { id: "/m/0kt51", name: "Health" },
   { id: "/m/01h6rj", name: "Military" },
   { id: "/m/05qt0", name: "Politics" },

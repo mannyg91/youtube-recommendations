@@ -126,7 +126,6 @@ code {
   display: flex;
   flex-direction: row;
   gap: 50px;
-  display: none; /* hiding until next presentation, will be worked on more */
 }
 
 

@@ -4,9 +4,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
+import appTopics  from './data/topics';
 
-export default function BasicSelect() {
-  const [age, setAge] = React.useState('');
+const TopicDropdown = (props) => {
+
+      const handleChange = event => {
+      props.setSelectedTopic(event.target.value);
+    };
 
 
 
@@ -18,23 +22,23 @@ export default function BasicSelect() {
           sx={{border:'2px #6a8b96 solid'}}
           labelId="demo-simple-select-label"
           id="demo-simple-select"
-          value={age}
+          value={props.selectedTopic} 
+          onChange={handleChange}
           label="Topic"
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={20}>Twenty</MenuItem>
-          <MenuItem value={30}>Thirty</MenuItem>
+          {appTopics.sort((a,b) =>a.name > b.name ? 1: -1)
+            .map(topic => (
+            <MenuItem key={topic.id} value={topic.id}>
+              {topic.name}
+              </MenuItem>
+          ))}
         </Select>
       </FormControl>
     </Box>
   );
 }
 
-
-
-
-
-
+export default TopicDropdown
 
 
 // import React from 'react'
