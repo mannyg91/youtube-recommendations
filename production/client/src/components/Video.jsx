@@ -47,7 +47,15 @@ const Video = ({ video }) => {
             {saveIcon()}
           </div>
           <div className='video-details'>
-            <div className='video-title'>{videoTitle}</div>
+            <div className='video-title'>
+              {videoTitle
+                .replace(/&#39;/g, "'")
+                .replace(/&quot;/g, '"')
+                .replace(/&amp;/g, "&")
+                .replace(/&lt;/g, "<")
+                .replace(/&gt;/g, ">")
+              }
+            </div>
             <div className='channel-title'>{channelTitle}</div>
           </div>
           {/* {publishTime} */}

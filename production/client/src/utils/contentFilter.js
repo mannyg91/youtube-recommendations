@@ -9,7 +9,7 @@ export const isRestricted = (video) => {
 
     const videoTitle = video.snippet.title.toLowerCase();
     const videoChannel = video.snippet.channelTitle.toLowerCase();
-    const titleAndChannel = videoTitle.concat("", videoChannel)
+    const titleAndChannel = videoTitle.concat(" ", videoChannel)
 
     //
     console.log(titleAndChannel)
@@ -29,13 +29,13 @@ function isNotEnglish(str) {
 
 function isKidsContent(str) {
   const strWords = str.split(' ');
-  const kidsContentKeywords = ['kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'']
+  const kidsContentKeywords = ['kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'' ,'youkids', 'sing-along']
   return strWords.some(word => kidsContentKeywords.includes(word));
 }
 
 function containsRestrictedWords(str) {
   const strWords = str.split(' ');
-  const restrictedKeywords = ['vocabulary','esl','phrases']
+  const restrictedKeywords = ['vocabulary','esl','phrases','♫']
   return strWords.some(word => restrictedKeywords.includes(word));
 }
 
