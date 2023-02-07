@@ -19,7 +19,7 @@ export const youtubeSearch = async (query, topic) => {
       "relevanceLanguage": "en",
       "safeSearch": "moderate",
       "videoDefinition": "high",
-      "maxResults":"48",
+      "maxResults":"50",
       "videoCategoryId": "27",
       "topicId": topic,
     })
