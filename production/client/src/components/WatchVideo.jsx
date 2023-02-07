@@ -34,12 +34,12 @@ const WatchVideo = () => {
                   {videoDetails ? (
                     <h2 style={{marginBottom: '15px'}}>{videoDetails?.snippet.title}</h2>
                   ) : (
-                    <Skeleton variant="text" width='100%' height={60} />
+                    <Skeleton style={{ marginBottom: '-5px' }} variant="text" width='100%' height={50} />
                   )}
                   {videoDetails ? (
                     <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
                   ) : (
-                    <Skeleton variant="text" width='15%' height={30} />
+                    <Skeleton variant="text" width='10%' height={30} margin={0} />
                   )}
                 </div>
     
