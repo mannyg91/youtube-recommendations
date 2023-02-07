@@ -2,7 +2,7 @@ export const isRestricted = (video) => {
 
   // returns true if content passes the filter
 
-  const filterOn = false
+  const filterOn = true
 
   if (filterOn) {
     console.log("entered filter")
@@ -14,7 +14,7 @@ export const isRestricted = (video) => {
     //
     console.log(titleAndChannel)
     console.log(isNotEnglish(titleAndChannel) || isKidsContent(titleAndChannel))
-    return isNotEnglish(titleAndChannel) || isKidsContent(titleAndChannel)
+    return isNotEnglish(titleAndChannel) || isKidsContent(titleAndChannel) || containsRestrictedWords(titleAndChannel)
   }
 
   // return false
@@ -29,14 +29,14 @@ function isNotEnglish(str) {
 
 function isKidsContent(str) {
   const strWords = str.split(' ');
-  const kidsContentKeywords = ['kids', 'abc', 'nursery', 'phonics', 'books', 'blippi']
+  const kidsContentKeywords = ['kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'']
   return strWords.some(word => kidsContentKeywords.includes(word));
 }
 
-// function containsRestrictedWords(str) {
-//   const strWords = str.split(' ');
-//   const kidsRestrictedKeywords = ['kids', 'abc', 'nursery', 'phonics']
-//   return str.some(word => words.includes(word));
-// }
+function containsRestrictedWords(str) {
+  const strWords = str.split(' ');
+  const restrictedKeywords = ['vocabulary','esl','phrases']
+  return strWords.some(word => restrictedKeywords.includes(word));
+}
 
 

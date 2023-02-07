@@ -26,7 +26,7 @@ const VideoFeed = () => {
     const usingTestData = false;
         if (!usingTestData) { 
           const getVideos = async () => {
-            const data = await youtubeSearch(searchTerm, selectedTopic.id);
+            const data = await youtubeSearch(searchTerm, selectedTopic);
             setVideos(data.items);
           }
           getVideos();
@@ -82,6 +82,7 @@ const VideoFeed = () => {
       <div className='controls'>
         <div className='top-section'>
           <div className='random-search'>
+            {selectedTopic}
             Search: <strong style={{fontSize: '32px'}}>{searchTerm}</strong>
           
             <Button
