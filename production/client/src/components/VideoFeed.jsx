@@ -4,12 +4,13 @@ import TopicDropdown from './TopicDropdown'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
 import { youtubeSearch } from '../utils/getVideoResults'
+import Button from "@mui/material/Button";
 import data from './data/testData'
 
 
 const VideoFeed = () => {
 
-  const [videos, setVideos] = React.useState(null);
+  const [videos, setVideos] = React.useState(data.items);
   const [randomPhrase, setRandomPhrase] = React.useState("history");
   const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");//music topic
   const [sliderState, setSliderState] = React.useState(1);
@@ -19,7 +20,7 @@ const VideoFeed = () => {
 
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(randomPhrase, selectedTopic);
@@ -54,26 +55,43 @@ const VideoFeed = () => {
   );
 
   return (
-    <>
+    <div className='wrapper'>
       <div className='controls'>
         <div className='top-section'>
-          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
+          
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{randomPhrase}</strong>
-            
-            <button style={{width: '100px', marginTop: '10px', marginBottom: '30px'}} onClick={handleSpin}>Spin</button>
+          
+            <Button
+                            sx={{ 
+                                background: '#F0F8FF',
+                                m: '15px 0px 30px',
+                                width: '136px',
+                                fontSize: '14px',
+                                borderRadius: '8px'
+                             }}
+                            id="submit-btn"
+                            type="submit"
+                            variant="outlined"
+                            onClick={handleSpin}>
+                            Spin
+            </Button>
 
           </div>
         </div>
 
-        <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
+        <div className='bottom-section'>
+          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
+          <ContentSlider sliderState={sliderState} handleSlider={handleSlider} />
+        </div>
+
+        
       </div>
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
           {videoElements}
       </div>
-
-    </>
+    </div>
   )
 }
 

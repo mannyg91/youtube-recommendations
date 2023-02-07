@@ -1,3 +1,4 @@
+
 /*~~~~~~~~~~~~~~~~/
 / Mobile styles  /
 /~~~~~~~~~~~~~~~~*/
@@ -29,31 +30,18 @@ body {
   justify-content: center;
 }
 
+
 h1 {
   font-size:25pt;
-  margin-bottom:5%;
 }
 
 h2 {
   font-size:18pt;
-  margin-bottom:3%;
 }
 
 a {
-  color: rgb(103, 255, 217);
+  color: inherit;
   text-decoration: inherit;
-}
-
-a:visited{
-  color:rgb(15, 65, 46);
-}
-
-a:hover{
-  text-decoration:underline;
-}
-
-#logolink{
-  color:rgba(49,159,193,1);
 }
 
 code {
@@ -101,7 +89,7 @@ code {
 
 #logobar {
   /* background-color:rgb(14, 16, 14); */
-  background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
+  background-image:linear-gradient(rgb(35, 35, 35),rgb(0,0,0));
   top: 0px;
   position: sticky;
   height: 8vh;
@@ -128,10 +116,19 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 10vh;
+  margin-top: 12vh;
+  margin-bottom: 1vh;
   align-items: center;
   gap: 8vw;
 }
+
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  display: none; /* hiding until next presentation, will be worked on more */
+}
+
 
 .random-search {
   display: flex;
@@ -149,7 +146,7 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  row-gap: 25px;
+  row-gap: 36px;
   column-gap: 0px;
 }
 
@@ -163,9 +160,18 @@ code {
 }
 
 .thumbnail {
-
+  position: relative;
   /* display: flex;
   justify-content: center; */
+}
+
+.favorite {
+  color: aliceblue;
+  font-size: 1.2rem;
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 260px;
 }
 
 
@@ -192,68 +198,71 @@ code {
   font-size: 14px;
 }
 
+
+
+
+/*Styles for WatchVideo */
 .player-container {
-  /* background: rgba(0,0,0, 0.3); */
   background: black;
-  /* border-radius: 25px; */
-  width: 1920px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  /* border: 1px red solid; */
 }
 
 .video-player {
-  margin-top: 80px;
-  width: 960px;
-  height: 540px;
+  width: 100%;
+  margin-top: 0px;
 }
 
+/* .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+} */
+
 .player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   background: rgba(0,0,0, 0.3);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
-  /* border: 1px green solid; */
-  padding: 25px;
-  height: 300px;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  padding: 30px;
+  height: auto;
+  
 }
 
 .player-video-title {
   /* border: 1px yellow solid; */
-  padding: 25px;
+  padding: 0px 25px;
   height: auto;
-  border-bottom: 1px rgb(39, 110, 40) solid;
+  border-bottom: 1px rgb(106, 139, 150) solid;
+}
+
+.player-video-channel {
+  color: lightblue;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.player-video-description-container {
+  padding: 0px 80px;
 }
 
 .player-video-description {
+  margin-bottom: 32px;
   color: lightgray;
-  line-height: 1.25;
+  line-height: 1.5;
+  font-size: 14px;
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
 }
 
-
-/*Styles for WatchVideo */
-.watch_player-container {
-  background: rgb(8,8,8);
-  width: 100vw;
-  display: flex;
-  justify-content: center;
-}
-
-.watch_video-player {
-  margin-top: 8vh;
-  width: 67vw;    /*     This creates a   */
-  height: 37vw;   /*  flexible 16:9 ratio */
-}
-
-.watch_player-details {
-  background: rgba(0,0,0, 0.1);
-  border-bottom: rgba(0,128,0,0.3) 1px solid;
-  border-left:rgba(0,128,0,0.5) 1px solid;
-  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
-  padding: 25px;
-  height: 3;
-}
 
 
 
@@ -270,6 +279,8 @@ code {
   bottom: 0;
   left: 0;
   right: 0;
+
+
 }
 
 #accountDiv {
@@ -278,8 +289,9 @@ code {
   align-items: center;
   width: 350px;
   padding: 50px;
-  background: rgba(0,0,0, 0.25);
+  background: #181818;
   border-radius: 35px;
+  color: white;
 }
 
 .account-fields {
@@ -289,8 +301,22 @@ code {
 }
 
 
+/* these will need to be simplified and targeted via user-defined classes */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:invalid {
+  color: aliceblue;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue !important;
+}
+
+
 .MuiTextField-root > .MuiFormLabel-root.Mui-focused{
-  color:rgb(3, 84, 189);
+  color:aliceblue; 
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue;
 }
 
 .MuiTextField-root label{
@@ -300,6 +326,14 @@ code {
 .MuiTextField-root p{
   color:rgb(219, 225, 231);
 }
+
+
+
+#submit-btn {
+  background-color:rgba(240,248,255,1);
+  margin-bottom:10%;
+}
+
 
 
 
@@ -321,7 +355,6 @@ code {
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
-    background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
     height: 8vh;
     z-index: 1;
   }
@@ -330,11 +363,15 @@ code {
     font-size: 4vh;
   }
 
-  .dayNightTog {
-  }
   
   #acctbtn {
     font-size: 4vh;
   }
+
+  .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+}
 
 }

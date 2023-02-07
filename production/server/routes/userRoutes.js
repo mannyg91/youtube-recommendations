@@ -40,14 +40,19 @@ router.post('/login/', async (req, res) => {
 		email: req.body.email,
 	})
 
+	console.log(req.body)
+
+
   if (!user) {
 		return { status: 'error', error: 'No user found' }
 	}
 
   const isValid = await bcrypt.compare(
-    user.password,
-		req.body.password
+		req.body.password,
+    user.password
 	)
+
+	console.log(isValid)
 
 	if (isValid) {
 		const token = jwt.sign(

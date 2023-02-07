@@ -1,7 +1,7 @@
 import React from 'react'
 import { LoginContextProvider } from './hooks/LoginContext';
 
-import { Login, Signup, Navbar, VideoFeed, WatchVideo } from "./components";
+import { Navbar, VideoFeed, WatchVideo } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 const App = () => {
@@ -24,16 +24,6 @@ const App = () => {
               // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
               element={<><Navbar /><VideoFeed/></>}
           />
-            <Route
-              path="/signup"
-              // element={user?.email ? <Navigate to="/home" /> : <Signup />}
-              element={<Signup/>}
-            />
-            <Route
-              path="/login"
-              // element={user?.email ? <Navigate to="/home" /> : <Login />}
-              element={<Login/>}
-            />
             <Route
               path='/video/:id' 
               element={<><Navbar /><WatchVideo /></>} 
