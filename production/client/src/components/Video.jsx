@@ -35,9 +35,10 @@ const Video = ({ video }) => {
       }
   }
 
-    //need functions here for user to saved videos, will check they are authorized, POST request to db
-    //creating function here, move to appropriate place later
+
     async function saveVideo() {
+      //alternatively, can check isLoggedIn state
+
 
         console.log("save video")
 
@@ -52,32 +53,38 @@ const Video = ({ video }) => {
             console.log("you must be logged in to save videos")
             return
           } else {
-            //if user is logged in, it gets a quote
+            console.log("in else")
+            const id = user.id
+
+            const response = await fetch(`http://localhost:5000/api/user/savedVideos`, {
+              method: 'POST',
+              headers: {
+                  'Content-Type': 'application/json',
+              },
+              //payload
+              body: JSON.stringify({
+                id, //needs to be defined
+                video, //needs to be defined
+              }),
+          })
+          const data = await response.json()
+  
+                //confirms user exists
+            if (data) {
+                    //function here?
+                    console.log(data)
+            } else {
+              alert('cannot save video')
+            }
+
+
+
+
+
 
             console.log(user.id)
-            // populateQuote()
           }}
 
-        const response = await fetch(`http://localhost:5000/api/user/savedVideos`, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            //payload
-            // body: JSON.stringify({
-            //   id, //needs to be defined
-            //   video, //needs to be defined
-            // }),
-        })
-        const data = await response.json()
-
-        //confirms user exists
-    if (data) {
-            //function here?
-            console.log(data)
-    } else {
-      alert('cannot save video')
-    }
   }
 
 
