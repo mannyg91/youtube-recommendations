@@ -14,6 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
+import Avatar from '@mui/material/Avatar';
 
 
 export default function Navbar() {
@@ -95,9 +96,9 @@ export default function Navbar() {
       />
 
 
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar>
-          <Toolbar id="logobar" sx={{background: '#000000'}} open={open}>
+      <Box>
+        <AppBar  id="logobar">
+          <Toolbar open={open}>
             <IconButton
               size="large"
               edge="start"
@@ -129,8 +130,8 @@ export default function Navbar() {
 
 
               {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
-
-                <AccountCircle id="acctbtn"/>
+              {isLoggedIn ?  <Avatar style={{background: 'aliceblue', color:'rgba(49,159,193,1)'}}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn"/></Avatar>}
+                
               </IconButton>
               <Menu
                 id="menu-appbar"
