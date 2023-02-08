@@ -37,49 +37,36 @@ const Video = ({ video }) => {
 
 
     async function saveVideo() {
-      //alternatively, can check isLoggedIn state
-
-
-        console.log("save video")
-
+        // tries to grab token
         const token = localStorage.getItem('token')
 
+        //if token, makes get request
         if (token) {
-          //if found, decodes it
-          const user = jwt_decode(token)
-
-          if (!user) {
-            //if no user, removes token
-            console.log("you must be logged in to save videos")
-            return
-          } else {
-            console.log("in else")
-            const id = user.id
-
-            const response = await fetch(`http://localhost:5000/api/user/savedVideos`, {
+            const res = await fetch(`http://localhost:5000/api/user/savedVideos`, {
               method: 'POST',
               headers: {
                   'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
               },
               //payload
               body: JSON.stringify({
-                id, //needs to be defined
-                video, //needs to be defined
+                video
               }),
-          })
-          const data = await response.json()
-  
-                //confirms user exists
+          });
+
+          if (res.ok) {
+            const data = await res.json();
+
             if (data) {
-                    //function here?
-                    console.log(data)
-            } else {
-              alert('cannot save video')
-            }
-
-
-            console.log(user.id)
-          }}
+              //function here?
+              console.log(data)
+              } else {
+                alert('cannot save video')
+              }
+          }
+          } else {
+            console.log("You must be logged in to save videos")
+          }
 
   }
 

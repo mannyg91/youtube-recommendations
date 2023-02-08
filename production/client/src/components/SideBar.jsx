@@ -15,6 +15,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
+import { getSavedVideos } from '../utils/getSavedVideos'
+
 
 const SideBar = ({ handleDrawerClose, open}) => {
 
@@ -51,23 +53,49 @@ const SideBar = ({ handleDrawerClose, open}) => {
         </IconButton>
       </DrawerHeader>
       <Divider color="aliceblue" />
+
       <List>
-        {/*Unable to presently place here -- need fix for functionality*/}
-        {/* <div>
-          <Toggle />
-        </div> */}
-        
-        {["Saved Videos", "No-Go List", "User Settings", "Logout"].map((text, index) => (
-          <ListItem className="drawerlist" key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                <ChevronRightIcon className="listitemicon" />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-              <Divider color="aliceblue" />
-            </ListItemButton>
-          </ListItem>
-        ))}
+
+        <ListItem className="drawerlist" key="Saved Videos" onClick={getSavedVideos} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="Saved Videos" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem className="drawerlist" key="No-Go List" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="No-Go List" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem className="drawerlist" key="User Settings" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="User Settings" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem className="drawerlist" key="Logout" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
       </List>
     </Drawer>
   )

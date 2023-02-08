@@ -13,68 +13,6 @@ const jwt = require('jsonwebtoken');
 //   })
 // })
 
-
-router.post('/signup/', async (req, res) => {
-	console.log(req.body)
-
-	try {
-		const hashedPassword = await bcrypt.hash(req.body.password, 10)
-
-		await User.create({
-			username: req.body.username,
-			email: req.body.email,
-			password: hashedPassword,
-		})
-		res.json({ status: 'ok' })
-	} catch (err) {
-		res.json({ status: 'error', error: 'Email has already been registered.' })
-	}
-})
-
-
-//doesn't need client-side encryption if using TLS
-router.post('/login/', async (req, res) => {
-	console.log("logging in")
-	const { email, password } = req.body;
-
-	const user = await User.findOne({ email });
-	if (!user) {
-		console.log("no user")
-		return res.json({ status: 'error', error: 'No user found' });
-	}
-
-	const isValid = await bcrypt.compare(password, user.password);
-	if (!isValid) {
-		console.log("not valid")
-		return res.json({ status: 'error', error: 'Incorrect password' });
-	}
-
-	console.log("1")
-	const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, process.env.ACCESS_TOKEN_SECRET);
-	console.log("valid")
-	console.log(token)
-	return res.json({ status: 'ok', user: token });
-});
-
-
-
-//seems correct now
-router.get('/username/', authenticateToken, async (req, res) => {
-
-	//authenticate token runs here
-	// console.log(req)
-	const userId = req.user.id;
-	console.log(userId)
-	const user = await User.findOne({ _id: userId }).select('username');
-	const username = user.username
-	return res.json({ status: 'ok', username: username });
-
-  // res.status(200).json({
-  //   message: 'Get user'
-  // })
-})
-
-
 function authenticateToken(req, res, next) {
 	// must send token in authorization header
 	const authHeader = req.headers['authorization'];
@@ -97,13 +35,67 @@ function authenticateToken(req, res, next) {
 
 
 
+
+
+router.post('/signup/', async (req, res) => {
+	console.log(req.body)
+
+	try {
+		const hashedPassword = await bcrypt.hash(req.body.password, 10)
+
+		await User.create({
+			username: req.body.username,
+			email: req.body.email,
+			password: hashedPassword,
+		})
+		res.json({ status: 'ok' })
+	} catch (err) {
+		res.json({ status: 'error', error: 'Email has already been registered.' })
+	}
+})
+
+
+//doesn't need client-side encryption if using TLS? 
+router.post('/login/', async (req, res) => {
+	console.log("logging in")
+	const { email, password } = req.body;
+
+	const user = await User.findOne({ email });
+	if (!user) {
+		return res.json({ status: 'error', error: 'No user found' });
+	}
+
+	const isValid = await bcrypt.compare(password, user.password);
+	if (!isValid) {
+		return res.json({ status: 'error', error: 'Incorrect password' });
+	}
+
+	const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, process.env.ACCESS_TOKEN_SECRET);
+	return res.json({ status: 'ok', user: token });
+});
+
+
+
+
+router.get('/username/', authenticateToken, async (req, res) => {
+	const userId = req.user.id;
+	try {
+		const user = await User.findOne({ _id: userId }).select('username');
+		if (!user) {
+			return res.status(404).send('User not found');
+		}
+		const username = user.username
+		return res.json({ status: 'ok', username: username });
+	} catch (error) {
+		console.error(`Error retrieving username: ${error}`);
+	}
+})
+
 router.put('/:username', async (req, res) => {
 	res.status(200).json({
 		message: `Update user ${req.params.username}`
 	})
 })
-
-
 
 router.delete('/:username', async (req, res) => {
 	res.status(200).json({
@@ -113,13 +105,26 @@ router.delete('/:username', async (req, res) => {
 
 
 
+router.get('/savedVideos/', authenticateToken, async (req, res) => {
+	const userId = req.user.id;
+	try {
+		const user = await User.findOne({ _id: userId }).select('savedVideos');
+		if (!user) {
+			return res.status(404).send('User not found');
+		}
+		const savedVideos = user.savedVideos
+		console.log(savedVideos)
+		return res.json({ status: 'ok', savedVideos: savedVideos });
+	} catch (error) {
+		console.error(`Error retrieving saved videos: ${error}`);
+	}
+})
 
-
-router.post('/savedVideos/', async (req, res) => {
-	console.log(req.body)
+router.post('/savedVideos/', authenticateToken, async (req, res) => {
+	const userId = req.user.id;
 	try {
 		const updatedUser = await User.updateOne(
-			{ _id: req.body.id },
+			{ _id: userId },
 			{ $push: { savedVideos: req.body.video } }
 		);
 		console.log(`Successfully added saved video: ${updatedUser}`);
@@ -129,18 +134,6 @@ router.post('/savedVideos/', async (req, res) => {
 })
 
 
-router.post('/savedVideos/', async (req, res) => {
-	console.log(req.body)
-	try {
-		const user = await User.findOne({ _id: req.body.id });
-		if (!user) {
-			return res.status(404).send('User not found');
-		}
-		res.send(user.savedVideos);
-	} catch (error) {
-		console.error(`Error retrieving saved videos: ${error}`);
-	}
-})
 
 
 

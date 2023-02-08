@@ -65,29 +65,7 @@ const LoginContextProvider = (props) => {
 	
 
 
-  //user.userame
 
-
-	// async function getUsername() {
-  //   //grabs quote from the api, using the usertoken. could probably use to grab name
-  //   //does each user have a unique quote? how does it tie the two together?
-  //     const req = await fetch('http://localhost:5000/api/quote', {
-  //       headers: {
-  //         //passes the access token grabbing from local storage
-  //         'x-access-token': localStorage.getItem('token'),
-  //       },
-  //     })
-  
-  //       //the response
-  //     const data = await req.json()
-  //     if (data.status === 'ok') {
-  //       // if successful, sets the quote to be displayed
-  //       setQuote(data.quote)
-  //     } else {
-  //       // alerts if unsuccessful
-  //       alert(data.error)
-  //     }
-  //   }
 
 
   console.log("loginContext rendered")
