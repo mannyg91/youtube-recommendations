@@ -44,7 +44,7 @@ export const Login = (props) => {
             console.log(data.user)
             console.log(data.user._id)
 			localStorage.setItem('token', data.user)
-            // getUsername()
+            getUsername()
             handleLogin()
             // navigate('/');
             props.handleLoginClose()

@@ -58,11 +58,42 @@ router.post('/login/', async (req, res) => {
 
 
 
-router.get('/username/', async (req, res) => {
-  res.status(200).json({
-    message: 'Get user'
-  })
+//seems correct now
+router.get('/username/', authenticateToken, async (req, res) => {
+
+	//authenticate token runs here
+	// console.log(req)
+	const userId = req.user.id;
+	console.log(userId)
+	const user = await User.findOne({ _id: userId }).select('username');
+	const username = user.username
+	return res.json({ status: 'ok', username: username });
+
+  // res.status(200).json({
+  //   message: 'Get user'
+  // })
 })
+
+
+function authenticateToken(req, res, next) {
+	// must send token in authorization header
+	const authHeader = req.headers['authorization'];
+	
+	// extracts token string from the header
+	const token = authHeader && authHeader.split(' ')[1]; // typically formatted "bearer","<token>"
+	console.log(token)
+
+	// if there is no token, rejected, it may be that this is already handled client-side
+	if (token == null) return res.sendStatus(401);
+
+	// otherwise, checks token, then sends back the user object to the route method
+	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+		if (err) return res.sendStatus(403);
+		req.user = user;
+		console.log(req.user)
+		next();
+	});
+}
 
 
 
@@ -114,18 +145,7 @@ router.post('/savedVideos/', async (req, res) => {
 
 
 
-function authenticateToken(req, res, next) {
-	const authHeader = req.headers['authorization'];
-	const token = authHeader && authHeader.split(' ')[1]; // typically formatted "bearer","<token>"
-	console.log(token)
-	if (token == null) return res.sendStatus(401);
 
-	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
-		if (err) return res.sendStatus(403);
-		req.user = user;
-		next();
-	});
-}
 
 
 

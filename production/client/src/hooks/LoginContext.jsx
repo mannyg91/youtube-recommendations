@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import jwt_decode from 'jwt-decode'
 
 
 const LoginContext = React.createContext();
@@ -16,7 +15,7 @@ const LoginContextProvider = (props) => {
 		const token = localStorage.getItem('token')
 		if (token) {
 			  setIsLoggedIn(true);
-        // getUsername();
+        getUsername();
 			} else {
         setIsLoggedIn(false);
 			}
@@ -33,29 +32,36 @@ const LoginContextProvider = (props) => {
     setIsLoggedIn(false)
   }
 
+  //should probably create a function just for handling token
 
-  //can be a get request for username, send token, have it decoded and sent back
-	function getUsername() {
-		//tries to grab token
-		const token = localStorage.getItem('token')
-		if (token) {
-			//if found, decodes it
-			const user = jwt_decode(token)
 
-			if (!user) {
-				//if no user, removes token
-				localStorage.removeItem('token')
-			} else {
-				//if user is logged in, it gets a quote
-        setUsername(user.username)
-        console.log(user)
-        console.log(user.username)
-        console.log(user.id)
-        
-				// populateQuote()
-			}
-		}
-	}
+  //need to get token, send it, make the get request to username, receive back the username, set it
+  async function getUsername() {
+    // tries to grab token
+    const token = localStorage.getItem('token');
+  
+    // if token, makes get request
+    if (token) {
+      const res = await fetch('http://localhost:5000/api/user/username', {
+        method: 'GET',
+        headers: {
+          // passes the access token grabbing from local storage
+          'Authorization': `Bearer ${token}`
+        }
+      });
+  
+      // if successful  response, username is set
+      if (res.ok) {
+        const data = await res.json();
+        // success, sets username state
+        const username = data.username
+        setUsername(username);
+      } else {
+        // removes token if request is unsuccessful
+        localStorage.removeItem('token');
+      }
+    }
+  }
 	
 
 
@@ -96,7 +102,7 @@ const LoginContextProvider = (props) => {
         handleLogout,
         username,
         setUsername,
-        // getUsername,
+        getUsername,
       }}
     >
       {props.children}

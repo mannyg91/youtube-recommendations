@@ -124,7 +124,7 @@ export default function Navbar() {
               >
 
 
-              {/* {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>Hi, {username}!</span>} */}
+              {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
 
                 <AccountCircle id="acctbtn"/>
               </IconButton>
