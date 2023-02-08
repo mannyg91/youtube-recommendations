@@ -11,9 +11,15 @@ const LoginContextProvider = (props) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [username, setUsername] = useState({});
 
-  // React.useEffect(() => {
-  //   setIsLoggedIn(false);
-  // }, []);
+  React.useEffect(() => {
+		const token = localStorage.getItem('token')
+		if (token) {
+			  setIsLoggedIn(true);
+        getUsername();
+			} else {
+        setIsLoggedIn(false);
+			}
+  }, []);
 
 
   function handleLogin() {
@@ -38,6 +44,9 @@ const LoginContextProvider = (props) => {
 			} else {
 				//if user is logged in, it gets a quote
         setUsername(user.username)
+        console.log(user)
+        console.log(user.username)
+        console.log(user.id)
         
 				// populateQuote()
 			}

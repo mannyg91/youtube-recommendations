@@ -5,14 +5,12 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 import { LoginContext } from '../hooks/LoginContext';
-import { useNavigate } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
 
 
 
 export const Login = (props) => {
 
-    const navigate = useNavigate();
     //what the user enters
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
@@ -43,6 +41,7 @@ export const Login = (props) => {
         //confirms user exists
 		if (data.user) {
             console.log(data.user)
+            console.log(data.user._id)
 			localStorage.setItem('token', data.user)
             getUsername()
             handleLogin()
@@ -52,7 +51,6 @@ export const Login = (props) => {
 			alert('Please check your credentials')
 		}
 	}
-
 
 
 

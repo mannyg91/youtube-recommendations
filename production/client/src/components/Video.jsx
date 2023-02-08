@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom"; 
 import { useHover } from '../hooks/useHover';
+import jwt_decode from 'jwt-decode'
 
 const Video = ({ video }) => {
   const [hovered, ref] = useHover()
@@ -30,9 +31,55 @@ const Video = ({ video }) => {
         return <i className="ri-bookmark-fill favorite"></i>
       } else if (hovered) {
         //will have an on click function
-        return <i className="ri-bookmark-line favorite"></i>
+        return <i className="ri-bookmark-line favorite" onClick={saveVideo}></i>
       }
   }
+
+    //need functions here for user to saved videos, will check they are authorized, POST request to db
+    //creating function here, move to appropriate place later
+    async function saveVideo() {
+
+        console.log("save video")
+
+        const token = localStorage.getItem('token')
+
+        if (token) {
+          //if found, decodes it
+          const user = jwt_decode(token)
+
+          if (!user) {
+            //if no user, removes token
+            console.log("you must be logged in to save videos")
+            return
+          } else {
+            //if user is logged in, it gets a quote
+
+            console.log(user.id)
+            // populateQuote()
+          }}
+
+        const response = await fetch(`http://localhost:5000/api/user/savedVideos`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            //payload
+            // body: JSON.stringify({
+            //   id, //needs to be defined
+            //   video, //needs to be defined
+            // }),
+        })
+        const data = await response.json()
+
+        //confirms user exists
+    if (data) {
+            //function here?
+            console.log(data)
+    } else {
+      alert('cannot save video')
+    }
+  }
+
 
 
   return (

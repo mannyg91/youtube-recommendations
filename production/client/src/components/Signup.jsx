@@ -64,7 +64,7 @@ export const Signup = (props) => {
                             sx={{ display: 'block' }}
                             required
                             label="Username"
-
+                            className="account-textfield"
                             type="text"
                             onChange={(e) => setUsername(e.target.value)}
                         />
@@ -72,7 +72,7 @@ export const Signup = (props) => {
                             sx={{ display: 'block' }}
                             required
                             label="Email"
-
+                            className="account-textfield"
                             type="email"
                             onChange={(e) => setEmail(e.target.value)}
                         />
@@ -80,6 +80,7 @@ export const Signup = (props) => {
                             sx={{ display: 'block' }}
                             required
                             label="Password"
+                            className="account-textfield"
                             type="password"
                             onChange={(e) => setPassword(e.target.value)}
                         />

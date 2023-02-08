@@ -150,12 +150,15 @@ code {
 }
 
 .video-card {
-  background: rgba(0,0,0, 0.3);
-  border-radius: 25px;
+  background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.4));
+  border-radius: 20px;
   padding: 0px;
   /* width: 320px; */
   /* text-align: center;
   justify-content: center; */
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), 
+            4px 0px 4px rgba(0, 0, 0, 0.15); */
+
 }
 
 .thumbnail {
@@ -278,8 +281,6 @@ code {
   bottom: 0;
   left: 0;
   right: 0;
-
-
 }
 
 #accountDiv {
@@ -287,16 +288,22 @@ code {
   flex-direction: column;
   align-items: center;
   width: 350px;
-  padding: 50px;
+  padding: 60px 50px;
   background: #181818;
-  border-radius: 35px;
-  color: white;
+  color: aliceblue;
+  border-radius: 25px;
 }
 
 .account-fields {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.account-textfield {
+  background: #1e1e1e;
+  border: 1px solid #20444e !important;
+  border-radius: 5px;
 }
 
 
@@ -349,22 +356,22 @@ code {
   
   /*Styles for the logobar*/
   #logo {
-    font-size:4vh;
+    font-size: 3.5vh;
   }
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
-    height: 8vh;
+    height: 7vh;
     z-index: 1;
   }
   
   #burgerbtn {
-    font-size: 4vh;
+    font-size: 3.5vh;
   }
 
   
   #acctbtn {
-    font-size: 4vh;
+    font-size: 3.5vh;
   }
 
   .video-player {

@@ -42,7 +42,6 @@ router.post('/login/', async (req, res) => {
 
 	console.log(req.body)
 
-
   if (!user) {
 		return { status: 'error', error: 'No user found' }
 	}
@@ -57,6 +56,7 @@ router.post('/login/', async (req, res) => {
 	if (isValid) {
 		const token = jwt.sign(
 			{
+				id: user._id,
 				username: user.username,
 				email: user.email,
 			}, 'gLcAdi3ubu3awruQ9th'
@@ -67,10 +67,6 @@ router.post('/login/', async (req, res) => {
     return res.json({status: 'error', user: false})
   }
 })
-
-
-
-
 
 
 
@@ -88,6 +84,28 @@ router.delete('/:username', async (req, res) => {
     message: `Delete user ${req.params.username}`
   })
 })
+
+
+
+
+
+router.post('/savedVideos/', async (req, res) => {
+	console.log(req.body)
+	try {
+		const updatedUser = await User.updateOne(
+			{ _id: req.body.id },
+			{ $push: { savedVideos: req.body.video } }
+		);
+		console.log(`Successfully added saved video: ${updatedUser}`);
+	} catch (error) {
+		console.error(`Error saving video: ${error}`);
+	}
+})
+
+
+
+
+
 
 
 module.exports = router

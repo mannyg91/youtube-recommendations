@@ -14,14 +14,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { styled } from "@mui/material/styles";
 
-
-
-
-
-
-const drawerWidth = 240;
 
 export default function Navbar() {
 
@@ -48,8 +41,7 @@ export default function Navbar() {
   };
 
 
-  // I suppose to will be used when we have actual login
-  const [auth, setAuth] = React.useState(false);
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 

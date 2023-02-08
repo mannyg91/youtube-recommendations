@@ -10,20 +10,21 @@ import appTopics  from './data/topics';
 import { isRestricted } from '../utils/contentFilter'
 
 
+
 const VideoFeed = () => {
 
-  const [videos, setVideos] = React.useState(null); // change null to data.items for testData
+  const [videos, setVideos] = React.useState(data.items); // change null to data.items for testData
   const [searchTerm, setSearchTerm] = React.useState("history");
   const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");// music topic
   const [sliderState, setSliderState] = React.useState(2);
   const [focusKeywords, setFocusKeywords] = React.useState(null);
 
 
-  //need functions here for user to saved videos, will check they are authorized, POST request to db
+
 
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(searchTerm, selectedTopic);
