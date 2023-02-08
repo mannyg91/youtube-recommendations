@@ -22,10 +22,12 @@ export default function Navbar() {
   const [loginOpen, setLoginOpen] = React.useState(false);
 
   const handleLoginOpen = () => {
+    handleClose()
     setLoginOpen(true);
   };
 
   const handleLoginClose = () => {
+    handleClose()
     setLoginOpen(false);
   };
 
@@ -33,10 +35,12 @@ export default function Navbar() {
   const [signupOpen, setSignupOpen] = React.useState(false);
 
   const handleSignupOpen = () => {
+    handleClose()
     setSignupOpen(true);
   };
 
   const handleSignupClose = () => {
+    handleClose()
     setSignupOpen(false);
   };
 
@@ -161,6 +165,10 @@ export default function Navbar() {
 
           </Toolbar>
         </AppBar>
+
+        {/* <AppBar style={{top:'70px', height:'40px', backgroundColor:'rgba(0,0,0,0)', color:'white', padding: '10px 100px', fontWeight: '500'}}>
+          Music | Gaming | Sports | Religion | Hobbies | Knowledge | History |
+        </AppBar> */}
       
         <SideBar 
           handleDrawerOpen={handleDrawerOpen}

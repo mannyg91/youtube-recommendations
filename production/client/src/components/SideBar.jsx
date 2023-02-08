@@ -61,7 +61,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
       <List>
 
           <Link to="/saved-videos/">
-            <ListItem className="drawerlist" key="Saved Videos" disablePadding>
+            <ListItem className="drawerlist" key="Saved Videos" onClick={handleDrawerClose} disablePadding>
                   <ListItemButton>
                     <ListItemIcon>
                       <ChevronRightIcon className="listitemicon" />

@@ -84,7 +84,6 @@ const VideoFeed = () => {
       <div className='controls'>
         <div className='top-section'>
           <div className='random-search'>
-            {selectedTopic}
             Search: <strong style={{fontSize: '32px'}}>{searchTerm}</strong>
           
             <Button
