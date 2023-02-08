@@ -1,5 +1,6 @@
 import React from 'react'
 import Toggle from './Toggle'
+import { Link } from "react-router-dom"
 
 
 import IconButton from '@mui/material/IconButton';
@@ -15,10 +16,13 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
-import { getSavedVideos } from '../utils/getSavedVideos'
+import { SavedContext } from '../hooks/SavedContext';
 
 
 const SideBar = ({ handleDrawerClose, open}) => {
+
+  const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
+
 
   const drawerWidth = 240;
 
@@ -56,15 +60,17 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
       <List>
 
-        <ListItem className="drawerlist" key="Saved Videos" onClick={getSavedVideos} disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <ChevronRightIcon className="listitemicon" />
-                </ListItemIcon>
-                <ListItemText primary="Saved Videos" />
-                <Divider color="aliceblue" />
-              </ListItemButton>
-            </ListItem>
+          <Link to="/saved-videos/">
+            <ListItem className="drawerlist" key="Saved Videos" disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <ChevronRightIcon className="listitemicon" />
+                    </ListItemIcon>
+                    <ListItemText primary="Saved Videos" />
+                    <Divider color="aliceblue" />
+                  </ListItemButton>
+                </ListItem>
+          </Link>
 
             <ListItem className="drawerlist" key="No-Go List" disablePadding>
               <ListItemButton>

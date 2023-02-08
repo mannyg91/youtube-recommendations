@@ -1,8 +1,9 @@
 import React from 'react'
 import { LoginContextProvider } from './hooks/LoginContext';
 
-import { Navbar, VideoFeed, WatchVideo } from "./components";
+import { Navbar, VideoFeed, WatchVideo, SavedVideos } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SavedContextProvider } from './hooks/SavedContext';
 
 const App = () => {
   // const [user, setUser] = useState({})
@@ -17,20 +18,28 @@ const App = () => {
 
   return (
     <LoginContextProvider>
-      <BrowserRouter>
-          <Routes>
-            <Route
-              path="/"
-              // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
-              element={<><Navbar /><VideoFeed/></>}
-          />
-            <Route
-              path='/video/:id' 
-              element={<><Navbar /><WatchVideo /></>} 
-            />
-          </Routes>
-  
-      </BrowserRouter>
+      <SavedContextProvider>
+        <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
+                element={<><Navbar /><VideoFeed/></>}
+              />
+              <Route
+                path='/video/:id' 
+                element={<><Navbar /><WatchVideo /></>} 
+              />
+              <Route
+                path='/saved-videos' 
+                element={<><Navbar /><SavedVideos /></>} 
+              />
+
+
+            </Routes>
+    
+        </BrowserRouter>
+      </SavedContextProvider>
     </LoginContextProvider>
 
 
