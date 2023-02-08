@@ -16,7 +16,7 @@ export const Login = (props) => {
     const [password, setPassword] = React.useState('')
 
 
-    const { handleLogin, username, isLoggedIn, setIsLoggedIn, getUsername } = React.useContext(LoginContext);
+    const { handleLogin, getUsername } = React.useContext(LoginContext);
 
     //sends login data
     async function loginUser(event) {
@@ -38,16 +38,18 @@ export const Login = (props) => {
         })
         const data = await response.json()
 
+        
         //confirms user exists
 		if (data.user) {
             console.log(data.user)
             console.log(data.user._id)
 			localStorage.setItem('token', data.user)
-            getUsername()
+            // getUsername()
             handleLogin()
             // navigate('/');
             props.handleLoginClose()
 		} else {
+            console.log(data)
 			alert('Please check your credentials')
 		}
 	}
@@ -56,7 +58,7 @@ export const Login = (props) => {
 
     return (
 
-        <Dialog open={props.loginOpen} disableBackdropClick={false} onClose={props.handleLoginClose}>
+        <Dialog open={props.loginOpen}  onClose={props.handleLoginClose}>
             <div className='account-container'>
                     <div id="accountDiv">
                         <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>

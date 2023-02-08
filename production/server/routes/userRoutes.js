@@ -5,18 +5,20 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
 
 
-router.get('/', async (req, res) => {
-  res.status(200).json({
-    message: 'Get user'
-  })
-})
+
+
+// router.get('/', async (req, res) => {
+//   res.status(200).json({
+//     message: 'Get user'
+//   })
+// })
 
 
 router.post('/signup/', async (req, res) => {
-  console.log(req.body)
+	console.log(req.body)
 
-  try {
-    const hashedPassword = await bcrypt.hash(req.body.password, 10)
+	try {
+		const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
 		await User.create({
 			username: req.body.username,
@@ -29,60 +31,53 @@ router.post('/signup/', async (req, res) => {
 	}
 })
 
-    
 
-
+//doesn't need client-side encryption if using TLS
 router.post('/login/', async (req, res) => {
+	console.log("logging in")
+	const { email, password } = req.body;
 
-  console.log('login in express reached')
-
-	const user = await User.findOne({
-		email: req.body.email,
-	})
-
-	console.log(req.body)
-
-  if (!user) {
-		return { status: 'error', error: 'No user found' }
+	const user = await User.findOne({ email });
+	if (!user) {
+		console.log("no user")
+		return res.json({ status: 'error', error: 'No user found' });
 	}
 
-  const isValid = await bcrypt.compare(
-		req.body.password,
-    user.password
-	)
+	const isValid = await bcrypt.compare(password, user.password);
+	if (!isValid) {
+		console.log("not valid")
+		return res.json({ status: 'error', error: 'Incorrect password' });
+	}
 
-	console.log(isValid)
+	console.log("1")
+	const token = jwt.sign({ id: user._id, username: user.username, email: user.email }, process.env.ACCESS_TOKEN_SECRET);
+	console.log("valid")
+	console.log(token)
+	return res.json({ status: 'ok', user: token });
+});
 
-	if (isValid) {
-		const token = jwt.sign(
-			{
-				id: user._id,
-				username: user.username,
-				email: user.email,
-			}, 'gLcAdi3ubu3awruQ9th'
-    )
 
-    return res.json({status: 'ok', user: token})
-  } else {
-    return res.json({status: 'error', user: false})
-  }
+
+router.get('/username/', async (req, res) => {
+  res.status(200).json({
+    message: 'Get user'
+  })
 })
 
 
 
-
 router.put('/:username', async (req, res) => {
-  res.status(200).json({
-    message: `Update user ${req.params.username}`
-  })
+	res.status(200).json({
+		message: `Update user ${req.params.username}`
+	})
 })
 
 
 
 router.delete('/:username', async (req, res) => {
-  res.status(200).json({
-    message: `Delete user ${req.params.username}`
-  })
+	res.status(200).json({
+		message: `Delete user ${req.params.username}`
+	})
 })
 
 
@@ -103,6 +98,34 @@ router.post('/savedVideos/', async (req, res) => {
 })
 
 
+router.post('/savedVideos/', async (req, res) => {
+	console.log(req.body)
+	try {
+		const user = await User.findOne({ _id: req.body.id });
+		if (!user) {
+			return res.status(404).send('User not found');
+		}
+		res.send(user.savedVideos);
+	} catch (error) {
+		console.error(`Error retrieving saved videos: ${error}`);
+	}
+})
+
+
+
+
+function authenticateToken(req, res, next) {
+	const authHeader = req.headers['authorization'];
+	const token = authHeader && authHeader.split(' ')[1]; // typically formatted "bearer","<token>"
+	console.log(token)
+	if (token == null) return res.sendStatus(401);
+
+	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+		if (err) return res.sendStatus(403);
+		req.user = user;
+		next();
+	});
+}
 
 
 

@@ -12,10 +12,11 @@ const LoginContextProvider = (props) => {
   const [username, setUsername] = useState({});
 
   React.useEffect(() => {
+    console.log("login context user effect")
 		const token = localStorage.getItem('token')
 		if (token) {
 			  setIsLoggedIn(true);
-        getUsername();
+        // getUsername();
 			} else {
         setIsLoggedIn(false);
 			}
@@ -28,9 +29,12 @@ const LoginContextProvider = (props) => {
   };
 
   function handleLogout() {
+    localStorage.removeItem('token')
     setIsLoggedIn(false)
   }
 
+
+  //can be a get request for username, send token, have it decoded and sent back
 	function getUsername() {
 		//tries to grab token
 		const token = localStorage.getItem('token')
@@ -52,6 +56,7 @@ const LoginContextProvider = (props) => {
 			}
 		}
 	}
+	
 
 
   //user.userame
@@ -91,7 +96,7 @@ const LoginContextProvider = (props) => {
         handleLogout,
         username,
         setUsername,
-        getUsername,
+        // getUsername,
       }}
     >
       {props.children}

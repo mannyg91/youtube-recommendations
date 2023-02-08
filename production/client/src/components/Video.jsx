@@ -78,10 +78,6 @@ const Video = ({ video }) => {
             }
 
 
-
-
-
-
             console.log(user.id)
           }}
 
