@@ -13,16 +13,12 @@ const Video = ({ video }) => {
 
   const videoId = video?.id.videoId
   const videoTitle = video.snippet.title
-  const videoDescription = video.snippet.description
-
   const thumbnailURL = video.snippet.thumbnails.high.url;
   // const thumbnailWidth = video.thumbnail[video.thumbnail.length - 1].width;
   // const thumbnailHeight = video.thumbnail[video.thumbnail.length - 1].height;
   const thumbnailWidth = video.snippet.thumbnails.high.width * .68;
   const thumbnailHeight = video.snippet.thumbnails.high.height * .68;
-
   const channelTitle = video.snippet.channelTitle;
-  const publishTime = video.snippet.publishTime;
 
   const [saved, setSaved] = React.useState(false)
 
