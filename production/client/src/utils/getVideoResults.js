@@ -22,6 +22,7 @@ export const youtubeSearch = async (query, topic) => {
       "maxResults":"50",
       "videoCategoryId": "27",
       "topicId": topic,
+      // "prettyPrint": true,
     })
         .then(function(response) {
                 console.log("fetched data")

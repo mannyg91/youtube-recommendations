@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react'
-import { useState } from "react";
-import Link from 'react';
+import React from 'react'
+import { LoginContextProvider } from './hooks/LoginContext';
 
-import { Login, Signup, Navbar, VideoFeed, WatchVideo } from "./components";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Navbar, VideoFeed, WatchVideo, SavedVideos } from "./components";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { SavedContextProvider } from './hooks/SavedContext';
 
 const App = () => {
   // const [user, setUser] = useState({})
@@ -17,32 +17,30 @@ const App = () => {
   // }, []);
 
   return (
+    <LoginContextProvider>
+      <SavedContextProvider>
+        <BrowserRouter>
+            <Routes>
+              <Route
+                path="/"
+                // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
+                element={<><Navbar /><VideoFeed/></>}
+              />
+              <Route
+                path='/video/:id' 
+                element={<><Navbar /><WatchVideo /></>} 
+              />
+              <Route
+                path='/saved-videos' 
+                element={<><Navbar /><SavedVideos /></>} 
+              />
+
+
+            </Routes>
     
-    <BrowserRouter>
-        <Navbar />
-        <Routes>
-          <Route
-            path="/"
-            // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
-            element={<VideoFeed/>}
-         />
-          <Route
-            path="/signup"
-            // element={user?.email ? <Navigate to="/home" /> : <Signup />}
-            element={<Signup/>}
-          />
-          <Route
-            path="/login"
-            // element={user?.email ? <Navigate to="/home" /> : <Login />}
-            element={<Login/>}
-          />
-          <Route
-            path='/video/:id' 
-            element={<WatchVideo />} 
-          />
-        </Routes>
- 
-    </BrowserRouter>
+        </BrowserRouter>
+      </SavedContextProvider>
+    </LoginContextProvider>
 
 
   )

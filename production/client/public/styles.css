@@ -15,9 +15,18 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color :aliceblue;
   /* background: rgb(24,24,24); */
-  background: 
-    radial-gradient(circle at 80% 35%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-  display:flex;
+  background: radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
+  background-repeat:no-repeat;
+  background-attachment:fixed;
+}
+
+.wrapper{
+  /*This will keep everything where it belongs,*/
+  /* even if not everything renders correctly*/
+  height:100%;
+  width:100%;
+  position:absolute;
+  justify-content: center;
 }
 
 .wrapper{
@@ -31,12 +40,10 @@ body {
 
 h1 {
   font-size:25pt;
-  margin-bottom:5%;
 }
 
 h2 {
   font-size:18pt;
-  margin-bottom:3%;
 }
 
 a {
@@ -87,7 +94,7 @@ code {
 
 /* styles for the logo bar*/
 #logo {
-  color: rgba(49,159,193,1);
+  color: #0098c7;
   text-align: left;
   font-size: 4vh;
   /* original font choice */
@@ -101,12 +108,7 @@ code {
 
 #logobar {
   /* background-color:rgb(14, 16, 14); */
-  background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
-  top: 0px;
-  position: sticky;
-  height: 8vh;
-  padding: 0px 25px;
-  width: 99%;
+  background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0));
 }
 
 #burgerbtn {
@@ -114,8 +116,8 @@ code {
 }
 
 #acctbtn {
-  font-size: 4vh;
-  padding-right: 30px;
+  height: 100%;
+  width: 100%;
 }
 
 /*styles for the search */
@@ -128,10 +130,18 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 10vh;
+  margin-top: 12vh;
+  margin-bottom: 1vh;
   align-items: center;
   gap: 8vw;
 }
+
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
 
 .random-search {
   display: flex;
@@ -149,23 +159,35 @@ code {
   flex-wrap: wrap;
   justify-content: center;
   text-align: center;
-  row-gap: 25px;
+  row-gap: 36px;
   column-gap: 0px;
 }
 
 .video-card {
-  background: rgba(0,0,0, 0.3);
-  border-radius: 25px;
+  background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.45));
+  border-radius: 20px;
   padding: 0px;
   /* width: 320px; */
   /* text-align: center;
   justify-content: center; */
+  /* box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.35), 
+            4px 0px 4px rgba(0, 0, 0, 0.15); */
+
 }
 
 .thumbnail {
-
+  position: relative;
   /* display: flex;
   justify-content: center; */
+}
+
+.favorite {
+  color: aliceblue;
+  font-size: 1.2rem;
+  position: absolute;
+  cursor: pointer;
+  right: 20px;
+  top: 260px;
 }
 
 
@@ -192,41 +214,69 @@ code {
   font-size: 14px;
 }
 
+
+
+
+
 .player-container {
-  /* background: rgba(0,0,0, 0.3); */
   background: black;
-  /* border-radius: 25px; */
-  width: 1920px;
+  max-width: 100%;
   display: flex;
   justify-content: center;
-  /* border: 1px red solid; */
 }
 
 .video-player {
-  margin-top: 80px;
-  width: 960px;
-  height: 540px;
+  width: 100%;
+  margin-top: 0px;
 }
 
+/* .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+} */
+
 .player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   background: rgba(0,0,0, 0.3);
   border-bottom-left-radius: 60px;
   border-bottom-right-radius: 60px;
-  /* border: 1px green solid; */
-  padding: 25px;
-  height: 300px;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  padding: 30px;
+  height: auto;
+  
 }
 
 .player-video-title {
   /* border: 1px yellow solid; */
-  padding: 25px;
+  padding: 0px 25px;
   height: auto;
-  border-bottom: 1px rgb(39, 110, 40) solid;
+  border-bottom: 1px rgb(106, 139, 150) solid;
+}
+
+.player-video-channel {
+  color: lightblue;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.player-video-description-container {
+  padding: 0px 80px;
 }
 
 .player-video-description {
+  margin-bottom: 32px;
   color: lightgray;
-  line-height: 1.25;
+  line-height: 1.5;
+  font-size: 14px;
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
 }
 
 
@@ -256,31 +306,46 @@ code {
 }
 
 
-/*Styles for login*/
-.loginPage {
-  margin-top:30%;
-  margin-left:10%;
-  width: max-content;
-}
-
-#login_form {
+#accountDiv {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  width: 350px;
+  padding: 60px 50px;
+  background: #181818;
+  color: aliceblue;
+  border-radius: 25px;
 }
 
-#loginDiv {
-  width:max-content;
-  margin-left:40%;
-  margin-right:50%;
-  margin-top: 20vh;
-  border:1px aliceblue solid;
-  padding: 40px 80px;
-  text-align:center;
-  background-image:radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
+.account-fields {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
+
+.account-textfield {
+  background: #1e1e1e;
+  border: 1px solid #20444e !important;
+  border-radius: 5px;
+}
+
+
+/* these will need to be simplified and targeted via user-defined classes */
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:invalid {
+  color: aliceblue;
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue !important;
+}
+
 
 .MuiTextField-root > .MuiFormLabel-root.Mui-focused{
-  color:rgb(3, 84, 189);
+  color:aliceblue; 
+}
+
+.css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
+  color: aliceblue;
 }
 
 .MuiTextField-root label{
@@ -291,7 +356,9 @@ code {
   color:rgb(219, 225, 231);
 }
 
-#loginbutton{
+
+
+#submit-btn {
   background-color:rgba(240,248,255,1);
   margin-bottom:10%;
 }
@@ -312,20 +379,6 @@ code {
 @media screen and (min-width:700px){
   
   /*Styles for the main body*/
-  body {
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-      sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    color :aliceblue;
-    /* background: rgb(24,24,24); */
-    background: 
-    radial-gradient(at 80% 45%, rgba(49,159,193,1) 1%, rgba(24,24,24,1) 99%);
-    background-repeat:no-repeat;
-    background-attachment:fixed;
-  }
-
   .video-feed {
     margin: 25px 10%;
     column-gap: 48px;
@@ -333,25 +386,32 @@ code {
   
   /*Styles for the logobar*/
   #logo {
-    font-size:4vh;
+    font-size: 3.5vh;
+    padding: 0px 27px;
   }
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
-    background-image:linear-gradient(rgb(48, 54, 48),rgb(0,0,0));
-    height: 8vh;
-    z-index: 1;
+    height: 7vh;
+    padding: 0px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   #burgerbtn {
-    font-size: 4vh;
+    font-size: 3.5vh;
   }
 
-  .dayNightTog {
-  }
   
   #acctbtn {
-    font-size: 4vh;
+    font-size: 3.5vh;
   }
+
+  .video-player {
+  margin-top: 8vh;
+  width: 54vw;   
+  height: 30vw; 
+}
 
 }

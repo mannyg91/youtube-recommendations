@@ -1,6 +1,7 @@
 import React from 'react'
 import Toggle from './Toggle'
-import {Link} from 'react-router-dom';
+import { Link } from "react-router-dom"
+
 
 import IconButton from '@mui/material/IconButton';
 import { styled } from "@mui/material/styles";
@@ -14,7 +15,16 @@ import ListItem from "@mui/material/ListItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
+
+import { SavedContext } from '../hooks/SavedContext';
+import { LoginContext } from '../hooks/LoginContext';
+
+
 const SideBar = ({ handleDrawerClose, open}) => {
+
+  const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
+  const { setIsLoggedIn, isLoggedIn, handleLogout } = React.useContext(LoginContext);
+
 
   const drawerWidth = 240;
   const [auth, setAuth] = React.useState(true);
@@ -40,7 +50,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
   return (
     <Drawer
-      PaperProps={{ sx: { backgroundColor: "rgb(24,24,24)", color: "aliceblue" } }}
+      PaperProps={{ sx: { backgroundColor: "rgb(12,12,12)", color: "aliceblue" } }}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
@@ -59,65 +69,51 @@ const SideBar = ({ handleDrawerClose, open}) => {
         </IconButton>
       </DrawerHeader>
       <Divider color="aliceblue" />
+
       <List>
-        {/*Unable to presently place here -- need fix for functionality*/}
-        {/* <div>
-          <Toggle />
-        </div> */}
-        
-        {["Home"].map((text, index) => (
-          <ListItem className="drawerlist" key={text} disablePadding>
-            <ListItemButton LinkComponent={Link} to="/">
-              <ListItemIcon>
-                <ChevronRightIcon className="listitemicon" />
-              </ListItemIcon>
-              <ListItemText primary={text} />
-              <Divider color="aliceblue" />
-            </ListItemButton>
-            <ListItemButton>
-              <listItemText primary="Logout"/>
-            </ListItemButton>
-          </ListItem> 
-        ))}
-        {!auth && (
-          <ListItem className="drawerlist" key="Logout" disablePadding>
-            <ListItemButton component={Link} to="/login" onClick={handleLogin}>
-              <ListItemIcon>
-                <ChevronRightIcon className="listitemicon" />
-              </ListItemIcon>
-              <ListItemText primary="Login" />
-              <Divider color="aliceblue" />
-            </ListItemButton>
-          </ListItem>
-        )}
-          {auth && (
-            <List>
-              <ListItem className="drawerlist" key="User Settings" disablePadding>
-                <ListItemButton component={Link} to="/settings" onClick={handleLogout}>
-                  <ListItemIcon>
-                    <ChevronRightIcon className="listitemicon" />
-                  </ListItemIcon>
-                  <ListItemText primary="User Settings" />
-                  <Divider color="aliceblue" />
-                </ListItemButton>
-                <ListItemButton>
-                  <listItemText primary="Logout"/>
-                </ListItemButton>
-              </ListItem>
-              <ListItem className="drawerlist" key="Logout" disablePadding>
-                <ListItemButton component={Link} to="/" onClick={handleLogout}>
-                  <ListItemIcon>
-                    <ChevronRightIcon className="listitemicon" />
-                  </ListItemIcon>
-                  <ListItemText primary="Logout" />
-                  <Divider color="aliceblue" />
-                </ListItemButton>
-                <ListItemButton>
-                  <listItemText primary="Logout"/>
-                </ListItemButton>
-              </ListItem>
-            </List>
-        )}  
+
+          <Link to="/saved-videos/">
+            <ListItem className="drawerlist" key="Saved Videos" onClick={handleDrawerClose} disablePadding>
+                  <ListItemButton>
+                    <ListItemIcon>
+                      <ChevronRightIcon className="listitemicon" />
+                    </ListItemIcon>
+                    <ListItemText primary="Saved Videos" />
+                    <Divider color="aliceblue" />
+                  </ListItemButton>
+                </ListItem>
+          </Link>
+
+            <ListItem className="drawerlist" key="No-Go List" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="No-Go List" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem className="drawerlist" key="User Settings" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="User Settings" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
+            <ListItem className="drawerlist" key="Logout" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <ChevronRightIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="Logout" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
+
       </List>
     </Drawer>
   )

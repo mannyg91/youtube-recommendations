@@ -4,6 +4,11 @@ import Slider from '@mui/material/Slider';
 
 const ContentSlider = (props) => {
 
+  const handleSlider = (event, newValue) => {
+    console.log("slider moved")
+    props.setSliderState(newValue)
+  }
+
   const marks = [
     {
       value: 1,
@@ -14,6 +19,7 @@ const ContentSlider = (props) => {
       label: 'Random',
     },
   ];
+
 
   return (
     <Box sx={{ width: 200 }}>
@@ -35,13 +41,13 @@ const ContentSlider = (props) => {
         }
        }}
         size="medium"
-        defaultValue={props.sliderState}
+        value={props.sliderState}
         aria-label="Small"
         min={1}
         step={1}
         max={3}
         marks={marks}
-        onChange={props.handleSlider}
+        onChange={handleSlider}
       />
     </Box>
 

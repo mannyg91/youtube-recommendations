@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import SideBar from './SideBar'
+
+import { Login, Signup, SideBar, Toggle } from "../components";
+import { LoginContext } from '../hooks/LoginContext';
+
 
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -11,19 +14,46 @@ import MenuIcon from '@mui/icons-material/Menu';
 import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
-import { styled } from "@mui/material/styles";
-import Toggle from './Toggle'
+import Avatar from '@mui/material/Avatar';
 
-
-const drawerWidth = 240;
 
 export default function Navbar() {
-  // I suppose to will be used when we have actual login
-  const [auth, setAuth] = React.useState(true);
+
+  // form stuff
+  const [loginOpen, setLoginOpen] = React.useState(false);
+
+  const handleLoginOpen = () => {
+    closeAccountContainer()
+    setLoginOpen(true);
+  };
+
+  const handleLoginClose = () => {
+    closeAccountContainer()
+    setLoginOpen(false);
+  };
+
+
+  const [signupOpen, setSignupOpen] = React.useState(false);
+
+  const handleSignupOpen = () => {
+    closeAccountContainer()
+    setSignupOpen(true);
+  };
+
+  const handleSignupClose = () => {
+    closeAccountContainer()
+    setSignupOpen(false);
+  };
+
+
+
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [open, setOpen] = React.useState(false);
 
+  const { username, isLoggedIn, handleLogout } = React.useContext(LoginContext);
 
+
+  //need function here to display name, will check token, display name
   // Pass User
   // const logout = () => {
   //   localStorage.removeItem("user");
@@ -31,15 +61,15 @@ export default function Navbar() {
   // };
 
 
-  const handleLogin = (event) => {
-    setAuth(auth ? false : true);
-  };
+  // function handleLogin() {
+  //   setIsLoggedIn(!isLoggedIn)
+  // };
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const closeAccountContainer = () => {
     setAnchorEl(null);
   };
 
@@ -53,68 +83,102 @@ export default function Navbar() {
 
 
   return (
-    <Box sx={{ flexGrow: 1 }}>
-      <AppBar>
-        <Toolbar id="logobar" sx={{background: '#000000'}} open={open}>
-          <IconButton
-            size="large"
-            edge="start"
-            color="inherit"
-            aria-label="menu"
-            onClick={handleDrawerOpen}
-          >
-            <MenuIcon id="burgerbtn" />
-          </IconButton>
-          
-            <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Link to="/" id="logolink">
-                WatchWise
-              </Link>
-            </Typography>
-          
-          <div className="dayNightTog">
-            <Toggle />
-          </div>
-          <div>
+    <>
+    
+      <Login    
+          loginOpen={loginOpen}
+          handleLoginClose={handleLoginClose}  
+      />
+
+      <Signup
+          signupOpen={signupOpen}
+          handleSignupClose={handleSignupClose}  
+      />
+
+
+      <Box>
+        <AppBar  id="logobar">
+          <Toolbar open={open}>
             <IconButton
               size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleMenu}
+              edge="start"
               color="inherit"
+              aria-label="menu"
+              onClick={handleDrawerOpen}
             >
-              <AccountCircle id="acctbtn"/>
+              <MenuIcon id="burgerbtn" />
             </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorEl}
-              anchorOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'right',
-              }}
-              open={Boolean(anchorEl)}
-              onClose={handleClose}
-            >
-              {auth && (<MenuItem onClick={handleClose}>Profile</MenuItem>)}
-              <MenuItem onClick={handleLogin} component={Link} to={auth ? "/":"/login"}>{auth ? 'Logout' : 'Login'}</MenuItem>
-            </Menu>
-          </div>
-        </Toolbar>
-      </AppBar>
-    
-      <SideBar 
-        handleDrawerOpen={handleDrawerOpen}
-        handleDrawerClose={handleDrawerClose}
-        open={open}
-        setOpen={setOpen}  
-      />
-    </Box>
+            
+              <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+                <Link to="/">
+                  WatchWise
+                </Link>
+              </Typography>
+            
+            <div className="dayNightTog">
+              <Toggle />
+            </div>
+            <div>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleMenu}
+                color="inherit"
+              >
+
+
+              {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
+              {isLoggedIn ?  <Avatar style={{background: 'aliceblue', color:'rgba(49,159,193,1)'}}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn"/></Avatar>}
+                
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorEl}
+                anchorOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'right',
+                }}
+                open={Boolean(anchorEl)}
+                onClose={closeAccountContainer}
+              >
+                {isLoggedIn ? 
+                  <div>
+                    <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
+                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                  </div> :
+                  <div>
+                    <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
+                    <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
+                  </div>
+              }
+              </Menu>
+            </div>
+
+      
+
+
+          </Toolbar>
+        </AppBar>
+
+        {/* <AppBar style={{top:'70px', height:'40px', backgroundColor:'rgba(0,0,0,0)', color:'white', padding: '10px 100px', fontWeight: '500'}}>
+          Music | Gaming | Sports | Religion | Hobbies | Knowledge | History |
+        </AppBar> */}
+      
+        <SideBar 
+          handleDrawerOpen={handleDrawerOpen}
+          handleDrawerClose={handleDrawerClose}
+          open={open}
+          setOpen={setOpen}  
+        />
+      </Box>
+    </>
   );
 }
 
