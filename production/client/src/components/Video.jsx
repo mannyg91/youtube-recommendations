@@ -7,7 +7,7 @@ const Video = ({ video }) => {
   const [hovered, ref] = useHover()
 
   console.log(video)
-  const videoId = video.id.videoId
+  const videoId = video?.id.videoId
   const videoTitle = video.snippet.title
   const videoDescription = video.snippet.description
 
