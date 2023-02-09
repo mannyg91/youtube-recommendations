@@ -1,7 +1,7 @@
 export const isRestricted = (video) => {
 
   // returns true if content passes the filter
-  const filterOn = true
+  const filterOn = false
 
   if (filterOn) {
     console.log("entered filter")

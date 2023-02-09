@@ -14,7 +14,6 @@ const SavedVideos = () => {
 
 
   let videoElements = savedVideos?.map((video, index) => {
-    console.log(video)
     return <Video key={index} video={video.video} />
   });
 

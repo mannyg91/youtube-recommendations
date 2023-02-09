@@ -104,6 +104,7 @@ router.delete('/:username', async (req, res) => {
 
 
 
+// SAVED VIDEOS ROUTES
 router.get('/savedVideos/', authenticateToken, async (req, res) => {
 	const userId = req.user.id;
 	try {
@@ -136,6 +137,21 @@ router.post('/savedVideos/', authenticateToken, async (req, res) => {
     }
   } catch (error) {
     console.error(`Error saving video: ${error}`);
+  }
+});
+
+
+router.delete('/savedVideos/:videoId', authenticateToken, async (req, res) => {
+  const userId = req.user.id;
+  const videoId = req.params.videoId;
+  try {
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $pull: { savedVideos: { videoId: videoId } } }
+    );
+    console.log(`Successfully removed saved video: ${updatedUser}`);
+  } catch (error) {
+    console.error(`Error deleting video: ${error}`);
   }
 });
 

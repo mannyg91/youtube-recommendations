@@ -25,8 +25,7 @@ export const youtubeSearch = async (query, topic) => {
       // "prettyPrint": true,
     })
         .then(function(response) {
-                console.log("fetched data")
-                console.log(response.result)
+                console.log("fetched search data")
                 return response.result
               },
               function(err) { console.error("Execute error", err); });
