@@ -1,6 +1,7 @@
 import React from 'react'
 import Video from './Video'
 import TopicDropdown from './TopicDropdown'
+import TopicScrollTab from './TopicScrollTab'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
@@ -68,6 +69,9 @@ const VideoFeed = () => {
   return (
     <div className='wrapper'>
       <div className='controls'>
+        <div className="topic-scroll">
+          <TopicScrollTab selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic}/>
+        </div>
         <div className='top-section'>
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{props.searchTerm}</strong>
@@ -91,6 +95,7 @@ const VideoFeed = () => {
         </div>
 
         <div className='bottom-section'>
+
           <TopicDropdown selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic} />
           <ContentSlider sliderState={props.sliderState} setSliderState={props.setSliderState} />
         </div>

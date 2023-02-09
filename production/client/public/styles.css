@@ -30,6 +30,14 @@ body {
   justify-content: center;
 }
 
+.wrapper{
+  /*This will keep everything where it belongs,*/
+  /* even if not everything renders correctly*/
+  height:100%;
+  width:100%;
+  position:absolute;
+  justify-content: center;
+}
 
 h1 {
   font-size:25pt;
@@ -42,6 +50,18 @@ h2 {
 a {
   color: inherit;
   text-decoration: inherit;
+}
+
+a:visited{
+  color:rgb(15, 65, 46);
+}
+
+a:hover{
+  text-decoration:underline;
+}
+
+#logolink{
+  color:#3cb0d3;
 }
 
 code {
@@ -81,6 +101,8 @@ code {
   /* original font choice */
   /* font-family: 'Pacifico', cursive; */ 
   font-family: 'Arizonia', cursive;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   font-weight: bold;
   text-shadow: 2px 1px aliceblue;
   padding: 0px 5px;
@@ -89,7 +111,8 @@ code {
 
 #logobar {
   /* background-color:rgb(14, 16, 14); */
-  background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0));
+  /* background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0)); */
+  background-color:rgb(16,16,16);
 }
 
 #burgerbtn {
@@ -108,10 +131,15 @@ code {
   align-items: center;
 }
 
+.topic-scroll{
+  margin-top:10vh;
+  width:100%;
+}
+
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 12vh;
+  margin-top: 3vh;
   margin-bottom: 1vh;
   align-items: center;
   gap: 8vw;
@@ -198,7 +226,7 @@ code {
 
 
 
-/*Styles for WatchVideo */
+
 .player-container {
   background: black;
   max-width: 100%;
@@ -261,20 +289,31 @@ code {
 }
 
 
-
-
-
-/*Styles for login and sign-up*/
-.account-container {
-  margin: auto;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  width: min-content;
-  height: min-content;
+/*Styles for WatchVideo */
+.watch_player-container {
+  background: rgb(8,8,8);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
 }
+
+.watch_video-player {
+  margin-top: 8vh;
+  width: 67vw;    /*     This creates a   */
+  height: 37vw;   /*  flexible 16:9 ratio */
+}
+
+.watch_player-details {
+  background: rgba(0,0,0, 0.1);
+  border-bottom: rgba(0,128,0,0.3) 1px solid;
+  border-left:rgba(0,128,0,0.5) 1px solid;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: 25px;
+  height: 3;
+}
+
 
 #accountDiv {
   display: flex;
@@ -333,8 +372,15 @@ code {
   margin-bottom:10%;
 }
 
-
-
+#signupDiv {
+  width:max-content;
+  margin-left:33vw;
+  margin-top: 20vh;
+  border:1px aliceblue solid;
+  padding:1% 9% 1% 9%;
+  text-align:center;
+  background: radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
+}
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
