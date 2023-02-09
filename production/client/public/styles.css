@@ -75,7 +75,7 @@ code {
 
 /* styles for the logo bar*/
 #logo {
-  color: rgba(49,159,193,1);
+  color: #0098c7;
   text-align: left;
   font-size: 4vh;
   /* original font choice */
@@ -145,7 +145,7 @@ code {
 }
 
 .video-card {
-  background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.4));
+  background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.45));
   border-radius: 20px;
   padding: 0px;
   /* width: 320px; */
@@ -350,12 +350,16 @@ code {
   /*Styles for the logobar*/
   #logo {
     font-size: 3.5vh;
+    padding: 0px 27px;
   }
   
   #logobar {
     /* background-color:rgb(14, 16, 14); */
     height: 7vh;
     padding: 0px 12px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
   }
   
   #burgerbtn {

@@ -7,8 +7,8 @@ const User = new mongoose.Schema(
     password: { type: String, required: true },
     savedVideos: [
       { 
-        type: Object,
-        unique: true, 
+        video: Object,
+        videoId: { type: String, required: true, unique: true },
       },
     ],
   },

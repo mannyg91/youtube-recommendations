@@ -6,6 +6,7 @@ import jwt_decode from 'jwt-decode'
 const Video = ({ video }) => {
   const [hovered, ref] = useHover()
 
+  console.log(video)
   const videoId = video.id.videoId
   const videoTitle = video.snippet.title
   const videoDescription = video.snippet.description
@@ -50,7 +51,7 @@ const Video = ({ video }) => {
               },
               //payload
               body: JSON.stringify({
-                video
+                video,
               }),
           });
 

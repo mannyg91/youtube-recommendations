@@ -23,12 +23,12 @@ export default function Navbar() {
   const [loginOpen, setLoginOpen] = React.useState(false);
 
   const handleLoginOpen = () => {
-    handleClose()
+    closeAccountContainer()
     setLoginOpen(true);
   };
 
   const handleLoginClose = () => {
-    handleClose()
+    closeAccountContainer()
     setLoginOpen(false);
   };
 
@@ -36,12 +36,12 @@ export default function Navbar() {
   const [signupOpen, setSignupOpen] = React.useState(false);
 
   const handleSignupOpen = () => {
-    handleClose()
+    closeAccountContainer()
     setSignupOpen(true);
   };
 
   const handleSignupClose = () => {
-    handleClose()
+    closeAccountContainer()
     setSignupOpen(false);
   };
 
@@ -69,7 +69,7 @@ export default function Navbar() {
     setAnchorEl(event.currentTarget);
   };
 
-  const handleClose = () => {
+  const closeAccountContainer = () => {
     setAnchorEl(null);
   };
 
@@ -146,11 +146,11 @@ export default function Navbar() {
                   horizontal: 'right',
                 }}
                 open={Boolean(anchorEl)}
-                onClose={handleClose}
+                onClose={closeAccountContainer}
               >
                 {isLoggedIn ? 
                   <div>
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
+                    <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </div> :
                   <div>

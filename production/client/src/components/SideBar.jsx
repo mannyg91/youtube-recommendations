@@ -17,11 +17,13 @@ import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 
 import { SavedContext } from '../hooks/SavedContext';
+import { LoginContext } from '../hooks/LoginContext';
 
 
 const SideBar = ({ handleDrawerClose, open}) => {
 
   const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
+  const { setIsLoggedIn, isLoggedIn, handleLogout } = React.useContext(LoginContext);
 
 
   const drawerWidth = 240;
@@ -38,7 +40,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
   return (
     <Drawer
-      PaperProps={{ sx: { backgroundColor: "rgb(24,24,24)", color: "aliceblue" } }}
+      PaperProps={{ sx: { backgroundColor: "rgb(12,12,12)", color: "aliceblue" } }}
       sx={{
         width: drawerWidth,
         flexShrink: 0,
