@@ -4,51 +4,37 @@ import TopicDropdown from './TopicDropdown'
 import TopicScrollTab from './TopicScrollTab'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
-import { youtubeSearch } from '../utils/getVideoResults'
 import Button from "@mui/material/Button";
-import data from './data/testData'
-import appTopics  from './data/topics';
 import { isRestricted } from '../utils/contentFilter'
+import { SearchContext } from '../hooks/SearchContext';
 
 
 
 
 const VideoFeed = () => {
 
-  const [videos, setVideos] = React.useState(data.items); // change null to data.items for testData
-  const [searchTerm, setSearchTerm] = React.useState("history");
-  const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");// music topic
-  const [sliderState, setSliderState] = React.useState(2);
-  const [focusKeywords, setFocusKeywords] = React.useState(null);
+  const { ...props } = React.useContext(SearchContext);
+  console.log(props)
+
+  // videos,
+  // setVideos,
+  // searchTerm,
+  // setSearchTerm,
+  // selectedTopic,
+  // setSelectedTopic,
+  // sliderState,
+  // setSliderState,
+  // focusKeywords,
+  // setFocusKeywords
 
 
-
-
-
-  React.useEffect(() => {
-    const usingTestData = true;
-        if (!usingTestData) { 
-          const getVideos = async () => {
-            const data = await youtubeSearch(searchTerm, selectedTopic);
-            setVideos(data.items);
-          }
-          getVideos();
-      }
-      }, [searchTerm, selectedTopic]);
-
-
-  React.useEffect(() => {
-    setFocusKeywords(appTopics.filter(obj => obj.id === selectedTopic)[0].keywords)
-  }, [selectedTopic])
-
-  
   function getRandomPhrase() {
-    setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
+    props.setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
   }
 
   function getFocusedPhrase() {
-    const focusPhrase = focusKeywords[Math.floor(Math.random() * focusKeywords.length)];
-    setSearchTerm(focusPhrase)
+    const focusPhrase = props.focusKeywords[Math.floor(Math.random() * props.focusKeywords.length)];
+    props.setSearchTerm(focusPhrase)
   }
 
   function getMiddlePhrase() {
@@ -61,11 +47,11 @@ const VideoFeed = () => {
 
 
   function handleSpin() {
-    console.log(sliderState)
-    console.log(focusKeywords)
-    if (sliderState === 3 ) {
+    console.log(props.sliderState)
+    console.log(props.focusKeywords)
+    if (props.sliderState === 3 ) {
       getFocusedPhrase()
-    } else if (sliderState === 2) {
+    } else if (props.sliderState === 2) {
       getMiddlePhrase()
     } else {
       getRandomPhrase()
@@ -74,7 +60,7 @@ const VideoFeed = () => {
 
 
 
-  let videoElements = videos?.map((video, index) => {
+  let videoElements = props.videos?.map((video, index) => {
     return isRestricted(video)
       ? null
       : <Video key={index} video={video} />
@@ -88,7 +74,7 @@ const VideoFeed = () => {
         </div>
         <div className='top-section'>
           <div className='random-search'>
-            Search: <strong style={{fontSize: '32px'}}>{searchTerm}</strong>
+            Search: <strong style={{fontSize: '32px'}}>{props.searchTerm}</strong>
           
             <Button
               sx={{ 
@@ -109,8 +95,9 @@ const VideoFeed = () => {
         </div>
 
         <div className='bottom-section'>
-          {/* <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} /> */}
-          <ContentSlider sliderState={sliderState} setSliderState={setSliderState} />
+
+          <TopicDropdown selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic} />
+          <ContentSlider sliderState={props.sliderState} setSliderState={props.setSliderState} />
         </div>
 
         

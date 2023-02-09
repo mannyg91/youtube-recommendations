@@ -19,7 +19,6 @@ function authenticateToken(req, res, next) {
 	
 	// extracts token string from the header
 	const token = authHeader && authHeader.split(' ')[1]; // typically formatted "bearer","<token>"
-	console.log(token)
 
 	// if there is no token, rejected, it may be that this is already handled client-side
 	if (token == null) return res.sendStatus(401);
@@ -28,7 +27,6 @@ function authenticateToken(req, res, next) {
 	jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
 		if (err) return res.sendStatus(403);
 		req.user = user;
-		console.log(req.user)
 		next();
 	});
 }
@@ -50,6 +48,7 @@ router.post('/signup/', async (req, res) => {
 		})
 		res.json({ status: 'ok' })
 	} catch (err) {
+		console.log(err)
 		res.json({ status: 'error', error: 'Email has already been registered.' })
 	}
 })
@@ -105,6 +104,7 @@ router.delete('/:username', async (req, res) => {
 
 
 
+// SAVED VIDEOS ROUTES
 router.get('/savedVideos/', authenticateToken, async (req, res) => {
 	const userId = req.user.id;
 	try {
@@ -121,18 +121,39 @@ router.get('/savedVideos/', authenticateToken, async (req, res) => {
 })
 
 router.post('/savedVideos/', authenticateToken, async (req, res) => {
-	const userId = req.user.id;
-	try {
-		const updatedUser = await User.updateOne(
-			{ _id: userId },
-			{ $push: { savedVideos: req.body.video } }
-		);
-		console.log(`Successfully added saved video: ${updatedUser}`);
-	} catch (error) {
-		console.error(`Error saving video: ${error}`);
-	}
-})
+  const userId = req.user.id;
+  try {
+    const user = await User.findById(userId);
+    const savedVideos = user.savedVideos;
+    const duplicateVideo = savedVideos.find(video => video.videoId === req.body.video.id.videoId);
+    if (!duplicateVideo) {
+      const updatedUser = await User.updateOne(
+        { _id: userId },
+        { $push: { savedVideos: { videoId: req.body.video.id.videoId, video: req.body.video } } }
+      );
+      console.log(`Successfully added saved video: ${updatedUser}`);
+    } else {
+      console.log(`Video with videoId ${req.body.video.id.videoId} already exists`);
+    }
+  } catch (error) {
+    console.error(`Error saving video: ${error}`);
+  }
+});
 
+
+router.delete('/savedVideos/:videoId', authenticateToken, async (req, res) => {
+  const userId = req.user.id;
+  const videoId = req.params.videoId;
+  try {
+    const updatedUser = await User.updateOne(
+      { _id: userId },
+      { $pull: { savedVideos: { videoId: videoId } } }
+    );
+    console.log(`Successfully removed saved video: ${updatedUser}`);
+  } catch (error) {
+    console.error(`Error deleting video: ${error}`);
+  }
+});
 
 
 

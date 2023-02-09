@@ -7,11 +7,13 @@ const SavedContext = React.createContext();
 const SavedContextProvider = (props) => {
 
   const [savedVideos, setSavedVideos] = useState(null);
+  
 
   React.useEffect(() => {
-    console.log(savedVideos)
-
-  }, [savedVideos]);
+    console.log("context effect ran")
+    // console.log(savedVideos)
+    getSavedVideos()
+  }, []);
 
 
   async function getSavedVideos() {
@@ -32,12 +34,11 @@ const SavedContextProvider = (props) => {
         const data = await res.json();
         setSavedVideos(data.savedVideos)
       } else {
-        console.log("This video has already been saved");
+        console.log("Failed to fetch saved videos");
       }
     } else {
-      console.log("You must be logged in to save videos");
+      console.log("You must be logged in to view saved videos");
     }
-  
   }
 
 

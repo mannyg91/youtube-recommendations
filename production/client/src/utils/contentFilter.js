@@ -1,7 +1,7 @@
 export const isRestricted = (video) => {
 
   // returns true if content passes the filter
-  const filterOn = true
+  const filterOn = false
 
   if (filterOn) {
     console.log("entered filter")
@@ -33,7 +33,7 @@ function isKidsContent(str) {
   const strWords = str.split(' ');
   const kidsContentKeywords = [
     'kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'' ,'youkids', 'sing-along',
-    '#nurseryrhymes',
+    '#nurseryrhymes', 'piggy','along'
   ]
   return strWords.some(word => kidsContentKeywords.includes(word));
 }
