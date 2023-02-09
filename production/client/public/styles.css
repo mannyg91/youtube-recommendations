@@ -45,10 +45,6 @@ a {
   text-decoration: inherit;
 }
 
-a:hover{
-  text-decoration:underline;
-}
-
 #logolink{
   color:#3cb0d3;
 }
@@ -96,7 +92,6 @@ code {
   text-shadow: 2px 1px aliceblue;
   padding: 0px 5px;
 }
-
 
 #logobar {
   /* background-color:rgb(14, 16, 14); */

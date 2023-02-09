@@ -11,6 +11,22 @@ export default function TopicScrollTab(props) {
     props.setSelectedTopic(newValue);
   };
 
+ let tabElements = appTopics.sort((a,b) => a.name > b.name ? 1 : -1)
+            .map(topic => (
+              <Tab
+                sx={{
+                  border: "1px solid rgba(240,248,255,.3)",
+                  borderRadius: "15px",
+                  margin: "0 .5vw",
+                }}
+                key={topic.id}
+                label={topic.name}
+                value={topic.id}
+              />
+            ))
+  console.log(tabElements)
+ 
+
   return (
     <div>
       <Box sx={{ maxWidth: "90%", bgcolor: "transparent", marginLeft:"5%"}}>
@@ -37,21 +53,7 @@ export default function TopicScrollTab(props) {
             }
           }}
         >
-          {appTopics.sort((a,b) => a.name > b.name ? 1 : -1)
-          .map(topic => (
-            <Tab
-              sx={{
-                border: "1px solid rgba(240,248,255,.3)",
-                borderRadius: "15px",
-                margin: "0 .5vw",
-              }}
-              key={topic.id}
-              label={topic.name}
-              value={topic.id}
-            >
-              {topic.name}
-            </Tab>
-          ))}
+          {tabElements}
         </Tabs>
       </Box>
     </div>

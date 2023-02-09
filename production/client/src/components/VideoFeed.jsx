@@ -13,8 +13,8 @@ import { SearchContext } from '../hooks/SearchContext';
 
 const VideoFeed = () => {
 
-  const { ...props } = React.useContext(SearchContext);
-  console.log(props)
+  const { ...searchProps } = React.useContext(SearchContext);
+  console.log(searchProps)
 
   // videos,
   // setVideos,
@@ -29,12 +29,12 @@ const VideoFeed = () => {
 
 
   function getRandomPhrase() {
-    props.setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
+    searchProps.setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
   }
 
   function getFocusedPhrase() {
-    const focusPhrase = props.focusKeywords[Math.floor(Math.random() * props.focusKeywords.length)];
-    props.setSearchTerm(focusPhrase)
+    const focusPhrase = searchProps.focusKeywords[Math.floor(Math.random() * searchProps.focusKeywords.length)];
+    searchProps.setSearchTerm(focusPhrase)
   }
 
   function getMiddlePhrase() {
@@ -47,11 +47,11 @@ const VideoFeed = () => {
 
 
   function handleSpin() {
-    console.log(props.sliderState)
-    console.log(props.focusKeywords)
-    if (props.sliderState === 3 ) {
+    console.log(searchProps.sliderState)
+    console.log(searchProps.focusKeywords)
+    if (searchProps.sliderState === 3 ) {
       getFocusedPhrase()
-    } else if (props.sliderState === 2) {
+    } else if (searchProps.sliderState === 2) {
       getMiddlePhrase()
     } else {
       getRandomPhrase()
@@ -60,7 +60,7 @@ const VideoFeed = () => {
 
 
 
-  let videoElements = props.videos?.map((video, index) => {
+  let videoElements = searchProps.videos?.map((video, index) => {
     return isRestricted(video)
       ? null
       : <Video key={index} video={video} />
@@ -70,11 +70,11 @@ const VideoFeed = () => {
     <div className='wrapper'>
       <div className='controls'>
         <div className="topic-scroll">
-          <TopicScrollTab selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic}/>
+          <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
         <div className='top-section'>
           <div className='random-search'>
-            Search: <strong style={{fontSize: '32px'}}>{props.searchTerm}</strong>
+            Search: <strong style={{fontSize: '32px'}}>{searchProps.searchTerm}</strong>
           
             <Button
               sx={{ 
@@ -96,8 +96,8 @@ const VideoFeed = () => {
 
         <div className='bottom-section'>
 
-          {/* <TopicDropdown selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic} /> */}
-          <ContentSlider sliderState={props.sliderState} setSliderState={props.setSliderState} />
+          {/* <TopicDropdown selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic} /> */}
+          <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
         </div>
 
         
