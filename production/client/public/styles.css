@@ -30,14 +30,7 @@ body {
   justify-content: center;
 }
 
-.wrapper{
-  /*This will keep everything where it belongs,*/
-  /* even if not everything renders correctly*/
-  height:100%;
-  width:100%;
-  position:absolute;
-  justify-content: center;
-}
+
 
 h1 {
   font-size:25pt;
@@ -50,10 +43,6 @@ h2 {
 a {
   color: inherit;
   text-decoration: inherit;
-}
-
-a:visited{
-  color:rgb(15, 65, 46);
 }
 
 a:hover{
@@ -289,31 +278,17 @@ code {
 }
 
 
-/*Styles for WatchVideo */
-.watch_player-container {
-  background: rgb(8,8,8);
-  width: 100vw;
-  display: flex;
-  justify-content: center;
+/*Styles for login and sign-up*/
+.account-container {
+  margin: auto;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: min-content;
+  height: min-content;
 }
-
-.watch_video-player {
-  margin-top: 8vh;
-  width: 67vw;    /*     This creates a   */
-  height: 37vw;   /*  flexible 16:9 ratio */
-}
-
-.watch_player-details {
-  background: rgba(0,0,0, 0.1);
-  border-bottom: rgba(0,128,0,0.3) 1px solid;
-  border-left:rgba(0,128,0,0.5) 1px solid;
-  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
-  padding: 25px;
-  height: 3;
-}
-
 
 #accountDiv {
   display: flex;
@@ -365,22 +340,12 @@ code {
   color:rgb(219, 225, 231);
 }
 
-
-
 #submit-btn {
   background-color:rgba(240,248,255,1);
   margin-bottom:10%;
 }
 
-#signupDiv {
-  width:max-content;
-  margin-left:33vw;
-  margin-top: 20vh;
-  border:1px aliceblue solid;
-  padding:1% 9% 1% 9%;
-  text-align:center;
-  background: radial-gradient(rgba(240,248,255,0.3) 1%, rgba(240,248,255,0.0) 99%);
-}
+
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /

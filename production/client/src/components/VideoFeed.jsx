@@ -70,7 +70,7 @@ const VideoFeed = () => {
     <div className='wrapper'>
       <div className='controls'>
         <div className="topic-scroll">
-          <TopicScrollTab selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic}/>
+          <TopicScrollTab selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic}/>
         </div>
         <div className='top-section'>
           <div className='random-search'>
