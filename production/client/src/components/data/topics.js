@@ -1,6 +1,5 @@
 import business  from './business'
 
-console.log(business)
 
 const defaultTopics = [
   { id: "/m/04rlf", name: "Music", parent: true },
