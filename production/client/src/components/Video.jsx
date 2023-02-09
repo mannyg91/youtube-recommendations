@@ -27,12 +27,10 @@ const Video = ({ video }) => {
   const [saved, setSaved] = React.useState(false)
 
   React.useEffect(() => {
-    console.log('ran video effect')
     setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId))
   }, [])
 
   React.useEffect(() => {
-    console.log('ran video effect 2')
     saveIcon()
   }, [setSaved])
 

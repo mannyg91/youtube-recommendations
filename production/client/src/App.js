@@ -4,6 +4,7 @@ import { LoginContextProvider } from './hooks/LoginContext';
 import { Navbar, VideoFeed, WatchVideo, SavedVideos } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SavedContextProvider } from './hooks/SavedContext';
+import { SearchContextProvider } from './hooks/SearchContext';
 
 const App = () => {
   // const [user, setUser] = useState({})
@@ -18,6 +19,7 @@ const App = () => {
 
   return (
     <LoginContextProvider>
+      <SearchContextProvider>
       <SavedContextProvider>
         <BrowserRouter>
             <Routes>
@@ -40,6 +42,7 @@ const App = () => {
     
         </BrowserRouter>
       </SavedContextProvider>
+      </SearchContextProvider>
     </LoginContextProvider>
 
 
