@@ -96,7 +96,7 @@ const VideoFeed = () => {
 
         <div className='bottom-section'>
 
-          <TopicDropdown selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic} />
+          {/* <TopicDropdown selectedTopic={props.selectedTopic} setSelectedTopic={props.setSelectedTopic} /> */}
           <ContentSlider sliderState={props.sliderState} setSliderState={props.setSliderState} />
         </div>
 

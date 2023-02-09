@@ -12,11 +12,11 @@ const ContentSlider = (props) => {
   const marks = [
     {
       value: 1,
-      label: 'Focused',
+      label: 'Random',
     },
     {
       value: 3,
-      label: 'Random',
+      label: 'Focused',
     },
   ];
 
@@ -33,7 +33,7 @@ const ContentSlider = (props) => {
           backgroundColor: "aliceblue"
         },
         "& .MuiSlider-mark": {
-          height: "10px"
+          height: "0px"
           
         },
         "& .MuiSlider-markLabel": {

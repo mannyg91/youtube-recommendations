@@ -13,7 +13,7 @@ export default function TopicScrollTab(props) {
 
   return (
     <div>
-      <Box sx={{ maxWidth: "90%", bgcolor: "transparent",marginLeft:"5%"}}>
+      <Box sx={{ maxWidth: "90%", bgcolor: "transparent", marginLeft:"5%"}}>
         <Tabs
           value={props.selectedTopic} 
           onChange={handleChange}
@@ -29,8 +29,8 @@ export default function TopicScrollTab(props) {
               color: "rgba(240,248,255,0.8)"
             },
             "& .Mui-selected": {
-              color: "darkcyan",
-              backgroundColor: "rgba(240,248,255,0.9)"
+              color: "#1976D2",
+              backgroundColor: "rgba(240,248,255,1)"
             },
             "& .MuiTabScrollButton-root": {
               color: "aliceblue"
@@ -41,9 +41,9 @@ export default function TopicScrollTab(props) {
           .map(topic => (
             <Tab
               sx={{
-                border: "1px solid rgba(240,248,255,0.5)",
+                border: "1px solid rgba(240,248,255,.3)",
                 borderRadius: "15px",
-                marginRight: "1vw"
+                margin: "0 .5vw",
               }}
               key={topic.id}
               label={topic.name}
