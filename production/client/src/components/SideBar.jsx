@@ -33,11 +33,6 @@ const SideBar = ({ handleDrawerClose, open}) => {
     setAuth(auth ? false : true);
   };
 
-  /*TODO build actual logout functionality*/
-  const handleLogout = (event) => {
-    setAuth(auth ? false : true);
-  };
-
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
     alignItems: "center",

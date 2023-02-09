@@ -110,7 +110,7 @@ export default function Navbar() {
             </IconButton>
             
               <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
-                <Link to="/">
+                <Link id="logolink" to="/">
                   WatchWise
                 </Link>
               </Typography>

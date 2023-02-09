@@ -1,6 +1,7 @@
 import React from 'react'
 import Video from './Video'
 import TopicDropdown from './TopicDropdown'
+import TopicScrollTab from './TopicScrollTab'
 import ContentSlider from './ContentSlider'
 import randomWords from 'random-words';
 import { youtubeSearch } from '../utils/getVideoResults'
@@ -82,6 +83,9 @@ const VideoFeed = () => {
   return (
     <div className='wrapper'>
       <div className='controls'>
+        <div className="topic-scroll">
+          <TopicScrollTab selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic}/>
+        </div>
         <div className='top-section'>
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{searchTerm}</strong>
@@ -105,7 +109,7 @@ const VideoFeed = () => {
         </div>
 
         <div className='bottom-section'>
-          <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} />
+          {/* <TopicDropdown selectedTopic={selectedTopic} setSelectedTopic={setSelectedTopic} /> */}
           <ContentSlider sliderState={sliderState} setSliderState={setSliderState} />
         </div>
 
