@@ -27,11 +27,6 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
 
   const drawerWidth = 240;
-  const [auth, setAuth] = React.useState(true);
-  
-  const handleLogin = (event) => {
-    setAuth(auth ? false : true);
-  };
 
   const DrawerHeader = styled("div")(({ theme }) => ({
     display: "flex",
