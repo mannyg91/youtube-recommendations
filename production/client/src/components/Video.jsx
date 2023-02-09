@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from "react-router-dom"; 
 import { useHover } from '../hooks/useHover';
-import jwt_decode from 'jwt-decode'
+import { SavedContext } from '../hooks/SavedContext';
+
 
 const Video = ({ video }) => {
   const [hovered, ref] = useHover()
+  const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
 
-  console.log(video)
+  console.log(savedVideos)
   const videoId = video?.id.videoId
   const videoTitle = video.snippet.title
   const videoDescription = video.snippet.description
@@ -25,7 +27,7 @@ const Video = ({ video }) => {
 
   function saveIcon() {
     //will be used to check if the id is saved:
-    // const alreadySaved = savedItems.some(item => item.id === video.id) 
+    const alreadySaved = savedVideos?.some(savedVideo => savedVideo.videoId === videoId) 
 
     if(alreadySaved) {
         //will have an on click function
