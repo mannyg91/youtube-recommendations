@@ -37,7 +37,6 @@ function authenticateToken(req, res, next) {
 
 router.post('/signup/', async (req, res) => {
 	console.log(req.body)
-
 	try {
 		const hashedPassword = await bcrypt.hash(req.body.password, 10)
 
@@ -52,7 +51,6 @@ router.post('/signup/', async (req, res) => {
 		res.json({ status: 'error', error: 'Email has already been registered.' })
 	}
 })
-
 
 //doesn't need client-side encryption if using TLS? 
 router.post('/login/', async (req, res) => {
@@ -113,7 +111,6 @@ router.get('/savedVideos/', authenticateToken, async (req, res) => {
 			return res.status(404).send('User not found');
 		}
 		const savedVideos = user.savedVideos
-		console.log(savedVideos)
 		return res.json({ status: 'ok', savedVideos: savedVideos });
 	} catch (error) {
 		console.error(`Error retrieving saved videos: ${error}`);

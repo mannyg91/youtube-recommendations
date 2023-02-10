@@ -53,7 +53,7 @@ const Video = ({ video }) => {
 
       //if token, makes get request
       if (token) {
-        const res = await fetch(`http://localhost:5000/api/user/savedVideos`, {
+        const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos`, {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ const Video = ({ video }) => {
 
     //if token, makes get request
     if (token) {
-      const res = await fetch(`http://localhost:5000/api/user/savedVideos/${videoId}`, {
+      const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos/${videoId}`, {
         method: 'DELETE',
         headers: {
           'Content-Type': 'application/json',

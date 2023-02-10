@@ -15,9 +15,9 @@ export const Signup = (props) => {
 
     async function registerUser(event) {
         console.log("user registering")
-        event.preventDefault() //prevents refresh to localhost
+
         //something like this
-        const response = await fetch(`http://localhost:5000/api/user/signup`, {
+        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/signup`, {
             //directions
             method: 'POST',
             headers: {

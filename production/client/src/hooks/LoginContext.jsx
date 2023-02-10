@@ -42,7 +42,7 @@ const LoginContextProvider = (props) => {
   
     // if token, makes get request
     if (token) {
-      const res = await fetch('http://localhost:5000/api/user/username', {
+      const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/username`, {
         method: 'GET',
         headers: {
           // passes the access token grabbing from local storage

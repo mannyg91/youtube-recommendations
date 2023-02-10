@@ -22,7 +22,7 @@ const SavedContextProvider = (props) => {
     const token = localStorage.getItem('token')
   
     if (token) {
-      const res = await fetch(`http://localhost:5000/api/user/savedVideos`, {
+      const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos`, {
         method: 'GET',
         headers: {
           'Content-Type': 'application/json',

@@ -21,11 +21,9 @@ export const Login = (props) => {
     //sends login data
     async function loginUser(event) {
 
-        event.preventDefault() //prevents refresh to localhost
-
-        console.log("login user function in login.jsx")
-
-        const response = await fetch(`http://localhost:5000/api/user/login`, {
+        event.preventDefault() 
+    
+        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -36,6 +34,7 @@ export const Login = (props) => {
                password,
             }),
         })
+
         const data = await response.json()
 
         
