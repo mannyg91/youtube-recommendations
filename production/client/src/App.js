@@ -21,7 +21,7 @@ const App = () => {
     <LoginContextProvider>
       <SearchContextProvider>
       <SavedContextProvider>
-        <BrowserRouter>
+        <BrowserRouter basename="/get-recd/">
             <Routes>
               <Route
                 path="/"
