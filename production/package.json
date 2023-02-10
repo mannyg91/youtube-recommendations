@@ -4,7 +4,7 @@
   "description": "YouTube clone for educational content recommendations",
   "main": "server.js",
   "scripts": {
-    "start": "node server/server.js",
+    "start": "concurrently \"cd client && npm run start\" \"npm run server\"",
     "server": "nodemon server/server.js"
   },
   "author": "Get Rec'd",
@@ -19,6 +19,7 @@
     "mongoose": "^6.9.0"
   },
   "devDependencies": {
+    "concurrently": "^7.6.0",
     "nodemon": "^2.0.20"
   }
 }
