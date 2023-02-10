@@ -34,6 +34,11 @@ app.use('/api/blockedChannels', require('./routes/blockedChannelRoutes'))
 app.use('/api/user', require('./routes/userRoutes'))
 
 
+app.get('/', (req, res) => {
+  res.send('Express server is active')
+})
+
+
 mongoose.connection.once('open', () => {
   console.log('Connected to MongoDB')
 
