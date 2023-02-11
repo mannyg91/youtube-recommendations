@@ -3,6 +3,7 @@ import Video from './Video'
 import TopicDropdown from './TopicDropdown'
 import TopicScrollTab from './TopicScrollTab'
 import ContentSlider from './ContentSlider'
+import SmartSlider from './SmartSlider'
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'
@@ -91,14 +92,12 @@ const VideoFeed = () => {
               Spin
             </Button>
 
+            <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
+
           </div>
+          {/* <SmartSlider sliderState2={searchProps.sliderState2} setSliderState2={searchProps.setSliderState2} selectedType={searchProps.selectedType} setSelectedType={searchProps.setSelectedType}/> */}
         </div>
 
-        <div className='bottom-section'>
-
-          {/* <TopicDropdown selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic} /> */}
-          <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
-        </div>
 
         
       </div>

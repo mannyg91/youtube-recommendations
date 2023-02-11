@@ -8,21 +8,24 @@ const SearchContext = React.createContext();
 
 const SearchContextProvider = (props) => {
   const [videos, setVideos] = React.useState(null); // change null to data.items for testData
-  const [searchTerm, setSearchTerm] = React.useState("history");
+  const [searchTerm, setSearchTerm] = React.useState("");
   const [selectedTopic, setSelectedTopic] = React.useState("/m/04rlf");// music topic
   const [sliderState, setSliderState] = React.useState(2);
   const [focusKeywords, setFocusKeywords] = React.useState(null);
+
+  const [sliderState2, setSliderState2] = React.useState(2);
+  const [selectedType, setSelectedType] = React.useState(null)
 
   React.useEffect(() => {
     const usingTestData = false;
         if (!usingTestData) { 
           const getVideos = async () => {
-            const data = await youtubeSearch(searchTerm, selectedTopic);
-            setVideos(data.items);
+            const data = await youtubeSearch(searchTerm, selectedTopic, selectedType);
+            setVideos(data);
           }
           getVideos();
       }
-      }, [searchTerm, selectedTopic]);
+      }, [searchTerm, selectedTopic, selectedType]);
 
       React.useEffect(() => {
         setFocusKeywords(appTopics.filter(obj => obj.id === selectedTopic)[0].keywords)
@@ -39,6 +42,10 @@ const SearchContextProvider = (props) => {
         setSelectedTopic,
         sliderState,
         setSliderState,
+        sliderState2,
+        setSliderState2,
+        selectedType,
+        setSelectedType,
         focusKeywords,
         setFocusKeywords
       }}
