@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 
-export const youtubeSearch = async (query, topic, type) => {
+export const youtubeSearch = async (query, topicId, type) => {
 
   function loadClient() {
     gapi.client.setApiKey(process.env?.REACT_APP_YOUTUBE_API_KEY);
@@ -10,27 +10,34 @@ export const youtubeSearch = async (query, topic, type) => {
   }
 
   function execute(videoCategoryId) {
-    return gapi.client.youtube.search.list({
-      "part": [
-        "snippet"
+    const parameters = {
+      part: [
+        'snippet'
       ],
-      "q": query,
-      "type": "video",
-      "regionCode": "us",
-      "relevanceLanguage": "en",
-      "safeSearch": "moderate",
-      "videoDefinition": "high",
-      "maxResults": "50",
-      // "order":"viewCount",
-      "videoCategoryId": videoCategoryId, // 27 = education, 28 = science
-      "topicId": topic,
-      // "prettyPrint": true,
-    })
-      .then(function (response) {
-        console.log("fetched search data")
-        return response.result.items
-      },
-        function (err) { console.error("Execute error", err); });
+      q: query,
+      type: 'video',
+      regionCode: 'us',
+      relevanceLanguage: 'en',
+      safeSearch: 'moderate',
+      videoDefinition: 'high',
+      maxResults: '50'
+    };
+
+    if (videoCategoryId) {
+      parameters.videoCategoryId = videoCategoryId;
+    }
+
+    if (topicId) {
+      parameters.topicId = topicId;
+    }
+
+    return gapi.client.youtube.search.list(parameters)
+      .then((response) => {
+        console.log('fetched search data');
+        return response.result.items;
+      }, (err) => {
+        console.error('Execute error', err);
+      });
   }
 
   function interlaceAndRemoveDuplicates(results1, results2) {
@@ -65,6 +72,8 @@ export const youtubeSearch = async (query, topic, type) => {
   const scienceResults = await execute(28);
 
   const data = interlaceAndRemoveDuplicates(educationResults, scienceResults);
+
+  // const data = await execute(27);
 
   return data;
 }

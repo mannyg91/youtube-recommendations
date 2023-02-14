@@ -91,6 +91,7 @@ import health from "./health";
 // ];
 
 const appTopics = [
+  { id: null, name: "All" },
   { id: "/m/04rlf", name: "Music", keywords: music },
   { id: "/m/0bzvm2", name: "Gaming", keywords: gaming },
   { id: "/m/06ntj", name: "Sports", keywords: sports },

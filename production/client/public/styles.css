@@ -125,8 +125,8 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 3vh;
-  margin-bottom: 1vh;
+  margin-top: 1.5vh;
+  margin-bottom: .5vh;
   align-items: center;
   gap: 8vw;
 }
