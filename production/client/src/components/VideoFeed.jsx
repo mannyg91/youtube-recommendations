@@ -8,8 +8,6 @@ import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'
 import { SearchContext } from '../hooks/SearchContext';
-
-
 import Skeleton from '@mui/material/Skeleton';
 
 

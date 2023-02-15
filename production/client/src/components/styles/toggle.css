@@ -16,14 +16,13 @@
 @keyframes reverse {
     0%{
         left: 17px;
-        width: 40px;
     }
     60%{
         left:3px;
-        width: 50px;
+        width: 40px;
     }
     100%{
-        left: 5px;
+        left: 3px;
     }
 }
 
@@ -33,11 +32,10 @@
     }
     60%{
         left:3px;
-        width: 50px;
+        width: 40px;
     }
     100%{
-        left: 40px;
-        witdth:40px;
+        left: 33px;
     }
 }
 
@@ -59,8 +57,8 @@
 
 /*bg*/
 .toggle--label {
-    width: 60px;
-    height: 20px;
+    width: 50px;
+    height: 15px;
     background: var(--indigo-color);
     border-radius: 100px;
     border: 3px solid var(--indigo-border);
@@ -94,7 +92,7 @@
     width: 10px;
     height: 10px;
     border: 3px solid var(--gray-border);
-    top: 2px;
+    top: 0px;
     left: 3px;
     position: absolute;
     border-radius: 15px;
@@ -108,7 +106,7 @@
     position: absolute;
     content: '';
     box-shadow: var(--gray-dots) -10px 0 0 1px, var(--gray-dots) -15px 2px 0 -1px;
-    left: 60px;
+    left: 50px;
     top: 10px;
     width: 4px;
     height: 4px;
@@ -124,9 +122,9 @@
 
 /* clouds */
 .toggle--checkbox:checked + .toggle--label .toggle--label-background {
-    width: 5px;
-    left: 37px;
-    top: 8px;
+    width: 4px;
+    left: 33px;
+    top: 7px;
 }
 
 .toggle--checkbox:checked + .toggle--label .toggle--label-background:before {
@@ -151,7 +149,7 @@
     left: 29px;
     width: 2px;
     transition: all 150ms ease-in;
-    top: 12px;
+    top: 8px;
     height: 2px;
 }
 
@@ -177,4 +175,175 @@
     border-radius: 5px;
     background: white;
     transition: all 150ms ease-in;
+}
+
+/*~~~~~~~~~~~~~~~~/
+/ Desktop styles  /
+/~~~~~~~~~~~~~~~~*/
+@media screen and (min-width:700px){
+    @keyframes reverse {
+        0%{
+            left: 17px;
+            width: 40px;
+        }
+        60%{
+            left:3px;
+            width: 50px;
+        }
+        100%{
+            left: 5px;
+        }
+    }
+
+    @keyframes switch {
+        0%{
+            left: 3px;
+        }
+        60%{
+            left:3px;
+            width: 50px;
+        }
+        100%{
+            left: 40px;
+            witdth:40px;
+        }
+    }
+
+    .toggle--checkbox {
+        opacity: 0;
+    }
+
+    .toggle--checkbox:focus + .toggle--label {
+        outline: solid 3px var(--button-border);
+        transition: outline 100ms ease-in;
+    }
+
+    .container--toggle {
+        display: flex;
+        align-items: center;
+        grid-area: toggle;
+        margin: 0px 20px;
+    }
+
+    /*bg*/
+    .toggle--label {
+        width: 60px;
+        height: 20px;
+        background: var(--indigo-color);
+        border-radius: 100px;
+        border: 3px solid var(--indigo-border);
+        display: flex;
+        position: relative;
+        transition: all 350ms ease-in;
+        color: var(--indigo-color);
+    }
+
+    .toggle--checkbox:checked + .toggle--label {
+        background: var(--blue-color);
+        color: var(--blue-color);
+        border-color: var(--blue-border);
+    }
+
+    /*icon for the toggle switch*/
+    .toggle--checkbox:checked + .toggle--label:before {
+        animation-name: reverse;
+        animation-duration: 350ms;
+        animation-fill-mode: forwards;
+        transition: all 360ms ease-in;
+        background: var(--yellow-background);
+        border-color: var(--yellow-border);
+    }
+
+    .toggle--label:before {
+        animation-name: switch;
+        animation-duration: 350ms;
+        animation-fill-mode: forwards;
+        content: '';
+        width: 10px;
+        height: 10px;
+        border: 3px solid var(--gray-border);
+        top: 2px;
+        left: 3px;
+        position: absolute;
+        border-radius: 15px;
+        background: white;
+    }
+
+    /*fancy craters on the moon*/
+    .toggle--label:after {
+        transition-delay: 0ms;
+        transition: all 250ms ease-in;
+        position: absolute;
+        content: '';
+        box-shadow: var(--gray-dots) -10px 0 0 1px, var(--gray-dots) -15px 2px 0 -1px;
+        left: 60px;
+        top: 10px;
+        width: 4px;
+        height: 4px;
+        background: transparent;
+        border-radius: 50%;
+        opacity: 1;
+    }
+
+    .toggle--checkbox:checked + .toggle--label:after {
+        transition-delay: 50ms;
+        opacity: 0;
+    }
+
+    /* clouds */
+    .toggle--checkbox:checked + .toggle--label .toggle--label-background {
+        width: 5px;
+        left: 37px;
+        top: 8px;
+    }
+
+    .toggle--checkbox:checked + .toggle--label .toggle--label-background:before {
+        top: -4px;
+        left: -5px;
+        width: 20px;
+        height: 4px;
+    }
+
+    .toggle--checkbox:checked + .toggle--label .toggle--label-background:after {
+        top: 3px;
+        width: 20px;
+        height: 4px;
+        left: -11px;
+    }
+
+    /* stars */
+    .toggle--label-background {
+        border-radius: 5px;
+        position: relative;
+        background: white;
+        left: 29px;
+        width: 2px;
+        transition: all 150ms ease-in;
+        top: 12px;
+        height: 2px;
+    }
+
+    .toggle--label-background:before {
+        content: '';
+        position: absolute;
+        width: 3px;
+        height: 3px;
+        top: -8px;
+        border-radius: 5px;
+        background: white;
+        left: -10px;
+        transition: all 150ms ease-in;
+    }
+
+    .toggle--label-background:after {
+        content: '';
+        position: absolute;
+        width: 2px;
+        height: 2px;
+        left: -15px;
+        top: 3px;
+        border-radius: 5px;
+        background: white;
+        transition: all 150ms ease-in;
+    }
 }

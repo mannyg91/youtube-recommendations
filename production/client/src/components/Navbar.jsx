@@ -14,7 +14,6 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import logo from './ww_logo_plain_sm.png';
 
-
 export default function Navbar() {
 
   // form stuff
@@ -113,9 +112,16 @@ export default function Navbar() {
                 </Link>
               </Box>
             
-            <div className="dayNightTog">
-              <Toggle />
+            <div id="daynighttog">
+              {window.matchMedia("(max-width:768px)").matches ? (
+                <Toggle id="mobile_tog"/>
+              ):(
+                <Toggle id="desktop_tog"/>
+              )}
             </div>
+              
+              
+            
             <div>
               <IconButton
                 size="large"
