@@ -7,7 +7,7 @@ import { getElapsedTime } from '../utils/getElapsedTime'
 import Skeleton from '@mui/material/Skeleton';
 
 
-//need to run new API fetch for video details
+
 const WatchVideo = () => {
   const { id } = useParams();
   const [videoDetails, setVideoDetails] = React.useState(null)

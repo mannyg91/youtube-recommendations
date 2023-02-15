@@ -16,13 +16,16 @@ export default function TopicScrollTab(props) {
               <Tab
                 sx={{
                   border: "1px solid rgba(240,248,255,.3)",
-                  borderRadius: "15px",
+                  borderRadius: "14px",
                   margin: "0 .5vw",
+                  minHeight: "24px",
+                  padding: "9px 15px",
+                  fontSize: "12px",
                 }}
                 key={topic.id}
                 label={topic.name}
                 value={topic.id}
-              />
+              />  
             ))
   console.log(tabElements)
  

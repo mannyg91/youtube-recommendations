@@ -108,8 +108,8 @@ code {
 .top-section {
   display: flex;
   flex-direction: row;
-  margin-top: 3vh;
-  margin-bottom: 1vh;
+  margin-top: 1.5vh;
+  margin-bottom: .5vh;
   align-items: center;
   gap: 8vw;
 }
@@ -145,6 +145,7 @@ code {
   background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.45));
   border-radius: 20px;
   padding: 0px;
+  height: 299px;
   /* width: 320px; */
   /* text-align: center;
   justify-content: center; */

@@ -10,6 +10,9 @@ import { isRestricted } from '../utils/contentFilter'
 import { SearchContext } from '../hooks/SearchContext';
 
 
+import Skeleton from '@mui/material/Skeleton';
+
+
 
 
 const VideoFeed = () => {
@@ -60,12 +63,23 @@ const VideoFeed = () => {
   }
 
 
-
   let videoElements = searchProps.videos?.map((video, index) => {
     return isRestricted(video)
       ? null
       : <Video key={index} video={video} />
   });
+
+
+    if (!searchProps.videos) {
+      videoElements = [...Array(16)].map(() => (
+        <Skeleton className='video-card' variant="rectangular" width={326} height={299} style={{ position: 'relative' }}>
+          <Skeleton variant="rectangular" width={50} height={50} style={{ position: 'absolute', top: '10px', left: '10px' }} sx={{ backgroundColor: 'rgba(255, 255, 255, 1)', zIndex: '10'}} />
+        </Skeleton>
+      ));
+    }
+
+
+
 
   return (
     <div className='wrapper'>
@@ -76,7 +90,7 @@ const VideoFeed = () => {
         <div className='top-section'>
           <div className='random-search'>
             Search: <strong style={{fontSize: '32px'}}>{searchProps.searchTerm}</strong>
-          
+
             <Button
               sx={{ 
                   background: '#F0F8FF',

@@ -11,7 +11,7 @@ const Video = ({ video }) => {
   const { isLoggedIn } = React.useContext(LoginContext);
 
 
-  const videoId = video?.id.videoId
+
   const videoTitle = video.snippet.title
   const thumbnailURL = video.snippet.thumbnails.high.url;
   // const thumbnailWidth = video.thumbnail[video.thumbnail.length - 1].width;
@@ -20,11 +20,16 @@ const Video = ({ video }) => {
   const thumbnailHeight = video.snippet.thumbnails.high.height * .68;
   const channelTitle = video.snippet.channelTitle;
 
+  const [videoId, setVideoId] = React.useState(video?.id.videoId)
   const [saved, setSaved] = React.useState(false)
 
   React.useEffect(() => {
+    setVideoId(video?.id.videoId)
+  }, [video])
+
+  React.useEffect(() => {
     setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId))
-  }, [])
+  }, [videoId])
 
   React.useEffect(() => {
     saveIcon()
