@@ -1,10 +1,7 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-
 import { Login, Signup, SideBar, Toggle } from "../components";
 import { LoginContext } from '../hooks/LoginContext';
-
-
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
 import Toolbar from '@mui/material/Toolbar';
@@ -15,6 +12,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
+import logo from './ww_logo_plain_sm.png';
 
 
 export default function Navbar() {
@@ -109,11 +107,11 @@ export default function Navbar() {
               <MenuIcon id="burgerbtn" />
             </IconButton>
             
-              <Typography id="logo" variant="h6" component="div" sx={{ flexGrow: 1 }}>
+              <Box component="div" sx={{ flexGrow: 1 }}>
                 <Link id="logolink" to="/">
-                  WatchWise
+                  <img id="logo" src={logo} alt='logo'/>
                 </Link>
-              </Typography>
+              </Box>
             
             <div className="dayNightTog">
               <Toggle />
