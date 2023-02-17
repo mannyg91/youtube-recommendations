@@ -3,11 +3,6 @@
 / Mobile styles  /
 /~~~~~~~~~~~~~~~~*/
 
-/* li {
-  display: inline;
-  padding: 5%;
-} */
-
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -30,8 +25,6 @@ body {
   justify-content: center;
 }
 
-
-
 h1 {
   font-size:25pt;
 }
@@ -43,10 +36,6 @@ h2 {
 a {
   color: inherit;
   text-decoration: inherit;
-}
-
-#logolink{
-  color:#3cb0d3;
 }
 
 code {
@@ -80,21 +69,10 @@ code {
 
 /* styles for the logo bar*/
 #logo {
-  color: #0098c7;
-  text-align: left;
-  font-size: 4vh;
-  /* original font choice */
-  /* font-family: 'Pacifico', cursive; */ 
-  font-family: 'Arizonia', cursive;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-weight: bold;
-  text-shadow: 2px 1px aliceblue;
-  padding: 0px 5px;
+  max-width:28vw;
 }
 
 #logobar {
-  /* background-color:rgb(14, 16, 14); */
   /* background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0)); */
   background-color:rgb(16,16,16);
 }
@@ -137,7 +115,6 @@ code {
   gap: 50px;
 }
 
-
 .random-search {
   display: flex;
   flex-direction: column;
@@ -147,6 +124,7 @@ code {
 .topic-dropdown > select {
   margin: 0px 5px;
 }
+
 
 /*styles for the video display*/
 .video-feed {
@@ -211,9 +189,6 @@ code {
 }
 
 
-
-
-
 .player-container {
   background: black;
   max-width: 100%;
@@ -224,6 +199,31 @@ code {
 .video-player {
   width: 100%;
   margin-top: 0px;
+}
+
+/*Styles for WatchVideo */
+.watch_player-container {
+  background: rgb(8,8,8);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.watch_video-player {
+  margin-top: 8vh;
+  width: 90vw;    /*     This creates a   */
+  height: 43vw;   /* flexible 16:9 ratio*/
+}
+
+.watch_player-details {
+  background: rgba(0,0,0, 0.1);
+  border-bottom: rgba(0,128,0,0.3) 1px solid;
+  border-left:rgba(0,128,0,0.5) 1px solid;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: 25px;
+  height: 3;
 }
 
 /* .video-player {
@@ -274,6 +274,7 @@ code {
     overflow: hidden;
 
 }
+
 
 
 /*Styles for login and sign-up*/
@@ -344,7 +345,6 @@ code {
 }
 
 
-
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
 /~~~~~~~~~~~~~~~~*/
@@ -358,12 +358,10 @@ code {
   
   /*Styles for the logobar*/
   #logo {
-    font-size: 3.5vh;
-    padding: 0px 27px;
+    height:35px;
   }
   
   #logobar {
-    /* background-color:rgb(14, 16, 14); */
     height: 7vh;
     padding: 0px 12px;
     display: flex;
@@ -379,6 +377,31 @@ code {
   #acctbtn {
     font-size: 3.5vh;
   }
+
+  /*Styles for WatchVideo */
+.watch_player-container {
+  background: rgb(8,8,8);
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.watch_video-player {
+  margin-top: 8vh;
+  width: 67vw;    /*     This creates a   */
+  height: 37vw;   /*  flexible 16:9 ratio */
+}
+
+.watch_player-details {
+  background: rgba(0,0,0, 0.1);
+  border-bottom: rgba(0,128,0,0.3) 1px solid;
+  border-left:rgba(0,128,0,0.5) 1px solid;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  padding: 25px;
+  height: 3;
+}
 
   .video-player {
   margin-top: 8vh;
