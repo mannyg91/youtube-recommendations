@@ -33,7 +33,7 @@ function isKidsContent(str) {
   const strWords = str.split(' ');
   const kidsContentKeywords = [
     'kids', 'abc', 'nursery', 'phonics', 'blippi', 'rhymes', 'pre-k', 'kindergarten', 'kids\'' ,'youkids', 'sing-along',
-    '#nurseryrhymes', 'piggy','along','PhonicsMan','potty','#children',"#kids"
+    '#nurseryrhymes', 'piggy','along','PhonicsMan','potty','#children',"#kids","peppa","kidz!","cartoon",
   ]
   return strWords.some(word => kidsContentKeywords.includes(word));
 }
