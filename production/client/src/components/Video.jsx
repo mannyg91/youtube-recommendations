@@ -42,7 +42,7 @@ const Video = ({ video }) => {
     if (saved) {
       //will have an on click function
       return <i className="ri-bookmark-fill favorite" onClick={unsaveVideo}></i>
-    } else if (hovered) {
+    } else {
       //will have an on click function
       return <i className="ri-bookmark-line favorite" onClick={saveVideo}></i>
     }
