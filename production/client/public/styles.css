@@ -210,9 +210,9 @@ code {
 }
 
 .watch_video-player {
-  margin-top: 8vh;
-  width: 90vw;    /*     This creates a   */
-  height: 43vw;   /* flexible 16:9 ratio*/
+  margin-top: 7vh;
+  width: 100vw;    /*     This creates a   */
+  height: 56vw;   /* flexible 16:9 ratio*/
 }
 
 .watch_player-details {
@@ -237,8 +237,8 @@ code {
   flex-direction: column;
   gap: 20px;
   background: rgba(0,0,0, 0.3);
-  border-bottom-left-radius: 60px;
-  border-bottom-right-radius: 60px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
   box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
   padding: 30px;
   height: auto;
@@ -247,19 +247,24 @@ code {
 
 .player-video-title {
   /* border: 1px yellow solid; */
-  padding: 0px 25px;
+  padding: 0;
   height: auto;
   border-bottom: 1px rgb(106, 139, 150) solid;
+}
+
+.player-video-title h2 {
+  font-size: 18px;
+  line-height: 1.25;
 }
 
 .player-video-channel {
   color: lightblue;
   font-size: 14px;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .player-video-description-container {
-  padding: 0px 80px;
+  padding: 0px 10px;
 }
 
 .player-video-description {
@@ -269,7 +274,7 @@ code {
   font-size: 14px;
   text-overflow: ellipsis;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 10;
     -webkit-box-orient: vertical;
     overflow: hidden;
 
@@ -378,6 +383,43 @@ code {
     font-size: 3.5vh;
   }
 
+/*styles for the search */
+.controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 42px;
+  gap: 5px;
+}
+
+.topic-scroll{
+  margin-top: 9vh;
+  width:100%;
+}
+
+.top-section {
+  display: flex;
+  flex-direction: row;
+  margin-top: 1.5vh;
+  margin-bottom: .5vh;
+  align-items: center;
+  gap: 8vw;
+}
+
+.bottom-section {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.random-search {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
   /*Styles for WatchVideo */
 .watch_player-container {
   background: rgb(8,8,8);
@@ -387,9 +429,9 @@ code {
 }
 
 .watch_video-player {
-  margin-top: 8vh;
-  width: 67vw;    /*     This creates a   */
-  height: 37vw;   /*  flexible 16:9 ratio */
+  margin-top: 7vh;
+  width: 54vw;    /*     This creates a   */
+  height: 30vw;   /*  flexible 16:9 ratio */
 }
 
 .watch_player-details {
@@ -407,6 +449,50 @@ code {
   margin-top: 8vh;
   width: 54vw;   
   height: 30vw; 
+}
+
+
+.player-details {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(0,0,0, 0.3);
+  border-bottom-left-radius: 60px;
+  border-bottom-right-radius: 60px;
+  box-shadow:rgba(16,16,16,0.5) 10px 15px 15px;
+  padding: 30px;
+  height: auto;
+  
+}
+
+.player-video-title {
+  /* border: 1px yellow solid; */
+  padding: 0px 25px;
+  height: auto;
+  border-bottom: 1px rgb(106, 139, 150) solid;
+}
+
+.player-video-channel {
+  color: lightblue;
+  font-size: 14px;
+  margin-bottom: 25px;
+}
+
+.player-video-description-container {
+  padding: 0px 80px;
+}
+
+.player-video-description {
+  margin-bottom: 32px;
+  color: lightgray;
+  line-height: 1.5;
+  font-size: 14px;
+  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+
 }
 
 }
