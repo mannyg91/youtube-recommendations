@@ -8,7 +8,8 @@ const SearchContext = React.createContext();
 
 const SearchContextProvider = (props) => {
   const [videos, setVideos] = React.useState(null); // change null to data.items for testData
-  const [searchTerm, setSearchTerm] = React.useState("rock");
+  const [searchTerm, setSearchTerm] = React.useState(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)]);
+
   const [selectedTopic, setSelectedTopic] = React.useState(null);// music topic
   const [sliderState, setSliderState] = React.useState(2);
   const [focusKeywords, setFocusKeywords] = React.useState(null);
@@ -29,8 +30,15 @@ const SearchContextProvider = (props) => {
       }
       }, [searchTerm, selectedTopic, selectedType]);
 
+      // React.useEffect(() => {
+      //   setSearchTerm(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)])
+      // },[])
+
       React.useEffect(() => {
-        setFocusKeywords(appTopics.filter(obj => obj.id === selectedTopic)[0].keywords)
+        if (selectedTopic === null) {
+          setSliderState(3)
+        }
+          setFocusKeywords(appTopics.filter(obj => obj.id === selectedTopic)[0].keywords)
       }, [selectedTopic])
 
   return (
