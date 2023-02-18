@@ -6,6 +6,7 @@ import data from "../components/data/testData.js";
 
 const SearchContext = React.createContext();
 
+console.log("search context rendered")
 const SearchContextProvider = (props) => {
   const [videos, setVideos] = React.useState(null); // change null to data.items for testData
   const [searchTerm, setSearchTerm] = React.useState(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)]);

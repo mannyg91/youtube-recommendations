@@ -1,12 +1,23 @@
 import React from 'react'
 import SearchIcon from '@mui/icons-material/SearchOutlined';
+import { SearchContext } from '../hooks/SearchContext';
 
 const SearchAppBar = () => {
+
+  const { ...searchProps } = React.useContext(SearchContext);
+
+  //create state for search term
+  const [searchAppBarTerm, setSearchAppBarTerm] = React.useState('')
+
+  function handleClick() {
+    searchProps.setSearchTerm(searchAppBarTerm)
+  }
+
   return (
-    <form id="search-bar">
-      <input id="search-input" type="text" placeholder="Search" />
-      <button id="search-btn" type="submit"> <SearchIcon class='search-icon'/></button>
-    </form>
+    <div id="search-bar">
+      <input id="search-input" onChange={(event) => setSearchAppBarTerm(event.target.value)} type="text" placeholder="Search" />
+      <button id="search-btn" onClick={handleClick}> <SearchIcon class='search-icon'/></button>
+    </div>
   )
 }
 
