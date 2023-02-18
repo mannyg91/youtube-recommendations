@@ -1,8 +1,11 @@
 import React from 'react'
 import Box from '@mui/material/Box';
 import Slider from '@mui/material/Slider';
+import { SearchContext } from '../hooks/SearchContext';
 
 const ContentSlider = (props) => {
+
+  const { ...searchProps } = React.useContext(SearchContext);
 
   const handleSlider = (event, newValue) => {
     console.log("slider moved")
@@ -20,6 +23,9 @@ const ContentSlider = (props) => {
     },
   ];
 
+  if (searchProps.selectedTopic === null) {
+    return null;
+  }
 
   return (
     <Box sx={{ width: 180 }}>

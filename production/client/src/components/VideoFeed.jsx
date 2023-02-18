@@ -94,7 +94,7 @@ const VideoFeed = () => {
                   m: '15px 0px 30px',
                   width: '140px',
                   fontSize: '13px',
-                  borderRadius: '18px'
+                  borderRadius: '16px'
                 }}
               id="submit-btn"
               type="submit"

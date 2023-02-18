@@ -5,12 +5,11 @@ import Box from "@mui/material/Box";
 import appTopics from './data/topics'
 
 export default function TopicScrollTab(props) {
-
   const handleChange = (event, newValue) => {
     props.setSelectedTopic(newValue);
   };
 
-  let tabElements = appTopics.sort((a, b) => a.name > b.name ? 1 : -1)
+  const tabElements = appTopics.sort((a, b) => a.name > b.name ? 1 : -1)
     .map(topic => (
       <Tab
         sx={{
@@ -25,8 +24,7 @@ export default function TopicScrollTab(props) {
         label={topic.name}
         value={topic.id}
       />
-    ))
-
+    ));
 
   return (
     <div>
@@ -38,21 +36,27 @@ export default function TopicScrollTab(props) {
           scrollButtons
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
+          TransitionProps={{
+            unmountOnExit: true,
+            timeout: { enter: 500, exit: 0 },
+          }}
+          TransitionComponent={"Grow"}
           sx={{
             alignItems: "center",
             "& .MuiTabs-indicator": {
-              display: "none"
+              display: "none",
             },
             "& .MuiTab-textColorPrimary": {
-              color: "rgba(240,248,255,0.8)"
+              color: "rgba(240,248,255,.9)",
+              border: "1px solid rgba(255,255,255,0.25)",
             },
             "& .Mui-selected": {
               color: "#1976D2",
-              backgroundColor: "rgba(240,248,255,1)"
+              backgroundColor: "rgba(240,248,255,1)",
             },
             "& .MuiTabScrollButton-root": {
               color: "aliceblue",
-            }
+            },
           }}
         >
           {tabElements}
