@@ -16,7 +16,7 @@ export default function TopicScrollTab(props) {
         sx={{
           border: "1px solid rgba(240,248,255,.3)",
           borderRadius: "14px",
-          margin: "0 .5vw",
+          margin: "0 .4vw",
           minHeight: "24px",
           padding: "9px 15px",
           fontSize: "12px",
@@ -39,6 +39,7 @@ export default function TopicScrollTab(props) {
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
           sx={{
+            alignItems: "center",
             "& .MuiTabs-indicator": {
               display: "none"
             },
@@ -50,7 +51,7 @@ export default function TopicScrollTab(props) {
               backgroundColor: "rgba(240,248,255,1)"
             },
             "& .MuiTabScrollButton-root": {
-              color: "aliceblue"
+              color: "aliceblue",
             }
           }}
         >

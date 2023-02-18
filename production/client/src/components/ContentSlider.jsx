@@ -22,7 +22,7 @@ const ContentSlider = (props) => {
 
 
   return (
-    <Box sx={{ width: 200 }}>
+    <Box sx={{ width: 180 }}>
       <Slider sx={{
         color: 'aliceblue', 
         zIndex: 0,

@@ -12,7 +12,7 @@ import AccountCircle from '@mui/icons-material/AccountCircle';
 import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
-import logo from './ww_logo_plain_sm.png';
+import ShuffleIcon from '@mui/icons-material/Shuffle';
 
 export default function Navbar() {
 
@@ -106,9 +106,9 @@ export default function Navbar() {
               <MenuIcon id="burgerbtn" />
             </IconButton>
             
-              <Box component="div" sx={{ flexGrow: 1 }}>
+              <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
                 <Link id="logolink" to="/">
-                  <img id="logo" src={logo} alt='logo'/>
+                  <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/>
                 </Link>
               </Box>
             
@@ -133,7 +133,7 @@ export default function Navbar() {
               >
 
 
-              {isLoggedIn &&  <span style={{fontSize: '15px', padding: '8px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
+              {isLoggedIn &&  <span id="account-username" style={{fontSize: '15px', padding: '10px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
               {isLoggedIn ?  <Avatar style={{background: 'aliceblue', color:'rgba(49,159,193,1)'}}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn"/></Avatar>}
                 
               </IconButton>

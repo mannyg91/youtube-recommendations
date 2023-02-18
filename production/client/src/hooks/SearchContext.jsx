@@ -7,7 +7,7 @@ import data from "../components/data/testData.js";
 const SearchContext = React.createContext();
 
 const SearchContextProvider = (props) => {
-  const [videos, setVideos] = React.useState(null); // change null to data.items for testData
+  const [videos, setVideos] = React.useState(data.items); // change null to data.items for testData
   const [searchTerm, setSearchTerm] = React.useState("rock");
   const [selectedTopic, setSelectedTopic] = React.useState(null);// music topic
   const [sliderState, setSliderState] = React.useState(2);
@@ -17,7 +17,7 @@ const SearchContextProvider = (props) => {
   const [selectedType, setSelectedType] = React.useState(null)
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(searchTerm, selectedTopic, selectedType);

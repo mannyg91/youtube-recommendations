@@ -1,6 +1,5 @@
 import React from 'react'
 import Video from './Video'
-import TopicDropdown from './TopicDropdown'
 import TopicScrollTab from './TopicScrollTab'
 import ContentSlider from './ContentSlider'
 import SmartSlider from './SmartSlider'
@@ -87,15 +86,15 @@ const VideoFeed = () => {
         </div>
         <div className='top-section'>
           <div className='random-search'>
-            Search: <strong style={{fontSize: '32px'}}>{searchProps.searchTerm}</strong>
+            <span style={{fontSize:'14px'}}>Search:</span><strong style={{fontSize: '30px'}}>{searchProps.searchTerm}</strong>
 
             <Button
               sx={{ 
                   background: '#F0F8FF',
                   m: '15px 0px 30px',
-                  width: '136px',
-                  fontSize: '14px',
-                  borderRadius: '8px'
+                  width: '140px',
+                  fontSize: '13px',
+                  borderRadius: '18px'
                 }}
               id="submit-btn"
               type="submit"

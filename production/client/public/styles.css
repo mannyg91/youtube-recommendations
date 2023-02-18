@@ -74,11 +74,33 @@ code {
 
 #logobar {
   /* background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0)); */
-  background-color:rgb(16,16,16);
+  background-color:rgb(19,19,15);
+  box-shadow: none;
+}
+
+#logo-container {
+  padding-bottom: 7px;
+  padding-left: 30px;
+  text-align: center;
+}
+
+#logo-title {
+  font-size: 27px;
+}
+
+#logo-icon {
+  font-size: 27px;
+  color: rgb(80, 188, 221);
+  margin-bottom: -7px;
+  margin-left: -3px;
 }
 
 #burgerbtn {
-  font-size:4vh;
+  font-size: 3.5vh;
+}
+
+#account-username {
+  display: none;
 }
 
 #acctbtn {
@@ -91,13 +113,13 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 42px;
+  margin-bottom: 28px;
   gap: 5px;
 }
 
 .topic-scroll{
-  margin-top: 9vh;
-  width:100%;
+  margin-top: 10vh;
+  width: 100%;
 }
 
 .top-section {
@@ -121,10 +143,6 @@ code {
   align-items: center;
 }
 
-.topic-dropdown > select {
-  margin: 0px 5px;
-}
-
 
 /*styles for the video display*/
 .video-feed {
@@ -140,7 +158,7 @@ code {
   background: linear-gradient(to bottom right, rgba(0,0,0, 0.4), rgba(30,30,30, 0.45));
   border-radius: 20px;
   padding: 0px;
-  height: 299px;
+  height: 316px;
   /* width: 320px; */
   /* text-align: center;
   justify-content: center; */
@@ -362,22 +380,31 @@ code {
   }
   
   /*Styles for the logobar*/
+#logo-container {
+  text-align: left;
+}
+
+
   #logo {
     height:35px;
   }
   
   #logobar {
-    height: 7vh;
+    height: 6.8vh;
     padding: 0px 12px;
     display: flex;
     flex-direction: column;
     justify-content: center;
   }
   
+  
   #burgerbtn {
-    font-size: 3.5vh;
+    font-size: 3vh;
   }
 
+  #account-username {
+    display: inline;
+  }
   
   #acctbtn {
     font-size: 3.5vh;
@@ -388,12 +415,12 @@ code {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 42px;
+  margin-bottom: 36px;
   gap: 5px;
 }
 
 .topic-scroll{
-  margin-top: 9vh;
+  margin-top: 7.7vh;
   width:100%;
 }
 
