@@ -6,3 +6,4 @@ export { default as Toggle } from "./Toggle";
 export { default as SideBar } from "./SideBar";
 export { default as WatchVideo } from "./WatchVideo";
 export { default as SavedVideos } from "./SavedVideos";
+export { default as SearchAppBar } from "./SearchAppBar";

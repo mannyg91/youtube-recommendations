@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { Login, Signup, SideBar, Toggle } from "../components";
+import { Login, Signup, SideBar, Toggle, SearchAppBar } from "../components";
 import { LoginContext } from '../hooks/LoginContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -111,6 +111,9 @@ export default function Navbar() {
                   <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/>
                 </Link>
               </Box>
+
+
+              <SearchAppBar />
             
             <div id="daynighttog">
               {window.matchMedia("(max-width:768px)").matches ? (
