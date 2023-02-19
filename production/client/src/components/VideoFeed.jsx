@@ -48,8 +48,6 @@ const VideoFeed = () => {
 
 
   function handleSpin() {
-    console.log(searchProps.sliderState)
-    console.log(searchProps.focusKeywords)
     if (searchProps.sliderState === 3 ) {
       getFocusedPhrase()
     } else if (searchProps.sliderState === 2) {
@@ -84,9 +82,9 @@ const VideoFeed = () => {
         <div className="topic-scroll">
           <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
-        <div className='top-section'>
+        <div className='top-section' style={{height: '180px'}}>
           <div className='random-search'>
-            <span style={{fontSize:'14px'}}>Search:</span><strong style={{fontSize: '30px'}}>{searchProps.searchTerm}</strong>
+            <span style={{fontSize:'14px'}}>Search:</span><strong style={{fontSize: '30px', marginBottom: '5px'}}>{searchProps.searchTerm}</strong>
 
             <Button
               sx={{ 

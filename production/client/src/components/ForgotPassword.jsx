@@ -1,6 +1,5 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
-import Typography from '@mui/material/Typography';
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
@@ -9,14 +8,14 @@ import Dialog from '@mui/material/Dialog';
 
 
 
-export const Login = (props) => {
+export const ForgotPassword = (props) => {
 
     //what the user enters
     const [email, setEmail] = React.useState('')
-    const [password, setPassword] = React.useState('')
+    // const [password, setPassword] = React.useState('')
 
 
-    const { handleLogin, getUsername } = React.useContext(LoginContext);
+    // const { handleLogin, getUsername } = React.useContext(LoginContext);
 
     //sends login data
     async function loginUser(event) {
@@ -31,7 +30,6 @@ export const Login = (props) => {
             //payload
             body: JSON.stringify({
                email,
-               password,
             }),
         })
 
@@ -43,8 +41,8 @@ export const Login = (props) => {
             console.log(data.user)
             console.log(data.user._id)
 			localStorage.setItem('token', data.user)
-            getUsername()
-            handleLogin()
+            // getUsername()
+            // handleLogin()
             // navigate('/');
             props.handleLoginClose()
 		} else {
@@ -85,15 +83,9 @@ export const Login = (props) => {
                                 required
                                 label="Password"
                                 type="password"
-                                onChange={(e) => setPassword(e.target.value)}
+                                // onChange={(e) => setPassword(e.target.value)}
                             />
 
-
-                    <p style={{textAlign: 'center', color: '#aaaaaa', fontSize: '14px', margin: '10px'}}>
-                            <span style={{color: '#11cde5'}}>
-                                <Link to="../signup" style={{textDecoration: 'underline'}}>Forgot Password?</Link>
-                            </span>
-                        </p>
 
                             <Button
                                 sx={{ 
@@ -114,7 +106,7 @@ export const Login = (props) => {
                             Psst... don't have an account yet?<br/>
                             Sign up&nbsp;
                             <span style={{color: '#11cde5'}}>
-                                <Link to="../signup" style={{textDecoration: 'underline'}}>here!</Link>
+                                <Link to="../signup">here!</Link>
                             </span>
                         </p>
                     </div>
@@ -127,4 +119,4 @@ export const Login = (props) => {
     )
 }
 
-export default Login;
+export default ForgotPassword;

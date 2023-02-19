@@ -7,3 +7,4 @@ export { default as SideBar } from "./SideBar";
 export { default as WatchVideo } from "./WatchVideo";
 export { default as SavedVideos } from "./SavedVideos";
 export { default as SearchAppBar } from "./SearchAppBar";
+export { default as ForgotPassword} from "./ForgotPassword";

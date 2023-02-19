@@ -13,6 +13,7 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
+import logo from '../assets/logo-desktop.png';
 
 export default function Navbar() {
 
@@ -108,7 +109,8 @@ export default function Navbar() {
             
               <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
                 <Link id="logolink" to="/">
-                  <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/>
+                  <img id="logo" src={logo} alt='logo'/>
+                  {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
                 </Link>
               </Box>
 
@@ -156,11 +158,11 @@ export default function Navbar() {
                 onClose={closeAccountContainer}
               >
                 {isLoggedIn ? 
-                  <div>
+                  <div id="acct-menu">
                     <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </div> :
-                  <div>
+                   <div id="acct-menu">
                     <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
                     <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
                   </div>

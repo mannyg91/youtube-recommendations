@@ -3,125 +3,86 @@ import { Link } from "react-router-dom";
 import { useHover } from '../hooks/useHover';
 import { LoginContext } from '../hooks/LoginContext';
 import { SavedContext } from '../hooks/SavedContext';
-
+import Snackbar from '@mui/material/Snackbar';
 
 const Video = ({ video }) => {
-  const [hovered, ref] = useHover()
+  const [hovered, ref] = useHover();
   const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
   const { isLoggedIn } = React.useContext(LoginContext);
+  const [videoId, setVideoId] = React.useState(video?.id.videoId);
+  const [saved, setSaved] = React.useState(false);
+  const [snackbarOpen, setSnackbarOpen] = React.useState(false);
+  const [snackbarMessage, setSnackbarMessage] = React.useState("");
 
-
-
-  const videoTitle = video.snippet.title
+  const videoTitle = video.snippet.title;
   const thumbnailURL = video.snippet.thumbnails.high.url;
-  // const thumbnailWidth = video.thumbnail[video.thumbnail.length - 1].width;
-  // const thumbnailHeight = video.thumbnail[video.thumbnail.length - 1].height;
   const thumbnailWidth = video.snippet.thumbnails.high.width * .73;
   const thumbnailHeight = video.snippet.thumbnails.high.height * .73;
   const channelTitle = video.snippet.channelTitle;
 
-  const [videoId, setVideoId] = React.useState(video?.id.videoId)
-  const [saved, setSaved] = React.useState(false)
+  React.useEffect(() => {
+    setVideoId(video?.id.videoId);
+  }, [video]);
 
   React.useEffect(() => {
-    setVideoId(video?.id.videoId)
-  }, [video])
+    setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId));
+  }, [videoId]);
 
-  React.useEffect(() => {
-    setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId))
-  }, [videoId])
-
-  React.useEffect(() => {
-    saveIcon()
-  }, [setSaved])
-
-
-  function saveIcon() {
-    //will be used to check if the id is saved:
-
-    if (saved) {
-      //will have an on click function
-      return <i className="ri-bookmark-fill favorite" onClick={unsaveVideo}></i>
-    } else {
-      //will have an on click function
-      return <i className="ri-bookmark-line favorite" onClick={saveVideo}></i>
-    }
-  }
-
-
-  async function saveVideo() {
+  function handleSaveVideo() {
     if (isLoggedIn) {
-      setSaved(true)
+      setSaved(!saved);
+      if (!saved) {
+        setSnackbarMessage("Video saved to bookmarks");
+      } else {
+        setSnackbarMessage("Video removed from bookmarks");
+      }
+      setSnackbarOpen(true);
 
       // tries to grab token
       const token = localStorage.getItem('token')
 
       //if token, makes get request
       if (token) {
-        const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos`, {
-          method: 'POST',
+        const method = saved ? "DELETE" : "POST";
+        const url = saved ? `${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos/${videoId}` : `${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos`;
+        fetch(url, {
+          method: method,
           headers: {
             'Content-Type': 'application/json',
             'Authorization': `Bearer ${token}`
           },
-          //payload
           body: JSON.stringify({
             video,
           }),
+        }).then((res) => {
+          if (res.ok) {
+            getSavedVideos();
+          } else {
+            console.log("Error saving video");
+          }
         });
-
-        const data = await res.json();
-
-        if (data) {
-          console.log("video saved")
-        } else {
-          alert('cannot save video')
-        }
       }
     } else {
-      console.log("you are not logged in")
+      setSnackbarMessage("You must be logged in to save videos");
+      setSnackbarOpen(true);
     }
-
-
   }
 
-  async function unsaveVideo() {
-    // tries to grab token
-    setSaved(false)
-    const token = localStorage.getItem('token')
+  function handleSnackbarClose() {
+    setSnackbarOpen(false);
+  }
 
-    //if token, makes get request
-    if (token) {
-      const res = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos/${videoId}`, {
-        method: 'DELETE',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${token}`
-        },
-      });
-
-      const data = await res.json();
-
-      if (data) {
-        console.log(data)
-        console.log("video deleted")
-
-      } else {
-        alert('cannot delete video')
-      }
-
+  function saveIcon() {
+    if (saved) {
+      return <i className="ri-bookmark-fill favorite" onClick={handleSaveVideo}></i>
     } else {
-      console.log("You must be logged in to save videos")
+      return <i className="ri-bookmark-line favorite" onClick={handleSaveVideo}></i>
     }
-
   }
-
-
 
   return (
     <div className='video-card' style={{ width: thumbnailWidth }} ref={ref}>
       <div className='thumbnail' style={{ height: "calc(100% - px)" }}>
-        {/* <a href={`https://youtube.com/watch?v=${videoId}`} target="_blank" rel="noreferrer"></a> */}
         <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}>
           <img width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
             style={{ clipPath: "inset(33px 0px 33px 0px round 20px)", marginTop: "-24px" }}
@@ -141,12 +102,18 @@ const Video = ({ video }) => {
         </div>
         <div className='channel-title'>{channelTitle}</div>
       </div>
-      {/* {publishTime} */}
+      <Snackbar
+        anchorOrigin={{
+          vertical: 'bottom',
+          horizontal: 'right',
+        }}
+        open={snackbarOpen}
+        autoHideDuration={2000}
+        onClose={handleSnackbarClose}
+        message={snackbarMessage}
+      />
     </div>
   )
 }
-
-
-
 
 export default Video

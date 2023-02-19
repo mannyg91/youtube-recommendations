@@ -69,7 +69,7 @@ code {
 
 /* styles for the logo bar*/
 #logo {
-  max-width:28vw;
+  max-width: 29vw;
 }
 
 #logobar {
@@ -213,7 +213,7 @@ code {
 }
 
 .favorite {
-  color: aliceblue;
+  color: rgb(220, 220, 220);
   font-size: 1.2rem;
   position: absolute;
   cursor: pointer;
@@ -414,8 +414,8 @@ code {
   
   /*Styles for the main body*/
   .video-feed {
-    margin: 25px 10%;
-    column-gap: 48px;
+    margin: 25px 9%;
+    column-gap: 42px;
   }
   
   /*Styles for the logobar*/
@@ -425,7 +425,7 @@ code {
 
 
   #logo {
-    height:35px;
+    height: 26px;
   }
   
   #logobar {

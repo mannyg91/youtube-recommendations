@@ -19,6 +19,8 @@ import ListItemText from "@mui/material/ListItemText";
 import { SavedContext } from '../hooks/SavedContext';
 import { LoginContext } from '../hooks/LoginContext';
 
+import Dialog from '@mui/material/Dialog';
+
 
 const SideBar = ({ handleDrawerClose, open}) => {
 
@@ -39,6 +41,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
 
   return (
+    <Dialog open={open}  onClose={handleDrawerClose}>
     <Drawer
       PaperProps={{ sx: { backgroundColor: "rgb(12,12,12)", color: "aliceblue" } }}
       sx={{
@@ -106,6 +109,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
       </List>
     </Drawer>
+    </Dialog>
   )
 }
 

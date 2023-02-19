@@ -28,9 +28,9 @@ const ContentSlider = (props) => {
   }
 
   return (
-    <Box sx={{ width: 180 }}>
+    <Box sx={{ width: 190 }}>
       <Slider sx={{
-        color: 'aliceblue', 
+        color: '#dbdfe3', 
         zIndex: 0,
         "& .MuiSlider-thumb": {
           backgroundColor: "#fff"
