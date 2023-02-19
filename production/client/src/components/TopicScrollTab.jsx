@@ -29,9 +29,9 @@ export default function TopicScrollTab(props) {
   return (
     <div>
       <Box sx={{ 
-        maxWidth: "100%", bgcolor: "transparent", marginLeft: "0%",
+        maxWidth: "100%", bgcolor: "transparent",
         "@media screen and (min-width:700px)": {
-          maxWidth: "90%", bgcolor: "transparent", marginLeft: "5%"}
+          maxWidth: "85%", bgcolor: "transparent", marginLeft: "7%"}
         }}>
         <Tabs
           value={props.selectedTopic}
@@ -50,15 +50,15 @@ export default function TopicScrollTab(props) {
             "& .MuiTabs-indicator": {
               display: "none",
             },
-            "& .MuiTab-textColorPrimary": {
-              color: "rgba(240,248,255,.9)",
-              border: "1px solid rgba(255,255,255,0.25)",
-            },
             // "& .MuiTab-textColorPrimary": {
-            //   color: "#c2c2c2",
-            //   border: "none",
-            //   backgroundColor:'#272727'
+            //   color: "rgba(240,248,255,.9)",
+            //   border: "1px solid rgba(255,255,255,0.25)",
             // },
+            "& .MuiTab-textColorPrimary": {
+              color: "#c2c2c2",
+              border: "none",
+              backgroundColor:'#272727'
+            },
             "& .Mui-selected": {
               color: "#1976D2",
               backgroundColor: "rgba(240,248,255,1)",

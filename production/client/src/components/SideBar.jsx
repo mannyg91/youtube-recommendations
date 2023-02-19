@@ -90,15 +90,16 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
           <List>
 
-            <ListItem className="drawerlist" key="Settings" disablePadding>
-              <ListItemButton>
-                <ListItemIcon>
-                  <SettingsIcon className="listitemicon" />
-                </ListItemIcon>
-                <ListItemText primary="Settings" />
-                <Divider color="aliceblue" />
-              </ListItemButton>
-            </ListItem>
+            <Link to="/about">
+              <ListItem className="drawerlist" key="About Us" disablePadding>
+                <ListItemButton>
+                  <ListItemIcon>
+                    <Groups2Icon className="listitemicon" />
+                  </ListItemIcon>
+                  <ListItemText primary="About Us" />
+                </ListItemButton>
+              </ListItem>
+            </Link>
 
             <Link to="/saved-videos/">
               <ListItem className="drawerlist" key="Saved Videos" onClick={handleDrawerClose} disablePadding>
@@ -110,17 +111,16 @@ const SideBar = ({ handleDrawerClose, open}) => {
                 </ListItemButton>
               </ListItem>
             </Link>
-
-            <Link to="/about">
-              <ListItem className="drawerlist" key="About Us" disablePadding>
-                <ListItemButton>
-                  <ListItemIcon>
-                    <Groups2Icon className="listitemicon" />
-                  </ListItemIcon>
-                  <ListItemText primary="About Us" />
-                </ListItemButton>
-              </ListItem>
-            </Link>
+            
+            <ListItem className="drawerlist" key="Settings" disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  <SettingsIcon className="listitemicon" />
+                </ListItemIcon>
+                <ListItemText primary="Settings" />
+                <Divider color="aliceblue" />
+              </ListItemButton>
+            </ListItem>
 
             {!isLoggedIn &&
             <ListItem className="drawerlist" key="Login" disablePadding>

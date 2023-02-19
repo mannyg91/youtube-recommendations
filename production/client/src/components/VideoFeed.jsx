@@ -111,7 +111,7 @@ const VideoFeed = () => {
         
 
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
-      <div style={{marginTop: '200px'}} className='video-feed'>
+      <div className='video-feed'>
           {videoElements}
       </div>
     </div>

@@ -190,14 +190,16 @@ export default function Navbar() {
               <div id='logobar-middle'>
               <Button
                 sx={{
-                  background: '#F0F8FF',
-                  width: { xs: '87px', sm: '100px', md: '120px' },
+                  background: 'rgb(240,248,255)',
+                  width: { xs: '87px', sm: '90px', md: '110px' },
                   fontSize: '13px',
                   borderRadius: '16px',
-                  marginRight: '10px'
+                  marginRight: '10px',
+                  border: 'none',
+                  color: '#1976d2',
                 }}
                 type="submit"
-                variant="outlined"
+                variant="contained"
               // onClick={handleSpin}
               >
                 Spin
