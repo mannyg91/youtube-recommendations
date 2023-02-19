@@ -14,6 +14,7 @@ import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import logo from '../assets/logo-desktop.png';
+import Button from "@mui/material/Button";
 
 export default function Navbar() {
 
@@ -95,8 +96,11 @@ export default function Navbar() {
 
 
       <Box>
-        <AppBar  id="logobar">
-          <Toolbar open={open}>
+        <AppBar id="logobar">
+          <Toolbar id="logobar-containers" open={open}>
+
+
+    <div id='logobar-left'>    
             <IconButton
               size="large"
               edge="start"
@@ -113,10 +117,33 @@ export default function Navbar() {
                   {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
                 </Link>
               </Box>
+        </div>    
 
+
+
+
+<div id='logobar-middle'>
+              <Button
+              sx={{ 
+                  background: '#F0F8FF',
+                  width: '120px',
+                  fontSize: '13px',
+                  borderRadius: '16px',
+                  marginRight: '8px'
+                }}
+              type="submit"
+              variant="outlined"
+              // onClick={handleSpin}
+              >
+              Spin
+            </Button>
 
               <SearchAppBar />
-            
+  </div>          
+
+
+
+            <div id='logobar-right'>
             <div id="daynighttog">
               {window.matchMedia("(max-width:768px)").matches ? (
                 <Toggle id="mobile_tog"/>
@@ -127,7 +154,7 @@ export default function Navbar() {
               
               
             
-            <div>
+
               <IconButton
                 size="large"
                 aria-label="account of current user"
@@ -142,6 +169,11 @@ export default function Navbar() {
               {isLoggedIn ?  <Avatar style={{background: 'aliceblue', color:'rgba(49,159,193,1)'}}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn"/></Avatar>}
                 
               </IconButton>
+
+
+
+
+
               <Menu
                 id="menu-appbar"
                 anchorEl={anchorEl}
@@ -168,6 +200,9 @@ export default function Navbar() {
                   </div>
               }
               </Menu>
+
+
+
             </div>
 
       

@@ -429,12 +429,25 @@ code {
   }
   
   #logobar {
-    height: 7vh;
-    padding: 0px 12px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+
   }
+
+  #logobar-containers {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 7vh;
+  }
+
+  #logobar-left, #logobar-middle, #logobar-right {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+
+
+  
   
   
   #burgerbtn {
@@ -456,11 +469,16 @@ code {
   align-items: center;
   margin-bottom: 36px;
   gap: 5px;
+
+  position:fixed;
+  background-color:rgb(18,18,17);
+  z-index: 2;
 }
 
 .topic-scroll{
-  margin-top: 7.7vh;
-  width:100%;
+  margin-top: 7vh;
+  margin-bottom: 2vh;
+  width: 100vw;
 }
 
 .top-section {

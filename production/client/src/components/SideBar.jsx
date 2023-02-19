@@ -41,8 +41,8 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
 
   return (
-    <Dialog open={open}  onClose={handleDrawerClose}>
-    <Drawer
+    <Dialog style={{minHeight: '100vh'}} open={open}  onClose={handleDrawerClose}>
+    <Drawer 
       PaperProps={{ sx: { backgroundColor: "rgb(12,12,12)", color: "aliceblue" } }}
       sx={{
         width: drawerWidth,

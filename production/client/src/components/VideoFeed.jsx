@@ -82,7 +82,7 @@ const VideoFeed = () => {
         <div className="topic-scroll">
           <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
-        <div className='top-section' style={{height: '180px'}}>
+        {/* <div className='top-section' style={{height: '180px'}}>
           <div className='random-search'>
             <span style={{fontSize:'14px'}}>Search:</span><strong style={{fontSize: '30px', marginBottom: '5px'}}>{searchProps.searchTerm}</strong>
 
@@ -103,15 +103,15 @@ const VideoFeed = () => {
 
             <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
 
-          </div>
+          </div> */}
           {/* <SmartSlider sliderState2={searchProps.sliderState2} setSliderState2={searchProps.setSliderState2} selectedType={searchProps.selectedType} setSelectedType={searchProps.setSelectedType}/> */}
-        </div>
+        {/* </div> */}
 
 
         
       </div>
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
-      <div className='video-feed'>
+      <div style={{marginTop: '200px'}} className='video-feed'>
           {videoElements}
       </div>
     </div>
