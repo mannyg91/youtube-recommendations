@@ -52,7 +52,8 @@ code {
   color:aliceblue;
 }
 
-.drawerlist:before {
+/* Section division lines for side drawer*/
+/* .drawerlist:before {
   content: "";
   position: absolute;
   left:40px;
@@ -60,7 +61,7 @@ code {
   height:1px;
   width: 70%;
   border-bottom:1px solid black;
-}
+} */
 
 #menuclosearrow {
   color:aliceblue;
