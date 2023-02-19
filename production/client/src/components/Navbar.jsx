@@ -83,15 +83,15 @@ export default function Navbar() {
 
   return (
     <>
-    
-      <Login    
-          loginOpen={loginOpen}
-          handleLoginClose={handleLoginClose}  
+
+      <Login
+        loginOpen={loginOpen}
+        handleLoginClose={handleLoginClose}
       />
 
       <Signup
-          signupOpen={signupOpen}
-          handleSignupClose={handleSignupClose}  
+        signupOpen={signupOpen}
+        handleSignupClose={handleSignupClose}
       />
 
 
@@ -99,61 +99,44 @@ export default function Navbar() {
         <AppBar id="logobar">
           <Toolbar id="logobar-containers" open={open}>
 
+          <div class='logobar-top'>
+            <div id='logobar-left'>
+              <IconButton
+                size="large"
+                edge="start"
+                color="inherit"
+                aria-label="menu"
+                onClick={handleDrawerOpen}
+              >
+                <MenuIcon id="burgerbtn" />
+              </IconButton>
 
-    <div id='logobar-left'>    
-            <IconButton
-              size="large"
-              edge="start"
-              color="inherit"
-              aria-label="menu"
-              onClick={handleDrawerOpen}
-            >
-              <MenuIcon id="burgerbtn" />
-            </IconButton>
-            
               <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
                 <Link id="logolink" to="/">
-                  <img id="logo" src={logo} alt='logo'/>
+                  <img id="logo" src={logo} alt='logo' />
                   {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
                 </Link>
               </Box>
-        </div>    
-
-
-
-
-<div id='logobar-middle'>
-              <Button
-              sx={{ 
-                  background: '#F0F8FF',
-                  width: '120px',
-                  fontSize: '13px',
-                  borderRadius: '16px',
-                  marginRight: '8px'
-                }}
-              type="submit"
-              variant="outlined"
-              // onClick={handleSpin}
-              >
-              Spin
-            </Button>
-
-              <SearchAppBar />
-  </div>          
-
-
-
-            <div id='logobar-right'>
-            <div id="daynighttog">
-              {window.matchMedia("(max-width:768px)").matches ? (
-                <Toggle id="mobile_tog"/>
-              ):(
-                <Toggle id="desktop_tog"/>
-              )}
             </div>
-              
-              
-            
+
+
+
+
+
+            <div class='logobar-top' id='logobar-right'>
+              <div id="daynighttog">
+                {window.matchMedia("(max-width:768px)").matches ? (
+                  <Toggle id="mobile_tog" />
+                ) : (
+                  <Toggle id="desktop_tog" />
+                )}
+              </div>
+
+
+    
+
+
+
 
               <IconButton
                 size="large"
@@ -165,9 +148,9 @@ export default function Navbar() {
               >
 
 
-              {isLoggedIn &&  <span id="account-username" style={{fontSize: '15px', padding: '10px', color:'lightgray' }}>{`Hi, ${username}!`}</span>}
-              {isLoggedIn ?  <Avatar style={{background: 'aliceblue', color:'rgba(49,159,193,1)'}}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn"/></Avatar>}
-                
+                {isLoggedIn && <span id="account-username" style={{ fontSize: '15px', padding: '10px', color: 'lightgray' }}>{`Hi, ${username}!`}</span>}
+                {isLoggedIn ? <Avatar style={{ background: 'aliceblue', color: 'rgba(49,159,193,1)' }}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn" /></Avatar>}
+
               </IconButton>
 
 
@@ -189,23 +172,43 @@ export default function Navbar() {
                 open={Boolean(anchorEl)}
                 onClose={closeAccountContainer}
               >
-                {isLoggedIn ? 
+                {isLoggedIn ?
                   <div id="acct-menu">
                     <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
                     <MenuItem onClick={handleLogout}>Logout</MenuItem>
                   </div> :
-                   <div id="acct-menu">
+                  <div id="acct-menu">
                     <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
                     <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
                   </div>
-              }
+                }
               </Menu>
-
-
-
+            </div>
             </div>
 
-      
+            <div class='logobar-bottom'>
+              <div id='logobar-middle'>
+              <Button
+                sx={{
+                  background: '#F0F8FF',
+                  width: { xs: '87px', sm: '100px', md: '120px' },
+                  fontSize: '13px',
+                  borderRadius: '16px',
+                  marginRight: '10px'
+                }}
+                type="submit"
+                variant="outlined"
+              // onClick={handleSpin}
+              >
+                Spin
+              </Button>
+
+              <SearchAppBar />
+            </div>
+          </div>
+           
+
+
 
 
           </Toolbar>
@@ -214,12 +217,12 @@ export default function Navbar() {
         {/* <AppBar style={{top:'70px', height:'40px', backgroundColor:'rgba(0,0,0,0)', color:'white', padding: '10px 100px', fontWeight: '500'}}>
           Music | Gaming | Sports | Religion | Hobbies | Knowledge | History |
         </AppBar> */}
-      
-        <SideBar 
+
+        <SideBar
           handleDrawerOpen={handleDrawerOpen}
           handleDrawerClose={handleDrawerClose}
           open={open}
-          setOpen={setOpen}  
+          setOpen={setOpen}
         />
       </Box>
     </>

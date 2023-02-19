@@ -78,7 +78,7 @@ const VideoFeed = () => {
 
   return (
     <div className='wrapper'>
-      <div className='controls'>
+
         <div className="topic-scroll">
           <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
@@ -109,7 +109,7 @@ const VideoFeed = () => {
 
 
         
-      </div>
+
       {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div style={{marginTop: '200px'}} className='video-feed'>
           {videoElements}
