@@ -1,8 +1,5 @@
 import React from 'react'
-import Video from './Video'
-import TopicScrollTab from './TopicScrollTab'
-import ContentSlider from './ContentSlider'
-import SmartSlider from './SmartSlider'
+import { Video, TopicScrollTab, ContentSlider, SmartSlider } from "../components";
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'

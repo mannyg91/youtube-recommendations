@@ -31,6 +31,19 @@ function authenticateToken(req, res, next) {
 	});
 }
 
+function generatePasswordResetToken(email) {
+	const payload ={
+		email: email,
+		type: 'password-reset'
+	};
+	const options = {
+		expiresIn: '1h',
+	};
+	const token = (payload, process.env.ACCESS_TOKEN_SECRET, options);
+	return token;
+
+	}
+
 
 
 
@@ -98,6 +111,21 @@ router.delete('/:username', async (req, res) => {
 	res.status(200).json({
 		message: `Delete user ${req.params.username}`
 	})
+})
+
+
+
+router.post('/forgot-password', async (req, res) => {
+
+	const user = await User.findOne({ email });
+	if (!user) {
+		return res.json({ status: 'error', error: 'No user found' });
+	}
+
+	const { email } = req.body;
+	const token = generatePasswordReset(email);
+
+	res.status(200).send('Password reset email sent.');
 })
 
 

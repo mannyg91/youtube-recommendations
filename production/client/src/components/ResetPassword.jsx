@@ -8,7 +8,7 @@ import Dialog from '@mui/material/Dialog';
 
 
 
-export const ForgotPassword = (props) => {
+export const ResetPassword = (props) => {
 
     //what the user enters
     const [email, setEmail] = React.useState('')
@@ -18,12 +18,11 @@ export const ForgotPassword = (props) => {
     // const { handleLogin, getUsername } = React.useContext(LoginContext);
 
     //sends login data
-    async function sendEmail(event) {
+    async function loginUser(event) {
 
         event.preventDefault() 
     
-        //email is sent in body
-        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/forgot-password`, {
+        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/login`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -56,12 +55,12 @@ export const ForgotPassword = (props) => {
 
     return (
 
-        <Dialog open={props.forgotPasswordOpen}  onClose={props.handleForgotPasswordClose}>
+
             <div className='account-container'>
                     <div id="accountDiv">
-                        <h1 style={{marginBottom: '10px'}}>Forgot Password?</h1>
+                        <h1 style={{marginBottom: '10px'}}>Reset Password</h1>
                             <p style={{lineHeight: 1.5, textAlign: 'center', color: '#11cde5', margin: '16px'}}>
-                                No worries! <br/>We'll send you reset instructions.
+                                Please enter a new password:
                             </p>
          
                         <Box
@@ -72,23 +71,28 @@ export const ForgotPassword = (props) => {
                             }}
                             noValidate
                             autoComplete="off"
-                            onSubmit={sendEmail} //login called here
+                            onSubmit={loginUser} //login called here
                         >
                 
-                            <TextField
-                                className="account-textfield"
-                                required
-                                label="Email"
-                                type="email"
-                                onChange={(e) => setEmail(e.target.value)}
-                            />
-                            {/* <TextField
-                                className="account-textfield"
-                                required
-                                label="Password"
-                                type="password"
-                                // onChange={(e) => setPassword(e.target.value)}
-                            /> */}
+
+                            
+                      <TextField
+                            sx={{ display: 'block' }}
+                            required
+                            label="New Password"
+                            className="account-textfield"
+                            type="password"
+                            // onChange={(e) => setPassword(e.target.value)}
+                        />
+
+                      <TextField
+                            sx={{ display: 'block' }}
+                            required
+                            label="Confirm Password"
+                            className="account-textfield"
+                            type="password"
+                            // onChange={(e) => setPassword(e.target.value)}
+                        />
 
 
                             <Button
@@ -101,7 +105,7 @@ export const ForgotPassword = (props) => {
                                 id="submit-btn"
                                 type="submit"
                                 variant="outlined">
-                                Send
+                                Confirm
                             </Button>
             
                         </Box>
@@ -115,7 +119,7 @@ export const ForgotPassword = (props) => {
                         </p> */}
                     </div>
                 </div>
-            </Dialog>
+
 
 
 
@@ -123,4 +127,4 @@ export const ForgotPassword = (props) => {
     )
 }
 
-export default ForgotPassword;
+export default ResetPassword;
