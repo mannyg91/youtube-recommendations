@@ -452,6 +452,46 @@ code {
   margin-bottom: 10%;
 }
 
+/*About Us page styling*/
+
+#aboutpage{
+  margin-top: 130px;
+  width:95%;
+  margin-left:2.5%;
+}
+
+#aboutpage h1 {
+  margin-bottom:30px;
+}
+
+#aboutpage h2 {
+  margin-bottom:10px;
+  margin-top:30px;
+}
+
+article {
+  border: 1px solid aliceblue;
+  margin:3%;
+  padding:5%;
+}
+
+article p{
+  margin-bottom:15px;
+  line-height:25px;
+}
+
+#citation{
+  text-align:center;
+  font-size:small;
+  color:rgba(240, 248, 255, 0.5)
+}
+
+.profile-pic{
+  height:120px;
+  float:left;
+  margin-right:15px;
+}
+
 
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
@@ -487,10 +527,6 @@ code {
     margin-top: -36px;
   }
 
-
-
-
-
   #burgerbtn {
     font-size: 3vh;
   }
@@ -502,6 +538,7 @@ code {
   #acctbtn {
     font-size: 3.5vh;
   }
+
 
   /*styles for the search */
 
@@ -518,8 +555,6 @@ code {
     padding: 20px 0px;
     width: 100vw;
   }
-
-
 
   .random-search {
     display: flex;
@@ -605,5 +640,26 @@ code {
     overflow: hidden;
 
   }
+
+  /*About Us page styling*/
+
+  #aboutpage{
+    margin-top: 90px;
+    width:80%;
+    margin-left:10%;
+  }
+
+  #aboutpage h1 {
+    margin-bottom:35px;
+  }
+
+  #aboutpage h2 {
+    margin-top:25px;
+  }
+
+  #citation{
+    margin-left:70%;
+  }
+
 
 }
