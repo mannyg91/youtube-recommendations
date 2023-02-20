@@ -32,16 +32,32 @@ function authenticateToken(req, res, next) {
 }
 
 function generatePasswordResetToken(email) {
+
+	const expiryTime = new Date();
+	expiryTime.setHours(expiryTime.getHours() + 1);
+
 	const payload ={
 		email: email,
 		type: 'password-reset'
 	};
-	const options = {
-		expiresIn: '1h',
-	};
-	const token = (payload, process.env.ACCESS_TOKEN_SECRET, options);
+
+	const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: expiryTime.getTime() });
 	return token;
 
+	}
+
+function updatePasswordResetToken(email, passwordResetToken, passwordResetTokenExpiration) {
+	User.findOneAndUpdate(
+		{ email: email },
+		{ passwordResetToken: passwordResetToken, passwordResetTokenExpiration: passwordResetTokenExpiration },
+		{ new: true }
+	)
+	.then((user) => {
+		console.log('User updated with password reset token:', user);
+	})
+	.catch(err => {
+		console.error('Error updating user with password reset token:', err);
+	});
 	}
 
 
@@ -116,14 +132,14 @@ router.delete('/:username', async (req, res) => {
 
 
 router.post('/forgot-password', async (req, res) => {
-
-	const user = await User.findOne({ email });
+	const { email } = req.body;
+	const user = await User.findOne({email: email});
 	if (!user) {
 		return res.json({ status: 'error', error: 'No user found' });
 	}
 
-	const { email } = req.body;
-	const token = generatePasswordReset(email);
+	const token = generatePasswordResetToken(email);
+	updatePasswordResetToken(email, token, Date.now() + 3600000);
 
 	res.status(200).send('Password reset email sent.');
 })
