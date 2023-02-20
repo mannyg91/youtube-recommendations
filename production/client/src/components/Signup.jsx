@@ -105,9 +105,7 @@ export const Signup = (props) => {
 
                     <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
                         Psst... Already a member?<br/> Log in&nbsp;
-                        <span style={{color: '#11cde5'}}>
-                            <Link to="../login" style={{textDecoration: 'underline'}}>here!</Link>
-                        </span>
+                        <span style={{color: '#11cde5', textDecoration: 'underline'}} onClick={props.handleLoginOpen}>here!</span>
                     </p>
                     </div>
                 </div>

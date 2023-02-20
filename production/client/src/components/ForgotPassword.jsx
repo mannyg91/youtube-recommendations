@@ -55,11 +55,14 @@ export const ForgotPassword = (props) => {
 
     return (
 
-        <Dialog open={props.loginOpen}  onClose={props.handleLoginClose}>
+        <Dialog open={props.forgotPasswordOpen}  onClose={props.handleForgotPasswordClose}>
             <div className='account-container'>
                     <div id="accountDiv">
-                        <h1 style={{marginBottom: '10px'}}>Welcome back!</h1>
-                        <h3 style={{marginBottom: '25px', color: '#11cde5'}}>Please login below</h3>
+                        <h1 style={{marginBottom: '10px'}}>Forgot Password?</h1>
+                            <p style={{lineHeight: 1.5, textAlign: 'center', color: '#11cde5', margin: '16px'}}>
+                                No worries! <br/>We'll send you reset instructions.
+                            </p>
+         
                         <Box
                             className="account-fields"
                             component="form"
@@ -78,13 +81,13 @@ export const ForgotPassword = (props) => {
                                 type="email"
                                 onChange={(e) => setEmail(e.target.value)}
                             />
-                            <TextField
+                            {/* <TextField
                                 className="account-textfield"
                                 required
                                 label="Password"
                                 type="password"
                                 // onChange={(e) => setPassword(e.target.value)}
-                            />
+                            /> */}
 
 
                             <Button
@@ -97,18 +100,18 @@ export const ForgotPassword = (props) => {
                                 id="submit-btn"
                                 type="submit"
                                 variant="outlined">
-                                Sign In
+                                Send
                             </Button>
             
                         </Box>
 
-                        <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
+                        {/* <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
                             Psst... don't have an account yet?<br/>
                             Sign up&nbsp;
                             <span style={{color: '#11cde5'}}>
                                 <Link to="../signup">here!</Link>
                             </span>
-                        </p>
+                        </p> */}
                     </div>
                 </div>
             </Dialog>
