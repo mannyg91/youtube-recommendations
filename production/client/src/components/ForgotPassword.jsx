@@ -12,10 +12,8 @@ export const ForgotPassword = (props) => {
 
     //what the user enters
     const [email, setEmail] = React.useState('')
-    // const [password, setPassword] = React.useState('')
 
-
-    // const { handleLogin, getUsername } = React.useContext(LoginContext);
+    
 
     //sends login data
     async function sendEmail(event) {
@@ -60,7 +58,7 @@ export const ForgotPassword = (props) => {
             <div className='account-container'>
                     <div id="accountDiv">
                         <h1 style={{marginBottom: '10px'}}>Forgot Password?</h1>
-                            <p style={{lineHeight: 1.5, textAlign: 'center', color: '#11cde5', margin: '16px'}}>
+                            <p style={{lineHeight: 1.5, textAlign: 'center', color: '#11cde5', margin: '24px'}}>
                                 No worries! <br/>We'll send you reset instructions.
                             </p>
          

@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { Navigate } from "react-router-dom";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
@@ -10,47 +12,33 @@ import Dialog from '@mui/material/Dialog';
 
 export const ResetPassword = (props) => {
 
-    //what the user enters
-    const [email, setEmail] = React.useState('')
-    // const [password, setPassword] = React.useState('')
-
-
-    // const { handleLogin, getUsername } = React.useContext(LoginContext);
-
-    //sends login data
-    async function loginUser(event) {
-
-        event.preventDefault() 
+      const location = useLocation();
+      const [newPassword, setNewPassword] = useState('');
+      const [confirmPassword, setConfirmPassword] = useState('');
+      const [errorMessage, setErrorMessage] = useState('');
     
-        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/login`, {
+
+      const handleResetPassword = async (event) => {
+        event.preventDefault();
+        const searchParams = new URLSearchParams(location.search);
+        const token = searchParams.get('token');
+        try {
+          const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/reset-password`, {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            //payload
-            body: JSON.stringify({
-               email,
-            }),
-        })
-
-        const data = await response.json()
-
-        
-        //confirms user exists
-		if (data.user) {
-            console.log(data.user)
-            console.log(data.user._id)
-			localStorage.setItem('token', data.user)
-            // getUsername()
-            // handleLogin()
-            // navigate('/');
-            props.handleLoginClose()
-		} else {
-            console.log(data)
-			alert('Please check your credentials')
-		}
-	}
-
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ token, newPassword }),
+          });
+          if (response.ok) {
+            <Navigate to="/" replace={true} />;
+          } else {
+            const data = await response.json();
+            setErrorMessage(data.error);
+          }
+        } catch (error) {
+          setErrorMessage('Failed to reset password');
+        }
+      };
+    
 
 
     return (
@@ -71,7 +59,7 @@ export const ResetPassword = (props) => {
                             }}
                             noValidate
                             autoComplete="off"
-                            onSubmit={loginUser} //login called here
+                            onSubmit={handleResetPassword} //login called here
                         >
                 
 
@@ -82,7 +70,7 @@ export const ResetPassword = (props) => {
                             label="New Password"
                             className="account-textfield"
                             type="password"
-                            // onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setNewPassword(e.target.value)}
                         />
 
                       <TextField
@@ -91,7 +79,7 @@ export const ResetPassword = (props) => {
                             label="Confirm Password"
                             className="account-textfield"
                             type="password"
-                            // onChange={(e) => setPassword(e.target.value)}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
                         />
 
 

@@ -16,6 +16,7 @@ export const Signup = (props) => {
     async function registerUser(event) {
         console.log("user registering")
 
+        event.preventDefault() 
         //something like this
         const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/signup`, {
             //directions
