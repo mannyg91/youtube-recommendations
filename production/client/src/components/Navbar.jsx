@@ -226,7 +226,7 @@ export default function Navbar() {
                 variant="contained"
               // onClick={handleSpin}
               >
-                Spin
+                Spin <ShuffleIcon style={{fontSize: '14px'}} />
               </Button>
 
               <SearchAppBar />

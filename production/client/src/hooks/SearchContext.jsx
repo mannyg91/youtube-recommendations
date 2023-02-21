@@ -8,7 +8,7 @@ const SearchContext = React.createContext();
 
 console.log("search context rendered")
 const SearchContextProvider = (props) => {
-  const [videos, setVideos] = React.useState(null); // change null to data.items for testData
+  const [videos, setVideos] = React.useState(data.items); // change null to data.items for testData
   const [searchTerm, setSearchTerm] = React.useState(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)]);
 
   const [selectedTopic, setSelectedTopic] = React.useState(null);// music topic
@@ -19,13 +19,11 @@ const SearchContextProvider = (props) => {
   const [selectedType, setSelectedType] = React.useState(null)
 
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(searchTerm, selectedTopic, selectedType);
-            console.log(data)
             setVideos(data);
-            console.log("videos set")
           }
           getVideos();
       }

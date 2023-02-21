@@ -13,7 +13,21 @@ body {
   background: radial-gradient(at 50% 45%, rgba(49, 159, 193, 1) 1%, rgba(24, 24, 24, 1) 99%);
   background-repeat: no-repeat;
   background-attachment: fixed;
+  overflow-y: scroll; /* Add the ability to scroll */
 }
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.body::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.body {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 
 .wrapper {
   /*This will keep everything where it belongs,*/
@@ -69,12 +83,12 @@ code {
 
 /* styles for the logo bar*/
 #logo {
-  height: 22px;
+  height: 23px;
 }
 
 #logobar {
   /* background-image: linear-gradient(rgb(35, 35, 35),rgb(0,0,0)); */
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(21, 21, 21);
   box-shadow: none;
 }
 
@@ -196,7 +210,7 @@ code {
   display: flex;
   flex-direction: column;
   position: fixed;
-  background-color: rgb(20, 20, 20);
+  background-color: rgb(21, 21, 21);
   width: 100vw;
   bottom: 0;
   padding: 2px 0px 12px;
@@ -476,7 +490,7 @@ code {
   }
 
   #logobar-containers {
-    padding-top: 20px;
+    padding: 18px;
     height: 60px;
     display: flex;
     justify-content: center;
@@ -513,8 +527,8 @@ code {
   .topic-scroll {
     position: fixed;
     bottom: initial;
-    background-color: rgb(20, 20, 20);
-    margin-top: 70px;
+    background-color: rgb(21, 21, 21);
+    margin-top: 75px;
     padding: 20px 0px;
     width: 100vw;
   }
