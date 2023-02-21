@@ -1,10 +1,11 @@
 import React from 'react'
 import { LoginContextProvider } from './hooks/LoginContext';
 
-import { Navbar, VideoFeed, WatchVideo, SavedVideos, About } from "./components";
+import { Navbar, VideoFeed, WatchVideo, SavedVideos, ResetPassword, About } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SavedContextProvider } from './hooks/SavedContext';
 import { SearchContextProvider } from './hooks/SearchContext';
+
 
 const App = () => {
   // const [user, setUser] = useState({})
@@ -15,6 +16,11 @@ const App = () => {
   //   if (theUser && !theUser.includes("undefined")) {
   //     setUser(JSON.parse(theUser));
   //   }
+  // }, []);
+
+  // React.useEffect(() => {
+  //   //load gapi client
+  //  loadClient();
   // }, []);
 
   return (
@@ -40,6 +46,11 @@ const App = () => {
                 path='/about' 
                 element={<><Navbar /><About /></>} 
               />
+              <Route
+                path='/reset-password' 
+                element={<ResetPassword />} 
+              />
+
 
             </Routes>
     

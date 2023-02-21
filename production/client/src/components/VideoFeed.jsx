@@ -1,8 +1,5 @@
 import React from 'react'
-import Video from './Video'
-import TopicScrollTab from './TopicScrollTab'
-import ContentSlider from './ContentSlider'
-import SmartSlider from './SmartSlider'
+import { Video, TopicScrollTab, ContentSlider, SmartSlider } from "../components";
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'
@@ -66,7 +63,7 @@ const VideoFeed = () => {
 
 
     if (!searchProps.videos) {
-      videoElements = [...Array(16)].map(() => (
+      videoElements = [...Array(20)].map(() => (
         <Skeleton className='video-card' variant="rectangular" width={326} height={299} style={{ position: 'relative' }}>
           <Skeleton variant="rectangular" width={50} height={50} style={{ position: 'absolute', top: '10px', left: '10px' }} sx={{ backgroundColor: 'rgba(255, 255, 255, 1)', zIndex: '10'}} />
         </Skeleton>

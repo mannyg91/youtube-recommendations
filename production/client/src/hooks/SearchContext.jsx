@@ -23,9 +23,7 @@ const SearchContextProvider = (props) => {
         if (!usingTestData) { 
           const getVideos = async () => {
             const data = await youtubeSearch(searchTerm, selectedTopic, selectedType);
-            console.log(data)
             setVideos(data);
-            console.log("videos set")
           }
           getVideos();
       }

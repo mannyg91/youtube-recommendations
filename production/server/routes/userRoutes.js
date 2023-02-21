@@ -3,7 +3,7 @@ const User = require('../models/user.model');
 const router = express.Router();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
-
+const { sendPasswordResetEmail }= require('../email.js');
 
 
 
@@ -31,11 +31,39 @@ function authenticateToken(req, res, next) {
 	});
 }
 
+function generatePasswordResetToken(email) {
+
+	const expiryTime = new Date();
+	expiryTime.setHours(expiryTime.getHours() + 1);
+
+	const payload ={
+		email: email,
+		type: 'password-reset'
+	};
+
+	const token = jwt.sign(payload, process.env.ACCESS_TOKEN_SECRET, { expiresIn: expiryTime.getTime() });
+	return token;
+
+	}
+
+function updatePasswordResetToken(email, passwordResetToken, passwordResetTokenExpiration) {
+	User.findOneAndUpdate(
+		{ email: email },
+		{ passwordResetToken: passwordResetToken, passwordResetTokenExpiration: passwordResetTokenExpiration },
+		{ new: true }
+	)
+	.then((user) => {
+		console.log('User updated with password reset token:', user);
+	})
+	.catch(err => {
+		console.error('Error updating user with password reset token:', err);
+	});
+	}
 
 
 
 
-router.post('/signup/', async (req, res) => {
+router.post('/signup', async (req, res) => {
 	console.log(req.body)
 	try {
 		const hashedPassword = await bcrypt.hash(req.body.password, 10)
@@ -52,8 +80,9 @@ router.post('/signup/', async (req, res) => {
 	}
 })
 
+
 //doesn't need client-side encryption if using TLS? 
-router.post('/login/', async (req, res) => {
+router.post('/login', async (req, res) => {
 	console.log("logging in")
 	const { email, password } = req.body;
 
@@ -99,6 +128,54 @@ router.delete('/:username', async (req, res) => {
 		message: `Delete user ${req.params.username}`
 	})
 })
+
+
+
+router.post('/forgot-password', async (req, res) => {
+	const { email } = req.body;
+	const user = await User.findOne({email: email});
+	if (!user) {
+		return res.json({ status: 'error', error: 'No user found' });
+	}
+
+	const token = generatePasswordResetToken(email);
+	updatePasswordResetToken(email, token, Date.now() + 3600000);
+
+	console.log(email, token)
+	sendPasswordResetEmail(email, token);
+
+	res.status(200).send('Password reset email sent.');
+})
+
+
+router.post('/reset-password', async (req, res) => {
+  const { token, newPassword } = req.body;
+
+  try {
+    // Verify that the password reset token is valid and has not expired
+    const user = await User.findOne({ passwordResetToken: token, passwordResetTokenExpiration: { $gt: Date.now() } });
+    if (!user) {
+      return res.status(400).json({ message: 'Invalid or expired password reset token' });
+    }
+
+    // Validate that the new password meets certain criteria (e.g. minimum length, special characters, etc.)
+    if (!newPassword || newPassword.length < 8) {
+      return res.status(400).json({ message: 'New password must be at least 8 characters long' });
+    }
+
+    // Hash the new password and save it to the user's document
+    const hashedPassword = await bcrypt.hash(newPassword, 10);
+    user.password = hashedPassword;
+    user.passwordResetToken = null;
+    user.passwordResetTokenExpiration = null;
+    await user.save();
+
+    return res.json({ message: 'Password updated successfully' });
+  } catch (error) {
+    console.error(`Error resetting password: ${error}`);
+    return res.status(500).json({ message: 'Internal server error' });
+  }
+});
 
 
 

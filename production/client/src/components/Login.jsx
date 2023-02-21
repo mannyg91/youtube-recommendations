@@ -90,9 +90,7 @@ export const Login = (props) => {
 
 
                     <p style={{textAlign: 'center', color: '#aaaaaa', fontSize: '14px', margin: '10px'}}>
-                            <span style={{color: '#11cde5'}}>
-                                <Link to="../signup" style={{textDecoration: 'underline'}}>Forgot Password?</Link>
-                            </span>
+                            <span style={{color: '#11cde5', textDecoration: 'underline'}} onClick={props.handleForgotPasswordOpen}>Forgot Password?</span>
                         </p>
 
                             <Button
@@ -113,9 +111,7 @@ export const Login = (props) => {
                         <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
                             Psst... don't have an account yet?<br/>
                             Sign up&nbsp;
-                            <span style={{color: '#11cde5'}}>
-                                <Link to="../signup" style={{textDecoration: 'underline'}}>here!</Link>
-                            </span>
+                            <span style={{color: '#11cde5', textDecoration: 'underline'}} onClick={props.handleSignupOpen}>here!</span>
                         </p>
                     </div>
                 </div>

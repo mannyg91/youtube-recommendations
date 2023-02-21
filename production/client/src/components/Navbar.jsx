@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { Login, Signup, SideBar, Toggle, SearchAppBar } from "../components";
+import { Login, Signup, SideBar, Toggle, SearchAppBar, ForgotPassword } from "../components";
 import { LoginContext } from '../hooks/LoginContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -24,6 +24,7 @@ export default function Navbar() {
   const handleLoginOpen = () => {
     closeAccountContainer()
     setLoginOpen(true);
+    handleSignupClose();
   };
 
   const handleLoginClose = () => {
@@ -37,11 +38,26 @@ export default function Navbar() {
   const handleSignupOpen = () => {
     closeAccountContainer()
     setSignupOpen(true);
+    handleLoginClose();
   };
 
   const handleSignupClose = () => {
     closeAccountContainer()
     setSignupOpen(false);
+  };
+
+
+  const [forgotPasswordOpen, setForgotPasswordOpen] = React.useState(false);
+
+  const handleForgotPasswordOpen = () => {
+    closeAccountContainer()
+    setForgotPasswordOpen(true);
+    handleLoginClose();
+  };
+
+  const handleForgotPasswordClose = () => {
+    closeAccountContainer()
+    setForgotPasswordOpen(false);
   };
 
 
@@ -87,11 +103,19 @@ export default function Navbar() {
       <Login
         loginOpen={loginOpen}
         handleLoginClose={handleLoginClose}
+        handleSignupOpen={handleSignupOpen}
+        handleForgotPasswordOpen={handleForgotPasswordOpen}
       />
 
       <Signup
         signupOpen={signupOpen}
         handleSignupClose={handleSignupClose}
+        handleLoginOpen={handleLoginOpen}
+      />
+
+      <ForgotPassword
+        forgotPasswordOpen={forgotPasswordOpen}
+        handleForgotPasswordClose={handleForgotPasswordClose}
       />
 
 
@@ -188,22 +212,7 @@ export default function Navbar() {
 
             <div class='logobar-bottom'>
               <div id='logobar-middle'>
-              <Button
-                sx={{
-                  background: 'rgb(240,248,255)',
-                  width: { xs: '87px', sm: '90px', md: '110px' },
-                  fontSize: '13px',
-                  borderRadius: '16px',
-                  marginRight: '10px',
-                  border: 'none',
-                  color: '#1976d2',
-                }}
-                type="submit"
-                variant="contained"
-              // onClick={handleSpin}
-              >
-                Spin
-              </Button>
+
 
               <SearchAppBar />
             </div>
