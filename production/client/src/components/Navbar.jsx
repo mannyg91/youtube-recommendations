@@ -212,22 +212,7 @@ export default function Navbar() {
 
             <div class='logobar-bottom'>
               <div id='logobar-middle'>
-              <Button
-                sx={{
-                  background: 'rgb(240,248,255)',
-                  width: { xs: '87px', sm: '90px', md: '110px' },
-                  fontSize: '13px',
-                  borderRadius: '16px',
-                  marginRight: '10px',
-                  border: 'none',
-                  color: '#1976d2',
-                }}
-                type="submit"
-                variant="contained"
-              // onClick={handleSpin}
-              >
-                Spin <ShuffleIcon style={{fontSize: '14px'}} />
-              </Button>
+
 
               <SearchAppBar />
             </div>

@@ -6,6 +6,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SavedContextProvider } from './hooks/SavedContext';
 import { SearchContextProvider } from './hooks/SearchContext';
 
+
 const App = () => {
   // const [user, setUser] = useState({})
 
@@ -15,6 +16,11 @@ const App = () => {
   //   if (theUser && !theUser.includes("undefined")) {
   //     setUser(JSON.parse(theUser));
   //   }
+  // }, []);
+
+  // React.useEffect(() => {
+  //   //load gapi client
+  //  loadClient();
   // }, []);
 
   return (

@@ -161,6 +161,7 @@ code {
 #search-bar {
   display: flex;
   width: 64vw;
+  height: 32px;
   border: 1px solid #1b1b1b;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 15px;
@@ -176,7 +177,6 @@ code {
 
 #search-bar input {
   width: 100%;
-  height: 32px;
   border: none;
   margin: 0px 15px;
   font-size: 14px;
@@ -194,6 +194,10 @@ code {
   border-radius: 0px 15px 15px 0px;
 }
 
+
+#search-bar input {
+  font-size: 16px;
+}
 
 
 #account-username {
@@ -521,6 +525,12 @@ code {
 
   #search-bar {
     width: 20vw;
+    height: 40px;
+    border-radius: 18px;
+  }
+
+  #search-bar input {
+    font-size: 16px;
   }
 
 

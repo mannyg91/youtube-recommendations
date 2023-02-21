@@ -1,5 +1,19 @@
-export const youtubeSearch = async (query, topicId, type) => {
 
+  // loadClient initializes client
+async function loadClient() {
+    await window.gapi.client?.setApiKey(process.env?.REACT_APP_YOUTUBE_API_KEY);
+    return window.gapi.client?.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+      .then(function () { console.log("GAPI client loaded for API"); },
+        function (err) { console.error("Error loading GAPI client for API", err); });
+  }
+
+  // await loadClient();
+
+export const youtubeSearch = async (query, topicId, type) => {
+    if (window.gapi.client.youtube === undefined) {
+      await loadClient();
+      console.log('awaited')
+    }
   function interlaceAndRemoveDuplicates(results1, results2) {
     const resultIds = new Set();
     const results = [];
@@ -34,15 +48,14 @@ export const youtubeSearch = async (query, topicId, type) => {
     return results;
   }
 
-  // loadClient initializes client
-  async function loadClient() {
-    await window.gapi.client?.setApiKey(process.env?.REACT_APP_YOUTUBE_API_KEY);
-    return window.gapi.client?.load("https://www.googleapis.com/discovery/v1/apis/youtube/v3/rest")
-      .then(function () { console.log("GAPI client loaded for API"); },
-        function (err) { console.error("Error loading GAPI client for API", err); });
-  }
 
-  function execute(videoCategoryId) {
+
+  async function execute(videoCategoryId) {
+    // if (window.gapi.client === undefined) {
+    //   await loadClient();
+    //   console.log('awaited')
+    // }
+
     const parameters = {
       part: [
         'snippet'
@@ -74,7 +87,8 @@ export const youtubeSearch = async (query, topicId, type) => {
   }
 
   // Load the client before calling the execute function
-  await loadClient();
+
+
   const educationResults = await execute(27);
   const scienceResults = await execute(28);
 
