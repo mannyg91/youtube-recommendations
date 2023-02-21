@@ -1,5 +1,5 @@
 import React from 'react'
-import { Video, TopicScrollTab, ContentSlider, SmartSlider } from "../components";
+import { Video, TopicScrollTab, ContentSlider } from "../components";
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'
@@ -13,46 +13,6 @@ const VideoFeed = () => {
 
   const { ...searchProps } = React.useContext(SearchContext);
   console.log(searchProps)
-
-  // videos,
-  // setVideos,
-  // searchTerm,
-  // setSearchTerm,
-  // selectedTopic,
-  // setSelectedTopic,
-  // sliderState,
-  // setSliderState,
-  // focusKeywords,
-  // setFocusKeywords
-
-
-  function getRandomPhrase() {
-    searchProps.setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
-  }
-
-  function getFocusedPhrase() {
-    const focusPhrase = searchProps.focusKeywords[Math.floor(Math.random() * searchProps.focusKeywords.length)];
-    searchProps.setSearchTerm(focusPhrase)
-  }
-
-  function getMiddlePhrase() {
-    if (Math.random() < 0.5) {
-      getRandomPhrase()
-    } else {
-      getFocusedPhrase()
-    }
-  }
-
-
-  function handleSpin() {
-    if (searchProps.sliderState === 3 ) {
-      getFocusedPhrase()
-    } else if (searchProps.sliderState === 2) {
-      getMiddlePhrase()
-    } else {
-      getRandomPhrase()
-    }
-  }
 
 
   let videoElements = searchProps.videos?.map((video, index) => {
@@ -77,38 +37,17 @@ const VideoFeed = () => {
     <div className='wrapper'>
 
         <div className="topic-scroll">
+          {/* <ContentSlider style={{margin: '100px 0px'}} sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
           <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
-        {/* <div className='top-section' style={{height: '180px'}}>
-          <div className='random-search'>
-            <span style={{fontSize:'14px'}}>Search:</span><strong style={{fontSize: '30px', marginBottom: '5px'}}>{searchProps.searchTerm}</strong>
 
-            <Button
-              sx={{ 
-                  background: '#F0F8FF',
-                  m: '15px 0px 30px',
-                  width: '140px',
-                  fontSize: '13px',
-                  borderRadius: '16px'
-                }}
-              id="submit-btn"
-              type="submit"
-              variant="outlined"
-              onClick={handleSpin}>
-              Spin
-            </Button>
-
-            <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
-
-          </div> */}
-          {/* <SmartSlider sliderState2={searchProps.sliderState2} setSliderState2={searchProps.setSliderState2} selectedType={searchProps.selectedType} setSelectedType={searchProps.setSelectedType}/> */}
-        {/* </div> */}
+        {/* <div className='top-section'>
+              <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
+        </div> */}
 
 
-        
-
-      {/* <WatchVideo id="Gj7a8dZB_5U" /> */}
       <div className='video-feed'>
+
           {videoElements}
       </div>
     </div>

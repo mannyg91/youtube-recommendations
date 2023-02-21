@@ -14,6 +14,7 @@ export const youtubeSearch = async (query, topicId, type) => {
       await loadClient();
       console.log('awaited')
     }
+    
   function interlaceAndRemoveDuplicates(results1, results2) {
     const resultIds = new Set();
     const results = [];

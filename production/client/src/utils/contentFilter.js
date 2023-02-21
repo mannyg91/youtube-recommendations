@@ -4,7 +4,6 @@ export const isRestricted = (video) => {
   const filterOn = true
 
   if (filterOn) {
-    console.log("entered filter")
 
     const videoTitle = video.snippet.title.toLowerCase();
     const videoChannel = video.snippet.channelTitle.toLowerCase();

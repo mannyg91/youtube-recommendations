@@ -5,6 +5,8 @@ import { SearchContext } from '../hooks/SearchContext';
 
 const ContentSlider = (props) => {
 
+  console.log("slider initialized")
+
   const { ...searchProps } = React.useContext(SearchContext);
 
   const handleSlider = (event, newValue) => {
@@ -28,12 +30,17 @@ const ContentSlider = (props) => {
   }
 
   return (
-    <Box sx={{ width: 190 }}>
+    <Box sx={{ width: 180, }}>
       <Slider sx={{
         color: '#dbdfe3', 
         zIndex: 0,
+        "& .MuiSlider-track": {
+          backgroundColor: "#484848",
+          border: "none"
+        },
+
         "& .MuiSlider-thumb": {
-          backgroundColor: "#fff"
+          backgroundColor: "a5a5a5"
         },
         "& .MuiSlider-rail": {
           backgroundColor: "aliceblue"

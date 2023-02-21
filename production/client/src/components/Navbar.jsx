@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { Login, Signup, SideBar, Toggle, SearchAppBar, ForgotPassword } from "../components";
+import { Login, Signup, SideBar, Toggle, SearchAppBar, ForgotPassword, ContentSlider, ContentSwitch} from "../components";
 import { LoginContext } from '../hooks/LoginContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,8 +15,13 @@ import Avatar from '@mui/material/Avatar';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
 import logo from '../assets/logo-desktop.png';
 import Button from "@mui/material/Button";
+import { SearchContext } from '../hooks/SearchContext';
 
 export default function Navbar() {
+
+  
+  const { ...searchProps } = React.useContext(SearchContext);
+
 
   // form stuff
   const [loginOpen, setLoginOpen] = React.useState(false);
@@ -125,6 +130,7 @@ export default function Navbar() {
 
           <div class='logobar-top'>
             <div id='logobar-left'>
+              <div id='logobar-left-outer'>
               <IconButton
                 size="large"
                 edge="start"
@@ -141,6 +147,11 @@ export default function Navbar() {
                   {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
                 </Link>
               </Box>
+              </div>
+            <div id='logobar-left-inner'>
+              <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
+              <ContentSwitch />
+              </div>
             </div>
 
 
@@ -157,10 +168,7 @@ export default function Navbar() {
               </div>
 
 
-    
-
-
-
+  
 
               <IconButton
                 size="large"
@@ -215,6 +223,7 @@ export default function Navbar() {
 
 
               <SearchAppBar />
+              
             </div>
           </div>
            
