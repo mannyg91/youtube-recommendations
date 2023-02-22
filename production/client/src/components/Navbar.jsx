@@ -162,12 +162,8 @@ export default function Navbar() {
 
 
             <div class='logobar-top' id='logobar-right'>
-              <div id="daynighttog">
-                {window.matchMedia("(max-width:768px)").matches ? (
-                  <Toggle id="mobile_tog" />
-                ) : (
+              <div className="desktop">
                   <Toggle id="desktop_tog" />
-                )}
               </div>
 
 

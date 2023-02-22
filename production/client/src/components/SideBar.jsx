@@ -90,6 +90,12 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
           <List>
 
+            <ListItem className="drawerlist mobile" key="Day/NightTog" disablePadding>
+                <ListItemButton sx={{marginLeft:"-17%"}}>
+                  <Toggle />
+                </ListItemButton>
+              </ListItem>
+
             <Link to="/about">
               <ListItem className="drawerlist" key="About Us" disablePadding>
                 <ListItemButton>
