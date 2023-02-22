@@ -54,6 +54,13 @@ const IOSSwitch = styled((props) => (
       duration: 500,
     }),
   },
+  // Mobile styles
+  [theme.breakpoints.down('xs')]: {
+    width: 30,
+    '& .MuiSwitch-switchBase.Mui-checked': {
+      transform: 'translateX(20px)',
+    },
+  },
 }));
 
 const ContentSwitch = (props) => {
