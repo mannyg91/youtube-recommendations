@@ -31,7 +31,6 @@ const App = () => {
             <Routes>
               <Route
                 path="/"
-                // element={user?.email ? <Navigate to="/home" /> : <VideoFeed />}
                 element={<><Navbar /><VideoFeed/></>}
               />
               <Route

@@ -144,7 +144,7 @@ export default function Navbar() {
               </IconButton>
 
               <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
-                <Link id="logolink" to="/">
+                <Link style={{position: 'relative'}} id="logolink" to="/">
                   <img id="logo-mobile" src={logoMobile} alt='logo' />
                   <img id="logo-desktop" src={logoDesktop} alt='logo' />
                   {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
@@ -162,9 +162,9 @@ export default function Navbar() {
 
 
             <div class='logobar-top' id='logobar-right'>
-              <div className="desktop">
+              {/* <div className="desktop">
                   <Toggle id="desktop_tog" />
-              </div>
+              </div> */}
 
 
   

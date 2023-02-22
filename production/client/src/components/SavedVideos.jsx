@@ -20,7 +20,7 @@ const SavedVideos = () => {
 
   return (
     <div className='wrapper'>
-      <h1 style={{marginTop: '100px', marginLeft:'10%', padding:'24px'}}>Saved Videos</h1>
+      <h1 style={{position: 'inherit', marginTop: '140px', marginLeft:'15vw', padding:'24px'}}>Saved Videos</h1>
       <div className='video-feed'>
         {videoElements}
       </div>
