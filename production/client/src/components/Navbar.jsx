@@ -195,8 +195,8 @@ export default function Navbar() {
               </Box>
               </div>
             <div id='logobar-left-inner'>
-              <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
-              <ContentSwitch />
+              {/* <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
+              <ContentSwitch sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
               </div>
             </div>
 

@@ -5,6 +5,8 @@ import Switch from '@mui/material/Switch';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import { styled } from "@mui/material/styles";
+import { SearchContext } from '../hooks/SearchContext';
+
 
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
@@ -55,10 +57,28 @@ const IOSSwitch = styled((props) => (
 }));
 
 const ContentSwitch = (props) => {
+
+  const { ...searchProps } = React.useContext(SearchContext);
+
+  const [checked, setChecked] = React.useState(true);
+
+  const handleSlider = (event, newValue) => {
+    console.log("slider moved")
+    setChecked(event.target.checked);
+    if (checked)
+      props.setSliderState(1)
+    else
+      props.setSliderState(3)
+  }
+
+  if (searchProps.selectedTopic === null) {
+    return null;
+  }
+
   return (
     <Stack direction="row" spacing={1} alignItems="center">
     <Typography style={{color: 'whitesmoke', fontSize: '15px'}}>Random</Typography>
-    <IOSSwitch />
+    <IOSSwitch checked={checked} onChange={handleSlider} />
     <Typography style={{color: 'whitesmoke', fontSize: '15px'}}>Focused</Typography>
       </Stack>
   );
