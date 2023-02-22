@@ -14,3 +14,6 @@ export { default as SearchAppBar } from "./SearchAppBar";
 export { default as ForgotPassword } from "./ForgotPassword";
 export { default as About } from "./About";
 export { default as ResetPassword } from "./ResetPassword";
+export { default as Ratings } from "./Ratings";
+export { default as SimpleSnackbar } from "./SimpleSnackbar";
+export { default as HideOnScroll } from "./HideOnScroll";

@@ -5,6 +5,7 @@ import { Navbar, VideoFeed, WatchVideo, SavedVideos, ResetPassword, About } from
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SavedContextProvider } from './hooks/SavedContext';
 import { SearchContextProvider } from './hooks/SearchContext';
+import { KeywordRatingsContextProvider } from './hooks/KeywordRatingsContext';
 
 
 const App = () => {
@@ -26,6 +27,7 @@ const App = () => {
   return (
     <LoginContextProvider>
       <SearchContextProvider>
+      <KeywordRatingsContextProvider>
       <SavedContextProvider>
         <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
             <Routes>
@@ -55,6 +57,7 @@ const App = () => {
     
         </BrowserRouter>
       </SavedContextProvider>
+      </KeywordRatingsContextProvider>
       </SearchContextProvider>
     </LoginContextProvider>
 

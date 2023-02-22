@@ -37,9 +37,12 @@ function HideOnScroll(props) {
     target: window ? window() : undefined,
   });
 
+  // console.log('trigger', trigger);
+  // console.log('in', !trigger);
+
   if (isMobile) {
   return (
-    <Slide appear={false} direction="down" in={!trigger}>
+    <Slide appear={false} direction="down" in={!trigger} timeout={400}>
       {children}
     </Slide>
   ); } else{

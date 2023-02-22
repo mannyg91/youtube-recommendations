@@ -10,6 +10,11 @@ const User = new mongoose.Schema(
         type: Object, unique: true, 
       },
     ],
+    keywordRatings: [
+      {
+        type: Object, unique: true,
+      },
+    ],
     passwordResetToken: { type: String },
     passwordResetTokenExpiration: { type: Date },
   },

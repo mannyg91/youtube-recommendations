@@ -200,13 +200,15 @@ router.post('/savedVideos/', authenticateToken, async (req, res) => {
     const user = await User.findById(userId);
     const savedVideos = user.savedVideos;
     const duplicateVideo = savedVideos.find(video => video.videoId === req.body.video.id.videoId);
+		
+		// if no duplicate video
     if (!duplicateVideo) {
       const updatedUser = await User.updateOne(
         { _id: userId },
         { $push: { savedVideos: { videoId: req.body.video.id.videoId, video: req.body.video } } }
       );
       console.log(`Successfully added saved video: ${updatedUser}`);
-    } else {
+    } else { // if duplicate video
       console.log(`Video with videoId ${req.body.video.id.videoId} already exists`);
     }
   } catch (error) {
@@ -229,6 +231,51 @@ router.delete('/savedVideos/:videoId', authenticateToken, async (req, res) => {
   }
 });
 
+
+// Keyword Ratings Routes
+
+router.get('/keywordRatings/', authenticateToken, async (req, res) => {
+	const userId = req.user.id;
+	// will return whole list of keyword ratings
+	//will want to pull whole list on page load. pull again after new ratings are added
+	try {
+		const user = await User.findOne({ _id: userId }).select('keywordRatings');
+		if (!user) {
+			return res.status(404).send('User not found');
+		}
+		const keywordRatings = user.keywordRatings
+		return res.json({ status: 'ok', keywordRatings: keywordRatings });
+	} catch (error) {
+		console.error(`Error retrieving keyword ratings: ${error}`);
+	}
+})
+
+router.post('/keywordRatings/', authenticateToken, async (req, res) => {
+	console.log(req.body)
+  const userId = req.user.id;
+  try {
+    const user = await User.findById(userId);
+    const keywordRatings = user.keywordRatings; // the collection
+    const duplicateKeywordRating = keywordRatings.find(keywordRating => keywordRating.keywordRatingId === req.body.keywordRatingId);
+    
+		// if no duplicate keyword rating
+		if (!duplicateKeywordRating) {
+      const updatedKeywordRating = await User.updateOne(
+        { _id: userId },
+        { $push: { keywordRatings: { 
+						keywordRatingId: req.body.keywordRating.keywordRatingId, 
+						keywordRating: req.body.keywordRating
+					} } }
+      );
+      console.log(`Successfully added keyword rating: ${updatedKeywordRating}`);
+    } else {
+			//should update existing keyword rating in the future
+      console.log(`Keyword rating ${req.body.keywordRating.keywordRatingId} already exists`);
+    }
+  } catch (error) {
+    console.error(`Error saving video: ${error}`);
+  }
+});
 
 
 
