@@ -70,8 +70,13 @@ code {
 }
 
 /* styles for the logo bar*/
-#logo {
+#logo-mobile {
+  display: initial;
   height: 23px;
+}
+
+#logo-desktop {
+  display: none;
 }
 
 #logobar {
@@ -115,7 +120,7 @@ code {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -102px;
+  margin-left: -20px;
 }
 
 #logobar-right {
@@ -258,6 +263,7 @@ code {
   text-align: center;
   row-gap: 36px;
   column-gap: 0px;
+  margin-top: 180px;
 }
 
 .video-card {
@@ -483,13 +489,22 @@ code {
 
   /*Styles for the main body*/
   .video-feed {
-    margin: 100px 9%;
+    margin: 240px 9%;
     column-gap: 42px;
   }
 
   /*Styles for the logobar*/
 
-  #logo {
+  /* #logo {
+    height: 27px;
+  } */
+
+  #logo-mobile {
+    display: none;
+  }
+  
+  #logo-desktop {
+    display: initial;
     height: 27px;
   }
 
@@ -507,7 +522,7 @@ code {
   }
 
   .logobar-bottom {
-    margin-top: -36px;
+    margin-top: -33px;
   }
 
 
@@ -543,7 +558,7 @@ code {
     position: fixed;
     bottom: initial;
     background-color: rgb(21, 21, 21);
-    margin-top: 75px;
+    margin-top: 84px;
     padding: 20px 0px;
     width: 100vw;
   }

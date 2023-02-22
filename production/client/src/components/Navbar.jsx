@@ -13,7 +13,9 @@ import MenuItem from '@mui/material/MenuItem';
 import Menu from '@mui/material/Menu';
 import Avatar from '@mui/material/Avatar';
 import ShuffleIcon from '@mui/icons-material/Shuffle';
-import logo from '../assets/logo-desktop.png';
+import logoDesktop from '../assets/logo-desktop.png';
+import logoMobile from '../assets/logo-mobile.png';
+
 import Button from "@mui/material/Button";
 import { SearchContext } from '../hooks/SearchContext';
 
@@ -143,7 +145,8 @@ export default function Navbar() {
 
               <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
                 <Link id="logolink" to="/">
-                  <img id="logo" src={logo} alt='logo' />
+                  <img id="logo-mobile" src={logoMobile} alt='logo' />
+                  <img id="logo-desktop" src={logoDesktop} alt='logo' />
                   {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
                 </Link>
               </Box>

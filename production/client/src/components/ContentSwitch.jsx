@@ -9,7 +9,7 @@ import { styled } from "@mui/material/styles";
 const IOSSwitch = styled((props) => (
   <Switch focusVisibleClassName=".Mui-focusVisible" disableRipple {...props} />
 ))(({ theme }) => ({
-  width: 48,
+  width: 60,
   height: 26,
   padding: 0,
   '& .MuiSwitch-switchBase': {
@@ -17,7 +17,7 @@ const IOSSwitch = styled((props) => (
     margin: 2,
     transitionDuration: '300ms',
     '&.Mui-checked': {
-      transform: 'translateX(22px)',
+      transform: 'translateX(35px)',
       color: 'lightgray',
       '& + .MuiSwitch-track': {
         backgroundColor: '#3faed1',
