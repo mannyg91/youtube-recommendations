@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import { Ratings } from ".";
 import { SearchContext } from '../hooks/SearchContext';
+import { LoginContext } from '../hooks/LoginContext';
 
 import Slide from '@mui/material/Slide';
 
@@ -19,13 +20,17 @@ function SimpleSnackbar() {
   
 
   const { ...searchProps } = React.useContext(SearchContext);
+  const { isLoggedIn } = React.useContext(LoginContext);
 
   React.useEffect(() => {
+    setOpen(false)
+    if (searchProps.selectedTopic !== null && searchProps.sliderState === 3 && isLoggedIn ) {
     setTimeout(() => {
       setOpen(true);
       setSnackbarActionComplete(false);
       setSnackbarMessage(<Ratings setOpen={setOpen} setSnackbarActionComplete={setSnackbarActionComplete} />);
     }, 2000);
+  }
   }, [searchProps.searchTerm])
 
   React.useEffect(() => {

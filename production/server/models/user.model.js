@@ -7,12 +7,14 @@ const User = new mongoose.Schema(
     password: { type: String, required: true },
     savedVideos: [
       { 
-        type: Object, unique: true, 
+        type: Object, 
+        // unique: true, 
       },
     ],
     keywordRatings: [
       {
-        type: Object, unique: true,
+        type: Object, 
+        // unique: true,
       },
     ],
     passwordResetToken: { type: String },

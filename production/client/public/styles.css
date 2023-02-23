@@ -15,6 +15,10 @@ body {
   background-attachment: fixed;
 }
 
+.theme-dark {
+  background-color: radial-gradient(at 50% 45%, rgba(1, 35, 66, 1) 1%, rgb(10, 0, 48) 99%);
+  color: rgb(224, 238, 255);
+}
 
 
 .wrapper {
@@ -274,7 +278,7 @@ code {
   text-align: center;
   row-gap: 24px;
   column-gap: 0px;
-  margin-top: 40px;
+  margin-top: 180px;
 }
 
 .video-card {
@@ -351,7 +355,7 @@ code {
 }
 
 .watch_video-player {
-  margin-top: 7vh;
+  margin-top: 106px;
   width: 100vw;
   /*     This creates a   */
   height: 56vw;
@@ -379,7 +383,7 @@ code {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background: rgba(0, 0, 0, 0.3);
+  background: rgb(21, 21, 21);
   border-bottom-left-radius: 10px;
   border-bottom-right-radius: 10px;
   box-shadow: rgba(16, 16, 16, 0.5) 10px 15px 15px;
@@ -392,7 +396,7 @@ code {
   /* border: 1px yellow solid; */
   padding: 0;
   height: auto;
-  border-bottom: 1px rgb(106, 139, 150) solid;
+  border-bottom: 1px gray solid;
 }
 
 .player-video-title h2 {
@@ -543,7 +547,7 @@ article p{
 
   /*Styles for the main body*/
   .video-feed {
-    margin: 40px 9%;
+    margin: 250px 9%;
     column-gap: 42px;
     row-gap: 36px;
   }
@@ -632,7 +636,7 @@ article p{
   }
 
   .watch_video-player {
-    margin-top: 7vh;
+    margin-top: 100px;
     width: 54vw;
     /*     This creates a   */
     height: 30vw;
@@ -661,7 +665,7 @@ article p{
     display: flex;
     flex-direction: column;
     gap: 20px;
-    background: rgba(0, 0, 0, 0.3);
+    background: rgb(21, 21, 21);
     border-bottom-left-radius: 60px;
     border-bottom-right-radius: 60px;
     box-shadow: rgba(16, 16, 16, 0.5) 10px 15px 15px;
@@ -674,7 +678,7 @@ article p{
     /* border: 1px yellow solid; */
     padding: 0px 25px;
     height: auto;
-    border-bottom: 1px rgb(106, 139, 150) solid;
+    border-bottom: 1px gray solid;
   }
 
   .player-video-channel {

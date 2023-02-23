@@ -5,12 +5,15 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import { Link } from 'react-router-dom';
 import Dialog from '@mui/material/Dialog';
+import { LoginContext } from '../hooks/LoginContext';
 
 export const Signup = (props) => {
 
     const [username, setUsername] = React.useState('')
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
+
+    const { handleLogin, getUsername } = React.useContext(LoginContext);
 
 
     async function registerUser(event) {
@@ -35,6 +38,7 @@ export const Signup = (props) => {
         const data = await response.json()
         console.log(data)
         alert('Account successfully created!');
+        loginUser();
     }
 
     // function signupConfirmation() {
@@ -44,6 +48,42 @@ export const Signup = (props) => {
     //         </div>
     //     )
     // }
+
+
+    //sends login data
+    async function loginUser(event) {
+
+        event.preventDefault() 
+    
+        const response = await fetch(`${process.env.REACT_APP_DATABASE_API_URL}/user/login`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            //payload
+            body: JSON.stringify({
+               email,
+               password,
+            }),
+        })
+
+        const data = await response.json()
+
+        
+        //confirms user exists
+		if (data.user) {
+            console.log(data.user)
+            console.log(data.user._id)
+			localStorage.setItem('token', data.user)
+            getUsername()
+            handleLogin()
+            // navigate('/');
+		} else {
+            console.log(data)
+			alert('Please check your credentials')
+		}
+	}
+
 
     return (
         <Dialog open={props.signupOpen} disableBackdropClick={false} onClose={props.handleSignupClose}>

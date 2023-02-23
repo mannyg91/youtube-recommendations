@@ -21,6 +21,7 @@ const SearchAppBar = () => {
 
   //create state for search term
   const [searchAppBarTerm, setSearchAppBarTerm] = React.useState('')
+  const [searchBarClicked, setSearchBarClicked] = React.useState(false);
 
   function handleClick() {
     searchProps.setSearchTerm(searchAppBarTerm)
@@ -28,7 +29,7 @@ const SearchAppBar = () => {
 
 
   function getRandomPhrase() {
-    searchProps.setSearchTerm(randomWords({min: 1, max: 1, join: ' ' }));
+    searchProps.setSearchTerm(randomWords({ min: 1, max: 1, join: ' ' }));
   }
 
   function getFocusedPhrase() {
@@ -46,39 +47,58 @@ const SearchAppBar = () => {
 
 
   function handleSpin() {
-    if (searchProps.sliderState === 3 ) {
+    setSearchBarClicked(false);
+    if (searchProps.sliderState === 3) {
       getFocusedPhrase()
     } else if (searchProps.sliderState === 2) {
       getMiddlePhrase()
     } else {
       getRandomPhrase()
     }
+    console.log(searchAppBarTerm, searchProps.searchTerm)
+    setSearchAppBarTerm('')
+  }
+
+  function handleSearchBarClick() {
+    setSearchBarClicked(true);
   }
 
   return (
     <>
-    <Button
-    sx={{
-      background: 'rgb(240,248,255)',
-      width: { xs: '87px', sm: '90px', md: '110px' },
-      height: { xs: '30px', sm: '30px', md: '40px'},
-      fontSize: '13px',
-      borderRadius: '18px',
-      marginRight: '14px',
-      border: 'none',
-      color: '#1976d2',
-    }}
-    type="submit"
-    variant="contained"
-  onClick={handleSpin}
-  >
-    Spin <ShuffleIcon style={{fontSize: '14px'}} />
-  </Button>
-    <div id="search-bar">
+      <Button
+        sx={{
+          background: 'rgb(240,248,255)',
+          width: { xs: '87px', sm: '90px', md: '110px' },
+          height: { xs: '30px', sm: '30px', md: '40px' },
+          fontSize: '13px',
+          borderRadius: '18px',
+          marginRight: '14px',
+          border: 'none',
+          color: '#1976d2',
+        }}
+        type="submit"
+        variant="contained"
+        onClick={handleSpin}
+      >
+        Spin <ShuffleIcon style={{ fontSize: '14px' }} />
+      </Button>
+      <div id="search-bar">
 
-      <input id="search-input" onChange={(event) => setSearchAppBarTerm(event.target.value)} type="text" placeholder="Search" value={searchProps.searchTerm} />
-      <button id="search-btn" onClick={handleClick}> <SearchIcon class='search-icon'/></button>
-    </div>
+        <input
+          id="search-input"
+          type="text"
+          placeholder="Search"
+          value={searchBarClicked ? searchAppBarTerm : searchProps.searchTerm}
+          onClick={handleSearchBarClick}
+          onChange={(event) => setSearchAppBarTerm(event.target.value)}
+          onKeyDown={(event) => {
+            if (event.key === "Enter") {
+              handleClick();
+            }
+          }}
+        />
+        <button id="search-btn" onClick={handleClick}> <SearchIcon class='search-icon' /></button>
+      </div>
     </>
   )
 }
