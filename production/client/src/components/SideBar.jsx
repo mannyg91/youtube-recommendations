@@ -34,6 +34,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
   const handleLoginOpen = () => {
     closeAccountContainer()
     setLoginOpen(true);
+    handleDrawerClose();
   };
 
   const handleLoginClose = () => {
@@ -63,7 +64,8 @@ const SideBar = ({ handleDrawerClose, open}) => {
     <>
       <Login    
             loginOpen={loginOpen}
-            handleLoginClose={handleLoginClose}  
+            handleLoginClose={handleLoginClose}
+              
       />
 
       <Dialog style={{minHeight: '100vh'}} open={open}  onClose={handleDrawerClose}>
@@ -98,7 +100,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
             <Link to="/about">
               <ListItem className="drawerlist" key="About Us" disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={handleDrawerClose}>
                   <ListItemIcon>
                     <Groups2Icon className="listitemicon" />
                   </ListItemIcon>
@@ -109,7 +111,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
             <Link to="/saved-videos/">
               <ListItem className="drawerlist" key="Saved Videos" onClick={handleDrawerClose} disablePadding>
-                <ListItemButton>
+                <ListItemButton onClick={handleDrawerClose}>
                   <ListItemIcon>
                     <FavoriteIcon className="listitemicon" />
                   </ListItemIcon>
@@ -119,7 +121,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
             </Link>
             
             <ListItem className="drawerlist" key="Settings" disablePadding>
-              <ListItemButton>
+              <ListItemButton onClick={handleDrawerClose}>
                 <ListItemIcon>
                   <SettingsIcon className="listitemicon" />
                 </ListItemIcon>
@@ -130,7 +132,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
             {!isLoggedIn &&
             <ListItem className="drawerlist" key="Login" disablePadding>
-              <ListItemButton onClick={handleLoginOpen}>
+              <ListItemButton onClick={handleLoginOpen} >
                 <ListItemIcon>
                   <LoginIcon className="listitemicon" />
                 </ListItemIcon>
