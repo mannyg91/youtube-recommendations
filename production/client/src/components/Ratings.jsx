@@ -45,14 +45,18 @@ const Ratings = (props) => {
 
     if (value !== null) {
     console.log(searchProps.selectedTopic + "." + searchProps.searchTerm)
+    console.log('useEffect', searchProps.selectedTopic, searchProps.searchTerm, value);
 
-      setKeywordRating({
-        keywordRatingId: searchProps.selectedTopic + "." + searchProps.searchTerm,
-        keyword: searchProps.searchTerm,
-        topic: searchProps.selectedTopic,
-        rating: value,
-      });
+    const newKeywordRating = {
+      keywordRatingId: searchProps.selectedTopic + '.' + searchProps.searchTerm,
+      keyword: searchProps.searchTerm,
+      topic: searchProps.selectedTopic,
+      rating: value,
+    };
 
+    console.log('newKeywordRating', newKeywordRating);
+    setKeywordRating(newKeywordRating);
+    saveRating(newKeywordRating); // call saveRating with the new keyword rating
       
     }
   }, [value])
@@ -77,11 +81,12 @@ function handleRating(rating) {
   // props.setOpen(false)
 }
 
-function saveRating() {
+function saveRating(newKeywordRating) {
 
   console.log("attempting to save rating")
     // tries to grab token
     const token = localStorage.getItem('token')
+    console.log("saveRating function", newKeywordRating)
 
     //if token, makes get request
     if (token) {
@@ -94,7 +99,7 @@ function saveRating() {
           'Authorization': `Bearer ${token}`
         },
         body: JSON.stringify({
-          keywordRating,
+          keywordRating: newKeywordRating,
         }),
       }).then((res) => {
         if (res.ok) {

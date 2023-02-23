@@ -199,7 +199,7 @@ export default function Navbar() {
               </div>
             <div id='logobar-left-inner'>
               {/* <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
-              <ContentSwitch sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
+              <ContentSwitch id="content-switch" sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
               </div>
             </div>
 
@@ -216,6 +216,7 @@ export default function Navbar() {
   
 
               <IconButton
+                id="acct-icon"
                 size="large"
                 aria-label="account of current user"
                 aria-controls="menu-appbar"

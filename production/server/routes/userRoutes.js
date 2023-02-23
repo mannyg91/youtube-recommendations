@@ -1,5 +1,7 @@
 const express = require('express');
 const User = require('../models/user.model');
+const Stats = require('../models/stats.model')
+const updateStats = require('../updateStats')
 const router = express.Router();
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken');
@@ -251,7 +253,7 @@ router.get('/keywordRatings/', authenticateToken, async (req, res) => {
 })
 
 router.post('/keywordRatings/', authenticateToken, async (req, res) => {
-	console.log(req.body)
+	console.log("256", req.body)
   const userId = req.user.id;
   try {
     const user = await User.findById(userId);
@@ -273,11 +275,28 @@ router.post('/keywordRatings/', authenticateToken, async (req, res) => {
       console.log(`Keyword rating ${req.body.keywordRating.keywordRatingId} already exists`);
     }
   } catch (error) {
-    console.error(`Error saving video: ${error}`);
+    console.error(`Something went wrong with keywordRating: ${error}`);
   }
 });
 
-
+router.get('/stats', async (req, res) => {
+  try {
+    const keywordRatingIds = await User.distinct('keywordRatings.keywordRatingId')
+		console.log("userRoutes, keywordRatingIds, 279", keywordRatingIds) // valid, has all the proper keywordRatingIds
+    const stats = []
+    for (const keywordRatingId of keywordRatingIds) {
+			console.log("keywordRatingId", keywordRatingId) // "/m/041xxh.facial serum"
+      const result = await updateStats(keywordRatingId) // fails
+			console.log("userRoutes, result, 283", result) // never gets here
+      stats.push(result)
+    }
+		console.log("userRoutes, stats, 290", stats)
+    res.json(stats)
+  } catch (err) {
+    console.error(err)
+    res.status(500).json({ message: 'Internal server error' })
+  }
+})
 
 
 

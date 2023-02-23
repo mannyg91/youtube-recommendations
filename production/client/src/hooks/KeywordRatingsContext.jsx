@@ -12,6 +12,7 @@ const KeywordRatingsContextProvider = (props) => {
   React.useEffect(() => {
     console.log("keyword context effect ran")
     // console.log(savedVideos)
+    setStats()
     getKeywordRatings()
   }, []);
 
@@ -32,6 +33,7 @@ const KeywordRatingsContextProvider = (props) => {
   
       if (res.ok) {
         const data = await res.json();
+        console.log(data)
         setKeywordRatings(data.keywordRatings)
       } else {
         console.log("Failed to fetch keyword ratings");
@@ -40,6 +42,27 @@ const KeywordRatingsContextProvider = (props) => {
       console.log("You must be logged in to view keyword ratings");
     }
   }
+
+  async function setStats() {
+    console.log("setting keyword stats");
+  
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/user/stats`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+  
+      if (res.ok) {
+        const data = await res.json();
+        console.log(data);
+      } else {
+        console.log("Failed to fetch stats");
+      }
+
+  }
+
+
 
 
   return (

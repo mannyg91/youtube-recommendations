@@ -174,7 +174,9 @@ code {
   margin-left: -5px;
 }
 
+#content-switch {
 
+}
 
 
 #search-bar {
@@ -221,6 +223,10 @@ code {
 
 #account-username {
   display: none;
+}
+
+#acct-icon {
+  margin-right: -10px;
 }
 
 #acctbtn {
@@ -595,6 +601,11 @@ article p{
   #acctbtn {
     font-size: 3.5vh;
   }
+
+  #acct-icon {
+    margin-right: -10px;
+  }
+
 
 
   /*styles for the search */
