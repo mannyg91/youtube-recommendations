@@ -218,7 +218,6 @@ router.post('/savedVideos/', authenticateToken, async (req, res) => {
   }
 });
 
-
 router.delete('/savedVideos/:videoId', authenticateToken, async (req, res) => {
   const userId = req.user.id;
   const videoId = req.params.videoId;
@@ -233,9 +232,7 @@ router.delete('/savedVideos/:videoId', authenticateToken, async (req, res) => {
   }
 });
 
-
 // Keyword Ratings Routes
-
 router.get('/keywordRatings/', authenticateToken, async (req, res) => {
 	const userId = req.user.id;
 	// will return whole list of keyword ratings
@@ -265,9 +262,11 @@ router.post('/keywordRatings/', authenticateToken, async (req, res) => {
       const updatedKeywordRating = await User.updateOne(
         { _id: userId },
         { $push: { keywordRatings: { 
-						keywordRatingId: req.body.keywordRating.keywordRatingId, 
-						keywordRating: req.body.keywordRating
-					} } }
+					keywordRatingId: req.body.keywordRating.keywordRatingId,
+					keyword: req.body.keywordRating.keyword,
+					topic: req.body.keywordRating.topic,
+					rating: req.body.keywordRating.rating
+				} } }
       );
       console.log(`Successfully added keyword rating: ${updatedKeywordRating}`);
     } else {

@@ -10,9 +10,15 @@ async function loadClient() {
   // await loadClient();
 
 export const youtubeSearch = async (query, topicId, type) => {
+
+  try {
     if (window.gapi.client.youtube === undefined) {
       await loadClient();
       console.log('awaited')
+    }
+  }
+  catch (err) {
+      await loadClient();
     }
     
   function interlaceAndRemoveDuplicates(results1, results2) {
