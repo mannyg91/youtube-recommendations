@@ -256,6 +256,7 @@ export default function Navbar() {
                       style: {
                         backgroundColor: 'rgb(50,50,50)', // Change this to the desired background color
                         color: '#f5f5f5',
+                        zoom: '1.1111',
                       },}}
 
       

@@ -94,7 +94,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
             flexShrink: 0,
             "& .MuiDrawer-paper": {
               width: drawerWidth,
-              boxSizing: "border-box"
+              boxSizing: "border-box",
             }
           }}
           variant="persistent"
@@ -106,12 +106,10 @@ const SideBar = ({ handleDrawerClose, open}) => {
               <ChevronLeftIcon id="menuclosearrow" />
             </IconButton>
           </DrawerHeader>
-          <Divider color="aliceblue" />
 
-          <List>
-
+          <List style={{marginLeft: '15px'}}>
             <ListItem className="drawerlist mobile" key="Day/NightTog" disablePadding>
-                <ListItemButton sx={{marginLeft:"-17%"}}>
+                <ListItemButton style={{display: 'flex', justifyContent: 'center', marginLeft: '-15px', marginBottom: '24px'}}>
                   <Toggle />
                 </ListItemButton>
               </ListItem>
