@@ -104,6 +104,7 @@ function SimpleSnackbar() {
 
   return (
     <Snackbar
+      className="ratings-snackbar"
       open={open}
       TransitionComponent={SlideTransition}
       TransitionProps={{

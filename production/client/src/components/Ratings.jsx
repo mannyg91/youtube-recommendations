@@ -126,13 +126,13 @@ function saveRating(newKeywordRating) {
 
       <Box
         sx={{
-          width: 200,
+          width: '90%',
           display: 'flex',
           alignItems: 'center',
-          marginLeft: '50px',
+          justifyContent: 'center',
           borderRadius: '25px',
-          padding: '10px 20px 10px 32px',
-          transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)'
+          padding: '10px 20px 10px 20px',
+          transition: 'transform 500ms cubic-bezier(0.4, 0, 0.2, 1)',
         }}
       >
         <Rating

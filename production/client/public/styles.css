@@ -195,7 +195,7 @@ code {
 
 #search-bar {
   display: flex;
-  width: 72vw;
+  width: 70vw;
   height: 32px;
   border: 1px solid #1b1b1b;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
@@ -265,6 +265,12 @@ code {
   zoom: .95;
 }
 
+
+
+.ratings-snackbar {
+  margin-bottom: 48px;
+}
+
 .ratings-container {
   display: flex;
   flex-direction: column;
@@ -272,6 +278,8 @@ code {
   line-height: 1.5;
   justify-content: left;
 }
+
+
 
 
 .top-section {
@@ -367,6 +375,13 @@ code {
   justify-content: center;
 }
 
+#movie_player > div.html5-video-container > video {
+  /* styleswid here */
+  width: '100vw';
+
+}
+
+
 .video-player {
   width: 100%;
   margin-top: 0px;
@@ -410,8 +425,8 @@ code {
   flex-direction: column;
   gap: 20px;
   background: rgb(21, 21, 21);
-  border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 36px;
+  border-bottom-right-radius: 36px;
   box-shadow: rgba(16, 16, 16, 0.5) 10px 15px 15px;
   padding: 30px;
   height: auto;
@@ -525,7 +540,7 @@ code {
 
 /*About Us page styling*/
 
-#aboutpage{
+/* #aboutpage{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -536,20 +551,25 @@ code {
   background: #121212;
   color: white;
   border-radius: 25px;
+  height: 65vh;
 }
 
 #aboutpage p {
     line-height: 1.5;
     margin: 20px;
-}
+} */
 
 article h1 {
   color: rgb(17, 205, 229);
-  margin-bottom: 24px;
+  margin-bottom: 36px;
+}
+
+article h2 {
+  color: white;
 }
 
 article {
-  background-color: #181818;
+  background-color: rgb(20,20,20);
   padding: 48px 20px;
   border-radius: 24px;
   margin-bottom: 48px;
@@ -558,12 +578,20 @@ article {
 
 article p{
   color: #d5d5d5;
+  line-height: 1.6;
+  margin-bottom: 24px;
+
 }
 
 #citation{
   text-align:center;
   font-size:small;
   color:rgba(240, 248, 255, 0.5)
+}
+
+
+.socIcon {
+  color: 'white'
 }
 
 .profile-pic{
@@ -658,6 +686,19 @@ article p{
     align-items: center;
     zoom: 1;
   }
+
+  .ratings-snackbar {
+    margin-bottom: 0px;
+  }
+  
+  .ratings-container {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    line-height: 1.5;
+    justify-content: left;
+  }
+
 
   .random-search {
     display: flex;
@@ -755,17 +796,24 @@ article p{
   }
 
   /*About Us page styling*/
+/* #about-container {
+  background: black;
+  border-radius: 60px;
+} */
+
+
 
   #aboutpage{
       width: 45vw;
-      min-width: 0;
-      margin: 200px 0px;
+      min-width: fit-content;
+      margin: 0px 0px;
       padding: 80px 32px;
   }
   
-  #aboutpage p {
+article p {
     line-height: 1.5;
     margin: 20px;
+    font-size: 19px;
 }
 
 

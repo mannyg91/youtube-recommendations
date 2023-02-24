@@ -30,7 +30,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
   const [loginOpen, setLoginOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { username, isLoggedIn, handleLogout } = React.useContext(LoginContext);
-  const [aboutUsOpen, setAboutUsOpen] = React.useState(false);
+  const [aboutUsOpen, setAboutUsOpen] = React.useState(true);
 
   const handleLoginOpen = () => {
     closeAccountContainer()
@@ -88,7 +88,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
 
       <Dialog style={{minHeight: '100vh'}} open={open}  onClose={handleDrawerClose}>
         <Drawer 
-          PaperProps={{ sx: { backgroundColor: "rgb(12,12,12)", color: "aliceblue" } }}
+          PaperProps={{ sx: { backgroundColor: "rgb(21,21,21)", color: "aliceblue" } }}
           sx={{
             width: drawerWidth,
             flexShrink: 0,

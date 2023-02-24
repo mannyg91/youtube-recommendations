@@ -80,7 +80,7 @@ const SearchAppBar = () => {
         variant="contained"
         onClick={handleSpin}
       >
-        Spin <ShuffleIcon style={{ fontSize: '14px' }} />
+        Spin <ShuffleIcon style={{ fontSize: '14px', paddingLeft: '2px' }} />
       </Button>
       <div id="search-bar">
 

@@ -3,18 +3,25 @@ import Ashley from '../assets/ashley_profile.png';
 // import Manny from '../assets/manny_profile.png';
 // import Finn from '../assets/finn_profile.png';
 import Dialog from '@mui/material/Dialog';
+import DialogContent from '@mui/material/DialogContent';
+import DialogTitle from '@mui/material/DialogTitle';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link } from 'react-router-dom';
 import openInNewTab from 'react-router-dom';
 
 export const About = (props) => {
+    const [scroll, setScroll] = React.useState('paper');
+
+
 
   return (
-    <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose}>
-        <div class="account-container">
-        <div id="aboutpage">
-            <h1 style={{fontSize: '40px', marginBottom: '48px', color: '#eeeeee'}}>About Us</h1>
+    // <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll}>
+    <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll} maxWidth='md'>
+        <DialogTitle style={{color: "white", background: '#323232', padding: '32px', fontSize: '32px', fontWeight: '300'}}>About Us</DialogTitle>
+        {/* <div class="account-container"> */}
+        <DialogContent style={{backgroundColor:'rgb(20,20,20)', height: '84vh',}}>
+            {/* <h1 style={{fontSize: '42px', color: '#eeeeee', padding: '60px 0px 0px 32px'}}>About Us</h1> */}
             <article>
                 <h1>A Rec Revolution</h1>
                 <p>
@@ -71,7 +78,7 @@ export const About = (props) => {
                 <h1>Meet the Devs</h1>
                 <div id="manny">
                     {/*<img className="profile-pic" src={Manny} alt='Manuel Gomez'/>*/}
-                    <h2>Manuel Gomez</h2>
+                    <h2>Manny Gomez</h2>
                     <Link to="https://www.linkedin.com/in/manuelgomez91/" target="_blank" rel="noopener noreferrer">
                         <LinkedInIcon className="socIcon"/>
                     </Link>
@@ -116,8 +123,8 @@ export const About = (props) => {
                     </p>
                 </div>
             </article>
-        </div>
-        </div>
+        </DialogContent>
+        {/* </div> */}
         </Dialog>
   )
 }
