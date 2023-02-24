@@ -256,9 +256,11 @@ router.post('/keywordRatings/', authenticateToken, async (req, res) => {
     const user = await User.findById(userId);
     const keywordRatings = user.keywordRatings; // the collection
     const duplicateKeywordRating = keywordRatings.find(keywordRating => keywordRating.keywordRatingId === req.body.keywordRatingId);
+		console.log('duplicateKeywordRating', duplicateKeywordRating)
     
 		// if no duplicate keyword rating
 		if (!duplicateKeywordRating) {
+			console.log("in if statement")
       const updatedKeywordRating = await User.updateOne(
         { _id: userId },
         { $push: { keywordRatings: { 

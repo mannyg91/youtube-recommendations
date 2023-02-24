@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-
+import { LoginContext } from '../hooks/LoginContext';
 
 const KeywordRatingsContext = React.createContext();
 
 
 const KeywordRatingsContextProvider = (props) => {
+
+  const { username } = React.useContext(LoginContext);
 
   const [keywordRatings, setKeywordRatings] = useState(null);
   
@@ -14,7 +16,7 @@ const KeywordRatingsContextProvider = (props) => {
     // console.log(savedVideos)
     setStats()
     getKeywordRatings()
-  }, []);
+  }, [username]);
 
 
   async function getKeywordRatings() {

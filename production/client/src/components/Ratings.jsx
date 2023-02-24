@@ -39,6 +39,7 @@ const Ratings = (props) => {
 
 
 
+
   React.useEffect(() => {
 
     //valid string
@@ -56,6 +57,7 @@ const Ratings = (props) => {
 
     console.log('newKeywordRating', newKeywordRating);
     setKeywordRating(newKeywordRating);
+    getKeywordRatings()
     saveRating(newKeywordRating); // call saveRating with the new keyword rating
       
     }
@@ -77,6 +79,7 @@ const Ratings = (props) => {
 function handleRating(rating) {
   setValue(rating)
   saveRating()
+  getKeywordRatings()
   props.setSnackbarActionComplete(true)
   // props.setOpen(false)
 }

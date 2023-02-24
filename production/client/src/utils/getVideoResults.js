@@ -58,10 +58,10 @@ export const youtubeSearch = async (query, topicId, type) => {
 
 
   async function execute(videoCategoryId) {
-    // if (window.gapi.client === undefined) {
-    //   await loadClient();
-    //   console.log('awaited')
-    // }
+    if (window.gapi.client === undefined) {
+      await loadClient();
+      console.log('awaited')
+    }
 
     const parameters = {
       part: [

@@ -6,6 +6,7 @@ import CloseIcon from '@mui/icons-material/Close';
 import { Ratings } from ".";
 import { SearchContext } from '../hooks/SearchContext';
 import { LoginContext } from '../hooks/LoginContext';
+import { KeywordRatingsContext } from '../hooks/KeywordRatingsContext';
 
 import Slide from '@mui/material/Slide';
 
@@ -21,10 +22,25 @@ function SimpleSnackbar() {
 
   const { ...searchProps } = React.useContext(SearchContext);
   const { isLoggedIn } = React.useContext(LoginContext);
+  const { keywordRatings } = React.useContext(KeywordRatingsContext);
 
   React.useEffect(() => {
     setOpen(false)
-    if (searchProps.selectedTopic !== null && searchProps.sliderState === 3 && isLoggedIn ) {
+
+    let keywordAlreadyRated = false;
+
+    if (keywordRatings !== null ){
+      keywordAlreadyRated = keywordRatings.some((rating) => {
+        console.log("entered keyword already rated")
+        return rating.keywordRatingId === searchProps.selectedTopic + '.' + searchProps.searchTerm;
+      })
+
+    }
+ 
+
+    console.log("keyword rated", keywordAlreadyRated)
+
+    if (searchProps.selectedTopic !== null && searchProps.sliderState === 3 && isLoggedIn && !keywordAlreadyRated  ) {
     setTimeout(() => {
       setOpen(true);
       setSnackbarActionComplete(false);

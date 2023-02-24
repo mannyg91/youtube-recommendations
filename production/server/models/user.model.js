@@ -8,7 +8,7 @@ const User = new mongoose.Schema(
     savedVideos: [{ type: Object }],
     keywordRatings: [
       {
-        keywordRatingId: { type: String },
+        keywordRatingId: { type: String, unique: true },
         keyword: { type: String },
         topic: { type: String },
         rating: { type: Number }, // <-- Add this field
