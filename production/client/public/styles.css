@@ -23,10 +23,7 @@ body {
 
 
 
-p {
-  line-height: 1.5;
-  margin: 20px;
-}
+
 
 .theme-dark {
   background-color: radial-gradient(at 50% 45%, rgba(1, 35, 66, 1) 1%, rgb(10, 0, 48) 99%);
@@ -541,6 +538,11 @@ code {
   border-radius: 25px;
 }
 
+#aboutpage p {
+    line-height: 1.5;
+    margin: 20px;
+}
+
 article h1 {
   color: rgb(17, 205, 229);
   margin-bottom: 24px;
@@ -574,7 +576,7 @@ article p{
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
 /~~~~~~~~~~~~~~~~*/
-@media screen and (min-width:767px) {
+@media screen and (min-width:820px) {
 
   /*Styles for the main body*/
   .video-feed {
@@ -760,6 +762,12 @@ article p{
       margin: 200px 0px;
       padding: 80px 32px;
   }
+  
+  #aboutpage p {
+    line-height: 1.5;
+    margin: 20px;
+}
+
 
   article {
 
