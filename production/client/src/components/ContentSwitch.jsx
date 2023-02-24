@@ -84,9 +84,9 @@ const ContentSwitch = (props) => {
 
   return (
     <Stack direction="row" spacing={1} alignItems="center">
-    <Typography style={{color: 'whitesmoke', fontSize: '15px'}}>Random</Typography>
+    <Typography style={{color: 'whitesmoke', fontSize: '16px'}}>Random</Typography>
     <IOSSwitch checked={checked} onChange={handleSlider} />
-    <Typography style={{color: 'whitesmoke', fontSize: '15px'}}>Focused</Typography>
+    <Typography style={{color: 'whitesmoke', fontSize: '16px'}}>Focused</Typography>
       </Stack>
   );
 }

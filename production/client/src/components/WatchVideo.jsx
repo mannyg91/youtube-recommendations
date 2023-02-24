@@ -25,7 +25,7 @@ const WatchVideo = () => {
 
   
   return (
-    <div className="wrapper" style={{minHeight: '105vh'}}>
+
       <div className='watch_player-container'>
         <div className='watch_video-player'>
           <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" width="100%" height="100%" controls />
@@ -67,7 +67,7 @@ const WatchVideo = () => {
     
         </div>
       </div>
-    </div>
+
   )
 }
 

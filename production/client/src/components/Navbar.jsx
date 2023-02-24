@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from "react-router-dom";
-import { Login, Signup, SideBar, Toggle, SearchAppBar, ForgotPassword, ContentSlider, ContentSwitch} from "../components";
+import { Login, Signup, SideBar, Toggle, SearchAppBar, ForgotPassword, ContentSlider, ContentSwitch } from "../components";
 import { LoginContext } from '../hooks/LoginContext';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -41,11 +41,12 @@ function HideOnScroll(props) {
   // console.log('in', !trigger);
 
   if (isMobile) {
-  return (
-    <Slide appear={false} direction="down" in={!trigger} timeout={400}>
-      {children}
-    </Slide>
-  ); } else{
+    return (
+      <Slide appear={false} direction="down" in={!trigger} timeout={400}>
+        {children}
+      </Slide>
+    );
+  } else {
     return <>{children}</>
   }
 }
@@ -66,7 +67,7 @@ HideOnScroll.propTypes = {
 
 export default function Navbar() {
 
-  
+
   const { ...searchProps } = React.useContext(SearchContext);
 
 
@@ -152,133 +153,146 @@ export default function Navbar() {
   return (
     <>
 
-<Box>
-      <Login
-        loginOpen={loginOpen}
-        handleLoginClose={handleLoginClose}
-        handleSignupOpen={handleSignupOpen}
-        handleForgotPasswordOpen={handleForgotPasswordOpen}
-      />
+      <Box>
+        <Login
+          loginOpen={loginOpen}
+          handleLoginClose={handleLoginClose}
+          handleSignupOpen={handleSignupOpen}
+          handleForgotPasswordOpen={handleForgotPasswordOpen}
+        />
 
-      <Signup
-        signupOpen={signupOpen}
-        handleSignupClose={handleSignupClose}
-        handleLoginOpen={handleLoginOpen}
-      />
+        <Signup
+          signupOpen={signupOpen}
+          handleSignupClose={handleSignupClose}
+          handleLoginOpen={handleLoginOpen}
+        />
 
-      <ForgotPassword
-        forgotPasswordOpen={forgotPasswordOpen}
-        handleForgotPasswordClose={handleForgotPasswordClose}
-      />
-
-
-<HideOnScroll>
-        <AppBar id="logobar">
-          <Toolbar id="logobar-containers" open={open}>
-
-          <div class='logobar-top'>
-            <div id='logobar-left'>
-              <div id='logobar-left-outer'>
-              <IconButton
-                size="large"
-                edge="start"
-                color="inherit"
-                aria-label="menu"
-                onClick={handleDrawerOpen}
-              >
-                <MenuIcon id="burgerbtn" />
-              </IconButton>
-
-              <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
-                <Link style={{position: 'relative'}} id="logolink" to="/">
-                  <img id="logo-mobile" src={logoMobile} alt='logo' />
-                  <img id="logo-desktop" src={logoDesktop} alt='logo' />
-                  {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
-                </Link>
-              </Box>
-              </div>
-            <div id='logobar-left-inner'>
-              {/* <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
-              <ContentSwitch id="content-switch" sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
-              </div>
-            </div>
+        <ForgotPassword
+          forgotPasswordOpen={forgotPasswordOpen}
+          handleForgotPasswordClose={handleForgotPasswordClose}
+        />
 
 
+        <HideOnScroll>
+          <AppBar id="logobar">
+            <Toolbar id="logobar-containers" open={open}>
+
+              <div class='logobar-top'>
+                <div id='logobar-left'>
+                  <div id='logobar-left-outer'>
+                    <IconButton
+                      size="large"
+                      edge="start"
+                      color="inherit"
+                      aria-label="menu"
+                      onClick={handleDrawerOpen}
+                    >
+                      <MenuIcon id="burgerbtn" />
+                    </IconButton>
+
+                    <Box id="logo-container" component="div" sx={{ flexGrow: 1 }}>
+                      <Link style={{ position: 'relative' }} id="logolink" to="/">
+                        <img id="logo-mobile" src={logoMobile} alt='logo' />
+                        <img id="logo-desktop" src={logoDesktop} alt='logo' />
+                        {/* <span id="logo-title">watchwise</span> <ShuffleIcon id="logo-icon"/> */}
+                      </Link>
+                    </Box>
+                  </div>
+                  <div id='logobar-left-inner'>
+                    {/* <ContentSlider sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
+                    <ContentSwitch id="content-switch" sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} />
+                  </div>
+                </div>
 
 
 
-            <div class='logobar-top' id='logobar-right'>
-              {/* <div className="desktop">
+
+
+                <div class='logobar-top' id='logobar-right'>
+                  {/* <div className="desktop">
                   <Toggle id="desktop_tog" />
               </div> */}
 
 
-  
-
-              <IconButton
-                id="acct-icon"
-                size="large"
-                aria-label="account of current user"
-                aria-controls="menu-appbar"
-                aria-haspopup="true"
-                onClick={handleMenu}
-                color="inherit"
-              >
 
 
-                {isLoggedIn && <span id="account-username" style={{ fontSize: '15px', padding: '10px', color: 'lightgray' }}>{`Hi, ${username}!`}</span>}
-                {isLoggedIn ? <Avatar style={{ background: 'aliceblue', color: 'rgba(49,159,193,1)' }}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn" /></Avatar>}
-
-              </IconButton>
-
-
-
-
-
-              <Menu
-                id="menu-appbar"
-                anchorEl={anchorEl}
-                anchorOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                keepMounted
-                transformOrigin={{
-                  vertical: 'top',
-                  horizontal: 'right',
-                }}
-                open={Boolean(anchorEl)}
-                onClose={closeAccountContainer}
-              >
-                {isLoggedIn ?
-                  <div id="acct-menu">
-                    <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
-                    <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                  </div> :
-                  <div id="acct-menu">
-                    <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
-                    <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
-                  </div>
-                }
-              </Menu>
-            </div>
-            </div>
-
-            <div class='logobar-bottom'>
-              <div id='logobar-middle'>
+                  <IconButton
+                    id="acct-icon"
+                    size="large"
+                    aria-label="account of current user"
+                    aria-controls="menu-appbar"
+                    aria-haspopup="true"
+                    onClick={handleMenu}
+                    color="inherit"
+                  >
 
 
-              <SearchAppBar />
-              
-            </div>
-          </div>
-           
+                    {isLoggedIn && <span id="account-username" style={{ fontSize: '15px', padding: '10px', color: 'lightgray' }}>{`Hi, ${username}!`}</span>}
+                    {isLoggedIn ? <Avatar style={{ background: 'aliceblue', color: 'rgba(49,159,193,1)' }}> {username[0]?.toUpperCase()} </Avatar> : <Avatar><AccountCircle id="acctbtn" /></Avatar>}
+
+                  </IconButton>
 
 
 
 
-          </Toolbar>
-        </AppBar>
+
+                  <Menu
+
+                    id="menu-appbar"
+                    anchorEl={anchorEl}
+                    anchorOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    keepMounted
+                    transformOrigin={{
+                      vertical: 'top',
+                      horizontal: 'right',
+                    }}
+                    open={Boolean(anchorEl)}
+                    onClose={closeAccountContainer}
+
+                    PaperProps={{
+                      style: {
+                        backgroundColor: 'rgb(50,50,50)', // Change this to the desired background color
+                        color: '#f5f5f5',
+                      },}}
+
+      
+                  >
+                    {isLoggedIn ?
+                      <>
+                        <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
+                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
+                      </>
+
+                      :
+                      <>
+                        <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
+                        <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
+                      </>
+
+
+                    }
+                  </Menu>
+                </div>
+              </div>
+
+              <div class='logobar-bottom'>
+                <div id='logobar-middle'>
+
+
+                  <SearchAppBar />
+
+                </div>
+              </div>
+
+
+
+
+
+            </Toolbar>
+          </AppBar>
         </HideOnScroll>
 
         {/* <AppBar style={{top:'70px', height:'40px', backgroundColor:'rgba(0,0,0,0)', color:'white', padding: '10px 100px', fontWeight: '500'}}>

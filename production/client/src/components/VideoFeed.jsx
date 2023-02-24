@@ -34,7 +34,7 @@ const VideoFeed = () => {
 
 
   return (
-    <div className='wrapper'>
+    <>
       
         <div className="topic-scroll">
           {/* <ContentSlider style={{margin: '100px 0px'}} sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
@@ -49,7 +49,7 @@ const VideoFeed = () => {
         <SimpleSnackbar />
 
 
-    </div>
+    </>
   )
 }
 

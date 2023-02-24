@@ -27,11 +27,14 @@ export default function TopicScrollTab(props) {
     ));
 
   return (
-    <div>
+
       <Box sx={{ 
         maxWidth: "100%", bgcolor: "transparent",
         "@media screen and (min-width:700px)": {
-          maxWidth: "85%", bgcolor: "transparent", marginLeft: "7%"}
+          maxWidth: "82%", 
+          bgcolor: "transparent",
+
+        }
         }}>
         <Tabs
           value={props.selectedTopic}
@@ -71,6 +74,5 @@ export default function TopicScrollTab(props) {
           {tabElements}
         </Tabs>
       </Box>
-    </div>
   );
 }

@@ -19,9 +19,9 @@ const SavedVideos = () => {
 
 
   return (
-    <div className='wrapper'>
-      <h1 style={{position: 'inherit', marginTop: '140px', marginLeft:'15vw', padding:'24px'}}>Saved Videos</h1>
-      <div className='video-feed'>
+    <div className='saved-videos'>
+      <h1 style={{position: 'inherit', marginTop: '140px', marginLeft:'10vw', padding:'24px'}}>Saved Videos</h1>
+      <div style={{marginTop: '20px'}} className='video-feed'>
         {videoElements}
       </div>
     </div>

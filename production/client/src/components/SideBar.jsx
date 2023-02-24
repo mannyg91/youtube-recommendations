@@ -19,7 +19,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import { SavedContext } from '../hooks/SavedContext';
-import { Login } from "../components";
+import { Login, About } from "../components";
 import { LoginContext } from '../hooks/LoginContext';
 import Dialog from '@mui/material/Dialog';
 
@@ -30,6 +30,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
   const [loginOpen, setLoginOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { username, isLoggedIn, handleLogout } = React.useContext(LoginContext);
+  const [aboutUsOpen, setAboutUsOpen] = React.useState(false);
 
   const handleLoginOpen = () => {
     closeAccountContainer()
@@ -58,12 +59,31 @@ const SideBar = ({ handleDrawerClose, open}) => {
     justifyContent: "flex-end"
   }));
 
+//change to about us
+  const handleAboutUsOpen = () => {
+    handleDrawerClose()
+    setAboutUsOpen(true);
+  };
+
+  const handleAboutUsClose = () => {
+    setAboutUsOpen(false);
+  };
+
+
+
+
+
 
   return (
     <>
       <Login    
             loginOpen={loginOpen}
             handleLoginClose={handleLoginClose}  
+      />
+
+      <About
+            aboutUsOpen={aboutUsOpen}
+            handleAboutUsClose={handleAboutUsClose}  
       />
 
       <Dialog style={{minHeight: '100vh'}} open={open}  onClose={handleDrawerClose}>
@@ -96,8 +116,8 @@ const SideBar = ({ handleDrawerClose, open}) => {
                 </ListItemButton>
               </ListItem>
 
-            <Link to="/about">
-              <ListItem className="drawerlist" key="About Us" disablePadding>
+  
+              <ListItem className="drawerlist" key="About Us" onClick={handleAboutUsOpen} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>
                     <Groups2Icon className="listitemicon" />
@@ -105,7 +125,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
                   <ListItemText primary="About Us" />
                 </ListItemButton>
               </ListItem>
-            </Link>
+
 
             <Link to="/saved-videos/">
               <ListItem className="drawerlist" key="Saved Videos" onClick={handleDrawerClose} disablePadding>
@@ -118,7 +138,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
               </ListItem>
             </Link>
             
-            <ListItem className="drawerlist" key="Settings" disablePadding>
+            <ListItem className="drawerlist" key="Settings" onClick={handleDrawerClose} disablePadding>
               <ListItemButton>
                 <ListItemIcon>
                   <SettingsIcon className="listitemicon" />
@@ -129,7 +149,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
             </ListItem>
 
             {!isLoggedIn &&
-            <ListItem className="drawerlist" key="Login" disablePadding>
+            <ListItem className="drawerlist" key="Login" onClick={handleDrawerClose} disablePadding>
               <ListItemButton onClick={handleLoginOpen}>
                 <ListItemIcon>
                   <LoginIcon className="listitemicon" />

@@ -33,7 +33,7 @@ const App = () => {
             <Routes>
               <Route
                 path="/"
-                element={<><Navbar /><VideoFeed/></>}
+                element={<div class='page-wrapper'><Navbar /><VideoFeed/></div>}
               />
               <Route
                 path='/video/:id' 

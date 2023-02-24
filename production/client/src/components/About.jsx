@@ -2,18 +2,21 @@ import React from 'react'
 import Ashley from '../assets/ashley_profile.png';
 // import Manny from '../assets/manny_profile.png';
 // import Finn from '../assets/finn_profile.png';
+import Dialog from '@mui/material/Dialog';
 import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import GitHubIcon from '@mui/icons-material/GitHub';
 import { Link } from 'react-router-dom';
 import openInNewTab from 'react-router-dom';
 
-const About = () => {
+export const About = (props) => {
 
   return (
-    <div id="wrapper">
+    <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose}>
+        <div class="account-container">
         <div id="aboutpage">
+            <h1 style={{fontSize: '40px', marginBottom: '48px', color: '#eeeeee'}}>About Us</h1>
             <article>
-                <h1>WatchWise - A Rec Revolution</h1>
+                <h1>A Rec Revolution</h1>
                 <p>
                     At WatchWise, we believe that education should be accessible to everyone, and we recognize 
                     that the standard algorithm of many video platforms can limit our exposure to new and diverse 
@@ -114,7 +117,8 @@ const About = () => {
                 </div>
             </article>
         </div>
-    </div>
+        </div>
+        </Dialog>
   )
 }
 
