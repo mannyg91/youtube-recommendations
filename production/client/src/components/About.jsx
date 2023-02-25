@@ -57,41 +57,39 @@ export const About = (props) => {
                     Sponsored by Google.
                 </p>
                 <p>
-                    The goal of WatchWise from the beginning was to create an improved YouTube
+                    The goal of WatchWise from the beginning was to create an alternative YouTube
                     suggestion system. As of its conclusion WW aims to present the user with only
                     videos tagged as 'educational'. From there the user is free to choose what
                     subgenre - such as Food, Sports, or Tech - they they are interested in, and
-                    then further the video suggestions by a randomly generated keyword.  The keywords
-                    can be specified as nearer or further from the source genre; for example, by selecting
-                    selecting 'narrow' on the slider, the keywords will only come from a curated list
+                    then further the video suggestions by a randomly generated keyword. By selecting
+                    selecting 'Focused' on the navbar switch, the keywords will only come from a curated list
                     specific to that subgenre.  An opposite selection will bring in randomly generated
                     words that may or may not have any apparent connection to the chosen genre.
                 </p>
                 <p>
-                    The ultimate goal is to give the user a selection of videos that they may have never
-                    considered or come across, but that they may be interesting in viewing upon seeing
-                    on their feed.
+                    The ultimate goal is to give the user informative and intriguing video results that they may have never normally considered or come across,
+                    escaping the typical algorithm, and allowing them to explore new ideas and topics.
                 </p>
             </article>
 
             <article>
                 <h1>Meet the Devs</h1>
-                <div id="manny">
-                    {/*<img className="profile-pic" src={Manny} alt='Manuel Gomez'/>*/}
+                <div className="about-dev">
+                    <img className="profile-pic" src='https://media.licdn.com/dms/image/C5603AQGJBkXdsT1dVA/profile-displayphoto-shrink_200_200/0/1653367733322?e=1682553600&v=beta&t=7sFnrF5tK9cemFUpdvGAT4GvedSMt_mGg7JzhNdMIJY' alt='Manuel Gomez'/>
                     <h2>Manny Gomez</h2>
                     <Link to="https://www.linkedin.com/in/manuelgomez91/" target="_blank" rel="noopener noreferrer">
-                        <LinkedInIcon className="socIcon"/>
+                        <LinkedInIcon className="socIcon" />
                     </Link>
                     <Link to="https://github.com/mannyg91" target="_blank" rel="noopener noreferrer">
                         <GitHubIcon className="socIcon" sx={{marginLeft:"15px"}}/>
                     </Link>
                     <p>
-                        Manny is a non-traditional Software B.S. graduate of the University of Nevada, Reno and is 
-                        responsible for much of the heavy lifting behind the scenes of WatchWise. He can also take 
-                        credit for the initial idea of WatchWise as well as the project group formation.
+                    Manny, a Business and Information Systems B.S. graduate of the University of Nevada, Reno, was responsible for much of the 
+                    heavy lifting behind the scenes of WatchWise and worked on the full-stack of the app. He can also take credit for the initial idea 
+                    of WatchWise as well as the project group formation.
                     </p>
                 </div>
-                <div id="ashley">
+                <div className="about-dev">
                     <img className="profile-pic" src={Ashley} alt='Ashley Butela'/>
                     <h2>Ashley Butela</h2>
                     <Link to="https://www.linkedin.com/in/ashley-butela/" target="_blank" rel="noopener noreferrer">
@@ -107,7 +105,7 @@ export const About = (props) => {
                         Before TechWise she earned a B.A. from the University of Pittsburgh in Japanese Language & Literature.
                     </p>
                 </div>
-                <div id="finn">
+                <div className="about-dev">
                     {/*<img className="profile-pic" src={Finn} alt='Fionnlagh Jones'/>*/}
                     <h2>Fionnlagh Jones</h2>
                     <Link to="https://www.linkedin.com/in/fionnlagh-jones/" target="_blank" rel="noopener noreferrer">

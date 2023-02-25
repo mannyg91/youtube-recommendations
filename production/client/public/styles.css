@@ -319,7 +319,7 @@ code {
   border-radius: 25px;
   padding: 0px;
   height: 316px;
-  zoom: 1.15;
+  zoom: 1.17;
   /* width: 320px; */
   /* text-align: center;
   justify-content: center; */
@@ -591,13 +591,23 @@ article p{
 
 
 .socIcon {
-  color: 'white'
+  color: white;
+ font-size: 32px;
 }
 
 .profile-pic{
   height:120px;
   float:left;
   margin-right:15px;
+  border-radius: 50%;
+}
+
+.about-dev {
+  margin: 50px 0px;
+}
+
+.about-dev h2 {
+  margin: 10px;
 }
 
 
