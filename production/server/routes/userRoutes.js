@@ -197,6 +197,7 @@ router.get('/savedVideos/', authenticateToken, async (req, res) => {
 })
 
 router.post('/savedVideos/', authenticateToken, async (req, res) => {
+	console.log("req.body.video",req.body.video)
   const userId = req.user.id;
   try {
     const user = await User.findById(userId);

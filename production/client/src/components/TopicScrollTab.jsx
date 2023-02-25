@@ -59,7 +59,10 @@ export default function TopicScrollTab(props) {
             "& .MuiTab-textColorPrimary": {
               color: "#c2c2c2",
               border: "none",
-              backgroundColor:'rgb(50,50,50)'
+              backgroundColor:'rgb(50,50,50)',
+              '&:hover': {
+                background: 'rgb(70,70,70)',
+              },
             },
             "& .Mui-selected": {
               color: "#1976D2",

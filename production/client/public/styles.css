@@ -343,6 +343,14 @@ code {
   bottom: -56px;
 }
 
+.player-favorite {
+  color: rgb(220, 220, 220);
+  font-size: 1.2rem;
+  cursor: pointer;
+
+}
+
+
 
 .video-details {
   padding: 0px 20px 36px 20px;
@@ -443,6 +451,11 @@ code {
 .player-video-title h2 {
   font-size: 18px;
   line-height: 1.25;
+}
+
+.player-video-channel-container {
+  display: flex;
+  justify-content: space-between;
 }
 
 .player-video-channel {

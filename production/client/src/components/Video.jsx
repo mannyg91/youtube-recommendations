@@ -7,10 +7,11 @@ import Snackbar from '@mui/material/Snackbar';
 
 const Video = ({ video }) => {
   const [hovered, ref] = useHover();
-  const { savedVideos, getSavedVideos } = React.useContext(SavedContext);
+  const { savedVideos, getSavedVideos, clickedSearchResult, setClickedSearchResult } = React.useContext(SavedContext);
   const { isLoggedIn } = React.useContext(LoginContext);
   const [videoId, setVideoId] = React.useState(video?.id.videoId);
   const [saved, setSaved] = React.useState(false);
+
   const [snackbarOpen, setSnackbarOpen] = React.useState(false);
   const [snackbarMessage, setSnackbarMessage] = React.useState("");
 
@@ -25,10 +26,21 @@ const Video = ({ video }) => {
   }, [video]);
 
   React.useEffect(() => {
+    console.log(videoId)
     setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId));
   }, [videoId]);
 
+  function handleVideoClick() {
+    console.log('in handle video click')
+    // setClickedSearchResult(video);
+    // console.log(clickedSearchResult)
+    localStorage.setItem('clickedSearchResult', JSON.stringify(video));
+  }
+
   function handleSaveVideo() {
+    console.log('videoId', videoId)
+    console.log('stringify', JSON.stringify(video));
+
     if (isLoggedIn) {
       setSaved(!saved);
       if (!saved) {
@@ -43,6 +55,7 @@ const Video = ({ video }) => {
 
       //if token, makes get request
       if (token) {
+        console.log('video', video)
         const method = saved ? "DELETE" : "POST";
         const url = saved ? `${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos/${videoId}` : `${process.env.REACT_APP_DATABASE_API_URL}/user/savedVideos`;
         fetch(url, {
@@ -83,7 +96,7 @@ const Video = ({ video }) => {
   return (
     <div className='video-card' style={{ width: thumbnailWidth }} ref={ref}>
       <div className='thumbnail' style={{ height: "calc(100% - px)" }}>
-        <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`}>
+        <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`} onClick={handleVideoClick}>
           <img width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
             style={{ clipPath: "inset(33px 0px 33px 0px round 20px)", marginTop: "-24px" }}
           />

@@ -70,17 +70,26 @@ const SearchAppBar = () => {
           background: 'rgb(240,248,255)',
           width: { xs: '87px', sm: '90px', md: '110px' },
           height: { xs: '30px', sm: '30px', md: '40px' },
-          fontSize: '13px',
+          fontSize: '14px',
           borderRadius: '18px',
           marginRight: '14px',
+          paddingTop: '8px',
           border: 'none',
           color: '#1976d2',
+          '&:hover': {
+            background: 'rgb(200,208,215)',
+          },
+          '@media (max-width: 600px)': {
+            '&:hover': {
+              background: 'rgb(240,248,255)',
+            },
+          },
         }}
         type="submit"
         variant="contained"
         onClick={handleSpin}
       >
-        Spin <ShuffleIcon style={{ fontSize: '14px', paddingLeft: '2px' }} />
+        Spin <ShuffleIcon style={{ fontSize: '15px', paddingLeft: '2px', marginTop: '-1px' }} />
       </Button>
       <div id="search-bar">
 
@@ -97,7 +106,7 @@ const SearchAppBar = () => {
             }
           }}
         />
-        <button id="search-btn" onClick={handleClick}> <SearchIcon class='search-icon' /></button>
+        <button id="search-btn" onClick={handleClick} style={{cursor: 'pointer'}}><SearchIcon class='search-icon' /></button>
       </div>
     </>
   )
