@@ -30,7 +30,7 @@ export default function TopicScrollTab(props) {
 
       <Box sx={{ 
         maxWidth: "100%", bgcolor: "transparent",
-        "@media screen and (min-width:820px)": {
+        "@media screen and (min-width:1281px)": {
           maxWidth: "82%", 
           bgcolor: "transparent",
         }

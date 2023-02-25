@@ -12,6 +12,7 @@ import Snackbar from '@mui/material/Snackbar';
 import Skeleton from '@mui/material/Skeleton';
 
 import YouTubeIcon from '@mui/icons-material/YouTube';
+import IconButton from '@mui/material/IconButton';
 
 
 const WatchVideo = () => {
@@ -124,7 +125,15 @@ const WatchVideo = () => {
                   {videoDetails ? (
                     <div className="player-video-channel-container">
                       <div className='player-video-channel'>{videoDetails?.snippet.channelTitle}</div>
-                      <div> {saveIcon()}</div>
+                      <div style={{display: 'flex', alignItems: 'center'}}>{saveIcon()}
+                      <IconButton style={{color: 'rgb(220, 220, 220)'}}
+                        component="a"
+                        href={`https://www.youtube.com/watch?v=${id}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                      <YouTubeIcon style={{fontSize:'37px', marginBottom: '1px', paddingLeft: '12px'}} /> 
+                      </IconButton></div>
                     </div>
                   ) : (
                     <Skeleton variant="text" width='10%' height={30} margin={0} />

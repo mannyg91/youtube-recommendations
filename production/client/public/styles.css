@@ -128,7 +128,8 @@ code {
   display: flex;
   justify-content: right; 
   align-items: center;
-  margin-left: 40px;
+  margin-left: 15vw;
+  zoom: .9;
 }
 
 
@@ -345,7 +346,7 @@ code {
 
 .player-favorite {
   color: rgb(220, 220, 220);
-  font-size: 1.2rem;
+  font-size: 24px;
   cursor: pointer;
 
 }
@@ -624,10 +625,11 @@ article p{
 }
 
 
+
 /*~~~~~~~~~~~~~~~~/
 / Desktop styles  /
 /~~~~~~~~~~~~~~~~*/
-@media screen and (min-width:820px) {
+@media screen and (min-width:1281px) {
 
   /*Styles for the main body*/
   .video-feed {
@@ -664,12 +666,19 @@ article p{
     /* padding changed */
   }
 
+  #logobar-left-inner {
+    padding-left: 8vw;
+    margin-left: 0;
+    zoom: 1.25;
+  }
+
   .logobar-bottom {
     margin-top: -33px;
   }
 
   #burgerbtn {
     font-size: 3vh;
+    margin-left: 20px;
   }
 
   #account-username {
@@ -681,7 +690,7 @@ article p{
   }
 
   #acct-icon {
-    margin-right: -10px;
+    margin-right: 10px;
   }
 
 
