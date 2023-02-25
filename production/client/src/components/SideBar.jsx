@@ -30,7 +30,7 @@ const SideBar = ({ handleDrawerClose, open}) => {
   const [loginOpen, setLoginOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const { username, isLoggedIn, handleLogout } = React.useContext(LoginContext);
-  const [aboutUsOpen, setAboutUsOpen] = React.useState(true);
+  const [aboutUsOpen, setAboutUsOpen] = React.useState(false);
 
   const handleLoginOpen = () => {
     closeAccountContainer()
