@@ -18,7 +18,7 @@ export const About = (props) => {
   return (
     // <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll}>
     <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll} maxWidth='md'>
-        <DialogTitle style={{color: "white", background: '#323232', padding: '32px', fontSize: '32px', fontWeight: '300'}}>About Us</DialogTitle>
+        <DialogTitle style={{color: "white", background: '#323232', paddingLeft: '32px', fontSize: '32px', fontWeight: '300'}}>About Us</DialogTitle>
         {/* <div class="account-container"> */}
         <DialogContent style={{backgroundColor:'rgb(20,20,20)', height: '84vh',}}>
             {/* <h1 style={{fontSize: '42px', color: '#eeeeee', padding: '60px 0px 0px 32px'}}>About Us</h1> */}
@@ -106,7 +106,7 @@ export const About = (props) => {
                     </p>
                 </div>
                 <div className="about-dev">
-                    {/*<img className="profile-pic" src={Finn} alt='Fionnlagh Jones'/>*/}
+                    <img className="profile-pic" src='https://media.licdn.com/dms/image/C5603AQF0y4QoKhTk5g/profile-displayphoto-shrink_200_200/0/1652490111076?e=1682553600&v=beta&t=gt2gf5b0G_fxa7rhudC59aXLVTPnxgU3nB4EwrIOpTU' alt='Fionnlagh Jones'/>
                     <h2>Fionnlagh Jones</h2>
                     <Link to="https://www.linkedin.com/in/fionnlagh-jones/" target="_blank" rel="noopener noreferrer">
                         <LinkedInIcon className="socIcon"/>

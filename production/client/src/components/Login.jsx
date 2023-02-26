@@ -14,6 +14,7 @@ export const Login = (props) => {
     //what the user enters
     const [email, setEmail] = React.useState('')
     const [password, setPassword] = React.useState('')
+    const [ message, setMessage ] = React.useState('')
 
 
     const { handleLogin, getUsername } = React.useContext(LoginContext);
@@ -45,11 +46,12 @@ export const Login = (props) => {
 			localStorage.setItem('token', data.user)
             getUsername()
             handleLogin()
+            setMessage('')
             // navigate('/');
             props.handleLoginClose()
 		} else {
             console.log(data)
-			alert('Please check your credentials')
+			setMessage('Please check your login details')
 		}
 	}
 
@@ -111,7 +113,8 @@ export const Login = (props) => {
                         <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
                             Psst... don't have an account yet?<br/>
                             Sign up&nbsp;
-                            <span style={{color: '#11cde5', textDecoration: 'underline'}} onClick={props.handleSignupOpen}>here!</span>
+                            <span style={{color: '#11cde5', textDecoration: 'underline'}} onClick={props.handleSignupOpen}>here!</span><br />
+                            <span style={{color: '#d74274'}}>{message}</span>
                         </p>
                     </div>
                 </div>

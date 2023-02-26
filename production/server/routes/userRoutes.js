@@ -134,20 +134,25 @@ router.delete('/:username', async (req, res) => {
 
 
 router.post('/forgot-password', async (req, res) => {
-	const { email } = req.body;
-	const user = await User.findOne({email: email});
-	if (!user) {
-		return res.json({ status: 'error', error: 'No user found' });
-	}
+  const { email } = req.body;
+  try {
+    const user = await User.findOne({ email: email });
+    if (!user) {
+      return res.status(404).json({ status: 'error', error: 'No user found' });
+    }
 
-	const token = generatePasswordResetToken(email);
-	updatePasswordResetToken(email, token, Date.now() + 3600000);
+    const token = generatePasswordResetToken(email);
+    updatePasswordResetToken(email, token, Date.now() + 3600000);
 
-	console.log(email, token)
-	sendPasswordResetEmail(email, token);
+    console.log(email, token);
+    await sendPasswordResetEmail(email, token);
 
-	res.status(200).send('Password reset email sent.');
-})
+    res.status(200).send('Password reset email sent.');
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ status: 'error', error: 'An error occurred.' });
+  }
+});
 
 
 router.post('/reset-password', async (req, res) => {

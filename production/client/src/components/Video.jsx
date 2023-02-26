@@ -97,7 +97,7 @@ const Video = ({ video }) => {
     <div className='video-card' style={{ width: thumbnailWidth }} ref={ref}>
       <div className='thumbnail' style={{ height: "calc(100% - px)" }}>
         <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`} onClick={handleVideoClick}>
-          <img width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
+          <img className='exclude' width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
             style={{ clipPath: "inset(33px 0px 33px 0px round 20px)", marginTop: "-24px" }}
           />
         </Link>

@@ -7,6 +7,12 @@
   justify-content: center;
 }
 
+html {
+  background: radial-gradient(at 50% 45%, rgba(49, 159, 193, 1) 1%, rgba(24, 24, 24, 1) 99%);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -15,20 +21,50 @@ body {
   -moz-osx-font-smoothing: grayscale;
   color: aliceblue;
   /* background: rgb(24,24,24); */
-  background: radial-gradient(at 50% 45%, rgba(49, 159, 193, 1) 1%, rgba(24, 24, 24, 1) 99%);
+  zoom: .9;
+  scrollbar-width: none;
+}
+
+/* for styling scrollbars */
+::-webkit-scrollbar {
+  width: 10px;
+  background-color: black;
+  display:none;
+}
+
+/* For Chrome, Edge, and Safari */
+::-webkit-scrollbar-thumb {
+  background-color: gray;
+}
+
+::-moz-scrollbar {
+  display: none;
+}
+
+::-moz-scrollbar-thumb {
+  background-color: #333;
+}
+
+/* Set the color of the scrollbar track */
+::-moz-scrollbar-track {
+  background-color: #000000;
+}
+
+/* Hide the scrollbar arrow buttons */
+::-moz-scrollbar-button {
+  display: none;
+}
+
+
+
+
+html.theme-dark:not(.exclude) {
+  background: radial-gradient(at 50% 45%, rgb(50 50 50) 1%, rgb(20 20 20) 99%);
   background-repeat: no-repeat;
   background-attachment: fixed;
-  zoom: .9;
+  filter: brightness(90%);
 }
 
-
-
-
-
-.theme-dark {
-  background-color: radial-gradient(at 50% 45%, rgba(1, 35, 66, 1) 1%, rgb(10, 0, 48) 99%);
-  color: rgb(224, 238, 255);
-}
 
 
 .wrapper {

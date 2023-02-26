@@ -15,7 +15,7 @@ export const ResetPassword = (props) => {
       const location = useLocation();
       const [newPassword, setNewPassword] = useState('');
       const [confirmPassword, setConfirmPassword] = useState('');
-      const [errorMessage, setErrorMessage] = useState('');
+      const [message, setMessage] = useState('');
     
 
       const handleResetPassword = async (event) => {
@@ -32,10 +32,10 @@ export const ResetPassword = (props) => {
             <Navigate to="/" replace={true} />;
           } else {
             const data = await response.json();
-            setErrorMessage(data.error);
+            setMessage(data.error);
           }
         } catch (error) {
-          setErrorMessage('Failed to reset password');
+          setMessage('Failed to reset password');
         }
       };
     
@@ -95,16 +95,9 @@ export const ResetPassword = (props) => {
                                 variant="outlined">
                                 Confirm
                             </Button>
-            
+                            <p><span style={{color: '#d74274'}}>{message}</span></p>
                         </Box>
 
-                        {/* <p style={{lineHeight: 1.5, textAlign: 'center', color: '#cfcfcf'}}>
-                            Psst... don't have an account yet?<br/>
-                            Sign up&nbsp;
-                            <span style={{color: '#11cde5'}}>
-                                <Link to="../signup">here!</Link>
-                            </span>
-                        </p> */}
                     </div>
                 </div>
 

@@ -43,7 +43,7 @@ const all = [
   "vegan recipes",
   "guitar lessons",
   "meditation",
-  "mindfulness",
+  // "mindfulness",
   "foreign language lessons",
   "travel vlogs",
   "minimalist lifestyle",
@@ -51,7 +51,7 @@ const all = [
   "art history documentaries",
   "science experiments",
   "eco-friendly living",
-  "fitness challenges",
+  // "fitness challenges",
   "interviews with artists",
   "book reviews",
   "productivity hacks",
@@ -69,7 +69,7 @@ const all = [
   "dance lessons",
   "fashion design",
   "sustainability documentaries",
-  "social media strategies",
+  "social media",
   "entrepreneurial advice",
   "leadership skills",
   "history documentaries",
@@ -137,6 +137,25 @@ const all = [
   "futuristic technology",
   "space exploration",
   "science fiction",
+
+  "geology",
+  "street art",
+  "history",
+  "fashion design",
+  "climate change",
+  "spirituality",
+  "mountain climbing",
+  "timelapse",
+  "discoveries",
+  "fossils",
+  "bicycles",
+  "cars",
+  "computers",
+  "cooking",
+  "hacks",
+
+
+
 ]
 
 export default all
