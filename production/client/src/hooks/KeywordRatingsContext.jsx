@@ -48,22 +48,24 @@ const KeywordRatingsContextProvider = (props) => {
   async function setStats() {
     console.log("setting keyword stats");
   
+    try {
       const res = await fetch(`${process.env.REACT_APP_API_URL}/user/stats`, {
         method: 'GET',
         headers: {
-          'Content-Type': 'application/json',
-        },
+          'Content-Type': 'application/json; charset=utf-8'
+        }
       });
   
       if (res.ok) {
         const data = await res.json();
-        console.log(data);
+        console.log('Data:', data);
       } else {
         console.log("Failed to fetch stats");
       }
-
+    } catch (err) {
+      console.log("Error fetching stats", err);
+    }
   }
-
 
 
 

@@ -29,7 +29,7 @@ body {
 ::-webkit-scrollbar {
   width: 10px;
   background-color: black;
-  display:none;
+  display: none;
 }
 
 /* For Chrome, Edge, and Safari */
@@ -154,15 +154,15 @@ code {
 }
 
 #logobar-left-outer {
- display: flex;
- justify-content: center; 
- align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
 }
 
 #logobar-left-inner {
   display: flex;
-  justify-content: right; 
+  justify-content: right;
   align-items: center;
   margin-left: 15vw;
   zoom: .9;
@@ -237,7 +237,7 @@ code {
   border: 1px solid #1b1b1b;
   box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.05);
   border-radius: 15px;
-  background-color: rgb(50,50,50);
+  background-color: rgb(50, 50, 50);
 }
 
 
@@ -248,7 +248,7 @@ code {
   font-size: 14px;
   font-weight: 500;
   color: lightgray;
-  background-color: rgb(50,50,50);
+  background-color: rgb(50, 50, 50);
 }
 
 #search-bar button {
@@ -415,7 +415,7 @@ code {
   justify-content: center;
 }
 
-#movie_player > div.html5-video-container > video {
+#movie_player>div.html5-video-container>video {
   /* styleswid here */
   width: '100vw';
 
@@ -614,36 +614,36 @@ article h2 {
 }
 
 article {
-  background-color: rgb(20,20,20);
+  background-color: rgb(20, 20, 20);
   padding: 48px 20px;
   border-radius: 24px;
   margin-bottom: 48px;
 }
 
 
-article p{
+article p {
   color: #d5d5d5;
   line-height: 1.6;
   margin-bottom: 24px;
 
 }
 
-#citation{
-  text-align:center;
-  font-size:small;
-  color:rgba(240, 248, 255, 0.5)
+#citation {
+  text-align: center;
+  font-size: small;
+  color: rgba(240, 248, 255, 0.5)
 }
 
 
 .socIcon {
   color: white;
- font-size: 32px;
+  font-size: 32px;
 }
 
-.profile-pic{
-  height:120px;
-  float:left;
-  margin-right:15px;
+.profile-pic {
+  height: 120px;
+  float: left;
+  margin-right: 15px;
   border-radius: 50%;
 }
 
@@ -678,7 +678,7 @@ article p{
   #logo-mobile {
     display: none;
   }
-  
+
   #logo-desktop {
     display: initial;
     height: 27px;
@@ -753,7 +753,7 @@ article p{
   .ratings-snackbar {
     margin-bottom: 0px;
   }
-  
+
   .ratings-container {
     display: flex;
     flex-direction: column;
@@ -859,25 +859,25 @@ article p{
   }
 
   /*About Us page styling*/
-/* #about-container {
+  /* #about-container {
   background: black;
   border-radius: 60px;
 } */
 
 
 
-  #aboutpage{
-      width: 45vw;
-      min-width: fit-content;
-      margin: 0px 0px;
-      padding: 80px 32px;
+  #aboutpage {
+    width: 45vw;
+    min-width: fit-content;
+    margin: 0px 0px;
+    padding: 80px 32px;
   }
-  
-article p {
+
+  article p {
     line-height: 1.5;
     margin: 20px;
     font-size: 19px;
-}
+  }
 
 
   article {
@@ -886,11 +886,9 @@ article p {
     border-radius: 24px;
     margin-bottom: 48px;
   }
-  
 
-  #citation{
 
-  }
+  #citation {}
 
 
 }

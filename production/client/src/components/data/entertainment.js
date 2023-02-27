@@ -24,7 +24,6 @@ const entertainment = [
   "Event planning",
   "Venue management",
   "Audience development",
-  "Ticket sales and box office management",
   "Touring and road management",
   "Music education and instruction",
   "Music therapy",
