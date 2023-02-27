@@ -44,7 +44,9 @@ const VideoFeed = () => {
           {videoElements}
       </div>
 
-        <SimpleSnackbar />
+        {/* Toggle ratings on/off here */}
+        {/* <SimpleSnackbar /> */} 
+
 
 
     </>
