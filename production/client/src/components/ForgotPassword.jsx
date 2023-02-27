@@ -71,6 +71,9 @@ export const ForgotPassword = (props) => {
                         component="form"
                         sx={{
                             '& .MuiTextField-root': { m: 1 },
+                            '& .Mui-focused': { color: '#f5f5f5' },
+                            '& .Mui-active': { color: '#f5f5f5' },
+                            '& .Mui-filled': { color: '#f5f5f5' },
                         }}
                         noValidate
                         autoComplete="off"

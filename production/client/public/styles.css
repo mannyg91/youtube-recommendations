@@ -553,24 +553,24 @@ code {
 
 /* these will need to be simplified and targeted via user-defined classes */
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input:invalid {
-  color: aliceblue;
+  color: #f5f5f5;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  color: aliceblue !important;
+  color: #f5f5f5;
 }
 
 
 .MuiTextField-root>.MuiFormLabel-root.Mui-focused {
-  color: aliceblue;
+  color: #f5f5f5;
 }
 
 .css-1t8l2tu-MuiInputBase-input-MuiOutlinedInput-input {
-  color: aliceblue;
+  color: #f5f5f5;
 }
 
 .MuiTextField-root label {
-  color: aliceblue;
+  color: #f5f5f5;
 }
 
 .MuiTextField-root p {
