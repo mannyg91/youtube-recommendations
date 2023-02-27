@@ -173,7 +173,7 @@ export default function Navbar() {
           <AppBar id="logobar">
             <Toolbar id="logobar-containers" open={open}>
 
-              <div class='logobar-top'>
+              <div className='logobar-top'>
                 <div id='logobar-left'>
                   <div id='logobar-left-outer'>
                     <IconButton
@@ -204,7 +204,7 @@ export default function Navbar() {
 
 
 
-                <div class='logobar-top' id='logobar-right'>
+                <div className='logobar-top' id='logobar-right'>
                   {/* <div className="desktop">
                   <Toggle id="desktop_tog" />
               </div> */}
@@ -258,16 +258,16 @@ export default function Navbar() {
       
                   >
                     {isLoggedIn ?
-                      <>
+                      <div>
                         <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
                         <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                      </>
+                      </div>
 
                       :
-                      <>
+                      <div>
                         <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
                         <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
-                      </>
+                      </div>
 
 
                     }
@@ -275,7 +275,7 @@ export default function Navbar() {
                 </div>
               </div>
 
-              <div class='logobar-bottom'>
+              <div className='logobar-bottom'>
                 <div id='logobar-middle'>
 
 

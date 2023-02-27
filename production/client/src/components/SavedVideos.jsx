@@ -8,7 +8,6 @@ const SavedVideos = () => {
 
   React.useEffect(() => {
     getSavedVideos()
-
   }, []);
 
 
@@ -19,10 +18,10 @@ const SavedVideos = () => {
 
 
   return (
-    <div className='saved-videos'>
-      <h1 style={{position: 'inherit', marginTop: '140px', marginLeft:'10vw', padding:'24px'}}>Saved Videos</h1>
-      <div style={{marginTop: '20px'}} className='video-feed'>
-        {videoElements}
+    <div className='saved-videos' style={{display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center'}}>
+      <h1 style={{position: 'inherit', marginTop:'150px', padding:'24px'}}>Saved Videos</h1>
+      <div style={{marginTop: '40px'}} className='video-feed'>
+        {videoElements?.length > 0 ? videoElements : "No Saved Videos"}
       </div>
     </div>
   )

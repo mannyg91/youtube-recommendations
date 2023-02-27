@@ -240,12 +240,6 @@ code {
   background-color: rgb(50,50,50);
 }
 
-.search-icon {
-  width: 25px;
-  height: 18px;
-  display: block;
-  align-self: center;
-}
 
 #search-bar input {
   width: 100%;
@@ -258,9 +252,10 @@ code {
 }
 
 #search-bar button {
+  display: flex;
+  align-items: center;
   font-weight: 500;
-  font-size: 14px;
-  padding: 0px 15px;
+  padding: 0px 16px;
   background-color: #a5a5a5;
   border: none;
   border-radius: 0px 15px 15px 0px;
@@ -348,7 +343,7 @@ code {
   text-align: center;
   row-gap: 24px;
   column-gap: 20px;
-  margin-top: 180px;
+  margin-top: 140px;
 }
 
 .video-card {

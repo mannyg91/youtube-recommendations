@@ -26,14 +26,10 @@ const Video = ({ video }) => {
   }, [video]);
 
   React.useEffect(() => {
-    console.log(videoId)
     setSaved(savedVideos?.some(savedVideo => savedVideo.videoId === videoId));
   }, [videoId]);
 
   function handleVideoClick() {
-    console.log('in handle video click')
-    // setClickedSearchResult(video);
-    // console.log(clickedSearchResult)
     localStorage.setItem('clickedSearchResult', JSON.stringify(video));
   }
 

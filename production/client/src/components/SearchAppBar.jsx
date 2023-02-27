@@ -106,7 +106,7 @@ const SearchAppBar = () => {
             }
           }}
         />
-        <button id="search-btn" onClick={handleClick} style={{cursor: 'pointer'}}><SearchIcon class='search-icon' /></button>
+        <button id="search-btn" onClick={handleClick} style={{cursor: 'pointer'}}><SearchIcon /></button>
       </div>
     </>
   )

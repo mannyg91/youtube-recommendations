@@ -1,7 +1,5 @@
 import React from 'react'
 import Ashley from '../assets/ashley_profile.png';
-// import Manny from '../assets/manny_profile.png';
-// import Finn from '../assets/finn_profile.png';
 import Dialog from '@mui/material/Dialog';
 import DialogContent from '@mui/material/DialogContent';
 import DialogTitle from '@mui/material/DialogTitle';
@@ -19,7 +17,7 @@ export const About = (props) => {
     // <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll}>
     <Dialog open={props.aboutUsOpen} onClose={props.handleAboutUsClose} scroll={scroll} maxWidth='md'>
         <DialogTitle style={{color: "white", background: '#323232', paddingLeft: '32px', fontSize: '32px', fontWeight: '300'}}>About Us</DialogTitle>
-        {/* <div class="account-container"> */}
+        {/* <div className="account-container"> */}
         <DialogContent style={{backgroundColor:'rgb(20,20,20)', height: '84vh',}}>
             {/* <h1 style={{fontSize: '42px', color: '#eeeeee', padding: '60px 0px 0px 32px'}}>About Us</h1> */}
             <article>

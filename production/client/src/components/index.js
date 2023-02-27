@@ -2,7 +2,6 @@ export { default as Login } from "./Login";
 export { default as Signup } from "./Signup";
 export { default as VideoFeed } from "./VideoFeed";
 export { default as Navbar } from "./Navbar";
-export { default as ContentSlider } from "./ContentSlider";
 export { default as ContentSwitch } from "./ContentSwitch";
 export { default as Video } from "./Video";
 export { default as TopicScrollTab } from "./TopicScrollTab";

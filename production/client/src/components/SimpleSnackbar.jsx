@@ -87,7 +87,7 @@ function SimpleSnackbar() {
 
 
   const action = (
-    <React.Fragment>
+    <div>
       {/* <Button color="secondary" size="small" onClick={handleClose}>
         UNDO
       </Button> */}
@@ -99,7 +99,7 @@ function SimpleSnackbar() {
       >
         <CloseIcon style={{color: 'gray'}} fontSize="small" />
       </IconButton>
-    </React.Fragment>
+    </div>
   );
 
   return (

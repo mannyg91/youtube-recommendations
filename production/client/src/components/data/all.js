@@ -43,7 +43,6 @@ const all = [
   "vegan recipes",
   "guitar lessons",
   "meditation",
-  // "mindfulness",
   "foreign language lessons",
   "travel vlogs",
   "minimalist lifestyle",
@@ -51,7 +50,6 @@ const all = [
   "art history documentaries",
   "science experiments",
   "eco-friendly living",
-  // "fitness challenges",
   "interviews with artists",
   "book reviews",
   "productivity hacks",
@@ -137,7 +135,6 @@ const all = [
   "futuristic technology",
   "space exploration",
   "science fiction",
-
   "geology",
   "street art",
   "history",
@@ -153,9 +150,6 @@ const all = [
   "computers",
   "cooking",
   "hacks",
-
-
-
 ]
 
 export default all

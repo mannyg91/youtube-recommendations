@@ -117,7 +117,7 @@ function saveRating(newKeywordRating) {
 
 
   return (
-    <div class="ratings-container">
+    <div className="ratings-container">
       <p style={{fontWeight: '300'}}>
         <span style={{}}>Help improve your content! </span>
         <br />
