@@ -12,8 +12,6 @@ import Skeleton from '@mui/material/Skeleton';
 const VideoFeed = () => {
 
   const { ...searchProps } = React.useContext(SearchContext);
-  console.log(searchProps)
-
 
   let videoElements = searchProps.videos?.map((video, index) => {
     return isRestricted(video)

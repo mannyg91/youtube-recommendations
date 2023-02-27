@@ -70,7 +70,6 @@ const ContentSwitch = (props) => {
   const [checked, setChecked] = React.useState(true);
 
   const handleSlider = (event, newValue) => {
-    console.log("slider moved")
     setChecked(event.target.checked);
     if (checked)
       props.setSliderState(1)

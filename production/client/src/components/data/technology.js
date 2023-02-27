@@ -1,4 +1,4 @@
-  const business = [
+const business = [
   "3d printing",
   "3d printing",
   "3d printing technology",

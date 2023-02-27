@@ -42,11 +42,6 @@ export default function TopicScrollTab(props) {
           scrollButtons
           allowScrollButtonsMobile
           aria-label="scrollable force tabs example"
-          TransitionProps={{
-            unmountOnExit: true,
-            timeout: { enter: 500, exit: 0 },
-          }}
-          TransitionComponent={"Grow"}
           sx={{
             alignItems: "center",
             "& .MuiTabs-indicator": {

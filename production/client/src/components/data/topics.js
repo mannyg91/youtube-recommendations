@@ -116,7 +116,7 @@ const appTopics = [
   { id: "/m/05qt0", name: "Politics", keywords: politics },
   { id: "/m/06bvp", name: "Religion", keywords: religion },
   { id: "/m/01k8wb", name: "Knowledge", keywords: knowledge }
-  ];
+];
 
 
 export default appTopics;
