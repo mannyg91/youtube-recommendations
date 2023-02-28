@@ -27,7 +27,7 @@ const App = () => {
   return (
     <LoginContextProvider>
       <SearchContextProvider>
-      <KeywordRatingsContextProvider>
+
       <SavedContextProvider>
         <BrowserRouter basename={process.env.REACT_APP_BASENAME}>
             <Routes>
@@ -57,7 +57,7 @@ const App = () => {
     
         </BrowserRouter>
       </SavedContextProvider>
-      </KeywordRatingsContextProvider>
+
       </SearchContextProvider>
     </LoginContextProvider>
 
