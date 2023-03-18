@@ -1,5 +1,4 @@
 import React from 'react'
-import Toggle from './Toggle'
 import { Link } from "react-router-dom"
 import IconButton from '@mui/material/IconButton';
 import { styled } from "@mui/material/styles";
@@ -108,13 +107,8 @@ const SideBar = ({ handleDrawerClose, open}) => {
           </DrawerHeader>
 
           <List style={{marginLeft: '15px'}}>
-            <ListItem className="drawerlist mobile" key="Day/NightTog" disablePadding>
-                <ListItemButton style={{display: 'flex', justifyContent: 'center', marginLeft: '-15px', marginBottom: '24px'}}>
-                  <Toggle />
-                </ListItemButton>
-              </ListItem>
 
-  
+
               <ListItem className="drawerlist" key="About Us" onClick={handleAboutUsOpen} disablePadding>
                 <ListItemButton>
                   <ListItemIcon>

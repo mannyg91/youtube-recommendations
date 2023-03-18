@@ -61,7 +61,7 @@ HideOnScroll.propTypes = {
 
 
 
-export default function Navbar() {
+export default function Navbar2() {
 
 
   const { ...searchProps } = React.useContext(SearchContext);
@@ -147,36 +147,12 @@ export default function Navbar() {
 
 
   return (
-    <>
-
-      <Box>
-        <Login
-          loginOpen={loginOpen}
-          handleLoginClose={handleLoginClose}
-          handleSignupOpen={handleSignupOpen}
-          handleForgotPasswordOpen={handleForgotPasswordOpen}
-        />
-
-        <Signup
-          signupOpen={signupOpen}
-          handleSignupClose={handleSignupClose}
-          handleLoginOpen={handleLoginOpen}
-        />
-
-        <ForgotPassword
-          forgotPasswordOpen={forgotPasswordOpen}
-          handleForgotPasswordClose={handleForgotPasswordClose}
-        />
-
-
-        <HideOnScroll>
-          <AppBar id="logobar">
-            <Toolbar id="logobar-containers" open={open}>
-
-              <div className='logobar-top'>
-                <div id='logobar-left'>
-                  <div id='logobar-left-outer'>
-                    <IconButton
+        <div class="mobile-navbar">
+          <HideOnScroll>
+            <AppBar>
+                <Toolbar id="navbar-containers" style={{display: 'flex', flexDirection: 'column', background: 'black'}} open={open}>
+                  <div class="navbar-top" style={{display: 'flex', justifyContent: 'space-between', width: '100vw'}}>
+                  <IconButton
                       size="large"
                       edge="start"
                       color="inherit"
@@ -191,24 +167,8 @@ export default function Navbar() {
                         <span id="logo-title">ShuffleTube</span> <ShuffleIcon id="logo-icon" />
                       </Link>
                     </Box>
-                  </div>
-                  <div id='logobar-left-inner'>
-                  </div>
-                </div>
 
-
-
-
-
-                <div className='logobar-top' id='logobar-right'>
-                  {/* <div className="desktop">
-                  <Toggle id="desktop_tog" />
-              </div> */}
-
-
-
-
-                  <IconButton
+                    <IconButton
                     id="acct-icon"
                     size="large"
                     aria-label="account of current user"
@@ -224,84 +184,23 @@ export default function Navbar() {
 
                   </IconButton>
 
+                  </div>
 
+                  <div class="navbar-middle" style={{display: 'flex', gap:'12px', marginLeft: '10px', justifyContent: 'space-evenly', border: 'red 1px solid', width: '100vw'}}>
+                      <ContentSwitch id="content-switch" isFocused={searchProps.isFocused} setIsFocused={searchProps.setIsFocused} />
+                      <SmartSwitch id="content-switch" isEducational={searchProps.isEducational} setIsEducational={searchProps.setIsEducational} />
+                    </div>
 
-
-
-                  <Menu
-
-                    id="menu-appbar"
-                    anchorEl={anchorEl}
-                    anchorOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    keepMounted
-                    transformOrigin={{
-                      vertical: 'top',
-                      horizontal: 'right',
-                    }}
-                    open={Boolean(anchorEl)}
-                    onClose={closeAccountContainer}
-
-                    PaperProps={{
-                      style: {
-                        backgroundColor: 'rgb(50,50,50)', // Change this to the desired background color
-                        color: '#f5f5f5',
-                        zoom: '1.1111',
-                      },}}
-
-      
-                  >
-                    {isLoggedIn ?
-                      <div>
-                        <MenuItem onClick={closeAccountContainer}>Profile</MenuItem>
-                        <MenuItem onClick={handleLogout}>Logout</MenuItem>
-                      </div>
-
-                      :
-                      <div>
-                        <MenuItem onClick={handleLoginOpen}>Login</MenuItem>
-                        <MenuItem onClick={handleSignupOpen}>Sign Up</MenuItem>
-                      </div>
-
-
-                    }
-                  </Menu>
-                </div>
-              </div>
-
-              <div className='logobar-bottom'>
-                <div id='logobar-middle'>
-
-
+                  <div class="navbar-bottom" style={{display: 'flex'}}>
                   <SearchAppBar />
+                  </div>
+                </Toolbar>
+              </AppBar>
+            </HideOnScroll>
+          </div>
 
 
-                </div>
-              </div>
 
-
-
-
-
-            </Toolbar>
-          </AppBar>
-        </HideOnScroll>
-
-        {/* <AppBar style={{top:'70px', height:'40px', backgroundColor:'rgba(0,0,0,0)', color:'white', padding: '10px 100px', fontWeight: '500'}}>
-          Music | Gaming | Sports | Religion | Hobbies | Knowledge | History |
-        </AppBar> */}
-
-        <SideBar
-          handleDrawerOpen={handleDrawerOpen}
-          handleDrawerClose={handleDrawerClose}
-          open={open}
-          setOpen={setOpen}
-        />
-      </Box>
-
-    </>
-  );
-}
+    );
+  };
 

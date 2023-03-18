@@ -8,26 +8,27 @@ const SearchContext = React.createContext();
 
 console.log("search context rendered")
 const SearchContextProvider = (props) => {
-  const [videos, setVideos] = React.useState(null); // change null to data.items for testData
+  const [videos, setVideos] = React.useState(data.items); // change null to data.items for testData
   const [searchTerm, setSearchTerm] = React.useState(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)]);
 
   const [selectedTopic, setSelectedTopic] = React.useState(null);// music topic
-  const [sliderState, setSliderState] = React.useState(2);
   const [focusKeywords, setFocusKeywords] = React.useState(null);
 
-  const [sliderState2, setSliderState2] = React.useState(2);
   const [selectedType, setSelectedType] = React.useState(null)
 
+  const [isFocused, setIsFocused] = React.useState(true);
+  const [isEducational, setIsEducational] = React.useState(true);
+
   React.useEffect(() => {
-    const usingTestData = false;
+    const usingTestData = true;
         if (!usingTestData) { 
           const getVideos = async () => {
-            const data = await youtubeSearch(searchTerm, selectedTopic, selectedType);
+            const data = await youtubeSearch(searchTerm, selectedTopic, selectedType, isEducational);
             setVideos(data);
           }
           getVideos();
       }
-      }, [searchTerm, selectedTopic, selectedType]);
+      }, [searchTerm, selectedTopic, selectedType, isEducational, isFocused]);
 
       // React.useEffect(() => {
       //   setSearchTerm(appTopics[0].keywords[Math.floor(Math.random() * appTopics[0].keywords.length)])
@@ -35,7 +36,7 @@ const SearchContextProvider = (props) => {
 
       React.useEffect(() => {
         if (selectedTopic === null) {
-          setSliderState(3)
+          setIsFocused(true)
         }
           setFocusKeywords(appTopics.filter(obj => obj.id === selectedTopic)[0].keywords)
       }, [selectedTopic])
@@ -49,14 +50,14 @@ const SearchContextProvider = (props) => {
         setSearchTerm,
         selectedTopic,
         setSelectedTopic,
-        sliderState,
-        setSliderState,
-        sliderState2,
-        setSliderState2,
         selectedType,
         setSelectedType,
         focusKeywords,
-        setFocusKeywords
+        setFocusKeywords,
+        isFocused,
+        setIsFocused,
+        isEducational,
+        setIsEducational
       }}
     >
       {props.children}

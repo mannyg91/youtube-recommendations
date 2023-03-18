@@ -25,18 +25,18 @@ const WatchVideo = () => {
   const [snackbarMessage, setSnackbarMessage] = React.useState("");
 
 
-
   React.useEffect(() => {
-    console.log("effect ran", id)
-
-   
     const getVideos = async () => {
-      const data = await getVideoDetails(id);
-      setVideoDetails(data?.items[0]);
-      console.log(videoDetails)
+      try {
+        const data = await getVideoDetails(id);
+        setVideoDetails(data?.items[0]);
+        console.log(videoDetails)
+      } catch (error) {
+        console.log(error);
+      }
     }
     getVideos();
-  }, []);
+  }, [id]);
 
 
 

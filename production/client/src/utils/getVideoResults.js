@@ -9,7 +9,7 @@ async function loadClient() {
 
   // await loadClient();
 
-export const youtubeSearch = async (query, topicId, type) => {
+export const youtubeSearch = async (query, topicId, type, isEducational) => {
 
   try {
     if (window.gapi.client.youtube === undefined) {
@@ -58,6 +58,7 @@ export const youtubeSearch = async (query, topicId, type) => {
 
 
   async function execute(videoCategoryId) {
+    console.log(videoCategoryId)
     if (window.gapi.client === undefined) {
       await loadClient();
       console.log('awaited')
@@ -96,8 +97,8 @@ export const youtubeSearch = async (query, topicId, type) => {
   // Load the client before calling the execute function
 
 
-  const educationResults = await execute(27);
-  const scienceResults = await execute(28);
+  const educationResults = await execute(isEducational ? 27 : null);
+  const scienceResults = await execute(isEducational ? 28 : null);
 
   const data = interlaceAndRemoveDuplicates(educationResults, scienceResults);
   console.log(data);

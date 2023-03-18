@@ -39,7 +39,7 @@ function isKidsContent(str) {
 
 function containsRestrictedWords(str) {
   const strWords = str.split(' ');
-  const restrictedKeywords = ['vocabulary','esl','phrases','♫']
+  const restrictedKeywords = ['vocabulary','esl','phrases','♫', 'pronunciation',]
   return strWords.some(word => restrictedKeywords.includes(word));
 }
 

@@ -4,6 +4,8 @@ import { useHover } from '../hooks/useHover';
 import { LoginContext } from '../hooks/LoginContext';
 import { SavedContext } from '../hooks/SavedContext';
 import Snackbar from '@mui/material/Snackbar';
+import YouTubeIcon from '@mui/icons-material/YouTube';
+import IconButton from '@mui/material/IconButton';
 
 const Video = ({ video }) => {
   const [hovered, ref] = useHover();
@@ -92,10 +94,15 @@ const Video = ({ video }) => {
   return (
     <div className='video-card' style={{ width: thumbnailWidth }} ref={ref}>
       <div className='thumbnail' style={{ height: "calc(100% - px)" }}>
-        <Link to={videoId ? `/video/${videoId}` : `/video/cV2gBU6hKfY`} onClick={handleVideoClick}>
+        <Link to={`/video/${videoId ?? 'cV2gBU6hKfY'}`} onClick={handleVideoClick}>
           <img className='exclude' width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
             style={{ clipPath: "inset(33px 0px 33px 0px round 20px)", marginTop: "-24px" }}
           />
+        </Link>
+
+
+        <Link to={`https://www.youtube.com/watch?v=${video.id.videoId}`} target="_blank" rel="noopener noreferrer">
+          <YouTubeIcon className="video-youtube-icon" />
         </Link>
         {saveIcon()}
       </div>

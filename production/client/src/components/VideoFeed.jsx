@@ -1,5 +1,5 @@
 import React from 'react'
-import { Video, TopicScrollTab, ContentSlider, Ratings, SimpleSnackbar, HideOnScroll } from "../components";
+import { Video, TopicScrollTab, Ratings, SimpleSnackbar, HideOnScroll } from "../components";
 import randomWords from 'random-words';
 import Button from "@mui/material/Button";
 import { isRestricted } from '../utils/contentFilter'
@@ -35,7 +35,6 @@ const VideoFeed = () => {
     <>
       
         <div className="topic-scroll">
-          {/* <ContentSlider style={{margin: '100px 0px'}} sliderState={searchProps.sliderState} setSliderState={searchProps.setSliderState} /> */}
           <TopicScrollTab selectedTopic={searchProps.selectedTopic} setSelectedTopic={searchProps.setSelectedTopic}/>
         </div>
 

@@ -2,8 +2,6 @@ import React from "react";
 import TextField from "@mui/material/TextField";
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { Link } from 'react-router-dom';
-import { LoginContext } from '../hooks/LoginContext';
 import Dialog from '@mui/material/Dialog';
 
 

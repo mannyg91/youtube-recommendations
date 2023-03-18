@@ -1,7 +1,7 @@
 import React from 'react'
 import { LoginContextProvider } from './hooks/LoginContext';
 
-import { Navbar, VideoFeed, WatchVideo, SavedVideos, ResetPassword, About } from "./components";
+import { Navbar, VideoFeed, WatchVideo, SavedVideos, ResetPassword, About, Navbar2 } from "./components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SavedContextProvider } from './hooks/SavedContext';
 import { SearchContextProvider } from './hooks/SearchContext';
@@ -33,7 +33,7 @@ const App = () => {
             <Routes>
               <Route
                 path="/"
-                element={<div className='page-wrapper'><Navbar /><VideoFeed/></div>}
+                element={<div className='page-wrapper'><Navbar2 /><VideoFeed/></div>}
               />
               <Route
                 path='/video/:id' 

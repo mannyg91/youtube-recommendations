@@ -69,7 +69,10 @@ const ContentSwitch = (props) => {
 
   const handleSwitch = (event, newValue) => {
     setChecked(event.target.checked);
-    searchProps.setIsFocused(!searchProps.isFocused);
+    if (checked)
+      searchProps.setIsEducational(false)
+    else
+      searchProps.setIsEducational(true)
   }
 
   if (searchProps.selectedTopic === null) {
@@ -78,10 +81,10 @@ const ContentSwitch = (props) => {
 
   return (
     <Stack direction="row" spacing={1} alignItems="center">
-      <Typography style={{ color: 'whitesmoke', fontSize: '11px' }}>Random</Typography>
-      <IOSSwitch checked={checked} onChange={handleSwitch} />
-      <Typography style={{ color: 'whitesmoke', fontSize: '11px' }}>Focused</Typography>
-    </Stack>
+    <Typography style={{color: 'whitesmoke', fontSize: '11px'}}>Anything</Typography>
+    <IOSSwitch checked={checked} onChange={handleSwitch} />
+    <Typography style={{color: 'whitesmoke', fontSize: '11px'}}>Intellectual</Typography>
+      </Stack>
   );
 }
 

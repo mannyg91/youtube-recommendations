@@ -40,7 +40,7 @@ function SimpleSnackbar() {
 
     console.log("keyword rated", keywordAlreadyRated)
 
-    if (searchProps.selectedTopic !== null && searchProps.sliderState === 3 && isLoggedIn && !keywordAlreadyRated  ) {
+    if (searchProps.selectedTopic !== null && searchProps.isFocused && isLoggedIn && !keywordAlreadyRated  ) {
     setTimeout(() => {
       setOpen(true);
       setSnackbarActionComplete(false);

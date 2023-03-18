@@ -8,16 +8,6 @@ import ShuffleIcon from '@mui/icons-material/Shuffle';
 const SearchAppBar = () => {
 
   const { ...searchProps } = React.useContext(SearchContext);
-  // videos,
-  // setVideos,
-  // searchTerm,
-  // setSearchTerm,
-  // selectedTopic,
-  // setSelectedTopic,
-  // sliderState,
-  // setSliderState,
-  // focusKeywords,
-  // setFocusKeywords
 
   //create state for search term
   const [searchAppBarTerm, setSearchAppBarTerm] = React.useState('')
@@ -37,21 +27,19 @@ const SearchAppBar = () => {
     searchProps.setSearchTerm(focusPhrase)
   }
 
-  function getMiddlePhrase() {
-    if (Math.random() < 0.5) {
-      getRandomPhrase()
-    } else {
-      getFocusedPhrase()
-    }
-  }
+  // function getMiddlePhrase() {
+  //   if (Math.random() < 0.5) {
+  //     getRandomPhrase()
+  //   } else {
+  //     getFocusedPhrase()
+  //   }
+  // }
 
 
   function handleSpin() {
     setSearchBarClicked(false);
-    if (searchProps.sliderState === 3) {
+    if (searchProps.isFocused) {
       getFocusedPhrase()
-    } else if (searchProps.sliderState === 2) {
-      getMiddlePhrase()
     } else {
       getRandomPhrase()
     }
