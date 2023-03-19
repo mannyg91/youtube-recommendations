@@ -9,6 +9,7 @@
 
 html {
   background: radial-gradient(at 50% 45%, rgba(49, 159, 193, 1) 1%, rgba(24, 24, 24, 1) 99%);
+  /* background: radial-gradient(at 50% 45%, rgb(50 50 50) 1%, rgb(20 20 20) 99%); */
   background-repeat: no-repeat;
   background-attachment: fixed;
 }
@@ -223,9 +224,8 @@ code {
   margin-left: -5px;
 }
 
-/* content switch */
-/* css-1q36rmd-MuiStack-root {
-  zoom: 1;
+/* #content-switch {
+  margin: 0px 60px !important;
 } */
 
 
@@ -346,10 +346,10 @@ code {
 }
 
 .video-card {
-  background: linear-gradient(to top, rgba(0, 0, 0, .4), rgba(0, 0, 0, 0.3));
-  border-radius: 25px;
+  background: linear-gradient(to top, rgba(0, 0, 0, .45), rgba(0, 0, 0, 0.3));
+  border-radius: 22px;
   padding: 0px;
-  height: 316px;
+  height: 261px;
   zoom: 1.17;
   /* width: 320px; */
   /* text-align: center;
@@ -371,17 +371,17 @@ code {
   position: absolute;
   cursor: pointer;
   left: 18px;
-  bottom: -56px;
+  bottom: -50px;
 }
 
 
 .favorite {
   color: rgb(220, 220, 220);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   position: absolute;
   cursor: pointer;
   right: 18px;
-  bottom: -56px;
+  bottom: -47px;
 }
 
 .player-favorite {
@@ -402,7 +402,7 @@ code {
   margin-top: -20px;
   margin-bottom: 15px;
   line-height: 1.25;
-  font-size: 15px;
+  font-size: 13px;
   font-weight: 400;
   text-overflow: ellipsis;
   display: -webkit-box;
@@ -413,7 +413,7 @@ code {
 
 .channel-title {
   color: lightblue;
-  font-size: 14px;
+  font-size: 13px;
 }
 
 
@@ -758,8 +758,8 @@ article p {
   .topic-scroll {
     position: fixed;
     background-color: rgb(21, 21, 21);
-    top: 84px;
-    padding: 20px 0px 20px;
+    top: 110px;
+    padding: 20px 0px 15px;
     max-height: 45px;
     width: 100%;
     align-items: center;

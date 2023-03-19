@@ -150,8 +150,8 @@ export default function Navbar2() {
         <div class="mobile-navbar">
           <HideOnScroll>
             <AppBar>
-                <Toolbar id="navbar-containers" style={{display: 'flex', flexDirection: 'column', background: 'black'}} open={open}>
-                  <div class="navbar-top" style={{display: 'flex', justifyContent: 'space-between', width: '100vw'}}>
+                <Toolbar id="navbar-containers" style={{display: 'flex', flexDirection: 'column', background: 'rgb(21, 21, 21)'}} open={open}>
+                  <div class="navbar-top" style={{display: 'flex', justifyContent: 'space-between', width: '100vw', alignItems: 'center', background: 'rgb(21, 21, 21)'}}>
                   <IconButton
                       size="large"
                       edge="start"
@@ -186,13 +186,21 @@ export default function Navbar2() {
 
                   </div>
 
-                  <div class="navbar-middle" style={{display: 'flex', gap:'12px', marginLeft: '10px', justifyContent: 'space-evenly', border: 'red 1px solid', width: '100vw'}}>
+                  {/* <div class="navbar-middle" style={{display: 'flex', gap:'12px', marginLeft: '10px', justifyContent: 'space-evenly', border: 'red 1px solid', width: '100vw'}}>
                       <ContentSwitch id="content-switch" isFocused={searchProps.isFocused} setIsFocused={searchProps.setIsFocused} />
                       <SmartSwitch id="content-switch" isEducational={searchProps.isEducational} setIsEducational={searchProps.setIsEducational} />
+                  </div> */}
+
+                  <div class="navbar-bottom" style={{display: 'flex', marginBottom: '12px'}}>
+                    <div style={{display: 'flex', alignItems: 'center', margin: '0px 65px'}}>
+                      <ContentSwitch isFocused={searchProps.isFocused} setIsFocused={searchProps.setIsFocused} />
                     </div>
 
-                  <div class="navbar-bottom" style={{display: 'flex'}}>
-                  <SearchAppBar />
+                    <SearchAppBar />
+
+                    <div style={{display: 'flex', alignItems: 'center', margin: '0px 65px'}}>
+                      <SmartSwitch isEducational={searchProps.isEducational} setIsEducational={searchProps.setIsEducational} />
+                    </div>
                   </div>
                 </Toolbar>
               </AppBar>

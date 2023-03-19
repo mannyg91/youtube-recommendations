@@ -19,8 +19,8 @@ const Video = ({ video }) => {
 
   const videoTitle = video.snippet.title;
   const thumbnailURL = video.snippet.thumbnails.high.url;
-  const thumbnailWidth = video.snippet.thumbnails.high.width * .73;
-  const thumbnailHeight = video.snippet.thumbnails.high.height * .73;
+  const thumbnailWidth = video.snippet.thumbnails.high.width * .62;
+  const thumbnailHeight = video.snippet.thumbnails.high.height * .62;
   const channelTitle = video.snippet.channelTitle;
 
   React.useEffect(() => {
@@ -95,8 +95,8 @@ const Video = ({ video }) => {
     <div className='video-card' style={{ width: thumbnailWidth }} ref={ref}>
       <div className='thumbnail' style={{ height: "calc(100% - px)" }}>
         <Link to={`/video/${videoId ?? 'cV2gBU6hKfY'}`} onClick={handleVideoClick}>
-          <img className='exclude' width="95%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
-            style={{ clipPath: "inset(33px 0px 33px 0px round 20px)", marginTop: "-24px" }}
+          <img className='exclude' width="96%" height={thumbnailHeight * .98} src={thumbnailURL} alt={videoTitle}
+            style={{ clipPath: "inset(28px 0px 28px 0px round 16px)", marginTop: "-22px" }}
           />
         </Link>
 
